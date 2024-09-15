@@ -13,9 +13,13 @@ const Quiz = () => {
     if (step < 6) {
       setStep(step + 1);
     } else {
-      // Send form data
       console.log("Sending form data:", quizData);
-      // Add your API call here
+    }
+  };
+
+  const handleGoBack = () => {
+    if (step > 1) {
+      setStep(step - 1);
     }
   };
 
@@ -43,7 +47,42 @@ const Quiz = () => {
             />
           </>
         );
-      // Add cases 3, 4, and 5 with appropriate inputs
+      case 3:
+        return (
+          <>
+            <h2>Step 3</h2>
+            <input
+              name="age"
+              type="number"
+              onChange={handleInputChange}
+              placeholder="Your age"
+            />
+          </>
+        );
+      case 4:
+        return (
+          <>
+            <h2>Step 4</h2>
+            <select name="favoriteColor" onChange={handleInputChange}>
+              <option value="">Select your favorite color</option>
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="yellow">Yellow</option>
+            </select>
+          </>
+        );
+      case 5:
+        return (
+          <>
+            <h2>Step 5</h2>
+            <textarea
+              name="feedback"
+              onChange={handleInputChange}
+              placeholder="Please provide any feedback"
+            />
+          </>
+        );
       case 6:
         return (
           <>
@@ -57,10 +96,36 @@ const Quiz = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {renderStep()}
-      <button type="submit">{step < 6 ? "Next" : "Submit"}</button>
-    </form>
+    <>
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: "#e0e0e0",
+          marginBottom: "20px",
+        }}
+      >
+        <div
+          style={{
+            width: `${(step / 6) * 100}%`,
+            height: "10px",
+            backgroundColor: "#4caf50",
+            transition: "width 0.3s ease-in-out",
+          }}
+        />
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        {renderStep()}
+        <div>
+          {step > 1 && (
+            <button type="button" onClick={handleGoBack}>
+              Go Back
+            </button>
+          )}
+          <button type="submit">{step < 6 ? "Next" : "Submit"}</button>
+        </div>
+      </form>
+    </>
   );
 };
 

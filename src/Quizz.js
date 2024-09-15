@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Step1 } from "./Steps/Step1";
+import { Step2 } from "./Steps/Step2";
+// import { CSSTransition, TransitionGroup } from "react-transition-group";
+import "./Quiz.css"; // We'll create this file for the transition styles
 
 const Quiz = () => {
   const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
 
   const handleInputChange = (e) => {
+    console.log('e :', e);
     setQuizData({ ...quizData, [e.target.name]: e.target.value });
   };
 
@@ -17,6 +21,7 @@ const Quiz = () => {
 
   const handleNextQuizNavigation = (e) => {
     e.preventDefault();
+
     if (step < 6) {
       setStep(step + 1);
     }
@@ -32,16 +37,8 @@ const Quiz = () => {
       case 1:
         return <Step1 handleInputChange={handleInputChange} />;
       case 2:
-        return (
-          <>
-            <h2>Step 2</h2>
-            <input
-              name="email"
-              onChange={handleInputChange}
-              placeholder="Your email"
-            />
-          </>
-        );
+        return <Step2 handleInputChange={handleInputChange} />;
+
       case 3:
         return (
           <>
@@ -108,17 +105,29 @@ const Quiz = () => {
         />
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{ borderBottom: "1px solid #e0e0e0" }}
-      >
+      <div className="step-content">
+        <form
+          onSubmit={handleSubmit}
+          style={{ borderBottom: "1px solid #e0e0e0" }}
+        >
+          <div
+            style={{
+              maxWidth: "790px",
+              margin: "0 auto",
+            }}
+          >
+            {renderStep()}
+          </div>
+        </form>
+
         <div
           style={{
-            maxWidth: "790px",
-            margin: "0 auto",
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "20px",
+            paddingRight: "50px",
           }}
         >
-          {renderStep()}
           <div>
             {step > 1 && (
               <button type="button" onClick={handleGoBack}>
@@ -126,42 +135,33 @@ const Quiz = () => {
               </button>
             )}
           </div>
+
+          <button
+            style={{
+              border: "none",
+              minWidth: "100px",
+              backgroundColor: "#000",
+              color: "#fff",
+              cursor: "pointer",
+              padding: "10px 20px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              fontWeight: "bold",
+            }}
+            type="button"
+            onClick={handleNextQuizNavigation}
+          >
+            <span>Next</span>
+
+            <img
+              alt="arrow"
+              src="/icons/right-arrow.png"
+              height={20}
+              width={20}
+            />
+          </button>
         </div>
-      </form>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          padding: "20px",
-          paddingRight: "50px",
-        }}
-      >
-        <button
-          style={{
-            border: "none",
-            minWidth: "100px",
-            backgroundColor: "#000",
-            color: "#fff",
-            cursor: "pointer",
-            padding: "10px 20px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            fontWeight: "bold",
-          }}
-          type="button"
-          onClick={handleNextQuizNavigation}
-        >
-          <span>Next</span>
-
-          <img
-            alt="arrow"
-            src="/icons/right-arrow.png"
-            height={20}
-            width={20}
-          />
-        </button>
       </div>
     </div>
   );

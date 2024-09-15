@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const Step1 = ({ handleInputChange }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div
       style={{
@@ -8,13 +18,17 @@ export const Step1 = ({ handleInputChange }) => {
         flexDirection: "column",
         alignItems: "center",
         padding: "40px",
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
+        height: "77vh",
       }}
     >
-      <h1>Let’s check your roof’s sun exposure </h1>
+      <h1>Let's check your roof's sun exposure </h1>
 
       <p>
         We'll use your location to provide you with tailored information about
-        solar panels in your area. Your privacy is important to us, so we won’t
+        solar panels in your area. Your privacy is important to us, so we won't
         share your address!
       </p>
 

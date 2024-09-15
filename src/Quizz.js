@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Step1 } from "./Steps/Step1";
 
 const Quiz = () => {
   const [step, setStep] = useState(1);
@@ -8,34 +9,28 @@ const Quiz = () => {
     setQuizData({ ...quizData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (step < 6) {
-      setStep(step + 1);
-    } else {
-      console.log("Sending form data:", quizData);
-    }
-  };
-
   const handleGoBack = () => {
     if (step > 1) {
       setStep(step - 1);
     }
   };
 
+  const handleNextQuizNavigation = (e) => {
+    e.preventDefault();
+    if (step < 6) {
+      setStep(step + 1);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(quizData);
+  };
+
   const renderStep = () => {
     switch (step) {
       case 1:
-        return (
-          <>
-            <h2>Step 1</h2>
-            <input
-              name="name"
-              onChange={handleInputChange}
-              placeholder="Your name"
-            />
-          </>
-        );
+        return <Step1 handleInputChange={handleInputChange} />;
       case 2:
         return (
           <>
@@ -96,14 +91,13 @@ const Quiz = () => {
   };
 
   return (
-    <>
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: "#e0e0e0",
-          marginBottom: "20px",
-        }}
-      >
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <div>
         <div
           style={{
             width: `${(step / 6) * 100}%`,
@@ -114,18 +108,52 @@ const Quiz = () => {
         />
       </div>
 
-      <form onSubmit={handleSubmit}>
-        {renderStep()}
-        <div>
-          {step > 1 && (
-            <button type="button" onClick={handleGoBack}>
-              Go Back
-            </button>
-          )}
-          <button type="submit">{step < 6 ? "Next" : "Submit"}</button>
+      <form
+        onSubmit={handleSubmit}
+        style={{ borderBottom: "1px solid #e0e0e0" }}
+      >
+        <div
+          style={{
+            maxWidth: "790px",
+            margin: "0 auto",
+          }}
+        >
+          {renderStep()}
+          <div>
+            {step > 1 && (
+              <button type="button" onClick={handleGoBack}>
+                Go Back
+              </button>
+            )}
+          </div>
         </div>
       </form>
-    </>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "end",
+          padding: "20px",
+        }}
+      >
+        <button
+          style={{
+            border: "none",
+            minWidth: "100px",
+            backgroundColor: "#000",
+            color: "#fff",
+            cursor: "pointer",
+            padding: "10px 20px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+          type="button"
+          onClick={handleNextQuizNavigation}
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 };
 

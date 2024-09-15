@@ -134,6 +134,7 @@ const Quiz = () => {
           display: "flex",
           justifyContent: "end",
           padding: "20px",
+          paddingRight: "50px",
         }}
       >
         <button
@@ -146,11 +147,20 @@ const Quiz = () => {
             padding: "10px 20px",
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
+            fontWeight: "bold",
           }}
           type="button"
           onClick={handleNextQuizNavigation}
         >
-          Next
+          <span>Next</span>
+
+          <img
+            alt="arrow"
+            src="/icons/right-arrow.png"
+            height={20}
+            width={20}
+          />
         </button>
       </div>
     </div>

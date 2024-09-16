@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export const Step1 = ({
   handleUserAnswer,
@@ -10,6 +10,10 @@ export const Step1 = ({
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  console.log(inputValue);
+  console.log(inputValue.trim().length);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,6 +21,19 @@ export const Step1 = ({
     }, 100);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleInputChange = (e) => {
@@ -89,14 +106,41 @@ export const Step1 = ({
               cursor: "pointer",
             }}
             type="button"
-            onClick={() => handleUserAnswer({ street: selectedStreetId.slice(0, 10) })}
+            onClick={() =>
+              handleUserAnswer({ street: selectedStreetId.slice(0, 10) })
+            }
           >
             Check my roof
           </button>
         </div>
 
+        {inputValue.trim().length > 0 && (
+           <ul
+           ref={dropdownRef}
+           style={{
+             listStyle: "none",
+             padding: 0,
+             margin: 0,
+             position: "absolute",
+             top: "100%",
+             left: 0,
+             right: 0,
+             backgroundColor: "#fff",
+             border: "1px solid #ccc",
+             borderTop: "none",
+             maxHeight: "200px",
+             overflowY: "auto",
+             zIndex: 1,
+           }}
+         >
+          <li style={{ padding: "10px" }}>No results found</li>
+        </ul>
+        )}
+
+
         {showDropdown && streetsData.length > 0 && (
           <ul
+            ref={dropdownRef}
             style={{
               listStyle: "none",
               padding: 0,

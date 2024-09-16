@@ -9,6 +9,7 @@ const Quiz = () => {
   const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
   const [streetsData, setStreetsData] = useState([]);
+  const [selectedStreetId, setSelectedStreetId] = useState(null);
 
   const handleUserAnswer = (data) => {
     setQuizData({ ...quizData, ...data });
@@ -61,6 +62,7 @@ const Quiz = () => {
       });
       console.log(response.data.predictions);
       setStreetsData(response.data.predictions);
+      setSelectedStreetId(response.data.predictions[0].place_id);
     } catch (error) {
       console.error("Error fetching addresses:", error);
     }
@@ -79,6 +81,8 @@ const Quiz = () => {
           <Step1
             handleUserAnswer={handleUserAnswer}
             onInputChange={fetchAddressesData}
+            setSelectedStreetId={setSelectedStreetId}
+            selectedStreetId={selectedStreetId}
             streetsData={streetsData}
           />
         );
@@ -105,11 +109,6 @@ const Quiz = () => {
   //   );
   //   console.log(response);
   // };
-
-  useEffect(() => {
-    // fetchAddressesData();
-    // fetchSolarMapData();
-  }, []);
 
   return (
     <div

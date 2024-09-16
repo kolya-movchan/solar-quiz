@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-export const Step1 = ({ handleUserAnswer, onInputChange, streetsData }) => {
+export const Step1 = ({
+  handleUserAnswer,
+  onInputChange,
+  streetsData,
+  setSelectedStreetId,
+  selectedStreetId,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -22,6 +28,7 @@ export const Step1 = ({ handleUserAnswer, onInputChange, streetsData }) => {
   const handleSelectStreet = (street) => {
     setInputValue(street.description);
     setShowDropdown(false);
+    setSelectedStreetId(street.place_id);
   };
 
   return (
@@ -61,7 +68,6 @@ export const Step1 = ({ handleUserAnswer, onInputChange, streetsData }) => {
           }}
         >
           <input
-            name="name"
             placeholder="Search by address or ZIP code"
             style={{
               width: "100%",
@@ -83,10 +89,12 @@ export const Step1 = ({ handleUserAnswer, onInputChange, streetsData }) => {
               cursor: "pointer",
             }}
             type="button"
+            onClick={() => handleUserAnswer({ street: selectedStreetId.slice(0, 10) })}
           >
             Check my roof
           </button>
         </div>
+
         {showDropdown && streetsData.length > 0 && (
           <ul
             style={{
@@ -109,9 +117,23 @@ export const Step1 = ({ handleUserAnswer, onInputChange, streetsData }) => {
               <li
                 key={index}
                 style={{
+                  textAlign: "left",
                   padding: "10px",
                   cursor: "pointer",
                   borderBottom: "1px solid #eee",
+                  backgroundColor:
+                    street.place_id === selectedStreetId
+                      ? "#e0e0e0"
+                      : "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#e0e0e0";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor =
+                    street.place_id === selectedStreetId
+                      ? "#e0e0e0"
+                      : "transparent";
                 }}
                 onClick={() => handleSelectStreet(street)}
               >

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable jsx-a11y/iframe-has-title */
+import React, { useState } from "react";
 import { Step1 } from "./Steps/Step1";
 import { Step2 } from "./Steps/Step2";
 import axios from "axios";
@@ -11,6 +12,7 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState({});
   const [streetsData, setStreetsData] = useState([]);
   const [selectedStreet, setSelectedStreet] = useState(null);
+  const [solarMapData, setSolarMapData] = useState(null);
 
   const handleUserAnswer = (data) => {
     setQuizData({ ...quizData, ...data });
@@ -43,38 +45,74 @@ const Quiz = () => {
     console.log(quizData);
   };
 
-  // const debounce = (func, delay) => {
-  //   let timeoutId;
-  //   return (...args) => {
-  //     clearTimeout(timeoutId);
-  //     timeoutId = setTimeout(() => func(...args), delay);
-  //   };
-  // };
-
-  // const fetchAddressesData = debounce(async (value) => {
-  //   try {
-  //     const response = await axios.get(`/maps/api/place/autocomplete/json`, {
-  //       params: {
-  //         input: value.target.value,
-  //         key: process.env.REACT_APP_SOLAR_API_KEY,
-  //         components: "country:us",
-  //         types: "address",
-  //       },
-  //     });
-  //     console.log(response.data.predictions);
-  //     setStreetsData(response.data.predictions);
-  //     setSelectedStreet(response.data.predictions[0]);
-  //   } catch (error) {
-  //     console.error("Error fetching addresses:", error);
-  //   }
-  // }, 300);
-
- 
-
-  const fetchAddressesData = async (value) => {
-    setStreetsData(testData);
-    setSelectedStreet(testData[0])
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
   };
+
+  const fetchAddressesData = debounce(async (value) => {
+    try {
+      const response = await axios.get(`/maps/api/place/autocomplete/json`, {
+        params: {
+          input: value.target.value,
+          key: process.env.REACT_APP_SOLAR_API_KEY,
+          components: "country:us",
+          types: "address",
+        },
+      });
+      console.log(response.data.predictions);
+      setStreetsData(response.data.predictions);
+      setSelectedStreet(response.data.predictions[0]);
+    } catch (error) {
+      console.error("Error fetching addresses:", error);
+    }
+  }, 300);
+
+  const getCoordinates = async (placeId) => {
+    try {
+      const response = await axios.get(`/maps/api/geocode/json`, {
+        params: {
+          place_id: placeId,
+          key: process.env.REACT_APP_SOLAR_API_KEY,
+        },
+      });
+      const location = response.data.results[0].geometry.location;
+
+      if (location) {
+        console.log("location", location);
+
+        getSolarMap(location.lat, location.lng);
+      }
+    } catch (error) {
+      console.error("Error fetching coordinates:", error);
+      throw error;
+    }
+  };
+
+  const getSolarMap = async (latitude, longitude) => {
+    try {
+      const response = await axios.get(``, {
+        params: {
+          key: process.env.REACT_APP_SOLAR_API_KEY,
+          // "location.latitude": latitude,
+          // "location.longitude": longitude,
+        },
+      });
+
+      console.log("Solar Map", response.data);
+      setSolarMapData(response.data);
+    } catch (error) {
+      console.error("Error fetching solar map data:", error);
+    }
+  };
+
+  // const fetchAddressesData = async (value) => {
+  //   setStreetsData(testData);
+  //   setSelectedStreet(testData[0]);
+  // };
 
   const renderStep = () => {
     switch (step) {
@@ -90,6 +128,7 @@ const Quiz = () => {
             handleUserAnswer={handleUserAnswer}
             onInputChange={fetchAddressesData}
             setSelectedStreet={setSelectedStreet}
+            getCoordinates={getCoordinates}
             selectedStreet={selectedStreet}
             streetsData={streetsData}
           />
@@ -110,13 +149,6 @@ const Quiz = () => {
         return null;
     }
   };
-
-  // const fetchSolarMapData = async () => {
-  //   const response = await axios.get(
-  //     `https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=37.2746464&location.longitude=-121.7530949&key=${process.env.REACT_APP_SOLAR_API_KEY}`
-  //   );
-  //   console.log(response);
-  // };
 
   return (
     <div

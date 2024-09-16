@@ -6,6 +6,7 @@ export const Step1 = ({
   streetsData,
   setSelectedStreet,
   selectedStreet,
+  getCoordinates,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -106,9 +107,12 @@ export const Step1 = ({
               cursor: "pointer",
             }}
             type="button"
-            onClick={() =>
-              handleUserAnswer({ street: selectedStreet.place_id.slice(0, 10) })
-            }
+            onClick={() => {
+              handleUserAnswer({
+                street: selectedStreet.place_id.slice(0, 10),
+              });
+              getCoordinates(selectedStreet.place_id);
+            }}
           >
             Check my roof
           </button>

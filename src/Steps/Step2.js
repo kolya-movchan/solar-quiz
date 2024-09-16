@@ -30,8 +30,6 @@ export const Step2 = ({ handleInputChange }) => {
 
       <div style={{ display: "flex", gap: "20px", width: "100%" }}>
         <button
-          name="homeOwnership"
-          value="yes"
           style={{
             padding: "20px",
             width: "100%",
@@ -47,15 +45,13 @@ export const Step2 = ({ handleInputChange }) => {
             cursor: "pointer",
             type: "button",
           }}
-          onClick={(e) => handleInputChange(e)}
+          onClick={() => handleInputChange({ homeOwnership: "yes" })}
         >
           <img src="/icons/default.png" alt="Yes" height={40} width={40} />
           <span>Yes</span>
         </button>
 
         <button
-          name="homeOwnership"
-          value="no"
           style={{
             padding: "20px",
             width: "100%",
@@ -71,7 +67,7 @@ export const Step2 = ({ handleInputChange }) => {
             cursor: "pointer",
             type: "button",
           }}
-          onClick={(e) => handleInputChange(e)}
+          onClick={() => handleInputChange({ homeOwnership: "no" })}
         >
           <img src="/icons/default.png" alt="No" height={40} width={40} />
           <span>No</span>

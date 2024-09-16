@@ -42,7 +42,6 @@ export const Step1 = ({ handleInputChange }) => {
       >
         <input
           name="name"
-          onChange={handleInputChange}
           placeholder="Search by address or ZIP code"
           style={{
             width: "100%",
@@ -62,13 +61,12 @@ export const Step1 = ({ handleInputChange }) => {
             cursor: "pointer",
           }}
           type="button"
-          onClick={() => {}}
         >
           Check my roof
         </button>
       </div>
 
-      <div role="placeholder" style={{ width: "100%", height: "50vh" }}>
+      <div style={{ width: "100%", height: "50vh" }}>
         <img
           src="https://placehold.co/600x400"
           alt="Solar Panels"

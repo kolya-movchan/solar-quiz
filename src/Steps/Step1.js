@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-export const Step1 = ({ handleInputChange }) => {
+export const Step1 = ({ handleUserAnswer, onInputChange, streetsData }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -10,6 +12,17 @@ export const Step1 = ({ handleInputChange }) => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    onInputChange(e);
+    setShowDropdown(true);
+  };
+
+  const handleSelectStreet = (street) => {
+    setInputValue(street.description);
+    setShowDropdown(false);
+  };
 
   return (
     <div
@@ -36,34 +49,77 @@ export const Step1 = ({ handleInputChange }) => {
         style={{
           width: "100%",
           display: "flex",
-          border: "1px solid #000",
+          flexDirection: "column",
+          position: "relative",
           marginBottom: "40px",
         }}
       >
-        <input
-          name="name"
-          placeholder="Search by address or ZIP code"
+        <div
           style={{
-            width: "100%",
-            height: "20px",
-            padding: "10px",
-            border: "none",
-            borderRadius: "none",
+            display: "flex",
+            border: "1px solid #000",
           }}
-        />
-
-        <button
-          style={{
-            border: "none",
-            minWidth: "100px",
-            backgroundColor: "#000",
-            color: "#fff",
-            cursor: "pointer",
-          }}
-          type="button"
         >
-          Check my roof
-        </button>
+          <input
+            name="name"
+            placeholder="Search by address or ZIP code"
+            style={{
+              width: "100%",
+              height: "20px",
+              padding: "10px",
+              border: "none",
+              borderRadius: "none",
+            }}
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+
+          <button
+            style={{
+              border: "none",
+              minWidth: "100px",
+              backgroundColor: "#000",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+            type="button"
+          >
+            Check my roof
+          </button>
+        </div>
+        {showDropdown && streetsData.length > 0 && (
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              backgroundColor: "#fff",
+              border: "1px solid #ccc",
+              borderTop: "none",
+              maxHeight: "200px",
+              overflowY: "auto",
+              zIndex: 1,
+            }}
+          >
+            {streetsData.map((street, index) => (
+              <li
+                key={index}
+                style={{
+                  padding: "10px",
+                  cursor: "pointer",
+                  borderBottom: "1px solid #eee",
+                }}
+                onClick={() => handleSelectStreet(street)}
+              >
+                {street.description}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div style={{ width: "100%", height: "50vh" }}>

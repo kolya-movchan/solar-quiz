@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export const Step2 = ({ handleInputChange }) => {
+export const Step2 = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export const Step2 = ({ handleInputChange }) => {
             cursor: "pointer",
             type: "button",
           }}
-          onClick={() => handleInputChange({ homeOwnership: "yes" })}
+          onClick={() => handleUserAnswer({ homeOwnership: "yes" })}
         >
           <img src="/icons/default.png" alt="Yes" height={40} width={40} />
           <span>Yes</span>
@@ -67,7 +67,7 @@ export const Step2 = ({ handleInputChange }) => {
             cursor: "pointer",
             type: "button",
           }}
-          onClick={() => handleInputChange({ homeOwnership: "no" })}
+          onClick={() => handleUserAnswer({ homeOwnership: "no" })}
         >
           <img src="/icons/default.png" alt="No" height={40} width={40} />
           <span>No</span>

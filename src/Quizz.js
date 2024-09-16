@@ -8,8 +8,9 @@ import "./Quiz.css"; // We'll create this file for the transition styles
 const Quiz = () => {
   const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
+  const [streetsData, setStreetsData] = useState([]);
 
-  const handleInputChange = (data) => {
+  const handleUserAnswer = (data) => {
     setQuizData({ ...quizData, ...data });
 
     if (data.homeOwnership) {
@@ -40,38 +41,74 @@ const Quiz = () => {
     console.log(quizData);
   };
 
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const fetchAddressesData = debounce(async (value) => {
+    try {
+      const response = await axios.get(`/maps/api/place/autocomplete/json`, {
+        params: {
+          input: value.target.value,
+          key: process.env.REACT_APP_SOLAR_API_KEY,
+          components: "country:us",
+          types: "address",
+        },
+      });
+      console.log(response.data.predictions);
+      setStreetsData(response.data.predictions);
+    } catch (error) {
+      console.error("Error fetching addresses:", error);
+    }
+  }, 300);
+
   const renderStep = () => {
     switch (step) {
       case 0:
-        return <>Oops!</>;
+        return (
+          <>
+            Oops! Shit! <Step1 handleUserAnswer={handleUserAnswer} />
+          </>
+        );
       case 1:
-        return <Step1 handleInputChange={handleInputChange} />;
+        return (
+          <Step1
+            handleUserAnswer={handleUserAnswer}
+            onInputChange={fetchAddressesData}
+            streetsData={streetsData}
+          />
+        );
       case 2:
-        return <Step2 handleInputChange={handleInputChange} />;
+        return <Step2 handleUserAnswer={handleUserAnswer} />;
 
       case 3:
-        return <Step1 handleInputChange={handleInputChange} />;
+        return <Step1 handleUserAnswer={handleUserAnswer} />;
 
       case 4:
-        return <Step2 handleInputChange={handleInputChange} />;
+        return <Step2 handleUserAnswer={handleUserAnswer} />;
       case 5:
-        return <Step1 handleInputChange={handleInputChange} />;
+        return <Step1 handleUserAnswer={handleUserAnswer} />;
       case 6:
-        return <Step2 handleInputChange={handleInputChange} />;
+        return <Step2 handleUserAnswer={handleUserAnswer} />;
       default:
         return null;
     }
   };
 
-  const fetchSolarMapData = async () => {
-    const response = await axios.get(
-      `https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=37.2746464&location.longitude=-121.7530949&key=${process.env.REACT_APP_SOLAR_API_KEY}`
-    );
-    console.log(response);
-  };
+  // const fetchSolarMapData = async () => {
+  //   const response = await axios.get(
+  //     `https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=37.2746464&location.longitude=-121.7530949&key=${process.env.REACT_APP_SOLAR_API_KEY}`
+  //   );
+  //   console.log(response);
+  // };
 
   useEffect(() => {
-    fetchSolarMapData();
+    // fetchAddressesData();
+    // fetchSolarMapData();
   }, []);
 
   return (

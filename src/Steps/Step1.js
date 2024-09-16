@@ -4,16 +4,14 @@ export const Step1 = ({
   handleUserAnswer,
   onInputChange,
   streetsData,
-  setSelectedStreetId,
-  selectedStreetId,
+  setSelectedStreet,
+  selectedStreet,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isStreetSelected, setIsStreetSelected] = useState(false);
   const dropdownRef = useRef(null);
-
-  console.log(inputValue);
-  console.log(inputValue.trim().length);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,12 +38,14 @@ export const Step1 = ({
     setInputValue(e.target.value);
     onInputChange(e);
     setShowDropdown(true);
+    setIsStreetSelected(false);
   };
 
   const handleSelectStreet = (street) => {
     setInputValue(street.description);
     setShowDropdown(false);
-    setSelectedStreetId(street.place_id);
+    setSelectedStreet(street);
+    setIsStreetSelected(true);
   };
 
   return (
@@ -107,36 +107,35 @@ export const Step1 = ({
             }}
             type="button"
             onClick={() =>
-              handleUserAnswer({ street: selectedStreetId.slice(0, 10) })
+              handleUserAnswer({ street: selectedStreet.place_id.slice(0, 10) })
             }
           >
             Check my roof
           </button>
         </div>
 
-        {inputValue.trim().length > 0 && (
-           <ul
-           ref={dropdownRef}
-           style={{
-             listStyle: "none",
-             padding: 0,
-             margin: 0,
-             position: "absolute",
-             top: "100%",
-             left: 0,
-             right: 0,
-             backgroundColor: "#fff",
-             border: "1px solid #ccc",
-             borderTop: "none",
-             maxHeight: "200px",
-             overflowY: "auto",
-             zIndex: 1,
-           }}
-         >
-          <li style={{ padding: "10px" }}>No results found</li>
-        </ul>
+        {inputValue.trim().length > 0 && !isStreetSelected && (
+          <ul
+            ref={dropdownRef}
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              backgroundColor: "#fff",
+              border: "1px solid #ccc",
+              borderTop: "none",
+              maxHeight: "200px",
+              overflowY: "auto",
+              zIndex: 1,
+            }}
+          >
+            <li style={{ padding: "10px" }}>No results found</li>
+          </ul>
         )}
-
 
         {showDropdown && streetsData.length > 0 && (
           <ul
@@ -166,7 +165,7 @@ export const Step1 = ({
                   cursor: "pointer",
                   borderBottom: "1px solid #eee",
                   backgroundColor:
-                    street.place_id === selectedStreetId
+                    street.place_id === selectedStreet.place_id
                       ? "#e0e0e0"
                       : "transparent",
                 }}
@@ -175,11 +174,14 @@ export const Step1 = ({
                 }}
                 onMouseLeave={(e) => {
                   e.target.style.backgroundColor =
-                    street.place_id === selectedStreetId
+                    street.place_id === selectedStreet.place_id
                       ? "#e0e0e0"
                       : "transparent";
                 }}
-                onClick={() => handleSelectStreet(street)}
+                onClick={() => {
+                  console.log(street);
+                  handleSelectStreet(street);
+                }}
               >
                 {street.description}
               </li>

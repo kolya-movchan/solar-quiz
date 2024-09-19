@@ -1,5 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import { GoogleMap, useLoadScript, Marker, HeatmapLayer } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  HeatmapLayer,
+} from "@react-google-maps/api";
 import axios from "axios";
 
 const mapContainerStyle = {
@@ -12,7 +17,7 @@ const center = {
   lng: -71.0589,
 };
 
-const libraries = ["places"];
+const libraries = ["places", "visualization"];
 
 export const Step1 = ({
   handleUserAnswer,
@@ -27,8 +32,8 @@ export const Step1 = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const [isStreetSelected, setIsStreetSelected] = useState(false);
   const [heatmapData, setHeatmapData] = useState([]);
-  const [solarMapData, setSolarMapData] = useState(null);
   const [mapCenter, setMapCenter] = useState(center);
+  const [solarBuildings, setSolarBuildings] = useState([]);
   const dropdownRef = useRef(null);
 
   const { isLoaded, loadError } = useLoadScript({
@@ -67,26 +72,30 @@ export const Step1 = ({
         }
       );
 
-      console.log("Solar Building Insights Map:", response.data);
-      setSolarMapData(response.data);
+      console.log(1, "Solar Building Insights Map:", response.data);
 
-      // Parse solar coverage data for heatmap
-      const heatmapPoints = response.data.buildings.map((building) => ({
-        location: new window.google.maps.LatLng(
-          building.location.latitude,
-          building.location.longitude
-        ),
-        weight: building.solarPotential, // Assuming solarPotential represents heat intensity
-      }));
-
-      setHeatmapData(heatmapPoints);
-
-      // Update map center based on building location
       if (response.data.center) {
         setMapCenter({
           lat: response.data.center.latitude,
           lng: response.data.center.longitude,
         });
+      }
+
+      if (response.data.buildings) {
+        setSolarBuildings(response.data.buildings);
+        const heatmapPoints = response.data.buildings.map((building) => ({
+          location: new window.google.maps.LatLng(
+            building.latitude,
+            building.longitude
+          ),
+          weight:
+            building.solarPotential === "High"
+              ? 3
+              : building.solarPotential === "Medium"
+              ? 2
+              : 1,
+        }));
+        setHeatmapData(heatmapPoints);
       }
     } catch (error) {
       console.error("Error fetching solar map data:", error);
@@ -130,6 +139,8 @@ export const Step1 = ({
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
+
+  console.log("heatmapData", heatmapData);
 
   return (
     <div
@@ -279,33 +290,10 @@ export const Step1 = ({
       <div style={{ width: "100%", height: "50vh" }}>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
-          zoom={17}
+          zoom={19}
           center={mapCenter}
-        >
-          {/* Add Heatmap Layer */}
-          {heatmapData.length > 0 && (
-            <HeatmapLayer
-              data={heatmapData}
-              options={{
-                radius: 20, // Customize the radius of heatmap points
-                opacity: 0.7,
-                gradient: [
-                  "rgba(102, 255, 0, 0)",
-                  "rgba(147, 255, 0, 1)",
-                  "rgba(193, 255, 0, 1)",
-                  "rgba(238, 255, 0, 1)",
-                  "rgba(244, 227, 0, 1)",
-                  "rgba(249, 198, 0, 1)",
-                  "rgba(255, 170, 0, 1)",
-                  "rgba(255, 113, 0, 1)",
-                  "rgba(255, 57, 0, 1)",
-                  "rgba(255, 0, 0, 1)",
-                ],
-              }}
-            />
-          )}
-          {/* Optionally, add marker or other UI components */}
-        </GoogleMap>
+          mapTypeId="satellite"
+        ></GoogleMap>
         {/* <img
           src="https://placehold.co/600x400"
           alt="Solar Panels"

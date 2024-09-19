@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Step1 } from "./Steps/Step1";
 import { Step2 } from "./Steps/Step2";
-import { testData } from "./testData";
 import axios from "axios";
-// import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./Quiz.css"; // We'll create this file for the transition styles
 
 const Quiz = () => {
@@ -52,11 +50,6 @@ const Quiz = () => {
     };
   };
 
-  // const fetchAddressesData = async (value) => {
-  //   setStreetsData(testData);
-  //   setSelectedStreet(testData[0]);
-  // };
-
   const fetchAddressesData = debounce(async (value) => {
     try {
       const response = await axios.get(`/maps/api/place/autocomplete/json`, {
@@ -74,26 +67,6 @@ const Quiz = () => {
       console.error("Error fetching addresses:", error);
     }
   }, 300);
-
-  // const getSolarMap = async (latitude, longitude) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${latitude}&location.longitude=${longitude}&requiredQuality=HIGH`,
-  //       {
-  //         params: {
-  //           key: process.env.REACT_APP_SOLAR_API_KEY,
-  //           // "location.latitude": latitude,
-  //           // "location.longitude": longitude,
-  //         },
-  //       }
-  //     );
-
-  //     console.log("Solar Building Insights Map:", response.data);
-  //     setSolarMapData(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching solar map data:", error);
-  //   }
-  // };
 
   const renderStep = () => {
     switch (step) {

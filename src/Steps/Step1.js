@@ -63,10 +63,12 @@ export const Step1 = ({
     }
   };
 
+  // LOGIC OF GETTING THE COVERAGE AREA FOR THE SOLAR PANELS
+
   const getSolarMap = async (latitude, longitude) => {
     try {
       const response = await axios.get(
-        `https://solar.googleapis.com/v1/buildingInsights:findClosest?location.latitude=${latitude}&location.longitude=${longitude}&requiredQuality=HIGH`,
+        `https://solar.googleapis.com/v1/layers:get?location.latitude=${latitude}&location.longitude=${longitude}&requiredQuality=HIGH`,
         {
           params: { key: process.env.REACT_APP_SOLAR_API_KEY },
         }
@@ -74,33 +76,13 @@ export const Step1 = ({
 
       console.log(1, "Solar Building Insights Map:", response.data);
 
-      if (response.data.center) {
-        setMapCenter({
-          lat: response.data.center.latitude,
-          lng: response.data.center.longitude,
-        });
-      }
-
-      if (response.data.buildings) {
-        setSolarBuildings(response.data.buildings);
-        const heatmapPoints = response.data.buildings.map((building) => ({
-          location: new window.google.maps.LatLng(
-            building.latitude,
-            building.longitude
-          ),
-          weight:
-            building.solarPotential === "High"
-              ? 3
-              : building.solarPotential === "Medium"
-              ? 2
-              : 1,
-        }));
-        setHeatmapData(heatmapPoints);
-      }
+      // GO ON OR WRITE THE FUNCTION FROM SCRATCH AND REAPLCE THIS.
     } catch (error) {
       console.error("Error fetching solar map data:", error);
     }
   };
+
+  // END OF LOGIC OF GETTING THE COVERAGE AREA FOR THE SOLAR PANELS
 
   useEffect(() => {
     const timer = setTimeout(() => {

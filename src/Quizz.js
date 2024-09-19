@@ -75,8 +75,6 @@ const Quiz = () => {
     }
   }, 300);
 
-
-
   // const getSolarMap = async (latitude, longitude) => {
   //   try {
   //     const response = await axios.get(
@@ -97,8 +95,6 @@ const Quiz = () => {
   //   }
   // };
 
-
-
   const renderStep = () => {
     switch (step) {
       case 0:
@@ -111,10 +107,8 @@ const Quiz = () => {
         return (
           <div>
             <Step1
-              handleUserAnswer={handleUserAnswer}
               onInputChange={fetchAddressesData}
               setSelectedStreet={setSelectedStreet}
-              // getCoordinates={getCoordinates}
               selectedStreet={selectedStreet}
               streetsData={streetsData}
             />

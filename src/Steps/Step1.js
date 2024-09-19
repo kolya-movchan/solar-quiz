@@ -1,10 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  HeatmapLayer,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import axios from "axios";
 
 const mapContainerStyle = {
@@ -20,12 +15,10 @@ const center = {
 const libraries = ["places", "visualization"];
 
 export const Step1 = ({
-  handleUserAnswer,
   onInputChange,
   streetsData,
   setSelectedStreet,
   selectedStreet,
-  // getCoordinates,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -33,7 +26,6 @@ export const Step1 = ({
   const [isStreetSelected, setIsStreetSelected] = useState(false);
   const [heatmapData, setHeatmapData] = useState([]);
   const [mapCenter, setMapCenter] = useState(center);
-  const [solarBuildings, setSolarBuildings] = useState([]);
   const dropdownRef = useRef(null);
 
   const { isLoaded, loadError } = useLoadScript({
@@ -183,9 +175,6 @@ export const Step1 = ({
             }}
             type="button"
             onClick={() => {
-              handleUserAnswer({
-                street: selectedStreet.place_id.slice(0, 10),
-              });
               getCoordinates(selectedStreet.place_id);
             }}
           >
@@ -272,7 +261,7 @@ export const Step1 = ({
       <div style={{ width: "100%", height: "50vh" }}>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
-          zoom={19}
+          zoom={17}
           center={mapCenter}
           mapTypeId="satellite"
         ></GoogleMap>

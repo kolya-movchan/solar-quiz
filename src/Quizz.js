@@ -8,8 +8,6 @@ import "./Quiz.css"; // We'll create this file for the transition styles
 const Quiz = () => {
   const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
-  const [streetsData, setStreetsData] = useState([]);
-  const [selectedStreet, setSelectedStreet] = useState(null);
 
   const handleUserAnswer = (data) => {
     setQuizData({ ...quizData, ...data });
@@ -42,32 +40,6 @@ const Quiz = () => {
     console.log(quizData);
   };
 
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return (...args) => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func(...args), delay);
-    };
-  };
-
-  const fetchAddressesData = debounce(async (value) => {
-    try {
-      const response = await axios.get(`/maps/api/place/autocomplete/json`, {
-        params: {
-          input: value.target.value,
-          key: process.env.REACT_APP_SOLAR_API_KEY,
-          components: "country:us",
-          types: "address",
-        },
-      });
-      // console.log(response.data.predictions);
-      setStreetsData(response.data.predictions);
-      setSelectedStreet(response.data.predictions[0]);
-    } catch (error) {
-      console.error("Error fetching addresses:", error);
-    }
-  }, 300);
-
   const renderStep = () => {
     switch (step) {
       case 0:
@@ -79,12 +51,7 @@ const Quiz = () => {
       case 1:
         return (
           <div>
-            <Step1
-              onInputChange={fetchAddressesData}
-              setSelectedStreet={setSelectedStreet}
-              selectedStreet={selectedStreet}
-              streetsData={streetsData}
-            />
+            <Step1 />
           </div>
         );
       case 2:

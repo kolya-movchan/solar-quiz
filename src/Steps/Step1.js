@@ -14,12 +14,7 @@ const center = {
 
 const libraries = ["places", "visualization"];
 
-export const Step1 = ({
-  onInputChange,
-  streetsData,
-  setSelectedStreet,
-  selectedStreet,
-}) => {
+export const Step1 = ({}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -27,11 +22,39 @@ export const Step1 = ({
   const [heatmapData, setHeatmapData] = useState([]);
   const [mapCenter, setMapCenter] = useState(center);
   const dropdownRef = useRef(null);
+  const [streetsData, setStreetsData] = useState([]);
+  const [selectedStreet, setSelectedStreet] = useState(null);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const fetchAddressesData = debounce(async (value) => {
+    try {
+      const response = await axios.get(`/maps/api/place/autocomplete/json`, {
+        params: {
+          input: value.target.value,
+          key: process.env.REACT_APP_SOLAR_API_KEY,
+          components: "country:us",
+          types: "address",
+        },
+      });
+      // console.log(response.data.predictions);
+      setStreetsData(response.data.predictions);
+      setSelectedStreet(response.data.predictions[0]);
+    } catch (error) {
+      console.error("Error fetching addresses:", error);
+    }
+  }, 300);
 
   const getCoordinates = async (placeId) => {
     try {
@@ -99,7 +122,7 @@ export const Step1 = ({
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-    onInputChange(e);
+    fetchAddressesData(e);
     setShowDropdown(true);
     setIsStreetSelected(false);
   };

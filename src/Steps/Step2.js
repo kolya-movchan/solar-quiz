@@ -67,7 +67,7 @@ export const Step2 = ({ handleUserAnswer }) => {
             cursor: "pointer",
             type: "button",
           }}
-          onClick={() => handleUserAnswer({ homeOwnership: "no" })}
+          onClick={() => handleUserAnswer({ home_ownership: "no" })}
         >
           <img src="/icons/default.png" alt="No" height={40} width={40} />
           <span>No</span>

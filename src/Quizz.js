@@ -109,7 +109,7 @@ const Quiz = () => {
 
       {/* // This section of the code was previously commented out. It displays the saved quiz data in JSON format.
       // Uncommenting this section will allow you to see the saved quiz data on the top right corner of the screen. */}
-      {/* <div
+      <div
         style={{
           position: "absolute",
           top: "20px",
@@ -119,7 +119,7 @@ const Quiz = () => {
       >
         <h3>Quizz Saved Data:</h3>
         <pre>{JSON.stringify(quizData, null, 2).slice(1, -1)}</pre>
-      </div> */}
+      </div>
 
 
       <div className="step-content">

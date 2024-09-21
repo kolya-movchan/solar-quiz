@@ -56,13 +56,16 @@ export const Step1 = () => {
 
   const getCoordinates = async (placeId) => {
     try {
-      const response = await axios.get(`/maps/api/geocode/json`, {
-        params: {
-          place_id: placeId,
-          // key: process.env.REACT_APP_SOLAR_API_KEY,
-        },
-      });
-      const location = response.data.results[0].geometry.location;
+      const response = await axios.get(
+        `https://${process.env.REACT_APP_BACKEND_HOST}/api/geocode`,
+        {
+          params: {
+            place_id: placeId,
+          },
+        }
+      );
+
+      const location = response.data.data.results[0].geometry.location;
 
       if (location) {
         console.log("location: ", location);

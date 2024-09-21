@@ -40,17 +40,15 @@ export const Step1 = () => {
   const fetchAddressesData = debounce(async (value) => {
     try {
       const response = await axios.get(
-        `https://solar-quiz-backend.vercel.app/api/autocomplete`,
+        `${process.env.REACT_APP_BACKEND_HOST}/api/autocomplete`,
         {
           params: {
             input: value.target.value,
           },
         }
       );
-
-      console.log("response.data.predictions: ", response.data.predictions);
-      setStreetsData(response.data.predictions);
-      setSelectedStreet(response.data.predictions[0]);
+      setStreetsData(response.data.data.predictions);
+      setSelectedStreet(response.data.data.predictions[0]);
     } catch (error) {
       console.error("Error fetching addresses:", error);
     }

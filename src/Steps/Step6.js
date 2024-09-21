@@ -36,6 +36,7 @@ export const Step6 = ({ handleUserAnswer }) => {
 
   return (
     <div
+      className="container"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -45,7 +46,6 @@ export const Step6 = ({ handleUserAnswer }) => {
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
-        height: "77vh",
       }}
     >
       <h1 style={{ fontSize: "3rem" }}>
@@ -82,7 +82,6 @@ export const Step6 = ({ handleUserAnswer }) => {
             }}
             onClick={() => handleUserAnswer({ utility_bill_amount: bill.id })}
           >
-
             <img
               src={bill.icon}
               alt={bill.name}

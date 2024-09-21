@@ -71,10 +71,7 @@ const Quiz = () => {
 
       case 8:
         return (
-          <ContactsSubmission
-            quizData={quizData}
-            onSubmit={handleUserAnswer}
-          />
+          <ContactsSubmission quizData={quizData} onSubmit={handleUserAnswer} />
         );
 
       case 9:

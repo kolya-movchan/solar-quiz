@@ -76,7 +76,7 @@ export const FindYourRoofOnMap = () => {
       if (location) {
         console.log("location: ", location);
 
-        getSolarMap(location.lat, location.lng);
+        // getSolarMap(location.lat, location.lng);
         setMapCenter({ lat: location.lat, lng: location.lng });
       }
     } catch (error) {
@@ -87,22 +87,22 @@ export const FindYourRoofOnMap = () => {
 
   // LOGIC OF GETTING THE COVERAGE AREA FOR THE SOLAR PANELS
 
-  const getSolarMap = async (latitude, longitude) => {
-    try {
-      const response = await axios.get(
-        `https://solar.googleapis.com/v1/layers:get?location.latitude=${latitude}&location.longitude=${longitude}&requiredQuality=HIGH`,
-        {
-          params: { key: process.env.REACT_APP_SOLAR_API_KEY },
-        }
-      );
+  // const getSolarMap = async (latitude, longitude) => {
+  //   try {
+  //     const response = await axios.get(
+  //       `https://solar.googleapis.com/v1/layers:get?location.latitude=${latitude}&location.longitude=${longitude}&requiredQuality=HIGH`,
+  //       {
+  //         params: { key: process.env.REACT_APP_SOLAR_API_KEY },
+  //       }
+  //     );
 
-      console.log(1, "Solar Building Insights Map:", response.data);
+  //     console.log(1, "Solar Building Insights Map:", response.data);
 
-      // GO ON OR WRITE THE FUNCTION FROM SCRATCH AND REAPLCE THIS.
-    } catch (error) {
-      console.error("Error fetching solar map data:", error);
-    }
-  };
+  //     // GO ON OR WRITE THE FUNCTION FROM SCRATCH AND REAPLCE THIS.
+  //   } catch (error) {
+  //     console.error("Error fetching solar map data:", error);
+  //   }
+  // };
 
   // END OF LOGIC OF GETTING THE COVERAGE AREA FOR THE SOLAR PANELS
 
@@ -150,6 +150,7 @@ export const FindYourRoofOnMap = () => {
 
   return (
     <div
+      className="container"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -158,7 +159,6 @@ export const FindYourRoofOnMap = () => {
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
-        height: "77vh",
       }}
     >
       <h1 style={{ fontSize: "3rem" }}>
@@ -293,13 +293,9 @@ export const FindYourRoofOnMap = () => {
             )}
           </ul>
         )}
-
-        {/* {inputValue.trim().length > 0 && !isStreetSelected && (
-         
-        )} */}
       </div>
 
-      <div style={{ width: "100%", height: "50vh" }}>
+      <div style={{ width: "100%" }}>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={17}

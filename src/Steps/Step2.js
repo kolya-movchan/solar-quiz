@@ -13,6 +13,7 @@ export const Step2 = ({ handleUserAnswer }) => {
 
   return (
     <div
+      className="container"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -23,7 +24,6 @@ export const Step2 = ({ handleUserAnswer }) => {
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
-        height: "77vh",
       }}
     >
       <h1 style={{ fontSize: "3rem" }}>Do you own your home?</h1>

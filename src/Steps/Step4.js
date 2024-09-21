@@ -36,17 +36,16 @@ export const Step4 = ({ handleUserAnswer }) => {
 
   return (
     <div
+      className="container"
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         padding: "40px",
-        // gap: "20px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
-        height: "77vh",
       }}
     >
       <h1 style={{ fontSize: "3rem" }}>

@@ -79,7 +79,24 @@ const Quiz = () => {
 
       case 9:
         if (quizData.isQuizDataSubmitted) {
-          return <></>;
+          return (
+            <div
+              style={{
+                height: "100vh",
+                top: "20px",
+                right: "20px",
+                backgroundColor: "white",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
+              <h3>Quizz Saved Data:</h3>
+              <pre>{JSON.stringify(quizData, null, 2).slice(1, -1)}</pre>
+            </div>
+          );
         }
 
         break;
@@ -106,21 +123,6 @@ const Quiz = () => {
           }}
         />
       )}
-
-      {/* // This section of the code was previously commented out. It displays the saved quiz data in JSON format.
-      // Uncommenting this section will allow you to see the saved quiz data on the top right corner of the screen. */}
-      <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "20px",
-          backgroundColor: "white",
-        }}
-      >
-        <h3>Quizz Saved Data:</h3>
-        <pre>{JSON.stringify(quizData, null, 2).slice(1, -1)}</pre>
-      </div>
-
 
       <div className="step-content">
         <div

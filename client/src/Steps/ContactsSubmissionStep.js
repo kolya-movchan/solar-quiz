@@ -4,9 +4,11 @@ import { toast } from "react-toastify";
 
 export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const formData = new FormData(e.target);
 
@@ -54,6 +56,9 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
       .catch((error) => {
         console.log("error", error);
         toast.error("Something went wrong. Please try again later.");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -177,8 +182,13 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
               textAlign: "center",
             }}
             type="submit"
+            disabled={isLoading}
           >
-            <span>Get Free Solar Design</span>
+            {isLoading ? (
+              <span>Loading...</span>
+            ) : (
+              <span>Get Free Solar Design</span>
+            )}
           </button>
         </form>
 

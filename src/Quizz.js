@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { Step1 } from "./Steps/Step1";
 import { Step2 } from "./Steps/Step2";
-import axios from "axios";
+import { Step3 } from "./Steps/Step3";
+
 import "./Quiz.css"; // We'll create this file for the transition styles
 
 const Quiz = () => {
@@ -10,14 +11,18 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
-    setQuizData({ ...quizData, ...data });
+    setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
 
-    if (data.homeOwnership) {
-      if (data.homeOwnership === "yes") {
-        setStep(3);
-      } else {
-        setStep(0);
-      }
+    const { homeOwnership, homeType } = data;
+    const conditionsToRefuse =
+      homeOwnership === "no" ||
+      homeType === "mobile-manufactured" ||
+      homeType === "apartment-condo";
+
+    if (conditionsToRefuse) {
+      setStep(0);
+    } else {
+      setStep((prevStep) => prevStep + 1);
     }
   };
 
@@ -44,9 +49,9 @@ const Quiz = () => {
     switch (step) {
       case 0:
         return (
-          <>
-            Oops! Shit! <Step1 handleUserAnswer={handleUserAnswer} />
-          </>
+          <div style={{ textAlign: "center", fontSize: "5rem" }}>
+            Oops! Shit!
+          </div>
         );
       case 1:
         return (
@@ -58,7 +63,7 @@ const Quiz = () => {
         return <Step2 handleUserAnswer={handleUserAnswer} />;
 
       case 3:
-        return <Step1 handleUserAnswer={handleUserAnswer} />;
+        return <Step3 handleUserAnswer={handleUserAnswer} />;
 
       case 4:
         return <Step2 handleUserAnswer={handleUserAnswer} />;

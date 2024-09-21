@@ -39,14 +39,15 @@ export const Step1 = () => {
 
   const fetchAddressesData = debounce(async (value) => {
     try {
-      const response = await axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json`, {
-        params: {
-          input: value.target.value,
-          key: process.env.REACT_APP_SOLAR_API_KEY,
-          components: "country:us",
-          types: "address",
-        },
-      });
+      const response = await axios.get(
+        `https://solar-quiz-backend.vercel.app/api/autocomplete`,
+        {
+          params: {
+            input: value.target.value,
+          },
+        }
+      );
+
       console.log("response.data.predictions: ", response.data.predictions);
       setStreetsData(response.data.predictions);
       setSelectedStreet(response.data.predictions[0]);

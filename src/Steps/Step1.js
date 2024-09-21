@@ -40,7 +40,7 @@ export const Step1 = () => {
   const fetchAddressesData = debounce(async (value) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_HOST}/api/autocomplete`,
+        `https://${process.env.REACT_APP_BACKEND_HOST}/api/autocomplete`,
         {
           params: {
             input: value.target.value,

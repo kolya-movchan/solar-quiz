@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { toast } from "react-toastify";
+
 export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -48,7 +50,10 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
       .then(() => {
         onSubmit({ isQuizDataSubmitted: true });
       }) // Log the response
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => {
+        console.log("error", error);
+        toast.error("Something went wrong. Please try again later.");
+      });
   };
 
   useEffect(() => {

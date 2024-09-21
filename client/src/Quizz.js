@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
 import "./Quiz.css"; // We'll create this file for the transition styles
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Step1 } from "./Steps/Step1";
 import { Step2 } from "./Steps/Step2";
@@ -191,6 +193,19 @@ const Quiz = () => {
           )}
         </div>
       </div>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

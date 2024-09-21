@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
+import "./Quiz.css"; // We'll create this file for the transition styles
+
 import { Step1 } from "./Steps/Step1";
 import { Step2 } from "./Steps/Step2";
 import { Step3 } from "./Steps/Step3";
+import { Step4 } from "./Steps/Step4";
+import { Step5 } from "./Steps/Step5";
 
-import "./Quiz.css"; // We'll create this file for the transition styles
 
 const Quiz = () => {
   const [step, setStep] = useState(1);
@@ -66,9 +69,9 @@ const Quiz = () => {
         return <Step3 handleUserAnswer={handleUserAnswer} />;
 
       case 4:
-        return <Step2 handleUserAnswer={handleUserAnswer} />;
+        return <Step4 handleUserAnswer={handleUserAnswer} />;
       case 5:
-        return <Step1 handleUserAnswer={handleUserAnswer} />;
+        return <Step5 handleUserAnswer={handleUserAnswer} />;
       case 6:
         return <Step2 handleUserAnswer={handleUserAnswer} />;
       default:

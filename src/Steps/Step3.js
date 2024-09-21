@@ -49,14 +49,13 @@ export const Step3 = ({ handleUserAnswer }) => {
         height: "77vh",
       }}
     >
-      <h1>What is your home type?</h1>
+      <h1 style={{ fontSize: "3rem" }}>What is your home type?</h1>
 
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
-          //   width: "100%",
         }}
       >
         {homeTypes.map((homeType) => (

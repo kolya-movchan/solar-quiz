@@ -26,7 +26,7 @@ export const Step2 = ({ handleUserAnswer }) => {
         height: "77vh",
       }}
     >
-      <h1>Do you own your home?</h1>
+      <h1 style={{ fontSize: "3rem" }}>Do you own your home?</h1>
 
       <div style={{ display: "flex", gap: "20px", width: "100%" }}>
         <button

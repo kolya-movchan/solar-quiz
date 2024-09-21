@@ -152,7 +152,9 @@ export const Step1 = ({}) => {
         height: "77vh",
       }}
     >
-      <h1>Let's check your roof's sun exposure </h1>
+      <h1 style={{ fontSize: "3rem" }}>
+        Let's check your roof's sun exposure{" "}
+      </h1>
 
       <p>
         We'll use your location to provide you with tailored information about

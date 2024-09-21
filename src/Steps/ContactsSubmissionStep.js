@@ -67,7 +67,7 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
       return;
     }
 
-    fetch(`http://localhost:${process.env.REACT_APP_PORT}/send-email`, {
+    fetch(`http://solar-quiz-backend.vercel.app/send-email`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set content type

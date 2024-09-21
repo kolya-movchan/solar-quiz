@@ -9,10 +9,10 @@ import { Step4 } from "./Steps/Step4";
 import { Step5 } from "./Steps/Step5";
 import { Step6 } from "./Steps/Step6";
 import { Step7 } from "./Steps/Step7";
-import { Step8 } from "./Steps/Step8";
+import { ContactsSubmissionStep } from "./Steps/ContactsSubmissionStep";
 
 const Quiz = () => {
-  const [step, setStep] = useState(8);
+  const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
@@ -72,7 +72,7 @@ const Quiz = () => {
         return <Step7 handleUserAnswer={handleUserAnswer} />;
 
       case 8:
-        return <Step8 />;
+        return <ContactsSubmissionStep quizData={quizData} />;
 
       default:
         return null;

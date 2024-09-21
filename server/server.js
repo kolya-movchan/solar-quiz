@@ -2,6 +2,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+
 require("dotenv").config(); // Load environment variables from .env file
 
 const app = express();
@@ -20,7 +21,17 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.post("/send-email", async (req, res) => {
-  const { fullName, email, phoneNumber } = req.body;
+  const {
+    fullName,
+    email,
+    phoneNumber,
+    home_ownership,
+    home_type,
+    roof_condition,
+    provider,
+    utility_bill_amount,
+    credit_score,
+  } = req.body;
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -32,8 +43,17 @@ app.post("/send-email", async (req, res) => {
 
   const mailOptions = {
     to: process.env.EMAIL_USER, // You can also send it to another email
-    subject: "New Submission",
-    text: `Full Name: ${fullName}, Email: ${email}, Phone: ${phoneNumber}`,
+    subject: "New Solar Roofs Lead From The Quiz",
+    text: `
+    Full Name: ${fullName},
+    Email: ${email},
+    Phone: ${phoneNumber}
+    Home_ownership: ${home_ownership},
+    Home_type: ${home_type},
+    Roof_condition: ${roof_condition},
+    Provider: ${provider},
+    Utility_bill_amount: ${utility_bill_amount},
+    Credit_score: ${credit_score},`,
   };
 
   try {

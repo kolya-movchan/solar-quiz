@@ -1,16 +1,32 @@
 import React, { useEffect, useState } from "react";
 
-export const Step8 = () => {
+export const ContactsSubmissionStep = ({ quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
+
+    const {
+      home_ownership,
+      home_type,
+      roof_condition,
+      provider,
+      utility_bill_amount,
+      credit_score,
+    } = quizData;
+
     const data = {
       fullName: formData.get("fullName"),
       email: formData.get("email"),
       phoneNumber: formData.get("phoneNumber"),
+      home_ownership,
+      home_type,
+      roof_condition,
+      provider,
+      utility_bill_amount,
+      credit_score,
     };
 
     fetch(`http://localhost:${process.env.REACT_APP_PORT}/send-email`, {
@@ -25,7 +41,7 @@ export const Step8 = () => {
           throw new Error("Network response was not ok");
         }
 
-        console.log('form submission frontend response', response);
+        console.log("form submission frontend response", response);
         return response.text(); // Change to text if your backend returns a string
       })
       .then((data) => console.log(data)) // Log the response

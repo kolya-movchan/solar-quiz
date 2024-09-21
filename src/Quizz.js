@@ -7,7 +7,7 @@ import { Step2 } from "./Steps/Step2";
 import { Step3 } from "./Steps/Step3";
 import { Step4 } from "./Steps/Step4";
 import { Step5 } from "./Steps/Step5";
-
+import { Step6 } from "./Steps/Step6";
 
 const Quiz = () => {
   const [step, setStep] = useState(1);
@@ -73,7 +73,9 @@ const Quiz = () => {
       case 5:
         return <Step5 handleUserAnswer={handleUserAnswer} />;
       case 6:
-        return <Step2 handleUserAnswer={handleUserAnswer} />;
+        return <Step6 handleUserAnswer={handleUserAnswer} />;
+      case 7:
+        return <div>step 7</div>;
       default:
         return null;
     }
@@ -89,7 +91,7 @@ const Quiz = () => {
       <div>
         <div
           style={{
-            width: `${(step / 6) * 100}%`,
+            width: `${(step / 9) * 100}%`,
             height: "10px",
             backgroundColor: "#4caf50",
             transition: "width 0.3s ease-in-out",

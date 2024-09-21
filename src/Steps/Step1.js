@@ -39,7 +39,7 @@ export const Step1 = () => {
 
   const fetchAddressesData = debounce(async (value) => {
     try {
-      const response = await axios.get(`maps/api/place/autocomplete/json`, {
+      const response = await axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json`, {
         params: {
           input: value.target.value,
           key: process.env.REACT_APP_SOLAR_API_KEY,

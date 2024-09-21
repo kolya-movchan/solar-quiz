@@ -43,7 +43,7 @@ app.post("/send-email", async (req, res) => {
 
   const mailOptions = {
     to: process.env.EMAIL_USER, // You can also send it to another email
-    subject: "New Solar Roofs Lead From The Quiz",
+    subject: "😎 New Quiz Solar Roof Lead 🔥",
     text: `
     Full Name: ${fullName},
     Email: ${email},

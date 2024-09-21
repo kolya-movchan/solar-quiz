@@ -7,9 +7,9 @@ require("dotenv").config(); // Load environment variables from .env file
 const app = express();
 const port = process.env.PORT;
 
-console.log("port", process.env.PORT);
-console.log("email", process.env.EMAIL_USER);
-console.log("pass", process.env.EMAIL_PASS);
+console.log("port: ", process.env.PORT);
+console.log("email: ", process.env.EMAIL_USER);
+console.log("pass: ", process.env.EMAIL_PASS);
 
 const corsOptions = {
   origin: "http://localhost:3000", // Replace with your frontend URL

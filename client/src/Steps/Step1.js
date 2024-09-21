@@ -47,13 +47,13 @@ export const Step1 = ({}) => {
           types: "address",
         },
       });
-      // console.log(response.data.predictions);
+      console.log("response.data.predictions: ", response.data.predictions);
       setStreetsData(response.data.predictions);
       setSelectedStreet(response.data.predictions[0]);
     } catch (error) {
       console.error("Error fetching addresses:", error);
     }
-  }, 300);
+  }, 3000);
 
   const getCoordinates = async (placeId) => {
     try {
@@ -121,7 +121,7 @@ export const Step1 = ({}) => {
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-    // fetchAddressesData(e);
+    fetchAddressesData(e);
     setShowDropdown(true);
     setIsStreetSelected(false);
   };

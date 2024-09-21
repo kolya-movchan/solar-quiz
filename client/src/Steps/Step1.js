@@ -19,7 +19,6 @@ export const Step1 = ({}) => {
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [isStreetSelected, setIsStreetSelected] = useState(false);
-  const [heatmapData, setHeatmapData] = useState([]);
   const [mapCenter, setMapCenter] = useState(center);
   const dropdownRef = useRef(null);
   const [streetsData, setStreetsData] = useState([]);
@@ -121,7 +120,7 @@ export const Step1 = ({}) => {
   }, []);
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    setInputValue('d');
     fetchAddressesData(e);
     setShowDropdown(true);
     setIsStreetSelected(false);
@@ -136,8 +135,6 @@ export const Step1 = ({}) => {
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
-
-  console.log("heatmapData", heatmapData);
 
   return (
     <div

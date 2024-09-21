@@ -14,7 +14,7 @@ import { Step7 } from "./Steps/Step7";
 import { ContactsSubmissionStep } from "./Steps/ContactsSubmissionStep";
 
 const Quiz = () => {
-  const [step, setStep] = useState(8);
+  const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {

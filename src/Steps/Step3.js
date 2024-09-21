@@ -74,7 +74,7 @@ export const Step3 = ({ handleUserAnswer }) => {
               cursor: "pointer",
               type: "button",
             }}
-            onClick={() => handleUserAnswer({ homeType: homeType.id })}
+            onClick={() => handleUserAnswer({ home_type: homeType.id })}
           >
             <img
               src={homeType.icon}

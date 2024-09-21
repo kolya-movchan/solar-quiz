@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-export const Step4 = ({ handleUserAnswer }) => {
+export const Step7 = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const roofConditions = [
+  const creditScoreList = [
     {
-      name: "Good",
-      id: "good",
+      name: "Below 600",
+      id: "below-600",
       icon: "/icons/default.png",
     },
     {
-      name: "Need repairs",
-      id: "need-repairs",
+      name: "600 - 650",
+      id: "600-650",
       icon: "/icons/default.png",
     },
     {
-      name: "Needs re-roof",
-      id: "needs-re-roof",
+      name: "650 - 700",
+      id: "650-700",
       icon: "/icons/default.png",
     },
     {
-      name: "Unsure",
-      id: "unsure",
+      name: "700+",
+      id: "700+",
       icon: "/icons/default.png",
     },
   ];
@@ -42,21 +42,14 @@ export const Step4 = ({ handleUserAnswer }) => {
         alignItems: "center",
         justifyContent: "center",
         padding: "40px",
-        // gap: "20px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
         height: "77vh",
+        gap: "20px",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>
-        How would you describe the condition of your roof?
-      </h1>
-
-      <p style={{ marginBottom: "40px" }}>
-        A healthy roof is essential for solar panel installation. Please assess
-        the condition of your roof.
-      </p>
+      <h1 style={{ fontSize: "3rem" }}>What is your credit score?</h1>
 
       <div
         style={{
@@ -66,7 +59,7 @@ export const Step4 = ({ handleUserAnswer }) => {
           width: "100%",
         }}
       >
-        {roofConditions.map((condition) => (
+        {creditScoreList.map((score) => (
           <button
             style={{
               padding: "20px",
@@ -82,15 +75,9 @@ export const Step4 = ({ handleUserAnswer }) => {
               cursor: "pointer",
               type: "button",
             }}
-            onClick={() => handleUserAnswer({ roof_condition: condition.id })}
+            onClick={() => handleUserAnswer({ credit_score: score.id })}
           >
-            <img
-              src={condition.icon}
-              alt={condition.name}
-              height={80}
-              style={{ width: "100%" }}
-            />
-            <span>{condition.name}</span>
+            <span>{score.name}</span>
           </button>
         ))}
       </div>

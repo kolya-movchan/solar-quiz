@@ -45,7 +45,7 @@ export const Step2 = ({ handleUserAnswer }) => {
             cursor: "pointer",
             type: "button",
           }}
-          onClick={() => handleUserAnswer({ homeOwnership: "yes" })}
+          onClick={() => handleUserAnswer({ home_ownership: "yes" })}
         >
           <img src="/icons/default.png" alt="Yes" height={40} width={40} />
           <span>Yes</span>

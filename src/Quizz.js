@@ -8,19 +8,22 @@ import { Step3 } from "./Steps/Step3";
 import { Step4 } from "./Steps/Step4";
 import { Step5 } from "./Steps/Step5";
 import { Step6 } from "./Steps/Step6";
+import { Step7 } from "./Steps/Step7";
+import { Step8 } from "./Steps/Step8";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(8);
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
     setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
 
-    const { homeOwnership, homeType } = data;
+    const { home_ownership, home_type, credit_score } = data;
     const conditionsToRefuse =
-      homeOwnership === "no" ||
-      homeType === "mobile-manufactured" ||
-      homeType === "apartment-condo";
+      home_ownership === "no" ||
+      home_type === "mobile-manufactured" ||
+      home_type === "apartment-condo" ||
+      credit_score === "below-600";
 
     if (conditionsToRefuse) {
       setStep(0);
@@ -38,14 +41,7 @@ const Quiz = () => {
   const handleNextQuizNavigation = (e) => {
     e.preventDefault();
 
-    if (step < 6) {
-      setStep(step + 1);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(quizData);
+    setStep(step + 1);
   };
 
   const renderStep = () => {
@@ -75,7 +71,11 @@ const Quiz = () => {
       case 6:
         return <Step6 handleUserAnswer={handleUserAnswer} />;
       case 7:
-        return <div>step 7</div>;
+        return <Step7 handleUserAnswer={handleUserAnswer} />;
+
+      case 8:
+        return <Step8 />;
+
       default:
         return null;
     }
@@ -99,20 +99,32 @@ const Quiz = () => {
         />
       </div>
 
+      <div
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          backgroundColor: "white",
+        }}
+      >
+        <h3>Quizz Saved Data:</h3>
+        <pre>{JSON.stringify(quizData, null, 2).slice(1, -1)}</pre>
+      </div>
+
       <div className="step-content">
-        <form
+        {/* <form
           onSubmit={handleSubmit}
           style={{ borderBottom: "1px solid #e0e0e0" }}
+        > */}
+        <div
+          style={{
+            maxWidth: "790px",
+            margin: "0 auto",
+          }}
         >
-          <div
-            style={{
-              maxWidth: "790px",
-              margin: "0 auto",
-            }}
-          >
-            {renderStep()}
-          </div>
-        </form>
+          {renderStep()}
+        </div>
+        {/* </form> */}
 
         <div
           style={{
@@ -147,9 +159,8 @@ const Quiz = () => {
             )}
           </div>
 
-          <div>Quizz Saved Data: {JSON.stringify(quizData)}</div>
-
-          <button
+          {step < 8 && (
+            <button
             style={{
               border: "none",
               backgroundColor: "#000",
@@ -174,8 +185,9 @@ const Quiz = () => {
               src="/icons/right-arrow.png"
               height={20}
               width={20}
-            />
-          </button>
+              />
+            </button>
+          )}
         </div>
       </div>
     </div>

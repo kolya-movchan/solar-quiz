@@ -16,11 +16,12 @@ import { ContactsSubmissionStep } from "./Steps/ContactsSubmissionStep";
 const Quiz = () => {
   const [step, setStep] = useState(8);
   const [quizData, setQuizData] = useState({});
+  const [isQuizDataSubmitted, setIsQuizDataSubmitted] = useState(false);
 
   const handleUserAnswer = (data) => {
     setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
 
-    const { home_ownership, home_type, credit_score } = data;
+    const { home_ownership, home_type, credit_score, isQuizDataSubmitted } = data;
     const conditionsToRefuse =
       home_ownership === "no" ||
       home_type === "mobile-manufactured" ||
@@ -31,6 +32,10 @@ const Quiz = () => {
       setStep(0);
     } else {
       setStep((prevStep) => prevStep + 1);
+    }
+
+    if (isQuizDataSubmitted) {
+      setIsQuizDataSubmitted(true);
     }
   };
 
@@ -96,16 +101,16 @@ const Quiz = () => {
         height: "100vh",
       }}
     >
-      <div>
+      {!isQuizDataSubmitted && (
         <div
           style={{
-            width: `${(step / 9) * 100}%`,
+            width: `${(step / 8) * 100}%`,
             height: "10px",
             backgroundColor: "#4caf50",
             transition: "width 0.3s ease-in-out",
           }}
         />
-      </div>
+      )}
 
       <div
         style={{

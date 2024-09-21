@@ -49,6 +49,7 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
       })
       .then(() => {
         onSubmit({ isQuizDataSubmitted: true });
+        toast.success("Success! We will contact you soon.");
       }) // Log the response
       .catch((error) => {
         console.log("error", error);

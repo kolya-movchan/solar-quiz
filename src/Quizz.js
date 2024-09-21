@@ -12,7 +12,7 @@ import { Step7 } from "./Steps/Step7";
 import { Step8 } from "./Steps/Step8";
 
 const Quiz = () => {
-  const [step, setStep] = useState(8);
+  const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
@@ -60,10 +60,8 @@ const Quiz = () => {
         );
       case 2:
         return <Step2 handleUserAnswer={handleUserAnswer} />;
-
       case 3:
         return <Step3 handleUserAnswer={handleUserAnswer} />;
-
       case 4:
         return <Step4 handleUserAnswer={handleUserAnswer} />;
       case 5:
@@ -112,10 +110,6 @@ const Quiz = () => {
       </div>
 
       <div className="step-content">
-        {/* <form
-          onSubmit={handleSubmit}
-          style={{ borderBottom: "1px solid #e0e0e0" }}
-        > */}
         <div
           style={{
             maxWidth: "790px",
@@ -124,7 +118,6 @@ const Quiz = () => {
         >
           {renderStep()}
         </div>
-        {/* </form> */}
 
         <div
           style={{
@@ -161,30 +154,30 @@ const Quiz = () => {
 
           {step < 8 && (
             <button
-            style={{
-              border: "none",
-              backgroundColor: "#000",
-              color: "#fff",
-              cursor: "pointer",
-              padding: "10px 20px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              fontWeight: "bold",
-              height: "20px",
-              width: "80px",
-              boxSizing: "content-box",
-            }}
-            type="button"
-            onClick={handleNextQuizNavigation}
-          >
-            <span>Next</span>
+              style={{
+                border: "none",
+                backgroundColor: "#000",
+                color: "#fff",
+                cursor: "pointer",
+                padding: "10px 20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                fontWeight: "bold",
+                height: "20px",
+                width: "80px",
+                boxSizing: "content-box",
+              }}
+              type="button"
+              onClick={handleNextQuizNavigation}
+            >
+              <span>Next</span>
 
-            <img
-              alt="arrow"
-              src="/icons/right-arrow.png"
-              height={20}
-              width={20}
+              <img
+                alt="arrow"
+                src="/icons/right-arrow.png"
+                height={20}
+                width={20}
               />
             </button>
           )}

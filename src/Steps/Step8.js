@@ -5,7 +5,21 @@ export const Step8 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
+
+    const formData = new FormData(e.target);
+    const data = {
+      fullName: formData.get("fullName"),
+      email: formData.get("email"),
+      phoneNumber: formData.get("phoneNumber"),
+    };
+
+    fetch("/send-email", {
+      method: "POST",
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
   };
 
   useEffect(() => {
@@ -88,17 +102,28 @@ export const Step8 = () => {
             gap: "10px",
             width: "100%",
           }}
+          onSubmit={handleSubmit}
         >
           <input
             type="text"
             placeholder="Full Name*"
             style={{ padding: "10px" }}
+            name="fullName"
+            required
           />
-          <input type="text" placeholder="Email*" style={{ padding: "10px" }} />
           <input
-            type="text"
+            type="email"
+            placeholder="Email*"
+            style={{ padding: "10px" }}
+            name="email"
+            required
+          />
+          <input
+            type="tel"
             placeholder="Phone Number*"
             style={{ padding: "10px" }}
+            name="phoneNumber"
+            required
           />
 
           <button
@@ -116,15 +141,15 @@ export const Step8 = () => {
               boxSizing: "content-box",
               textAlign: "center",
             }}
-            type="button"
-            onClick={handleSubmit}
+            type="submit"
           >
             <span>Get Free Solar Design</span>
           </button>
         </form>
 
         <p style={{ fontSize: "0.8rem" }}>
-          Your data is secure by our <a href="/privacy-policy">Privacy policies</a>
+          Your data is secure by our{" "}
+          <a href="/privacy-policy">Privacy policies</a>
         </p>
       </div>
     </div>

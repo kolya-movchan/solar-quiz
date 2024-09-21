@@ -14,7 +14,7 @@ const center = {
 
 const libraries = ["places", "visualization"];
 
-export const Step1 = ({}) => {
+export const Step1 = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);

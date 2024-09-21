@@ -120,10 +120,8 @@ export const Step1 = ({}) => {
   }, []);
 
   const handleInputChange = (e) => {
-    console.log("event vercel check: ", e);
-    console.log("event vercel target value: ", e.target.value);
-    setInputValue("d");
-    fetchAddressesData(e);
+    setInputValue(e.target.value);
+    // fetchAddressesData(e);
     setShowDropdown(true);
     setIsStreetSelected(false);
   };

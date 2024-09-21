@@ -48,8 +48,8 @@ export const Step1 = () => {
         },
       });
       console.log("response.data.predictions: ", response.data.predictions);
-      setStreetsData(response.data.predictions);
-      setSelectedStreet(response.data.predictions[0]);
+      // setStreetsData(response.data.predictions);
+      // setSelectedStreet(response.data.predictions[0]);
     } catch (error) {
       console.error("Error fetching addresses:", error);
     }

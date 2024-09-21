@@ -12,7 +12,7 @@ import { Step7 } from "./Steps/Step7";
 import { Step8 } from "./Steps/Step8";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(8);
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {

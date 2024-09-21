@@ -13,12 +13,22 @@ export const Step8 = () => {
       phoneNumber: formData.get("phoneNumber"),
     };
 
-    fetch("/send-email", {
+    fetch(`http://localhost:${process.env.REACT_APP_PORT}/send-email`, {
       method: "POST",
-      body: data,
+      headers: {
+        "Content-Type": "application/json", // Set content type
+      },
+      body: JSON.stringify(data), // Stringify the data object
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        console.log('form submission frontend response', response);
+        return response.text(); // Change to text if your backend returns a string
+      })
+      .then((data) => console.log(data)) // Log the response
       .catch((error) => console.error("Error:", error));
   };
 

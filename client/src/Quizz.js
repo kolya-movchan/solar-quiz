@@ -12,7 +12,7 @@ import { Step7 } from "./Steps/Step7";
 import { ContactsSubmissionStep } from "./Steps/ContactsSubmissionStep";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(8);
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
@@ -53,11 +53,7 @@ const Quiz = () => {
           </div>
         );
       case 1:
-        return (
-          <div>
-            <Step1 />
-          </div>
-        );
+        return <Step1 />;
       case 2:
         return <Step2 handleUserAnswer={handleUserAnswer} />;
       case 3:
@@ -72,10 +68,22 @@ const Quiz = () => {
         return <Step7 handleUserAnswer={handleUserAnswer} />;
 
       case 8:
-        return <ContactsSubmissionStep quizData={quizData} />;
+        return (
+          <ContactsSubmissionStep
+            quizData={quizData}
+            onSubmit={handleUserAnswer}
+          />
+        );
+
+      case 9:
+        if (quizData.isQuizDataSubmitted) {
+          return <>YO!</>;
+        }
+
+        break;
 
       default:
-        return null;
+        return <Step1 />;
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export const ContactsSubmissionStep = ({ quizData }) => {
+export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleSubmit = (e) => {
@@ -42,9 +42,12 @@ export const ContactsSubmissionStep = ({ quizData }) => {
         }
 
         console.log("form submission frontend response", response);
+
         return response.text(); // Change to text if your backend returns a string
       })
-      .then((data) => console.log(data)) // Log the response
+      .then(() => {
+        onSubmit({ isQuizDataSubmitted: true });
+      }) // Log the response
       .catch((error) => console.error("Error:", error));
   };
 

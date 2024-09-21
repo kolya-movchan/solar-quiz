@@ -59,7 +59,7 @@ export const Step1 = () => {
       const response = await axios.get(`/maps/api/geocode/json`, {
         params: {
           place_id: placeId,
-          key: process.env.REACT_APP_SOLAR_API_KEY,
+          // key: process.env.REACT_APP_SOLAR_API_KEY,
         },
       });
       const location = response.data.results[0].geometry.location;

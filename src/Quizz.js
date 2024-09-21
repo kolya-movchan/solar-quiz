@@ -4,7 +4,7 @@ import "./Quiz.css"; // We'll create this file for the transition styles
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { Step1 } from "./Steps/Step1";
+import { FindYourRoofOnMap } from "./Steps/FindYourRoofOnMap";
 import { Step2 } from "./Steps/Step2";
 import { Step3 } from "./Steps/Step3";
 import { Step4 } from "./Steps/Step4";
@@ -55,7 +55,7 @@ const Quiz = () => {
           </div>
         );
       case 1:
-        return <Step1 />;
+        return <FindYourRoofOnMap />;
       case 2:
         return <Step2 handleUserAnswer={handleUserAnswer} />;
       case 3:
@@ -102,7 +102,7 @@ const Quiz = () => {
         break;
 
       default:
-        return <Step1 />;
+        return <FindYourRoofOnMap />;
     }
   };
 

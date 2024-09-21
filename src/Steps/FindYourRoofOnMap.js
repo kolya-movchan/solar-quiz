@@ -14,7 +14,7 @@ const center = {
 
 const libraries = ["places", "visualization"];
 
-export const Step1 = () => {
+export const FindYourRoofOnMap = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -133,6 +133,8 @@ export const Step1 = () => {
     setShowDropdown(false);
     setSelectedStreet(street);
     setIsStreetSelected(true);
+
+    getCoordinates(street.place_id);
   };
 
   if (loadError) return "Error loading maps";

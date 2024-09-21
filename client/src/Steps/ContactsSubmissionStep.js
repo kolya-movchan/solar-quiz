@@ -5,12 +5,41 @@ import { toast } from "react-toastify";
 export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+  });
+
+  const validateInputs = (data) => {
+    const newErrors = {};
+
+    Object.keys(data).forEach((key) => {
+      switch (key) {
+        case "email":
+          if (!/\S+@\S+\.\S+/.test(data.email)) {
+            toast.error("Please, enter a valid email address.");
+            newErrors.email = "Please, enter a valid email address.";
+          }
+          break;
+        case "phoneNumber":
+          if (!/^\+?[0-9]{10,15}$/.test(data.phoneNumber)) {
+            toast.error("Please, enter a valid phone number.");
+            newErrors.phoneNumber = "Please, enter a valid phone number.";
+          }
+          break;
+        default:
+          break;
+      }
+    });
+
+    return newErrors;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    const formData = new FormData(e.target);
+    setIsLoading(true);
 
     const {
       home_ownership,
@@ -22,9 +51,7 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
     } = quizData;
 
     const data = {
-      fullName: formData.get("fullName"),
-      email: formData.get("email"),
-      phoneNumber: formData.get("phoneNumber"),
+      ...formData,
       home_ownership,
       home_type,
       roof_condition,
@@ -32,6 +59,13 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
       utility_bill_amount,
       credit_score,
     };
+
+    const validationErrors = validateInputs(data);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setIsLoading(false);
+      return;
+    }
 
     fetch(`http://localhost:${process.env.REACT_APP_PORT}/send-email`, {
       method: "POST",
@@ -69,6 +103,15 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const isFormValid = () => {
+    return formData.fullName && formData.email && formData.phoneNumber;
+  };
 
   return (
     <div
@@ -143,35 +186,39 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
             width: "100%",
           }}
           onSubmit={handleSubmit}
+          novalidate
         >
           <input
             type="text"
             placeholder="Full Name*"
             style={{ padding: "10px" }}
             name="fullName"
-            required
+            value={formData.fullName}
+            onChange={handleInputChange}
           />
           <input
             type="email"
             placeholder="Email*"
             style={{ padding: "10px" }}
             name="email"
-            required
+            value={formData.email}
+            onChange={handleInputChange}
           />
           <input
             type="tel"
             placeholder="Phone Number*"
             style={{ padding: "10px" }}
             name="phoneNumber"
-            required
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
           />
 
           <button
             style={{
               border: "none",
-              backgroundColor: "#000",
+              backgroundColor: isFormValid() ? "#000" : "#ccc",
               color: "#fff",
-              cursor: "pointer",
+              cursor: isFormValid() ? "pointer" : "not-allowed",
               padding: "10px 20px",
               display: "flex",
               justifyContent: "center",
@@ -182,7 +229,7 @@ export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
               textAlign: "center",
             }}
             type="submit"
-            disabled={isLoading}
+            disabled={!isFormValid()}
           >
             {isLoading ? (
               <span>Loading...</span>

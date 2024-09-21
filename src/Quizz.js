@@ -11,7 +11,7 @@ import { Step4 } from "./Steps/Step4";
 import { Step5 } from "./Steps/Step5";
 import { Step6 } from "./Steps/Step6";
 import { Step7 } from "./Steps/Step7";
-import { ContactsSubmissionStep } from "./Steps/ContactsSubmissionStep";
+import { ContactsSubmission } from "./Steps/ContactsSubmission";
 
 const Quiz = () => {
   const [step, setStep] = useState(1);
@@ -71,7 +71,7 @@ const Quiz = () => {
 
       case 8:
         return (
-          <ContactsSubmissionStep
+          <ContactsSubmission
             quizData={quizData}
             onSubmit={handleUserAnswer}
           />

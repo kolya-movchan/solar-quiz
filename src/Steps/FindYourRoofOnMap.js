@@ -20,9 +20,11 @@ export const FindYourRoofOnMap = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isStreetSelected, setIsStreetSelected] = useState(false);
   const [mapCenter, setMapCenter] = useState(center);
-  const dropdownRef = useRef(null);
   const [streetsData, setStreetsData] = useState([]);
   const [selectedStreet, setSelectedStreet] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const dropdownRef = useRef(null);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -39,6 +41,8 @@ export const FindYourRoofOnMap = () => {
 
   const fetchAddressesData = debounce(async (value) => {
     try {
+      setIsLoading(true);
+
       const response = await axios.get(
         `https://${process.env.REACT_APP_BACKEND_HOST}/api/autocomplete`,
         {
@@ -51,6 +55,8 @@ export const FindYourRoofOnMap = () => {
       setSelectedStreet(response.data.data.predictions[0]);
     } catch (error) {
       console.error("Error fetching addresses:", error);
+    } finally {
+      setIsLoading(false);
     }
   }, 300);
 
@@ -140,6 +146,8 @@ export const FindYourRoofOnMap = () => {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  console.log(111, streetsData);
+
   return (
     <div
       style={{
@@ -201,6 +209,7 @@ export const FindYourRoofOnMap = () => {
             }}
             type="button"
             onClick={() => {
+              setInputValue(selectedStreet.description);
               getCoordinates(selectedStreet.place_id);
             }}
           >
@@ -208,7 +217,7 @@ export const FindYourRoofOnMap = () => {
           </button>
         </div>
 
-        {inputValue.trim().length > 0 && !isStreetSelected && (
+        {showDropdown && streetsData.length > 0 ? (
           <ul
             ref={dropdownRef}
             style={{
@@ -224,30 +233,7 @@ export const FindYourRoofOnMap = () => {
               borderTop: "none",
               maxHeight: "200px",
               overflowY: "auto",
-              zIndex: 1,
-            }}
-          >
-            <li style={{ padding: "10px" }}>No results found</li>
-          </ul>
-        )}
-
-        {showDropdown && streetsData.length > 0 && (
-          <ul
-            ref={dropdownRef}
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              position: "absolute",
-              top: "100%",
-              left: 0,
-              right: 0,
-              backgroundColor: "#fff",
-              border: "1px solid #ccc",
-              borderTop: "none",
-              maxHeight: "200px",
-              overflowY: "auto",
-              zIndex: 1,
+              zIndex: 2,
             }}
           >
             {streetsData.map((street, index) => (
@@ -281,7 +267,36 @@ export const FindYourRoofOnMap = () => {
               </li>
             ))}
           </ul>
+        ) : (
+          <ul
+            ref={dropdownRef}
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              backgroundColor: "#fff",
+              border: "1px solid #ccc",
+              borderTop: "none",
+              maxHeight: "200px",
+              overflowY: "auto",
+              zIndex: 1,
+            }}
+          >
+            {inputValue.trim().length > 0 && !isStreetSelected && (
+              <li style={{ padding: "10px" }}>
+                {isLoading ? "Loading..." : "No results found"}
+              </li>
+            )}
+          </ul>
         )}
+
+        {/* {inputValue.trim().length > 0 && !isStreetSelected && (
+         
+        )} */}
       </div>
 
       <div style={{ width: "100%", height: "50vh" }}>
@@ -291,11 +306,6 @@ export const FindYourRoofOnMap = () => {
           center={mapCenter}
           mapTypeId="satellite"
         ></GoogleMap>
-        {/* <img
-          src="https://placehold.co/600x400"
-          alt="Solar Panels"
-          style={{ width: "100%", height: "100%" }}
-        /> */}
       </div>
     </div>
   );

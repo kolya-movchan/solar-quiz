@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 
-export const ContactsSubmissionStep = ({ quizData, onSubmit }) => {
+export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({

@@ -161,7 +161,7 @@ const Quiz = () => {
             )}
           </div>
 
-          {step < 8 && (
+          {step > 0 && step < 8 && (
             <button
               style={{
                 border: "none",

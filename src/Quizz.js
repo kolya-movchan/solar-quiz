@@ -12,6 +12,7 @@ import { Step5 } from "./Steps/Step5";
 import { Step6 } from "./Steps/Step6";
 import { Step7 } from "./Steps/Step7";
 import { ContactsSubmission } from "./Steps/ContactsSubmission";
+import { Unqualified } from "./Steps/Unqualified";
 
 const Quiz = () => {
   const [step, setStep] = useState(1);
@@ -49,11 +50,7 @@ const Quiz = () => {
   const renderStep = () => {
     switch (step) {
       case 0:
-        return (
-          <div style={{ textAlign: "center", fontSize: "5rem" }}>
-            Oops! Shit!
-          </div>
-        );
+        return <Unqualified />;
       case 1:
         return <FindYourRoofOnMap />;
       case 2:

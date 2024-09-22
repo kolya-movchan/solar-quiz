@@ -1,19 +1,22 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
-import "./Quiz.css"; // We'll create this file for the transition styles
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-import { FindYourRoofOnMap } from "./Steps/FindYourRoofOnMap";
-import { Step2 } from "./Steps/Step2";
-import { Step3 } from "./Steps/Step3";
-import { Step4 } from "./Steps/Step4";
-import { Step5 } from "./Steps/Step5";
-import { Step6 } from "./Steps/Step6";
-import { Step7 } from "./Steps/Step7";
-import { ContactsSubmission } from "./Steps/ContactsSubmission";
-import { Unqualified } from "./Steps/Unqualified";
+import "./Quiz.css";
 
+import { ProgressBar } from "./components/progressBar";
+import { BackButton } from "./components/backButton";
+import { NextButton } from "./components/nextButton";
+
+import { FindYourRoofOnMap } from "./steps/FindYourRoofOnMap";
+import { Step2 } from "./steps/Step2";
+import { Step3 } from "./steps/Step3";
+import { Step4 } from "./steps/Step4";
+import { Step5 } from "./steps/Step5";
+import { Step6 } from "./steps/Step6";
+import { Step7 } from "./steps/Step7";
+import { ContactsSubmission } from "./steps/ContactsSubmission";
+import { Unqualified } from "./steps/Unqualified";
+import { PopUp } from "./components/popUp";
 const Quiz = () => {
   const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
@@ -71,30 +74,6 @@ const Quiz = () => {
           <ContactsSubmission quizData={quizData} onSubmit={handleUserAnswer} />
         );
 
-      case 9:
-        if (quizData.isQuizDataSubmitted) {
-          return (
-            <div
-              style={{
-                height: "100vh",
-                top: "20px",
-                right: "20px",
-                backgroundColor: "white",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-              }}
-            >
-              <h3>Quizz Saved Data:</h3>
-              <pre>{JSON.stringify(quizData, null, 2).slice(1, -1)}</pre>
-            </div>
-          );
-        }
-
-        break;
-
       default:
         return <FindYourRoofOnMap />;
     }
@@ -107,16 +86,7 @@ const Quiz = () => {
         height: "100vh",
       }}
     >
-      {!quizData.isQuizDataSubmitted && (
-        <div
-          style={{
-            width: `${(step / 8) * 100}%`,
-            height: "10px",
-            backgroundColor: "#4caf50",
-            transition: "width 0.3s ease-in-out",
-          }}
-        />
-      )}
+      {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
 
       <div className="step-content">
         <div
@@ -138,73 +108,17 @@ const Quiz = () => {
         >
           <div>
             {step > 1 && !quizData.isQuizDataSubmitted && (
-              <button
-                type="button"
-                onClick={handleGoBack}
-                style={{
-                  border: "1px solid #000",
-                  backgroundColor: "transparent",
-                  cursor: "pointer",
-                  padding: "10px 20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <img
-                  alt="arrow"
-                  src="/icons/left-arrow.svg"
-                  height={20}
-                  width={20}
-                />
-              </button>
+              <BackButton onClick={handleGoBack} />
             )}
           </div>
 
           {step > 0 && step < 8 && (
-            <button
-              style={{
-                border: "none",
-                backgroundColor: "#000",
-                color: "#fff",
-                cursor: "pointer",
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                fontWeight: "bold",
-                height: "20px",
-                width: "80px",
-                boxSizing: "content-box",
-              }}
-              type="button"
-              onClick={handleNextQuizNavigation}
-            >
-              <span>Next</span>
-
-              <img
-                alt="arrow"
-                src="/icons/right-arrow.png"
-                height={20}
-                width={20}
-              />
-            </button>
+            <NextButton onClick={handleNextQuizNavigation} />
           )}
         </div>
       </div>
 
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <PopUp />
     </div>
   );
 };

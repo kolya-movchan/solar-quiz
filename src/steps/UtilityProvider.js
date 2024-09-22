@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export const Step5 = ({ handleUserAnswer }) => {
+export const UtilityProvider = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const providersList = [

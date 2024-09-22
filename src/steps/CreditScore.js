@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-export const Step6 = ({ handleUserAnswer }) => {
+export const CreditScore = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const utilityBillsList = [
+  const creditScoreList = [
     {
-      name: "$0 – $150",
-      id: "$0–$150",
+      name: "Below 600",
+      id: "below-600",
       icon: "/icons/default.png",
     },
     {
-      name: "$150 – $300",
-      id: "$150–$300",
+      name: "600 - 650",
+      id: "600-650",
       icon: "/icons/default.png",
     },
     {
-      name: "$300 – $450",
-      id: "$300–$450",
+      name: "650 - 700",
+      id: "650-700",
       icon: "/icons/default.png",
     },
     {
-      name: "$450+",
-      id: "$450+",
+      name: "700+",
+      id: "700+",
       icon: "/icons/default.png",
     },
   ];
@@ -46,15 +46,10 @@ export const Step6 = ({ handleUserAnswer }) => {
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
+        gap: "20px",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>
-        How much are your monthly electric bills?
-      </h1>
-
-      <p style={{ marginBottom: "40px" }}>
-        Your monthly bill helps us calculate your potential solar savings
-      </p>
+      <h1 style={{ fontSize: "3rem" }}>What is your credit score?</h1>
 
       <div
         style={{
@@ -64,7 +59,7 @@ export const Step6 = ({ handleUserAnswer }) => {
           width: "100%",
         }}
       >
-        {utilityBillsList.map((bill) => (
+        {creditScoreList.map((score) => (
           <button
             style={{
               padding: "20px",
@@ -80,15 +75,9 @@ export const Step6 = ({ handleUserAnswer }) => {
               cursor: "pointer",
               type: "button",
             }}
-            onClick={() => handleUserAnswer({ utility_bill_amount: bill.id })}
+            onClick={() => handleUserAnswer({ credit_score: score.id })}
           >
-            <img
-              src={bill.icon}
-              alt={bill.name}
-              height={80}
-              style={{ width: "100%" }}
-            />
-            <span>{bill.name}</span>
+            <span>{score.name}</span>
           </button>
         ))}
       </div>

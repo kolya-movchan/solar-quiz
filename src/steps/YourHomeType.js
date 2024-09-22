@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-export const Step7 = ({ handleUserAnswer }) => {
+export const YourHomeType = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const creditScoreList = [
+  const homeTypes = [
     {
-      name: "Below 600",
-      id: "below-600",
+      name: "Single-Family (SFH)",
+      id: "single-family",
       icon: "/icons/default.png",
     },
     {
-      name: "600 - 650",
-      id: "600-650",
+      name: "Mobile/Manufactured",
+      id: "mobile-manufactured",
       icon: "/icons/default.png",
     },
     {
-      name: "650 - 700",
-      id: "650-700",
+      name: "Apartment/Condo",
+      id: "apartment-condo",
       icon: "/icons/default.png",
     },
     {
-      name: "700+",
-      id: "700+",
+      name: "Townhouse",
+      id: "townhouse",
       icon: "/icons/default.png",
     },
   ];
@@ -43,27 +43,26 @@ export const Step7 = ({ handleUserAnswer }) => {
         alignItems: "center",
         justifyContent: "center",
         padding: "40px",
+        gap: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
-        gap: "20px",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>What is your credit score?</h1>
+      <h1 style={{ fontSize: "3rem" }}>What is your home type?</h1>
 
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
-          width: "100%",
         }}
       >
-        {creditScoreList.map((score) => (
+        {homeTypes.map((homeType) => (
           <button
             style={{
               padding: "20px",
-              width: "22%",
+              width: "47%",
               backgroundColor: "transparent",
               fontSize: "1rem",
               border: "1px solid #000",
@@ -75,9 +74,16 @@ export const Step7 = ({ handleUserAnswer }) => {
               cursor: "pointer",
               type: "button",
             }}
-            onClick={() => handleUserAnswer({ credit_score: score.id })}
+            onClick={() => handleUserAnswer({ home_type: homeType.id })}
           >
-            <span>{score.name}</span>
+            <img
+              src={homeType.icon}
+              alt={homeType.name}
+              height={80}
+              style={{ width: "100%" }}
+              //   width={40}
+            />
+            <span>{homeType.name}</span>
           </button>
         ))}
       </div>

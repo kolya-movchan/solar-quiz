@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-export const Step3 = ({ handleUserAnswer }) => {
+export const RoofCondition = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const homeTypes = [
+  const roofConditions = [
     {
-      name: "Single-Family (SFH)",
-      id: "single-family",
+      name: "Good",
+      id: "good",
       icon: "/icons/default.png",
     },
     {
-      name: "Mobile/Manufactured",
-      id: "mobile-manufactured",
+      name: "Need repairs",
+      id: "need-repairs",
       icon: "/icons/default.png",
     },
     {
-      name: "Apartment/Condo",
-      id: "apartment-condo",
+      name: "Needs re-roof",
+      id: "needs-re-roof",
       icon: "/icons/default.png",
     },
     {
-      name: "Townhouse",
-      id: "townhouse",
+      name: "Unsure",
+      id: "unsure",
       icon: "/icons/default.png",
     },
   ];
@@ -43,26 +43,33 @@ export const Step3 = ({ handleUserAnswer }) => {
         alignItems: "center",
         justifyContent: "center",
         padding: "40px",
-        gap: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>What is your home type?</h1>
+      <h1 style={{ fontSize: "3rem" }}>
+        How would you describe the condition of your roof?
+      </h1>
+
+      <p style={{ marginBottom: "40px" }}>
+        A healthy roof is essential for solar panel installation. Please assess
+        the condition of your roof.
+      </p>
 
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
+          width: "100%",
         }}
       >
-        {homeTypes.map((homeType) => (
+        {roofConditions.map((condition) => (
           <button
             style={{
               padding: "20px",
-              width: "47%",
+              width: "22%",
               backgroundColor: "transparent",
               fontSize: "1rem",
               border: "1px solid #000",
@@ -74,16 +81,15 @@ export const Step3 = ({ handleUserAnswer }) => {
               cursor: "pointer",
               type: "button",
             }}
-            onClick={() => handleUserAnswer({ home_type: homeType.id })}
+            onClick={() => handleUserAnswer({ roof_condition: condition.id })}
           >
             <img
-              src={homeType.icon}
-              alt={homeType.name}
+              src={condition.icon}
+              alt={condition.name}
               height={80}
               style={{ width: "100%" }}
-              //   width={40}
             />
-            <span>{homeType.name}</span>
+            <span>{condition.name}</span>
           </button>
         ))}
       </div>

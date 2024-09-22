@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-export const Step4 = ({ handleUserAnswer }) => {
+export const MonthlyElectricBills = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const roofConditions = [
+  const utilityBillsList = [
     {
-      name: "Good",
-      id: "good",
+      name: "$0 – $150",
+      id: "$0–$150",
       icon: "/icons/default.png",
     },
     {
-      name: "Need repairs",
-      id: "need-repairs",
+      name: "$150 – $300",
+      id: "$150–$300",
       icon: "/icons/default.png",
     },
     {
-      name: "Needs re-roof",
-      id: "needs-re-roof",
+      name: "$300 – $450",
+      id: "$300–$450",
       icon: "/icons/default.png",
     },
     {
-      name: "Unsure",
-      id: "unsure",
+      name: "$450+",
+      id: "$450+",
       icon: "/icons/default.png",
     },
   ];
@@ -49,12 +49,11 @@ export const Step4 = ({ handleUserAnswer }) => {
       }}
     >
       <h1 style={{ fontSize: "3rem" }}>
-        How would you describe the condition of your roof?
+        How much are your monthly electric bills?
       </h1>
 
       <p style={{ marginBottom: "40px" }}>
-        A healthy roof is essential for solar panel installation. Please assess
-        the condition of your roof.
+        Your monthly bill helps us calculate your potential solar savings
       </p>
 
       <div
@@ -65,7 +64,7 @@ export const Step4 = ({ handleUserAnswer }) => {
           width: "100%",
         }}
       >
-        {roofConditions.map((condition) => (
+        {utilityBillsList.map((bill) => (
           <button
             style={{
               padding: "20px",
@@ -81,15 +80,15 @@ export const Step4 = ({ handleUserAnswer }) => {
               cursor: "pointer",
               type: "button",
             }}
-            onClick={() => handleUserAnswer({ roof_condition: condition.id })}
+            onClick={() => handleUserAnswer({ utility_bill_amount: bill.id })}
           >
             <img
-              src={condition.icon}
-              alt={condition.name}
+              src={bill.icon}
+              alt={bill.name}
               height={80}
               style={{ width: "100%" }}
             />
-            <span>{condition.name}</span>
+            <span>{bill.name}</span>
           </button>
         ))}
       </div>

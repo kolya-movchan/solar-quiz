@@ -8,15 +8,16 @@ import { BackButton } from "./components/backButton";
 import { NextButton } from "./components/nextButton";
 
 import { FindYourRoofOnMap } from "./steps/FindYourRoofOnMap";
-import { Step2 } from "./steps/Step2";
-import { Step3 } from "./steps/Step3";
-import { Step4 } from "./steps/Step4";
-import { Step5 } from "./steps/Step5";
-import { Step6 } from "./steps/Step6";
-import { Step7 } from "./steps/Step7";
+import { DoYouOwnYourHome } from "./steps/DoYouOwnYourHome";
+import { YourHomeType } from "./steps/YourHomeType";
+import { RoofCondition } from "./steps/RoofCondition";
+import { UtilityProvider } from "./steps/UtilityProvider";
+import { MonthlyElectricBills } from "./steps/MonthlyElectricBills";
+import { CreditScore } from "./steps/CreditScore";
 import { ContactsSubmission } from "./steps/ContactsSubmission";
 import { Unqualified } from "./steps/Unqualified";
 import { PopUp } from "./components/popUp";
+
 const Quiz = () => {
   const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});
@@ -57,17 +58,17 @@ const Quiz = () => {
       case 1:
         return <FindYourRoofOnMap />;
       case 2:
-        return <Step2 handleUserAnswer={handleUserAnswer} />;
+        return <DoYouOwnYourHome handleUserAnswer={handleUserAnswer} />;
       case 3:
-        return <Step3 handleUserAnswer={handleUserAnswer} />;
+        return <YourHomeType handleUserAnswer={handleUserAnswer} />;
       case 4:
-        return <Step4 handleUserAnswer={handleUserAnswer} />;
+        return <RoofCondition handleUserAnswer={handleUserAnswer} />;
       case 5:
-        return <Step5 handleUserAnswer={handleUserAnswer} />;
+        return <UtilityProvider handleUserAnswer={handleUserAnswer} />;
       case 6:
-        return <Step6 handleUserAnswer={handleUserAnswer} />;
+        return <MonthlyElectricBills handleUserAnswer={handleUserAnswer} />;
       case 7:
-        return <Step7 handleUserAnswer={handleUserAnswer} />;
+        return <CreditScore handleUserAnswer={handleUserAnswer} />;
 
       case 8:
         return (

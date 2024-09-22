@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export const Step2 = ({ handleUserAnswer }) => {
+export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

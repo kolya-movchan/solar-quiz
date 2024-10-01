@@ -6,7 +6,6 @@ import "./Quiz.css";
 import { ProgressBar } from "./components/progressBar";
 import { BackButton } from "./components/backButton";
 import { NextButton } from "./components/nextButton";
-
 import { FindYourRoofOnMap } from "./steps/FindYourRoofOnMap";
 import { DoYouOwnYourHome } from "./steps/DoYouOwnYourHome";
 import { YourHomeType } from "./steps/YourHomeType";

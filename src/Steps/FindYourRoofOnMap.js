@@ -10,7 +10,7 @@ const mapContainerStyle = {
 const center = {
   lat: 42.3601, // Default center (can be set dynamically)
   lng: -71.0589,
-};
+}; 
 
 const libraries = ["places", "visualization"];
 

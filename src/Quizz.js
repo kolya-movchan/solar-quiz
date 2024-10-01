@@ -7,15 +7,15 @@ import { ProgressBar } from "./components/progressBar";
 import { BackButton } from "./components/backButton";
 import { NextButton } from "./components/nextButton";
 
-import { FindYourRoofOnMap } from "./steps/findYourRoofOnMap";
-import { DoYouOwnYourHome } from "./steps/DoYouOwnYourHome";
-import { YourHomeType } from "./steps/YourHomeType";
-import { RoofCondition } from "./steps/RoofCondition";
-import { UtilityProvider } from "./steps/UtilityProvider";
-import { MonthlyElectricBills } from "./steps/MonthlyElectricBills";
-import { CreditScore } from "./steps/CreditScore";
-import { ContactsSubmission } from "./steps/ContactsSubmission";
-import { Unqualified } from "./steps/Unqualified";
+import { FindYourRoofOnMap } from "./Steps/FindYourRoofOnMap";
+import { DoYouOwnYourHome } from "./Steps/DoYouOwnYourHome";
+import { YourHomeType } from "./Steps/YourHomeType";
+import { RoofCondition } from "./Steps/RoofCondition";
+import { UtilityProvider } from "./Steps/UtilityProvider";
+import { MonthlyElectricBills } from "./Steps/MonthlyElectricBills";
+import { CreditScore } from "./Steps/CreditScore";
+import { ContactsSubmission } from "./Steps/ContactsSubmission";
+import { Unqualified } from "./Steps/Unqualified";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {

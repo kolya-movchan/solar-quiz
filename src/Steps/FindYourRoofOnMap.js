@@ -25,6 +25,7 @@ export const FindYourRoofOnMap = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const dropdownRef = useRef(null);
+  const mapRef = useRef(null);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -145,8 +146,6 @@ export const FindYourRoofOnMap = () => {
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
-
-  console.log(111, streetsData);
 
   return (
     <div
@@ -295,13 +294,36 @@ export const FindYourRoofOnMap = () => {
         )}
       </div>
 
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "100%", position: "relative" }}>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={17}
           center={mapCenter}
           mapTypeId="satellite"
-        ></GoogleMap>
+          onLoad={(map) => {
+            mapRef.current = map;
+          }}
+          onDragEnd={() => {
+            const center = mapRef.current.getCenter();
+            const newCenter = { lat: center.lat(), lng: center.lng() };
+            setMapCenter(newCenter);
+            console.log("Current lat:", newCenter.lat, "Current lng:", newCenter.lng);
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -100%)",
+            zIndex: 1,
+          }}
+        >
+          <img
+            src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"
+            alt="marker"
+          />
+        </div>
       </div>
     </div>
   );

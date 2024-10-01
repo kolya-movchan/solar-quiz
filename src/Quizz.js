@@ -7,16 +7,16 @@ import { ProgressBar } from "./components/progressBar";
 import { BackButton } from "./components/backButton";
 import { NextButton } from "./components/nextButton";
 
-import { FindYourRoofOnMap } from "./steps/FindYourRoofOnMap.js";
-import { DoYouOwnYourHome } from "./steps/DoYouOwnYourHome.js";
-import { YourHomeType } from "./steps/YourHomeType.js";
+import { FindYourRoofOnMap } from "./steps/findYourRoofOnMap";
+import { DoYouOwnYourHome } from "./steps/DoYouOwnYourHome";
+import { YourHomeType } from "./steps/YourHomeType";
 import { RoofCondition } from "./steps/RoofCondition";
 import { UtilityProvider } from "./steps/UtilityProvider";
 import { MonthlyElectricBills } from "./steps/MonthlyElectricBills";
 import { CreditScore } from "./steps/CreditScore";
 import { ContactsSubmission } from "./steps/ContactsSubmission";
-import { Unqualified } from "./steps/Unqualified.js";
-import { PopUp } from "./components/popUp.js";
+import { Unqualified } from "./steps/Unqualified";
+import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
   const [step, setStep] = useState(1);

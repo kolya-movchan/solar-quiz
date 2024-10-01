@@ -18,6 +18,7 @@ import { ContactsSubmission } from "./steps/ContactsSubmission";
 import { Unqualified } from "./steps/Unqualified";
 import { PopUp } from "./components/popUp";
 
+
 const Quiz = () => {
   const [step, setStep] = useState(1);
   const [quizData, setQuizData] = useState({});

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { GoogleMap, useLoadScript, Polygon } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import axios from "axios";
 
 const mapContainerStyle = {
@@ -23,7 +23,7 @@ export const FindYourRoofOnMap = () => {
   const [streetsData, setStreetsData] = useState([]);
   const [selectedStreet, setSelectedStreet] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [solarData, setSolarData] = useState(null); // For storing solar coverage data
+  // const [solarData, setSolarData] = useState(null); // For storing solar coverage data
 
   const dropdownRef = useRef(null);
   const mapRef = useRef(null);
@@ -79,7 +79,7 @@ export const FindYourRoofOnMap = () => {
         console.log("location: ", location);
 
         // Fetch solar data for the new location
-        fetchSolarData(location.lat, location.lng);
+        // fetchSolarData(location.lat, location.lng);
         setMapCenter({ lat: location.lat, lng: location.lng });
       }
     } catch (error) {
@@ -90,31 +90,31 @@ export const FindYourRoofOnMap = () => {
 
   // LOGIC OF GETTING THE COVERAGE AREA FOR THE SOLAR PANELS
 
-  const fetchSolarData = async (latitude, longitude) => {
-    try {
-      const apiKey = process.env.REACT_APP_SOLAR_API_KEY; // Use your Solar API key here
-      const params = {
-        "location.latitude": latitude.toFixed(5),
-        "location.longitude": longitude.toFixed(5),
-        key: apiKey,
-      };
+  // const fetchSolarData = async (latitude, longitude) => {
+  //   try {
+  //     const apiKey = process.env.REACT_APP_SOLAR_API_KEY; // Use your Solar API key here
+  //     const params = {
+  //       "location.latitude": latitude.toFixed(5),
+  //       "location.longitude": longitude.toFixed(5),
+  //       key: apiKey,
+  //     };
 
-      const response = await axios.get(
-        `https://solar.googleapis.com/v1/buildingInsights:findClosest`,
-        { params }
-      );
+  //     const response = await axios.get(
+  //       `https://solar.googleapis.com/v1/buildingInsights:findClosest`,
+  //       { params }
+  //     );
 
-      console.log(0, response);
+  //     console.log(0, response);
 
-      if (response.status === 200) {
-        setSolarData(response.data); // Save solar data for rendering
-      } else {
-        console.error("Error fetching solar data:", response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching solar data:", error);
-    }
-  };
+  //     if (response.status === 200) {
+  //       setSolarData(response.data); // Save solar data for rendering
+  //     } else {
+  //       console.error("Error fetching solar data:", response.data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching solar data:", error);
+  //   }
+  // };
 
   // END OF LOGIC OF GETTING THE COVERAGE AREA FOR THE SOLAR PANELS
 

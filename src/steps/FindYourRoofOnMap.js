@@ -88,8 +88,6 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
       setStateAbbreviation(stateAbbreviation);
 
       if (location) {
-        console.log("location: ", location);
-
         // Fetch solar data for the new location
         // fetchSolarData(location.lat, location.lng);
         setMapCenter({ lat: location.lat, lng: location.lng });
@@ -115,8 +113,6 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
   //       `https://solar.googleapis.com/v1/buildingInsights:findClosest`,
   //       { params }
   //     );
-
-  //     console.log(0, response);
 
   //     if (response.status === 200) {
   //       setSolarData(response.data); // Save solar data for rendering
@@ -281,7 +277,6 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
                       : "transparent";
                 }}
                 onClick={() => {
-                  console.log(street);
                   handleSelectStreet(street);
                 }}
               >
@@ -330,12 +325,6 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
             const center = mapRef.current.getCenter();
             const newCenter = { lat: center.lat(), lng: center.lng() };
             setMapCenter(newCenter);
-            console.log(
-              "Current lat:",
-              newCenter.lat,
-              "Current lng:",
-              newCenter.lng
-            );
           }}
         ></GoogleMap>
 

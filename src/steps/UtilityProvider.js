@@ -8,8 +8,6 @@ export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
     (state) => state.State === stateAbbreviation
   )?.Providers;
 
-  console.log("providersList", providersList);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);

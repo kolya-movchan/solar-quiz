@@ -80,8 +80,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           throw new Error("Network response was not ok");
         }
 
-        console.log("form submission frontend response", response);
-
         return response.text(); // Change to text if your backend returns a string
       })
       .then(() => {
@@ -89,7 +87,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         toast.success("Success! We will contact you soon.");
       }) // Log the response
       .catch((error) => {
-        console.log("error", error);
         toast.error("Something went wrong. Please try again later.");
       })
       .finally(() => {

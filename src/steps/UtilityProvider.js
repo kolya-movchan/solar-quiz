@@ -1,50 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { statesProviders } from "../statesProviders";
 
-export const UtilityProvider = ({ handleUserAnswer }) => {
+export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const providersList = [
-    {
-      name: "Provider1",
-      id: "provide1",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "Provider2",
-      id: "provider2",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "Provider3",
-      id: "provider3",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "Provider4",
-      id: "provider4",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "Provider5",
-      id: "provider5",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "Provider6",
-      id: "provider6",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "Provider7",
-      id: "provider7",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "Other",
-      id: "other",
-      icon: "/icons/default.png",
-    },
-  ];
+  const providersList = statesProviders.find(
+    (state) => state.State === stateAbbreviation
+  )?.Providers;
+
+  console.log("providersList", providersList);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -78,8 +42,9 @@ export const UtilityProvider = ({ handleUserAnswer }) => {
           width: "100%",
         }}
       >
-        {providersList.map((provider) => (
+        {providersList?.map((provider, idx) => (
           <button
+            key={idx}
             style={{
               padding: "20px",
               width: "22%",
@@ -94,15 +59,15 @@ export const UtilityProvider = ({ handleUserAnswer }) => {
               cursor: "pointer",
               type: "button",
             }}
-            onClick={() => handleUserAnswer({ provider: provider.id })}
+            onClick={() => handleUserAnswer({ provider })}
           >
-            <img
+            {/* <img
               src={provider.icon}
               alt={provider.name}
               height={80}
               style={{ width: "100%" }}
-            />
-            <span>{provider.name}</span>
+            /> */}
+            <span>{provider}</span>
           </button>
         ))}
       </div>

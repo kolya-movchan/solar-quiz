@@ -19,6 +19,7 @@ import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
   const [step, setStep] = useState(1);
+  const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
@@ -55,7 +56,9 @@ const Quiz = () => {
       case 0:
         return <Unqualified />;
       case 1:
-        return <FindYourRoofOnMap />;
+        return (
+          <FindYourRoofOnMap setStateAbbreviation={setStateAbbreviation} />
+        );
       case 2:
         return <DoYouOwnYourHome handleUserAnswer={handleUserAnswer} />;
       case 3:
@@ -63,7 +66,12 @@ const Quiz = () => {
       case 4:
         return <RoofCondition handleUserAnswer={handleUserAnswer} />;
       case 5:
-        return <UtilityProvider handleUserAnswer={handleUserAnswer} />;
+        return (
+          <UtilityProvider
+            handleUserAnswer={handleUserAnswer}
+            stateAbbreviation={stateAbbreviation}
+          />
+        );
       case 6:
         return <MonthlyElectricBills handleUserAnswer={handleUserAnswer} />;
       case 7:

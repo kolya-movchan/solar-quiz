@@ -14,7 +14,7 @@ const center = {
 
 const libraries = ["places", "visualization"];
 
-export const FindYourRoofOnMap = () => {
+export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -74,6 +74,18 @@ export const FindYourRoofOnMap = () => {
       );
 
       const location = response.data.data.results[0].geometry.location;
+
+      // Extract state abbreviation
+      const stateComponent =
+        response.data.data.results[0].address_components.find((component) =>
+          component.types.includes("administrative_area_level_1")
+        );
+
+      const stateAbbreviation = stateComponent
+        ? stateComponent.short_name
+        : null;
+
+      setStateAbbreviation(stateAbbreviation);
 
       if (location) {
         console.log("location: ", location);

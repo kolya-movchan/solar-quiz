@@ -4,7 +4,7 @@ import "../App.css";
 
 import { toast } from "react-toastify";
 
-export const ContactsSubmission = ({ quizData }) => {
+export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -12,6 +12,8 @@ export const ContactsSubmission = ({ quizData }) => {
     email: "",
     phoneNumber: "",
   });
+  const [showOTPInput, setShowOTPInput] = useState(false);
+  const [otp, setOtp] = useState("");
 
   const validateInputs = (data) => {
     const newErrors = {};
@@ -25,7 +27,7 @@ export const ContactsSubmission = ({ quizData }) => {
           }
           break;
         case "phoneNumber":
-          if (!/^\+?[0-9]{10,15}$/.test(data.phoneNumber)) {
+          if (!/^\+\d{11,15}$/.test(data.phoneNumber)) {
             toast.error("Please, enter a valid phone number.");
             newErrors.phoneNumber = "Please, enter a valid phone number.";
           }
@@ -38,9 +40,7 @@ export const ContactsSubmission = ({ quizData }) => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     setIsLoading(true);
 
     const {
@@ -62,13 +62,6 @@ export const ContactsSubmission = ({ quizData }) => {
       credit_score,
     };
 
-    const validationErrors = validateInputs(data);
-
-    if (Object.keys(validationErrors).length > 0) {
-      setIsLoading(false);
-      return;
-    }
-
     fetch(`https://solar-quiz-backend.vercel.app/send-email`, {
       method: "POST",
       headers: {
@@ -84,7 +77,7 @@ export const ContactsSubmission = ({ quizData }) => {
         return response.text(); // Change to text if your backend returns a string
       })
       .then(() => {
-        // onSubmit({ isQuizDataSubmitted: true });
+        onSubmit({ isQuizDataSubmitted: true });
         toast.success("Success! We will contact you soon.");
       }) // Log the response
       .catch((error) => {
@@ -93,36 +86,6 @@ export const ContactsSubmission = ({ quizData }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  };
-
-  const handleOTPVerification = async (e) => {
-    e.preventDefault(); // Prevent page reload
-
-    try {
-      await axios.post(`http://localhost:3001/twilio-sms/send-otp`, {
-        // countryCode: "1",
-        // phoneNumber: "9292426639".trim(),
-
-        countryCode: "38",
-        phoneNumber: "0660724608".trim(),
-      });
-
-      const verificationResponse = await axios.post(
-        `http://localhost:3001/twilio-sms/verify-otp`,
-        {
-          // countryCode: "1",
-          // phoneNumber: "9292426639".trim(),
-
-          countryCode: "38",
-          phoneNumber: "0660724608".trim(),
-          otp: "672404",
-        }
-      );
-
-      console.log("Verification Response:", verificationResponse);
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-    }
   };
 
   useEffect(() => {
@@ -140,6 +103,78 @@ export const ContactsSubmission = ({ quizData }) => {
 
   const isFormValid = () => {
     return formData.fullName && formData.email && formData.phoneNumber;
+  };
+
+  const handleOTPChange = (e) => {
+    setOtp(e.target.value);
+  };
+
+  const handleOTPVerification = async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    const validationErrors = validateInputs(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setIsLoading(false);
+      return;
+    }
+
+    const countryCode = formData.phoneNumber.trim().slice(1, -10);
+    const phoneNumber = formData.phoneNumber.trim().slice(-10);
+
+    console.log("Phone Number:", phoneNumber);
+    console.log("Country Code:", countryCode);
+    try {
+      // const response = await axios.post(
+      //   `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+      //   {
+      //     countryCode,
+      //     phoneNumber,
+      //   }
+      // );
+
+      // if (response.status === 200) {
+      //   setShowOTPInput(true);
+      // }
+      setShowOTPInput(true);
+    } catch (error) {
+      toast.error(
+        error.response
+          ? error.response.data
+          : "Something went wrong. Please try again later."
+      );
+    }
+  };
+
+  const handleOTPSubmission = async (e) => {
+    e.preventDefault();
+    // Ensure OTP has 6 digits
+    if (otp.length !== 6) {
+      toast.error("OTP must be 6 digits.");
+      return;
+    }
+
+    try {
+      handleSubmit();
+      // const verificationResponse = await axios.post(
+      //   `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
+      //   {
+      //     countryCode: formData.phoneNumber.trim().slice(1, -10),
+      //     phoneNumber: formData.phoneNumber.trim().slice(-10),
+      //     otp: otp,
+      //   }
+      // );
+      // if (verificationResponse.data.isVerified === true) {
+      //   console.log("Verification Response:", verificationResponse);
+      // handleSubmit()
+      // }
+    } catch (error) {
+      toast.error(
+        error.response
+          ? error.response.data
+          : "Something went wrong. Please try again later."
+      );
+    }
   };
 
   return (
@@ -279,6 +314,61 @@ export const ContactsSubmission = ({ quizData }) => {
           <a href="/privacy-policy">Privacy policies</a>
         </p>
       </div>
+
+      {showOTPInput && (
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#fff",
+              padding: "20px",
+              borderRadius: "8px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <h2>Enter OTP</h2>
+            <form onSubmit={handleOTPSubmission}>
+              <input
+                type="text"
+                value={otp}
+                onChange={handleOTPChange}
+                maxLength="6"
+                style={{
+                  padding: "10px",
+                  fontSize: "1.5rem",
+                  textAlign: "center",
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  marginTop: "20px",
+                  padding: "10px 20px",
+                  backgroundColor: "#000",
+                  color: "#fff",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Verify OTP
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
-import axios from "axios";
 
 import "./Quiz.css";
 
@@ -16,13 +15,14 @@ import { MonthlyElectricBills } from "./steps/MonthlyElectricBills";
 import { CreditScore } from "./steps/CreditScore";
 import { ContactsSubmission } from "./steps/ContactsSubmission";
 import { Unqualified } from "./steps/Unqualified";
+import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(8);
+  const [step, setStep] = useState(0);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
-  const [isOTPVerified, setIsOTPVerified] = useState(false);
+  // const [isOTPVerified, setIsOTPVerified] = useState(false);
 
   const handleUserAnswer = (data) => {
     setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
@@ -35,7 +35,7 @@ const Quiz = () => {
       credit_score === "below-600";
 
     if (conditionsToRefuse) {
-      setStep(0);
+      setStep(-1);
     } else {
       setStep((prevStep) => prevStep + 1);
     }
@@ -55,8 +55,11 @@ const Quiz = () => {
 
   const renderStep = () => {
     switch (step) {
-      case 0:
+      case -1:
         return <Unqualified />;
+
+      case 0:
+        return <Intro />;
       case 1:
         return (
           <FindYourRoofOnMap setStateAbbreviation={setStateAbbreviation} />
@@ -81,11 +84,11 @@ const Quiz = () => {
 
       case 8:
         return (
-          <ContactsSubmission
-            quizData={quizData}
-            // onSubmit={handleOTPVerification}
-          />
+          <ContactsSubmission quizData={quizData} onSubmit={handleUserAnswer} />
         );
+
+      case 9:
+        return <></>;
 
       default:
         return <FindYourRoofOnMap />;
@@ -93,12 +96,7 @@ const Quiz = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-      }}
-    >
+    <>
       {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
 
       <div className="step-content">
@@ -106,6 +104,7 @@ const Quiz = () => {
           style={{
             maxWidth: "790px",
             margin: "0 auto",
+            minHeight: "87vh",
           }}
         >
           {renderStep()}
@@ -128,11 +127,13 @@ const Quiz = () => {
           {step > 0 && step < 8 && (
             <NextButton onClick={handleNextQuizNavigation} />
           )}
+
+          {step === 0 && <NextButton onClick={handleNextQuizNavigation} />}
         </div>
       </div>
 
       <PopUp />
-    </div>
+    </>
   );
 };
 

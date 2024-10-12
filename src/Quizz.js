@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
+import axios from "axios";
 
 import "./Quiz.css";
 
@@ -18,9 +19,10 @@ import { Unqualified } from "./steps/Unqualified";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(8);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
+  const [isOTPVerified, setIsOTPVerified] = useState(false);
 
   const handleUserAnswer = (data) => {
     setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
@@ -79,7 +81,10 @@ const Quiz = () => {
 
       case 8:
         return (
-          <ContactsSubmission quizData={quizData} onSubmit={handleUserAnswer} />
+          <ContactsSubmission
+            quizData={quizData}
+            // onSubmit={handleOTPVerification}
+          />
         );
 
       default:

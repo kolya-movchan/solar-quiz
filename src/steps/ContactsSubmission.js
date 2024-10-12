@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../App.css";
 
 import { toast } from "react-toastify";
 
-export const ContactsSubmission = ({ quizData, onSubmit }) => {
+export const ContactsSubmission = ({ quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -83,7 +84,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         return response.text(); // Change to text if your backend returns a string
       })
       .then(() => {
-        onSubmit({ isQuizDataSubmitted: true });
+        // onSubmit({ isQuizDataSubmitted: true });
         toast.success("Success! We will contact you soon.");
       }) // Log the response
       .catch((error) => {
@@ -92,6 +93,24 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const handleOTPVerification = async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/twilio-sms/send-otp`,
+        {
+          countryCode: "38",
+          phoneNumber: "0660724608",
+        }
+      );
+
+      console.log("OTP Request:", response);
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+    }
   };
 
   useEffect(() => {
@@ -183,7 +202,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             gap: "10px",
             width: "100%",
           }}
-          onSubmit={handleSubmit}
+          onSubmit={handleOTPVerification}
           novalidate
         >
           <input

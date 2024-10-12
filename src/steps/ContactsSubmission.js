@@ -99,15 +99,27 @@ export const ContactsSubmission = ({ quizData }) => {
     e.preventDefault(); // Prevent page reload
 
     try {
-      const response = await axios.post(
-        `http://localhost:3001/twilio-sms/send-otp`,
+      await axios.post(`http://localhost:3001/twilio-sms/send-otp`, {
+        // countryCode: "1",
+        // phoneNumber: "9292426639".trim(),
+
+        countryCode: "38",
+        phoneNumber: "0660724608".trim(),
+      });
+
+      const verificationResponse = await axios.post(
+        `http://localhost:3001/twilio-sms/verify-otp`,
         {
+          // countryCode: "1",
+          // phoneNumber: "9292426639".trim(),
+
           countryCode: "38",
-          phoneNumber: "0660724608",
+          phoneNumber: "0660724608".trim(),
+          otp: "672404",
         }
       );
 
-      console.log("OTP Request:", response);
+      console.log("Verification Response:", verificationResponse);
     } catch (error) {
       console.error("Error sending OTP:", error);
     }
@@ -228,6 +240,12 @@ export const ContactsSubmission = ({ quizData }) => {
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleInputChange}
+            onFocus={(e) => {
+              const newValue = "+1";
+              handleInputChange({
+                target: { name: e.target.name, value: newValue },
+              });
+            }}
           />
 
           <button

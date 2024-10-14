@@ -177,13 +177,15 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
+        gap: "24px",
+        paddingTop: "30px",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>
+      <h1 style={{ fontSize: "3rem", margin: "0" }}>
         Let's check your roof's sun exposure{" "}
       </h1>
 
-      <p>
+      <p style={{ margin: "0" }}>
         We'll use your location to provide you with tailored information about
         solar panels in your area. Your privacy is important to us, so we won't
         share your address!
@@ -195,28 +197,37 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          marginBottom: "40px",
+          marginBottom: "12px",
         }}
       >
         <div
           style={{
             display: "flex",
-            border: "1px solid #000",
           }}
         >
           <input
-            placeholder="Search by address or ZIP code"
+            placeholder="Search your address to check your roof"
             style={{
               width: "100%",
               height: "20px",
-              padding: "10px",
-              border: "none",
-              borderRadius: "none",
+              padding: "15px 15px 15px 64px",
+              border: "1px solid #D0D5DD",
+              outline: "none",
+              color: "#475467",
+              fontSize: "16px",
+              backgroundImage: "url(./icons/map-pin.png)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "left center",
+              backgroundPositionX: "20px",
+              backgroundSize: "24px",
+              "::placeholder": {
+                color: "#475467",
+              },
             }}
             value={inputValue}
             onChange={handleInputChange}
           />
-
+          {/* 
           <button
             style={{
               border: "none",
@@ -232,7 +243,7 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
             }}
           >
             Check my roof
-          </button>
+          </button> */}
         </div>
 
         {showDropdown && streetsData.length > 0 ? (

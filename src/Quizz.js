@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
   // const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -100,12 +100,14 @@ const Quiz = () => {
     <>
       {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
 
-      <div className="step-content">
+      <div>
         <div
           style={{
             maxWidth: "790px",
             margin: "0 auto",
-            minHeight: "87vh",
+            height: "88vh",
+            display: "flex",
+            alignItems: "center"
           }}
         >
           {renderStep()}

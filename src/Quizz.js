@@ -98,8 +98,7 @@ const Quiz = () => {
     }
   };
 
-  console.log(111, Object.keys(quizData));
-  console.log(222, quizData);
+  console.log("Quiz Data:", quizData);
 
   return (
     <>

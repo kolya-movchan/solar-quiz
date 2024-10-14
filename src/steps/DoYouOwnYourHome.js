@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Card } from "../components/card";
 
 export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,73 +36,19 @@ export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
           width: "550px",
         }}
       >
-        <button
-          style={{
-            padding: "20px 20px 0px 20px",
-            zIndex: "2",
-            paddingBottom: "0",
-            width: "100%",
-            fontSize: "2rem",
-            fontWeight: "bold",
-            border: "1px solid #D2D2D2",
-            borderRadius: "8px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            cursor: "pointer",
-            type: "button",
-            overflow: "hidden",
-          }}
-          onClick={() => handleUserAnswer({ home_ownership: "own" })}
-        >
-          <img src="/icons/own.svg" alt="Own" height={40} width={40} />
+        <Card
+          title={"Own"}
+          img={"/icons/own.svg"}
+          onClick={handleUserAnswer}
+          quizData={{ home_ownership: "own" }}
+        />
 
-          <div
-            style={{
-              padding: "20px",
-              backgroundColor: "#fff",
-              width: "100%",
-            }}
-          >
-            <span style={{ fontSize: "20px" }}>Own</span>
-          </div>
-        </button>
-
-        <button
-          style={{
-            padding: "20px 20px 0px 20px",
-            zIndex: "2",
-            paddingBottom: "0",
-            width: "100%",
-            fontSize: "2rem",
-            fontWeight: "bold",
-            border: "1px solid #D2D2D2",
-            borderRadius: "8px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            cursor: "pointer",
-            type: "button",
-            overflow: "hidden",
-          }}
-          onClick={() => handleUserAnswer({ home_ownership: "rent" })}
-        >
-          <img src="/icons/rent.svg" alt="Rent" height={40} width={40} />
-
-          <div
-            style={{
-              padding: "20px",
-              backgroundColor: "#fff",
-              width: "100%",
-            }}
-          >
-            <span style={{ fontSize: "20px" }}>Rent</span>
-          </div>
-        </button>
+        <Card
+          title={"Rent"}
+          img={"/icons/rent.svg"}
+          onClick={handleUserAnswer}
+          quizData={{ home_ownership: "rent" }}
+        />
       </div>
     </div>
   );

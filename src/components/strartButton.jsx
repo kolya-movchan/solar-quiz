@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const NextButton = ({onClick}) => {
+export const StartButton = ({onClick}) => {
   return (
     <button
     style={{
@@ -21,7 +21,7 @@ export const NextButton = ({onClick}) => {
     type="button"
     onClick={onClick}
   >
-    <span>Next</span>
+    <span>Start</span>
 
     <img
       alt="arrow"

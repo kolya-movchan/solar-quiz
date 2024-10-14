@@ -164,7 +164,7 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
   };
 
   if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
+  if (!isLoaded) return "";
 
   return (
     <div

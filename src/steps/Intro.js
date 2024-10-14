@@ -53,7 +53,12 @@ export const Intro = ({}) => {
           <img
             src="/icons/checkmark.svg"
             alt="Checkmark"
-            style={{ width: "20px", height: "20px", margin: "0", marginTop: "2px" }}
+            style={{
+              width: "20px",
+              height: "20px",
+              margin: "0",
+              marginTop: "2px",
+            }}
           />
 
           <span
@@ -117,7 +122,9 @@ export const Intro = ({}) => {
               gap: "16px",
             }}
           >
-            <h2 style={{ margin: 0 }}>Watch a Personalized Video Explanation</h2>
+            <h2 style={{ margin: 0 }}>
+              Watch a Personalized Video Explanation
+            </h2>
             <p style={{ margin: 0 }}>Description 3</p>
           </div>
         </div>

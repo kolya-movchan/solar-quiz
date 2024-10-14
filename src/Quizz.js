@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./Quiz.css";
 
 import { ProgressBar } from "./components/progressBar";
+import { StartButton } from "./components/strartButton";
 import { BackButton } from "./components/backButton";
 import { NextButton } from "./components/nextButton";
 import { FindYourRoofOnMap } from "./steps/FindYourRoofOnMap";
@@ -116,6 +117,7 @@ const Quiz = () => {
             justifyContent: "space-between",
             padding: "20px",
             paddingRight: "50px",
+            backgroundColor: "#fff",
           }}
         >
           <div>
@@ -128,7 +130,7 @@ const Quiz = () => {
             <NextButton onClick={handleNextQuizNavigation} />
           )}
 
-          {step === 0 && <NextButton onClick={handleNextQuizNavigation} />}
+          {step === 0 && <StartButton onClick={handleNextQuizNavigation} />}
         </div>
       </div>
 

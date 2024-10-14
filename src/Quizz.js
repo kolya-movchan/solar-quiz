@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
-
 import "./Quiz.css";
 
 import { ProgressBar } from "./components/progressBar";
@@ -20,7 +19,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(3);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
   // const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -37,8 +36,8 @@ const Quiz = () => {
 
     if (conditionsToRefuse) {
       setStep(-1);
-    } 
-    
+    }
+
     // else {
     //   setStep((prevStep) => prevStep + 1);
     // }
@@ -65,7 +64,10 @@ const Quiz = () => {
         return <Intro />;
       case 1:
         return (
-          <FindYourRoofOnMap handleUserAnswer={handleUserAnswer} setStateAbbreviation={setStateAbbreviation} />
+          <FindYourRoofOnMap
+            handleUserAnswer={handleUserAnswer}
+            setStateAbbreviation={setStateAbbreviation}
+          />
         );
       case 2:
         return <DoYouOwnYourHome handleUserAnswer={handleUserAnswer} />;
@@ -112,7 +114,7 @@ const Quiz = () => {
             height: "88vh",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           {renderStep()}

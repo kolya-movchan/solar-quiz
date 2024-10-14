@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Card } from "../components/card";
 
 export const YourHomeType = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,22 +8,22 @@ export const YourHomeType = ({ handleUserAnswer }) => {
     {
       name: "Single-Family (SFH)",
       id: "single-family",
-      icon: "/icons/default.png",
+      icon: "/houses-types/single-family.png",
     },
     {
       name: "Mobile/Manufactured",
       id: "mobile-manufactured",
-      icon: "/icons/default.png",
+      icon: "/houses-types/mobile-manufactured.png",
     },
     {
       name: "Apartment/Condo",
       id: "apartment-condo",
-      icon: "/icons/default.png",
+      icon: "/houses-types/apartment-condo.png",
     },
     {
       name: "Townhouse",
       id: "townhouse",
-      icon: "/icons/default.png",
+      icon: "/houses-types/townhouse.png",
     },
   ];
 
@@ -59,32 +60,21 @@ export const YourHomeType = ({ handleUserAnswer }) => {
         }}
       >
         {homeTypes.map((homeType) => (
-          <button
+          <div
             style={{
-              padding: "20px",
-              width: "47%",
-              backgroundColor: "transparent",
-              fontSize: "1rem",
-              border: "1px solid #000",
               display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              cursor: "pointer",
-              type: "button",
+              gap: "20px",
             }}
-            onClick={() => handleUserAnswer({ home_type: homeType.id })}
           >
-            <img
-              src={homeType.icon}
-              alt={homeType.name}
-              height={80}
-              style={{ width: "100%" }}
-              //   width={40}
+            <Card
+              title={homeType.name}
+              img={homeType.icon}
+              onClick={handleUserAnswer}
+              quizData={{ home_type: homeType.id }}
+              imgHeight={"100%" }
+              imgWidth={"100%"}
             />
-            <span>{homeType.name}</span>
-          </button>
+          </div>
         ))}
       </div>
     </div>

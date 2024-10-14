@@ -33,21 +33,27 @@ export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
         style={{
           display: "flex",
           gap: "20px",
-          width: "550px",
+          // width: "550px",
         }}
       >
         <Card
           title={"Own"}
           img={"/icons/own.svg"}
+          imgHeight={40}
+          imgWidth={40}
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "own" }}
+          containerPadding={"20px 20px 0px 20px"}
         />
 
         <Card
           title={"Rent"}
           img={"/icons/rent.svg"}
+          imgHeight={40}
+          imgWidth={40}
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "rent" }}
+          containerPadding={"20px 20px 0px 20px"}
         />
       </div>
     </div>

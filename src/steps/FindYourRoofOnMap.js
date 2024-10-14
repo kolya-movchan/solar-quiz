@@ -262,7 +262,7 @@ export const FindYourRoofOnMap = ({
               left: 0,
               right: 0,
               backgroundColor: "#fff",
-              border: "1px solid #ccc",
+              // border: "1px solid #ccc",
               borderTop: "none",
               maxHeight: "200px",
               overflowY: "auto",
@@ -276,7 +276,7 @@ export const FindYourRoofOnMap = ({
                   textAlign: "left",
                   padding: "10px",
                   cursor: "pointer",
-                  borderBottom: "1px solid #eee",
+                  // borderBottom: "1px solid #eee",
                   backgroundColor:
                     street.place_id === selectedStreet.place_id
                       ? "#e0e0e0"
@@ -312,8 +312,6 @@ export const FindYourRoofOnMap = ({
               left: 0,
               right: 0,
               backgroundColor: "#fff",
-              border: "1px solid #ccc",
-              borderTop: "none",
               maxHeight: "200px",
               overflowY: "auto",
               zIndex: 1,

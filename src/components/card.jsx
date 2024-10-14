@@ -1,13 +1,14 @@
 import React from 'react'
 
-export const Card = ({title, img, onClick, quizData}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, containerPadding}) => {
   return (
     <button
     style={{
-      padding: "20px 20px 0px 20px",
+      padding: containerPadding,
       zIndex: "2",
+      fontFamily: "Roboto",
       paddingBottom: "0",
-      width: "100%",
+      width: "300px",
       fontSize: "2rem",
       fontWeight: "bold",
       border: "1px solid #D2D2D2",
@@ -23,8 +24,8 @@ export const Card = ({title, img, onClick, quizData}) => {
     }}
     onClick={() => onClick(quizData)}
   >
-    <div style={{paddingBottom: "10px"}}>
-      <img src={img} alt="Own" height={40} width={40} />
+    <div>
+      <img src={img} alt="Own" height={imgHeight} width={imgWidth} />
     </div>
 
     <div

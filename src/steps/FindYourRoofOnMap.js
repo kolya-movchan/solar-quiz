@@ -14,7 +14,10 @@ const center = {
 
 const libraries = ["places", "visualization"];
 
-export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
+export const FindYourRoofOnMap = ({
+  handleUserAnswer,
+  setStateAbbreviation,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -173,6 +176,7 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
         padding: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -288,6 +292,7 @@ export const FindYourRoofOnMap = ({ setStateAbbreviation }) => {
                       : "transparent";
                 }}
                 onClick={() => {
+                  handleUserAnswer({ location: street });
                   handleSelectStreet(street);
                 }}
               >

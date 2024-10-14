@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
   // const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -37,9 +37,11 @@ const Quiz = () => {
 
     if (conditionsToRefuse) {
       setStep(-1);
-    } else {
-      setStep((prevStep) => prevStep + 1);
-    }
+    } 
+    
+    // else {
+    //   setStep((prevStep) => prevStep + 1);
+    // }
   };
 
   const handleGoBack = () => {
@@ -63,7 +65,7 @@ const Quiz = () => {
         return <Intro />;
       case 1:
         return (
-          <FindYourRoofOnMap setStateAbbreviation={setStateAbbreviation} />
+          <FindYourRoofOnMap handleUserAnswer={handleUserAnswer} setStateAbbreviation={setStateAbbreviation} />
         );
       case 2:
         return <DoYouOwnYourHome handleUserAnswer={handleUserAnswer} />;
@@ -96,6 +98,9 @@ const Quiz = () => {
     }
   };
 
+  console.log(111, Object.keys(quizData));
+  console.log(222, quizData);
+
   return (
     <>
       {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
@@ -107,7 +112,8 @@ const Quiz = () => {
             margin: "0 auto",
             height: "88vh",
             display: "flex",
-            alignItems: "center"
+            alignItems: "center",
+            justifyContent: "center"
           }}
         >
           {renderStep()}
@@ -129,7 +135,10 @@ const Quiz = () => {
           </div>
 
           {step > 0 && step < 8 && (
-            <NextButton onClick={handleNextQuizNavigation} />
+            <NextButton
+              onClick={handleNextQuizNavigation}
+              isDisabled={step > Object.keys(quizData).length}
+            />
           )}
 
           {step === 0 && <StartButton onClick={handleNextQuizNavigation} />}

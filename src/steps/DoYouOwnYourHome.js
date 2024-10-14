@@ -26,17 +26,25 @@ export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>Do you own your home?</h1>
+      <h1 style={{ fontSize: "3rem" }}>Do you own or rent your home?</h1>
 
-      <div style={{ display: "flex", gap: "20px", width: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          width: "550px",
+        }}
+      >
         <button
           style={{
-            padding: "20px",
+            padding: "20px 20px 0px 20px",
+            zIndex: "2",
+            paddingBottom: "0",
             width: "100%",
-            backgroundColor: "transparent",
             fontSize: "2rem",
             fontWeight: "bold",
-            border: "1px solid #000",
+            border: "1px solid #D2D2D2",
+            borderRadius: "8px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -44,21 +52,33 @@ export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
             gap: "10px",
             cursor: "pointer",
             type: "button",
+            overflow: "hidden",
           }}
-          onClick={() => handleUserAnswer({ home_ownership: "yes" })}
+          onClick={() => handleUserAnswer({ home_ownership: "own" })}
         >
-          <img src="/icons/default.png" alt="Yes" height={40} width={40} />
-          <span>Yes</span>
+          <img src="/icons/own.svg" alt="Own" height={40} width={40} />
+
+          <div
+            style={{
+              padding: "20px",
+              backgroundColor: "#fff",
+              width: "100%",
+            }}
+          >
+            <span style={{ fontSize: "20px" }}>Own</span>
+          </div>
         </button>
 
         <button
           style={{
-            padding: "20px",
+            padding: "20px 20px 0px 20px",
+            zIndex: "2",
+            paddingBottom: "0",
             width: "100%",
-            backgroundColor: "transparent",
             fontSize: "2rem",
             fontWeight: "bold",
-            border: "1px solid #000",
+            border: "1px solid #D2D2D2",
+            borderRadius: "8px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -66,11 +86,21 @@ export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
             gap: "10px",
             cursor: "pointer",
             type: "button",
+            overflow: "hidden",
           }}
-          onClick={() => handleUserAnswer({ home_ownership: "no" })}
+          onClick={() => handleUserAnswer({ home_ownership: "rent" })}
         >
-          <img src="/icons/default.png" alt="No" height={40} width={40} />
-          <span>No</span>
+          <img src="/icons/rent.svg" alt="Rent" height={40} width={40} />
+
+          <div
+            style={{
+              padding: "20px",
+              backgroundColor: "#fff",
+              width: "100%",
+            }}
+          >
+            <span style={{ fontSize: "20px" }}>Rent</span>
+          </div>
         </button>
       </div>
     </div>

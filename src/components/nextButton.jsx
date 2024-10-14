@@ -1,11 +1,11 @@
 import React from 'react'
 
-export const NextButton = ({onClick}) => {
+export const NextButton = ({onClick, isDisabled}) => {
   return (
     <button
     style={{
       border: "none",
-      backgroundColor: "#FE4A19",
+      backgroundColor: isDisabled ? "grey" : "#FE4A19",
       borderRadius: "8px",
       color: "#fff",
       cursor: "pointer",
@@ -17,9 +17,11 @@ export const NextButton = ({onClick}) => {
       fontWeight: "bold",
       height: "20px",
       boxSizing: "content-box",
+      cursor: isDisabled ? "not-allowed" : "pointer"
     }}
     type="button"
     onClick={onClick}
+    disabled={isDisabled}
   >
     <span>Next</span>
 

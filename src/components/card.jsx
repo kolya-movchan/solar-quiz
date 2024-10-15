@@ -1,12 +1,11 @@
 import React from 'react'
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, containerPadding}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, containerPadding, isOneBg}) => {
   return (
     <button
     style={{
       padding: containerPadding,
       zIndex: "2",
-      fontFamily: "Roboto",
       paddingBottom: "0",
       width: "300px",
       fontSize: "2rem",
@@ -17,16 +16,16 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, contai
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      gap: "10px",
       cursor: "pointer",
       type: "button",
       overflow: "hidden",
+      backgroundColor: isOneBg ? "#fff" : "transparent",
     }}
     onClick={() => onClick(quizData)}
   >
-    <div>
-      <img src={img} alt="Own" height={imgHeight} width={imgWidth} />
-    </div>
+
+      <img style={{marginBottom: "10px"}} src={img} alt="Own" height={imgHeight} width={imgWidth} />
+
 
     <div
       style={{

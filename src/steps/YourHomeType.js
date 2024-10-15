@@ -57,6 +57,8 @@ export const YourHomeType = ({ handleUserAnswer }) => {
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {homeTypes.map((homeType) => (

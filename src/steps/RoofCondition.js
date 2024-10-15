@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Card } from "../components/card";
 
 export const RoofCondition = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,22 +8,22 @@ export const RoofCondition = ({ handleUserAnswer }) => {
     {
       name: "Good",
       id: "good",
-      icon: "/icons/default.png",
+      icon: "/houses-conditions/good.svg",
     },
     {
       name: "Need repairs",
       id: "need-repairs",
-      icon: "/icons/default.png",
+      icon: "/houses-conditions/need-repairs.svg",
     },
     {
       name: "Needs re-roof",
       id: "needs-re-roof",
-      icon: "/icons/default.png",
+      icon: "/houses-conditions/need-reroof.svg",
     },
     {
       name: "Unsure",
       id: "unsure",
-      icon: "/icons/default.png",
+      icon: "/houses-conditions/unsure.svg",
     },
   ];
 
@@ -51,46 +52,31 @@ export const RoofCondition = ({ handleUserAnswer }) => {
       <h1 style={{ fontSize: "3rem" }}>
         How would you describe the condition of your roof?
       </h1>
-
+      {/* 
       <p style={{ marginBottom: "40px" }}>
         A healthy roof is essential for solar panel installation. Please assess
         the condition of your roof.
-      </p>
+      </p> */}
 
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
-          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {roofConditions.map((condition) => (
-          <button
-            style={{
-              padding: "20px",
-              width: "22%",
-              backgroundColor: "transparent",
-              fontSize: "1rem",
-              border: "1px solid #000",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              cursor: "pointer",
-              type: "button",
-            }}
+          <Card
+            title={condition.name}
+            img={condition.icon}
+            imgHeight={64}
+            imgWidth={64}
             onClick={() => handleUserAnswer({ roof_condition: condition.id })}
-          >
-            <img
-              src={condition.icon}
-              alt={condition.name}
-              height={80}
-              style={{ width: "100%" }}
-            />
-            <span>{condition.name}</span>
-          </button>
+            isOneBg={true}
+            containerPadding={"20px 20px 0px 20px"}
+          />
         ))}
       </div>
     </div>

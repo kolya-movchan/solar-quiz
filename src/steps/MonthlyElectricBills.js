@@ -6,23 +6,19 @@ export const MonthlyElectricBills = ({ handleUserAnswer }) => {
   const utilityBillsList = [
     {
       name: "$0 – $150",
-      id: "$0–$150",
-      icon: "/icons/default.png",
+      id: "$0-$150",
     },
     {
       name: "$150 – $300",
-      id: "$150–$300",
-      icon: "/icons/default.png",
+      id: "$150-$300",
     },
     {
       name: "$300 – $450",
-      id: "$300–$450",
-      icon: "/icons/default.png",
+      id: "$300-$450",
     },
     {
       name: "$450+",
       id: "$450+",
-      icon: "/icons/default.png",
     },
   ];
 
@@ -59,7 +55,6 @@ export const MonthlyElectricBills = ({ handleUserAnswer }) => {
       <div
         style={{
           display: "flex",
-          // flexWrap: "wrap",
           gap: "20px",
           width: "100%",
         }}
@@ -68,7 +63,7 @@ export const MonthlyElectricBills = ({ handleUserAnswer }) => {
           <Card
             key={idx}
             title={bill.name}
-            img={bill.icon}
+            img={`/emojies/${bill.id}.png`}
             onClick={() => handleUserAnswer({ utility_bill_amount: bill.id })}
             imgHeight={64}
             imgWidth={64}
@@ -78,7 +73,6 @@ export const MonthlyElectricBills = ({ handleUserAnswer }) => {
               justifyContent: "space-between",
               backgroundColor: "#FAFAFA",
               paddingTop: "50px",
-              // display: "block",
             }}
           />
         ))}

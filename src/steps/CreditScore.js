@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { Card } from "../components/card";
 
 export const CreditScore = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const creditScoreList = [
     {
-      name: "Below 600",
-      id: "below-600",
-      icon: "/icons/default.png",
+      name: "Below 550",
+      id: "below-550",
+      color: "#FED6CB",
+    },
+    {
+      name: "550 - 600",
+      id: "550-600",
+      color: "#FEF8CB",
     },
     {
       name: "600 - 650",
       id: "600-650",
-      icon: "/icons/default.png",
+      color: "#F3FECB",
     },
     {
-      name: "650 - 700",
-      id: "650-700",
-      icon: "/icons/default.png",
-    },
-    {
-      name: "700+",
-      id: "700+",
-      icon: "/icons/default.png",
+      name: "650+",
+      id: "650+",
+      color: "#D1FECB",
     },
   ];
 
@@ -54,31 +55,26 @@ export const CreditScore = ({ handleUserAnswer }) => {
       <div
         style={{
           display: "flex",
-          flexWrap: "wrap",
           gap: "20px",
           width: "100%",
         }}
       >
         {creditScoreList.map((score) => (
-          <button
-            style={{
-              padding: "20px",
-              width: "22%",
-              backgroundColor: "transparent",
-              fontSize: "1rem",
-              border: "1px solid #000",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              cursor: "pointer",
-              type: "button",
-            }}
+          <Card
+            key={score.id}
+            title={score.name}
+            img={`/emojies/${score.id}.png`}
             onClick={() => handleUserAnswer({ credit_score: score.id })}
-          >
-            <span>{score.name}</span>
-          </button>
+            imgHeight={64}
+            imgWidth={64}
+            className={{
+              width: "175px",
+              height: "225px",
+              justifyContent: "space-between",
+              backgroundColor: score.color,
+              paddingTop: "50px",
+            }}
+          />
         ))}
       </div>
     </div>

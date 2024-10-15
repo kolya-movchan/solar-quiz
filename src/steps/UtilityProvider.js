@@ -67,7 +67,6 @@ export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
             width: "100%",
             boxSizing: "border-box",
             outline: "none",
-            maxWidth: "620px",
           }}
           onChange={(e) => handleUserAnswer({ provider: e.target.value })}
         />

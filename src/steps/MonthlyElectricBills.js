@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { Card } from "../components/card";
 export const MonthlyElectricBills = ({ handleUserAnswer }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -52,44 +52,35 @@ export const MonthlyElectricBills = ({ handleUserAnswer }) => {
         How much are your monthly electric bills?
       </h1>
 
-      <p style={{ marginBottom: "40px" }}>
+      {/* <p style={{ marginBottom: "40px" }}>
         Your monthly bill helps us calculate your potential solar savings
-      </p>
+      </p> */}
 
       <div
         style={{
           display: "flex",
-          flexWrap: "wrap",
+          // flexWrap: "wrap",
           gap: "20px",
           width: "100%",
         }}
       >
-        {utilityBillsList.map((bill) => (
-          <button
-            style={{
-              padding: "20px",
-              width: "22%",
-              backgroundColor: "transparent",
-              fontSize: "1rem",
-              border: "1px solid #000",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              cursor: "pointer",
-              type: "button",
-            }}
+        {utilityBillsList.map((bill, idx) => (
+          <Card
+            key={idx}
+            title={bill.name}
+            img={bill.icon}
             onClick={() => handleUserAnswer({ utility_bill_amount: bill.id })}
-          >
-            <img
-              src={bill.icon}
-              alt={bill.name}
-              height={80}
-              style={{ width: "100%" }}
-            />
-            <span>{bill.name}</span>
-          </button>
+            imgHeight={64}
+            imgWidth={64}
+            className={{
+              width: "175px",
+              height: "225px",
+              justifyContent: "space-between",
+              backgroundColor: "#FAFAFA",
+              paddingTop: "50px",
+              // display: "block",
+            }}
+          />
         ))}
       </div>
     </div>

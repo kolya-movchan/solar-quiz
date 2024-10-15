@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, containerPadding, isOneBg}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, containerPadding, isOneBg, className}) => {
   return (
     <button
     style={{
@@ -20,6 +20,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, contai
       type: "button",
       overflow: "hidden",
       backgroundColor: isOneBg ? "#fff" : "transparent",
+      ...className
     }}
     onClick={() => onClick(quizData)}
   >

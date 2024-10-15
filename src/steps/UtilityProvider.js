@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { statesProviders } from "../statesProviders";
-
+import { Card } from "../components/card";
 export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const providersList = statesProviders.find(
-    (state) => state.State === stateAbbreviation
-  )?.Providers;
+    (data) => data.State === stateAbbreviation
+  )?.Providers || ["APS", "SRP", "TEP"];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,37 +37,40 @@ export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
+          alignItems: "center",
+          margin: "0 auto",
           width: "100%",
+          maxWidth: "620px",
         }}
       >
         {providersList?.map((provider, idx) => (
-          <button
+          <Card
             key={idx}
-            style={{
-              padding: "20px",
-              width: "22%",
-              backgroundColor: "transparent",
-              fontSize: "1rem",
-              border: "1px solid #000",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              cursor: "pointer",
-              type: "button",
-            }}
+            title={provider}
+            img={"/providers/provider.png"}
             onClick={() => handleUserAnswer({ provider })}
-          >
-            {/* <img
-              src={provider.icon}
-              alt={provider.name}
-              height={80}
-              style={{ width: "100%" }}
-            /> */}
-            <span>{provider}</span>
-          </button>
+            isOneBg={true}
+            containerPadding={"20px 20px 0px 20px"}
+            imgHeight={64}
+            imgWidth={64}
+          />
         ))}
+
+        <input
+          type="text"
+          placeholder="Other Utility Provider"
+          style={{
+            border: "1px solid #D2D2D2",
+            borderRadius: "8px",
+            padding: "20px",
+            fontSize: "1rem",
+            width: "100%",
+            boxSizing: "border-box",
+            outline: "none",
+            maxWidth: "620px",
+          }}
+          onChange={(e) => handleUserAnswer({ provider: e.target.value })}
+        />
       </div>
     </div>
   );

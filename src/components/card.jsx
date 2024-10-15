@@ -24,7 +24,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, contai
     onClick={() => onClick(quizData)}
   >
 
-      <img style={{marginBottom: "10px"}} src={img} alt="Own" height={imgHeight} width={imgWidth} />
+      <img style={{marginBottom: "10px", objectFit: "cover"}} src={img} alt="Own" height={imgHeight} width={imgWidth} />
 
 
     <div

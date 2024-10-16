@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "../App.css";
 
 import { toast } from "react-toastify";
@@ -102,7 +101,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   };
 
   const isFormValid = () => {
-    return formData.fullName && formData.email && formData.phoneNumber;
+    return (
+      formData.fullName && formData.email && formData.phoneNumber.length > 9
+    );
   };
 
   const handleOTPChange = (e) => {
@@ -185,6 +186,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        width: "100%",
+        height: "100%",
         padding: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -193,38 +196,63 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     >
       <div
         style={{
-          border: "1px solid #000",
-          marginBottom: "40px",
-          borderRadius: "16px",
+          background:
+            "linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #FE4A19, #982C0F) border-box",
+          color: "#313149",
+          padding: "10px",
+          border: "1px solid transparent",
+          borderRadius: "55px",
+          display: "inline-block",
+          marginBottom: "32px",
         }}
       >
         <p
           style={{
-            paddingLeft: "5px",
-            paddingRight: "5px",
+            paddingLeft: "16px",
+            paddingRight: "16px",
+            paddingTop: "4px",
+            paddingBottom: "4px",
             display: "flex",
             alignItems: "center",
             margin: "0",
+            gap: "8px",
           }}
         >
           <img
             src="/icons/checkmark.svg"
             alt="Checkmark"
-            style={{ width: "20px", height: "20px", margin: "10px" }}
+            style={{
+              width: "20px",
+              height: "20px",
+              margin: "0",
+              marginTop: "2px",
+            }}
           />
 
-          <span style={{ fontWeight: "500" }}>
-            Free Home Solar Design – Requested by 180,000+ Homeowners
+          <span
+            style={{ fontWeight: "500", fontSize: "14px", color: "#FE4A19" }}
+          >
+            Free Home Solar Design – Requested by 
+            <span style={{ fontWeight: 800 }}>180,000+</span> Homeowners
           </span>
         </p>
       </div>
       <h1 style={{ fontSize: "3rem", margin: "0", marginBottom: "25px" }}>
         One more step...
       </h1>
-      <p style={{ marginBottom: "40px" }}>
+      <p
+        style={{
+          marginBottom: "20px",
+          color: "#475467",
+          maxWidth: "410px",
+          lineHeight: "27px",
+          marginTop: "0",
+        }}
+      >
         Amazing!!! Now we can calculate how much you could save with 
-        <strong>$0 Solar Program</strong> and share it with you shortly. Let us
-        know where we can share your calculations and the new roof design. 
+        <strong style={{ fontWeight: 650 }}>$0 Solar Program</strong> and share
+        it with you shortly. Let us know where we can share your calculations
+        and the new roof design. 
       </p>
 
       <div
@@ -232,38 +260,77 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           display: "flex",
           gap: "20px",
           padding: "15px",
-          border: "1px solid #000",
-          marginBottom: "30px",
+          border: "1px solid #027A48",
+          backgroundColor: "#E0ECE2",
+          marginBottom: "20px",
+          borderRadius: "8px",
         }}
       >
-        <span>Your home status</span>
-        <span style={{ fontWeight: "bold" }}>Pre-Qualified</span>
-        <img src="/icons/info.svg" alt="Info" style={{ width: "20px" }} />
+        <span style={{ color: "#027A48" }}>Your home status:</span>
+        <span style={{ fontWeight: "bold", color: "#027A48" }}>
+          Pre-Qualified
+        </span>
+        <img
+          src="/icons/alert-circle.svg"
+          alt="Info"
+          style={{ width: "20px" }}
+        />
       </div>
 
-      <div style={{ width: "55%" }}>
+      <div style={{ width: "100%" }}>
         <form
           style={{
             display: "flex",
             flexDirection: "column",
+            flexWrap: "nowrap",
             gap: "10px",
-            width: "100%",
+            margin: "0 auto",
+            padding: "0 80px",
+            maxWidth: "320px",
           }}
           onSubmit={handleOTPVerification}
           novalidate
         >
-          <input
-            type="text"
-            placeholder="Full Name*"
-            style={{ padding: "10px" }}
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleInputChange}
-          />
+          <div style={{ display: "flex", gap: "10px" }}>
+            <input
+              type="text"
+              placeholder="First Name*"
+              style={{
+                padding: "15px 10px",
+                width: "100%",
+                border: "1px solid #D0D5DD",
+                borderRadius: "8px",
+                outline: "none",
+              }}
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleInputChange}
+            />
+
+            <input
+              type="text"
+              placeholder="Last Name*"
+              style={{
+                padding: "15px 10px",
+                width: "100%",
+                border: "1px solid #D0D5DD",
+                borderRadius: "8px",
+                outline: "none",
+              }}
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleInputChange}
+            />
+          </div>
           <input
             type="email"
             placeholder="Email*"
-            style={{ padding: "10px" }}
+            style={{
+              padding: "15px 10px",
+              border: "1px solid #D0D5DD",
+              borderRadius: "8px",
+              outline: "none",
+            }}
             name="email"
             value={formData.email}
             onChange={handleInputChange}
@@ -271,7 +338,12 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           <input
             type="tel"
             placeholder="Phone Number*"
-            style={{ padding: "10px" }}
+            style={{
+              padding: "15px 10px",
+              border: "1px solid #D0D5DD",
+              borderRadius: "8px",
+              outline: "none",
+            }}
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleInputChange}
@@ -283,20 +355,34 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             }}
           />
 
+          <p
+            style={{
+              textAlign: "left",
+              fontSize: "12px",
+              color: "#475467",
+              margin: "0",
+            }}
+          >
+            We'll text you to confirm your number. Standard message and data
+            rates apply.{" "}
+          </p>
+
           <button
             style={{
               border: "none",
-              backgroundColor: isFormValid() ? "#000" : "#ccc",
+              backgroundColor: isFormValid() ? "#FE4A19" : "#ccc",
               color: "#fff",
               cursor: isFormValid() ? "pointer" : "not-allowed",
               padding: "10px 20px",
-              display: "flex",
               justifyContent: "center",
               alignItems: "center",
               fontWeight: "bold",
               height: "20px",
               boxSizing: "content-box",
               textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
             }}
             type="submit"
             disabled={!isFormValid()}
@@ -304,14 +390,26 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             {isLoading ? (
               <span>Loading...</span>
             ) : (
-              <span>Get Free Solar Design</span>
+              <span>Confirm My Request</span>
             )}
+
+            <img
+              src="/icons/right-arrow.png"
+              alt="Right Arrow"
+              height={16}
+              width={16}
+            />
           </button>
         </form>
 
         <p style={{ fontSize: "0.8rem" }}>
-          Your data is secure by our{" "}
-          <a href="/privacy-policy">Privacy policies</a>
+          Your data is secured by our{" "}
+          <a
+            href="/privacy-policy"
+            style={{ color: "#000", fontWeight: "bold" }}
+          >
+            Privacy policies
+          </a>
         </p>
       </div>
 

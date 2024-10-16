@@ -19,7 +19,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(7);
+  const [step, setStep] = useState(-1);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
   // const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -111,7 +111,7 @@ const Quiz = () => {
           style={{
             maxWidth: "790px",
             margin: "0 auto",
-            height: "88vh",
+            height: step < 8 && step > 0 ? "88vh" : "100vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -120,31 +120,33 @@ const Quiz = () => {
           {renderStep()}
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "20px",
-            paddingRight: "50px",
-            backgroundColor: "#fff",
-            maxHeight: "12vh"
-          }}
-        >
-          <div>
-            {step > 1 && !quizData.isQuizDataSubmitted && (
-              <BackButton onClick={handleGoBack} />
+        {step < 8 && step > 0 && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "20px",
+              paddingRight: "50px",
+              backgroundColor: "#fff",
+              maxHeight: "12vh",
+            }}
+          >
+            <div>
+              {step > 1 && !quizData.isQuizDataSubmitted && (
+                <BackButton onClick={handleGoBack} />
+              )}
+            </div>
+
+            {step > 0 && step < 8 && (
+              <NextButton
+                onClick={handleNextQuizNavigation}
+                isDisabled={step > Object.keys(quizData).length}
+              />
             )}
+
+            {step === 0 && <StartButton onClick={handleNextQuizNavigation} />}
           </div>
-
-          {step > 0 && step < 8 && (
-            <NextButton
-              onClick={handleNextQuizNavigation}
-              isDisabled={step > Object.keys(quizData).length}
-            />
-          )}
-
-          {step === 0 && <StartButton onClick={handleNextQuizNavigation} />}
-        </div>
+        )}
       </div>
 
       <PopUp />

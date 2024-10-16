@@ -20,14 +20,16 @@ export const Unqualified = () => {
         alignItems: "center",
         justifyContent: "center",
         padding: "40px",
+        boxSizing: "content-box",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
+        gap: "24px",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>Oh no...</h1>
+      <h1 style={{ fontSize: "3rem", marginBottom: "20px" }}>Oh no!</h1>
 
-      <p style={{ marginBottom: "40px" }}>
+      <p style={{ margin: "0", color: "#475467" }}>
         Unfortunately, your home is not applicable for the program..
       </p>
 
@@ -36,31 +38,38 @@ export const Unqualified = () => {
           display: "flex",
           gap: "20px",
           padding: "15px",
-          border: "1px solid #000",
-          marginBottom: "30px",
+          border: "1px solid #B42318",
+          marginBottom: "0",
+          backgroundColor: "#FFF3F2",
+          borderRadius: "8px",
         }}
       >
-        <span>Your home status</span>
-        <span style={{ fontWeight: "bold" }}>Unqualified</span>
-        <img src="/icons/info.svg" alt="Info" style={{ width: "20px" }} />
+        <span style={{ color: "#B42318" }}>Your home status:</span>
+        <span style={{ color: "#B42318", fontWeight: "650" }}>Unqualified</span>
+        <img
+          src="/icons/red-alert-circle.svg"
+          alt="Info"
+          style={{ width: "20px" }}
+        />
       </div>
 
       <a
         href="/"
         style={{
           border: "none",
-          backgroundColor: "#000",
+          backgroundColor: "#FE4A19",
           color: "#fff",
           cursor: "pointer",
-          padding: "10px 20px",
+          padding: "15px",
           alignItems: "center",
           fontWeight: "bold",
-          height: "20px",
           boxSizing: "content-box",
+          height: "20px",
           textDecoration: "none",
-          width: "50%",
           display: "flex",
           justifyContent: "center",
+          borderRadius: "8px",
+          width: "285px",
         }}
         type="button"
       >

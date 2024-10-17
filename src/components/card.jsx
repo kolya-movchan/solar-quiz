@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames';
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, imgStyle = {}, containerPadding = "0", isOneBg, isActive, isDisabled}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, className, imgStyle = {}, containerPadding = "0", isOneBg, isActive, isDisabled}) => {
   return (
     <div className={classNames(
       "card",
@@ -28,7 +28,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, imgSty
           type: "button",
           overflow: "hidden",
           backgroundColor: isOneBg ? "#fff" : "transparent",
-          // ...className
+          ...className
         }}
         onClick={() => {
         onClick(quizData)

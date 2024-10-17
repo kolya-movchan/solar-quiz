@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../components/card";
 
-export const CreditScore = ({ handleUserAnswer }) => {
+export const CreditScore = ({ handleUserAnswer, quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const creditScoreList = [
@@ -74,6 +74,8 @@ export const CreditScore = ({ handleUserAnswer }) => {
               backgroundColor: score.color,
               paddingTop: "50px",
             }}
+            isActive={quizData.credit_score === score.id}
+            isDisabled={quizData.hasOwnProperty("credit_score")}
           />
         ))}
       </div>

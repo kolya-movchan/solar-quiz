@@ -169,7 +169,7 @@ const Quiz = () => {
               />
             )}
 
-            <NextButton onClick={handleNextQuizNavigation} />
+            {/* <NextButton onClick={handleNextQuizNavigation} /> */}
 
             {step === 0 && <StartButton onClick={handleNextQuizNavigation} />}
           </div>

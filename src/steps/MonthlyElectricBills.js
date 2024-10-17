@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../components/card";
-export const MonthlyElectricBills = ({ handleUserAnswer }) => {
+export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const utilityBillsList = [
@@ -74,6 +74,8 @@ export const MonthlyElectricBills = ({ handleUserAnswer }) => {
               backgroundColor: "#FAFAFA",
               paddingTop: "50px",
             }}
+            isActive={quizData.utility_bill_amount === bill.id}
+            isDisabled={quizData.hasOwnProperty("utility_bill_amount")}
           />
         ))}
       </div>

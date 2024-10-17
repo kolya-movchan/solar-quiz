@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { StartButton } from "../components/strartButton";
+
 import "../App.css";
 
-export const Intro = ({}) => {
+export const Intro = ({ handleNextQuizNavigation }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -20,7 +22,6 @@ export const Intro = ({}) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
@@ -61,27 +62,42 @@ export const Intro = ({}) => {
             }}
           />
 
-          <span
-            style={{ fontWeight: "500", fontSize: "14px", color: "#FE4A19" }}
+          <p
+            style={{
+              fontWeight: "500",
+              margin: "0",
+              fontSize: "14px",
+              color: "#FE4A19",
+            }}
+            className="intro-banner-paragraph"
           >
             Free Home Solar Design – Requested by 
             <span style={{ fontWeight: 800 }}>180,000+</span> Homeowners
-          </span>
+          </p>
         </p>
       </div>
       <h1
         style={{
-          fontSize: "3rem",
           margin: "0",
           marginBottom: "32px",
         }}
+        className="intro-title"
       >
         See How Much Money You Could Save w/ This $0 Solar Program That Cuts
         Electric Bills by 30-50% – Instantly
       </h1>
 
-      <div style={{ display: "flex", gap: "24px", flexDirection: "column" }}>
-        <div style={{ display: "flex", gap: "24px", alignItems: "start" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "24px",
+          flexDirection: "column",
+          marginBottom: "20px",
+          maxWidth: "340px",
+          textAlign: "left",
+        }}
+      >
+        <div style={{ display: "flex", gap: "20px", alignItems: "start" }}>
           <img src="/icons/triple-lines.svg" alt="" />
 
           <div
@@ -89,14 +105,18 @@ export const Intro = ({}) => {
               display: "flex",
               alignItems: "start",
               flexDirection: "column",
-              gap: "16px",
+              gap: "8px",
             }}
+            className="intro-boolet-container"
           >
-            <h2 style={{ margin: 0 }}>Easily Compare Utility vs Solar Costs</h2>
-            <p style={{ margin: 0 }}>Description 1</p>
+            <h2 style={{ margin: 0 }} className="intro-title-2">
+              Easily Compare Utility vs Solar Costs
+            </h2>
+            <p style={{ margin: 0, color: "#475467" }}>Description 1</p>
           </div>
         </div>
-        <div style={{ display: "flex", gap: "24px", alignItems: "start" }}>
+
+        <div style={{ display: "flex", gap: "20px", alignItems: "start" }}>
           <img src="/icons/triple-lines.svg" alt="" />
 
           <div
@@ -104,14 +124,18 @@ export const Intro = ({}) => {
               display: "flex",
               alignItems: "start",
               flexDirection: "column",
-              gap: "16px",
+              gap: "8px",
             }}
+            className="intro-boolet-container"
           >
-            <h2 style={{ margin: 0 }}>Get a Free Custom Home Solar Design</h2>
-            <p style={{ margin: 0 }}>Description 2</p>
+            <h2 style={{ margin: 0 }} className="intro-title-2">
+              Get a Free Custom Home Solar Design
+            </h2>
+            <p style={{ margin: 0, color: "#475467" }}>Description 2</p>
           </div>
         </div>
-        <div style={{ display: "flex", gap: "24px", alignItems: "start" }}>
+
+        <div style={{ display: "flex", gap: "20px", alignItems: "start" }}>
           <img src="/icons/triple-lines.svg" alt="" />
 
           <div
@@ -119,15 +143,18 @@ export const Intro = ({}) => {
               display: "flex",
               alignItems: "start",
               flexDirection: "column",
-              gap: "16px",
+              gap: "8px",
             }}
+            className="intro-boolet-container"
           >
-            <h2 style={{ margin: 0 }}>
+            <h2 style={{ margin: 0 }} className="intro-title-2">
               Watch a Personalized Video Explanation
             </h2>
-            <p style={{ margin: 0 }}>Description 3</p>
+            <p style={{ margin: 0, color: "#475467" }}>Description 3</p>
           </div>
         </div>
+
+        <StartButton onClick={handleNextQuizNavigation} className="start-btn-desktop" />
       </div>
     </div>
   );

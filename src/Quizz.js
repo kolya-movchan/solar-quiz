@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
 import "./Quiz.css";
+import classNames from "classnames";
 
 import { ProgressBar } from "./components/progressBar";
 import { StartButton } from "./components/strartButton";
@@ -60,7 +61,7 @@ const Quiz = () => {
         return <Unqualified />;
 
       case 0:
-        return <Intro />;
+        return <Intro handleNextQuizNavigation={handleNextQuizNavigation} />;
       case 1:
         return (
           <FindYourRoofOnMap
@@ -136,16 +137,27 @@ const Quiz = () => {
           style={{
             maxWidth: "790px",
             margin: "0 auto",
-            height: step < 8 && step >= 0 ? "88vh" : "100vh",
+            // minHeight: step < 8 && step > 0 ? "88vh" : "100vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
+          className={classNames(
+            { wrapper: step < 8 && step > 0 },
+            { "first-and-last-step-wrapper": step === 0 || step === 8 }
+          )}
         >
           {renderStep()}
         </div>
 
-        {step < 8 && step >= 0 && (
+        <div className="start-btn-mobile-wrapper">
+          <StartButton
+            onClick={handleNextQuizNavigation}
+            className="start-btn-mobile"
+          />
+        </div>
+
+        {step < 8 && step > 0 && (
           <div
             style={{
               display: "flex",
@@ -168,10 +180,6 @@ const Quiz = () => {
                 isDisabled={step > Object.keys(quizData).length}
               />
             )}
-
-            {/* <NextButton onClick={handleNextQuizNavigation} /> */}
-
-            {step === 0 && <StartButton onClick={handleNextQuizNavigation} />}
           </div>
         )}
       </div>

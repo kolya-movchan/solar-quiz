@@ -1,23 +1,22 @@
 import React from 'react'
 
-export const StartButton = ({onClick}) => {
+export const StartButton = ({onClick, className}) => {
   return (
     <button
     style={{
+      width: "100%",
+      height: "56px",
       border: "none",
       backgroundColor: "#FE4A19",
       borderRadius: "8px",
       color: "#fff",
       cursor: "pointer",
-      padding: "12px 24px",
-      display: "flex",
+      padding: "0 24px",
       gap: "10px",
-      justifyContent: "space-between",
-      alignItems: "center",
       fontWeight: "bold",
-      height: "20px",
       boxSizing: "content-box",
     }}
+    className={className}
     type="button"
     onClick={onClick}
   >

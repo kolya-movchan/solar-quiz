@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(8);
+  const [step, setStep] = useState(0);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 

@@ -97,6 +97,13 @@ button {
   min-height: 100vh;
 }
 
+.unqualified-wrapper {
+  min-height: 100vh;
+  max-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   .container {
@@ -239,6 +246,14 @@ button {
   .card-emojie-img {
     padding: 0 20px 0 20px;
   }
+
+  .unqualified-banner {
+    width: 100%;
+  }
+
+  .unqualified-btn {
+    width: 100%;
+  }
 }
 
 /* DESKTOP */
@@ -337,6 +352,10 @@ button {
     justify-content: space-between;
     background-color: #FAFAFA;
     padding-top: 50px;
+  }
+
+  .unqualified-btn {
+    width: 285px;
   }
 }
 

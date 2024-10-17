@@ -15,11 +15,12 @@ export const Unqualified = () => {
     <div
       className="container"
       style={{
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "40px",
+        // padding: "40px",
         boxSizing: "content-box",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -27,17 +28,19 @@ export const Unqualified = () => {
         gap: "24px",
       }}
     >
-      <h1 style={{ fontSize: "3rem", marginBottom: "20px" }}>Oh no!</h1>
+      <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>Oh no!</h1>
 
-      <p style={{ margin: "0", color: "#475467" }}>
+      <p style={{ margin: "0", color: "#475467", fontSize: "18px" }}>
         Unfortunately, your home is not applicable for the program..
       </p>
 
       <div
+        className="unqualified-banner"
         style={{
           display: "flex",
           gap: "20px",
           padding: "15px",
+          boxSizing: "border-box",
           border: "1px solid #B42318",
           marginBottom: "0",
           backgroundColor: "#FFF3F2",
@@ -55,21 +58,21 @@ export const Unqualified = () => {
 
       <a
         href="/"
+        className="unqualified-btn"
         style={{
+          boxSizing: "border-box",
           border: "none",
           backgroundColor: "#FE4A19",
           color: "#fff",
           cursor: "pointer",
-          padding: "15px",
+          padding: "0 24px",
           alignItems: "center",
           fontWeight: "bold",
-          boxSizing: "content-box",
-          height: "20px",
+          height: "56px",
           textDecoration: "none",
           display: "flex",
           justifyContent: "center",
           borderRadius: "8px",
-          width: "285px",
         }}
         type="button"
       >

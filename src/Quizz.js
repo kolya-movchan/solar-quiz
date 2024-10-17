@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(7);
+  const [step, setStep] = useState(-1);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -143,7 +143,8 @@ const Quiz = () => {
           }}
           className={classNames(
             { wrapper: step < 8 && step > 0 },
-            { "first-and-last-step-wrapper": step === 0 || step === 8 },
+            { "first-and-last-step-wrapper": step === 0  || step === 8 },
+            { "unqualified-wrapper": step === -1 },
             // { "middle-steps-wrapper": step > 1 && step < 8 }
           )}
         >

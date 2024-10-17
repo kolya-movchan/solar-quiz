@@ -180,7 +180,7 @@ export const FindYourRoofOnMap = ({
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
-        gap: "24px",
+        gap: "20px",
         // paddingTop: "30px",
       }}
     >
@@ -200,7 +200,6 @@ export const FindYourRoofOnMap = ({
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          marginBottom: "12px",
         }}
       >
         <div

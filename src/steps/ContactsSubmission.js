@@ -17,7 +17,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [showOTPInput, setShowOTPInput] = useState(false);
   const [otp, setOtp] = useState([]);
   const [isOTPSubmitted, setIsOTPSubmitted] = useState(false);
-  const [resendTimer, setResendTimer] = useState(0);
+  // const [resendTimer, setResendTimer] = useState(0);
 
   const otpRefs = useRef([]);
 
@@ -104,7 +104,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       formData.firstName &&
       formData.lastName &&
       formData.email &&
-      formData.phoneNumber.length > 9
+      formData.phoneNumber.length > 11
     );
   };
 
@@ -124,6 +124,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     console.log("Phone Number:", phoneNumber);
     console.log("Country Code:", countryCode);
     try {
+      setIsLoading(true);
+
       const response = await axios.post(
         `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
         {
@@ -137,15 +139,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       }
       setShowOTPInput(true);
 
-      if (isRetry) {
-        setResendTimer(60);
-      }
+      // if (isRetry) {
+      //   setResendTimer(60);
+      // }
     } catch (error) {
       toast.error(
         error.response
           ? error.response.data
           : "Something went wrong. Please try again later."
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -224,17 +228,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     }
   }, [otp, isOTPSubmitted]);
 
-  useEffect(() => {
-    let interval;
-    if (resendTimer > 0) {
-      interval = setInterval(() => {
-        setResendTimer((prev) => prev - 1);
-      }, 1000);
-    } else if (resendTimer === 0) {
-      clearInterval(interval);
-    }
-    return () => clearInterval(interval);
-  }, [resendTimer]);
+  // useEffect(() => {
+  //   let interval;
+  //   if (resendTimer > 0) {
+  //     interval = setInterval(() => {
+  //       setResendTimer((prev) => prev - 1);
+  //     }, 1000);
+  //   } else if (resendTimer === 0) {
+  //     clearInterval(interval);
+  //   }
+  //   return () => clearInterval(interval);
+  // }, [resendTimer]);
 
   return (
     <>
@@ -611,20 +615,18 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 style={{
                   backgroundColor: "transparent",
                   border: "none",
-                  cursor: resendTimer === 0 ? "pointer" : "not-allowed",
+                  cursor: "pointer",
+                  // cursor: resendTimer === 0 ? "pointer" : "not-allowed",
                   fontSize: "18px",
                   color: "#98A2B3",
                   fontWeight: "700",
                   textDecoration: "underline",
                 }}
-                onClick={(e) => {
-                  if (resendTimer === 0) {
-                    handleOTPVerification(e, true);
-                  }
-                }}
-                disabled={resendTimer !== 0}
+                onClick={(e) => handleOTPVerification(e, true)}
+                // disabled={resendTimer !== 0}
               >
-                Resend the code {resendTimer > 0 ? `(${resendTimer})` : ""}
+                Resend the code
+                {/* Resend the code {resendTimer > 0 ? `(${resendTimer})` : ""} */}
               </button>
             </div>
 

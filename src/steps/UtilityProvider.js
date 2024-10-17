@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { statesProviders } from "../statesProviders";
 import { Card } from "../components/card";
-export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation, quizData }) => {
+export const UtilityProvider = ({
+  handleUserAnswer,
+  stateAbbreviation,
+  quizData,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const providersList = statesProviders.find(
@@ -18,31 +22,15 @@ export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation, quizData 
 
   return (
     <div
-      className="container"
+      className="container container-with-cards"
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "40px",
-        gap: "20px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>Who is your utility provider?</h1>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "20px",
-          alignItems: "center",
-          margin: "0 auto",
-          width: "100%",
-          maxWidth: "645px",
-        }}
-      >
+      <h1 className="title">Who is your utility provider?</h1>
+      <div className="card-container">
         {providersList?.map((provider, idx) => (
           <Card
             key={idx}
@@ -51,21 +39,19 @@ export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation, quizData 
             onClick={() => handleUserAnswer({ provider })}
             isOneBg={true}
             containerPadding={"20px 20px 0px 20px"}
-            imgHeight={64}
-            imgWidth={64}
             isActive={quizData.provider === provider}
             isDisabled={quizData.hasOwnProperty("provider")}
+            classImg={"card-img-roof-condition"}
           />
         ))}
 
         <input
           type="text"
+          className="input-other-provider"
           placeholder="Other Utility Provider"
           style={{
             border: "1px solid #D2D2D2",
             borderRadius: "8px",
-            padding: "20px",
-            fontSize: "1rem",
             width: "100%",
             boxSizing: "border-box",
             outline: "none",

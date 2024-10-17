@@ -4,6 +4,7 @@ export const NextButton = ({onClick, isDisabled}) => {
   return (
     <button
     style={{
+      fontSize: "16px",
       border: "none",
       backgroundColor: isDisabled ? "grey" : "#FE4A19",
       borderRadius: "8px",

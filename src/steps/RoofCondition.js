@@ -58,8 +58,6 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
           <Card
             title={condition.name}
             img={condition.icon}
-            imgHeight={64}
-            imgWidth={64}
             onClick={() => handleUserAnswer({ roof_condition: condition.id })}
             isOneBg={true}
             containerPadding={"20px 20px 0px 20px"}

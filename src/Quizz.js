@@ -19,7 +19,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(8);
+  const [step, setStep] = useState(0);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -110,7 +110,7 @@ const Quiz = () => {
           style={{
             maxWidth: "790px",
             margin: "0 auto",
-            height: step < 8 && step > 0 ? "88vh" : "100vh",
+            height: step < 8 && step >= 0 ? "88vh" : "100vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -119,7 +119,7 @@ const Quiz = () => {
           {renderStep()}
         </div>
 
-        {step < 8 && step > 0 && (
+        {step < 8 && step >= 0 && (
           <div
             style={{
               display: "flex",

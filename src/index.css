@@ -129,12 +129,10 @@ button {
     padding: 20px;
     min-height: 15vh;
     align-items: center;
-    /* max-height: 15vh */
   }
 
   .first-and-last-step-wrapper {
     min-height: 85vh;
-    /* max-height: 85vh; */
   }
 }
 

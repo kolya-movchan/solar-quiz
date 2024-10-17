@@ -16,10 +16,6 @@ button {
   font-family: 'Roobert', sans-serif;
 }
 
-span {
-  color: black;
-}
-
 /* Reset the placeholder styles */
 input::placeholder, 
 textarea::placeholder {
@@ -265,6 +261,7 @@ textarea::placeholder {
     height: 100%;
     font-size: 20px;
     font-weight: 400;
+    color: black;
   }
 
   .middle-steps-wrapper {

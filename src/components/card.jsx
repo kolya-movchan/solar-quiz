@@ -38,7 +38,8 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
         <img style={{objectFit: "cover"}} src={img} alt="Own" height={imgHeight} width={imgWidth} className={classNames(
           {
             "card-icon-image": classImg === "card-icon-image",
-            "card-img-own-home" : classImg === "card-img-own-home"
+            "card-img-own-home" : classImg === "card-img-own-home",
+            "card-img-roof-condition" : classImg === "card-img-roof-condition"
           }
         )} />
 

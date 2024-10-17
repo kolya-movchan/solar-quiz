@@ -11,12 +11,12 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
       icon: "/houses-conditions/good.svg",
     },
     {
-      name: "Need repairs",
+      name: "Need Repairs",
       id: "need-repairs",
       icon: "/houses-conditions/need-repairs.svg",
     },
     {
-      name: "Needs re-roof",
+      name: "Needs Re-roof",
       id: "needs-re-roof",
       icon: "/houses-conditions/need-reroof.svg",
     },
@@ -37,19 +37,14 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
 
   return (
     <div
-      className="container"
+      className="container container-with-cards"
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>
+      <h1 className="title">
         How would you describe the condition of your roof?
       </h1>
       {/* 
@@ -58,15 +53,7 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
         the condition of your roof.
       </p> */}
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "20px",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className="card-container">
         {roofConditions.map((condition) => (
           <Card
             title={condition.name}
@@ -78,6 +65,7 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
             containerPadding={"20px 20px 0px 20px"}
             isActive={quizData.roof_condition === condition.id}
             isDisabled={quizData.hasOwnProperty("roof_condition")}
+            classImg={"card-img-roof-condition"}
           />
         ))}
       </div>

@@ -196,7 +196,7 @@ textarea::placeholder {
   }
 
   .first-and-last-step-wrapper {
-    min-height: 85vh;
+    min-height: 80vh;
   }
 
   .input-search-map {
@@ -208,7 +208,7 @@ textarea::placeholder {
   }
 
   .wrapper {
-    min-height: 85vh;
+    min-height: 80vh;
   }
 
   .card-container {
@@ -342,6 +342,10 @@ textarea::placeholder {
     font-size: 18px;
     margin-bottom: 20px;
     padding: 0 20px;
+  }
+
+  .back-btn-wrapper {
+    display: none;
   }
 }
 

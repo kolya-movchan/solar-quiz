@@ -167,16 +167,16 @@ const Quiz = () => {
               justifyContent: "space-between",
               paddingRight: "50px",
               backgroundColor: "#fff",
-              maxHeight: "12vh",
+              hright: "10vh",
               padding: "20px",
             }}
             className="nav-btn-wrapper"
           >
-            {step > 1 && !quizData.isQuizDataSubmitted && (
-              <div>
+            <div className="back-btn-wrapper">
+              {step > 1 && !quizData.isQuizDataSubmitted && (
                 <BackButton onClick={handleGoBack} />
-              </div>
-            )}
+              )}
+            </div>
 
             {step > 0 && step < 8 && (
               <NextButton

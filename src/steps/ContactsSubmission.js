@@ -479,40 +479,10 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         </div>
       </div>
 
-      {showOTPInput && (
-        <div
-          style={{
-            position: "fixed",
-            top: "0",
-            left: "0",
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "#fff",
-              padding: "16px 16px 60px 16px",
-              borderRadius: "8px",
-              display: "flex",
-              flexDirection: "column",
-              width: "450px",
-              overflow: "hidden",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "100%",
-                paddingBottom: "10px",
-              }}
-            >
+      {!showOTPInput && (
+        <div className="otp-modal">
+          <div className="otp-container">
+            <div className="otp-wrapper">
               <div></div>
               <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "650" }}>
                 Phone Number Verification
@@ -541,17 +511,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               }}
             ></div>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                textAlign: "left",
-                padding: "0 20px",
-                marginBottom: "20px",
-              }}
-            >
-              <h3 style={{ margin: "0", fontSize: "32px" }}>
+            <div className="otp-title-container">
+              <h3 style={{ margin: "0" }} className="title">
                 Confirm your Request
               </h3>
               <p
@@ -595,13 +556,14 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             </form>
 
             <div
-              style={{
-                display: "flex",
-                gap: "10px",
-                fontSize: "18px",
-                marginBottom: "10px",
-                padding: "0 20px",
-              }}
+              className="resend-otp-container"
+              // style={{
+              //   display: "flex",
+              //   gap: "10px",
+              //   fontSize: "18px",
+              //   marginBottom: "10px",
+              //   padding: "0 20px",
+              // }}
             >
               <p
                 style={{
@@ -619,6 +581,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                   border: "none",
                   cursor: "pointer",
                   // cursor: resendTimer === 0 ? "pointer" : "not-allowed",
+                  width: "max-content",
                   fontSize: "18px",
                   color: "#98A2B3",
                   fontWeight: "700",

@@ -16,6 +16,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   });
   const [showOTPInput, setShowOTPInput] = useState(false);
   const [otp, setOtp] = useState([]);
+  const [isOTPSubmitted, setIsOTPSubmitted] = useState(false);
+
   const otpRefs = useRef([]);
 
   const validateInputs = (data) => {
@@ -43,61 +45,53 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     return newErrors;
   };
 
-  const handleSubmit = () => {
-    setIsLoading(true);
+  // const handleSubmit = () => {
+  //   setIsLoading(true);
 
-    const {
-      home_ownership,
-      home_type,
-      roof_condition,
-      provider,
-      utility_bill_amount,
-      credit_score,
-    } = quizData;
+  //   const {
+  //     home_ownership,
+  //     home_type,
+  //     roof_condition,
+  //     provider,
+  //     utility_bill_amount,
+  //     credit_score,
+  //   } = quizData;
 
-    const data = {
-      ...formData,
-      home_ownership,
-      home_type,
-      roof_condition,
-      provider,
-      utility_bill_amount,
-      credit_score,
-    };
+  //   const data = {
+  //     ...formData,
+  //     home_ownership,
+  //     home_type,
+  //     roof_condition,
+  //     provider,
+  //     utility_bill_amount,
+  //     credit_score,
+  //   };
 
-    fetch(`https://solar-quiz-backend.vercel.app/send-email`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Set content type
-      },
-      body: JSON.stringify(data), // Stringify the data object
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+  //   axios.post(``, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
 
-        return response.text(); // Change to text if your backend returns a string
-      })
-      .then(() => {
-        onSubmit({ isQuizDataSubmitted: true });
-        toast.success("Success! We will contact you soon.");
-      }) // Log the response
-      .catch((error) => {
-        toast.error("Something went wrong. Please try again later.");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
+  //       return response.text();
+  //     })
+  //     .then(() => {
+  //       onSubmit({ isQuizDataSubmitted: true });
+  //       toast.success("Success! We will contact you soon.");
+  //     }) // Log the response
+  //     .catch((error) => {
+  //       toast.error("Something went wrong. Please try again later.");
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -150,16 +144,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     }
   };
 
-  const handleOTPSubmission = async (e) => {
-    e.preventDefault();
-    // Ensure OTP has 6 digits
-    if (otp.join("").length !== 6) {
-      toast.error("OTP must be 6 digits.");
-      return;
-    }
-
+  const handleOTPSubmission = async () => {
     try {
-      handleSubmit();
       const verificationResponse = await axios.post(
         `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
         {
@@ -170,7 +156,12 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       );
       if (verificationResponse.data.isVerified === true) {
         console.log("Verification Response:", verificationResponse);
-        handleSubmit();
+        onSubmit({ isQuizDataSubmitted: true });
+        toast.success("Success! We will contact you soon.");
+        // handleSubmit();
+      } else {
+        toast.error("Invalid confirmation code. Please try again.");
+        setIsOTPSubmitted(false);
       }
     } catch (error) {
       toast.error(
@@ -178,16 +169,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           ? error.response.data
           : "Something went wrong. Please try again later."
       );
+      setIsOTPSubmitted(false);
     }
   };
-
-  useEffect(() => {
-    if (showOTPInput) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [showOTPInput]);
 
   const handleOTPChange = (e, index) => {
     const value = e.target.value;
@@ -201,7 +185,35 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     });
   };
 
-  console.log("OTP:", otp);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (showOTPInput) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showOTPInput]);
+
+  useEffect(() => {
+    console.log("OTP:", otp);
+    console.log("OTP Length:", otp.length);
+    console.log("OTP Submitted:", isOTPSubmitted);
+
+    if (
+      otp.length === 4 &&
+      otp.every((digit) => digit !== "") &&
+      !isOTPSubmitted
+    ) {
+      handleOTPSubmission();
+    }
+  }, [otp, isOTPSubmitted]);
 
   return (
     <>
@@ -440,7 +452,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         </div>
       </div>
 
-      {!showOTPInput && (
+      {showOTPInput && (
         <div
           style={{
             position: "fixed",
@@ -457,11 +469,10 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           <div
             style={{
               backgroundColor: "#fff",
-              padding: "16px",
+              padding: "16px 16px 60px 16px",
               borderRadius: "8px",
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
               width: "450px",
               overflow: "hidden",
             }}
@@ -477,7 +488,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             >
               <div></div>
               <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "650" }}>
-                Phone number confirmation
+                Phone Number Verification
               </h2>
 
               <button
@@ -516,7 +527,14 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               <h3 style={{ margin: "0", fontSize: "32px" }}>
                 Confirm your Request
               </h3>
-              <p style={{ margin: "0", color: "#475467", lineHeight: "27px" }}>
+              <p
+                style={{
+                  margin: "0",
+                  color: "#475467",
+                  lineHeight: "27px",
+                  fontSize: "18px",
+                }}
+              >
                 We sent a 4-digit personal code to the{" "}
                 <span style={{ fontWeight: "bold" }}>
                   {formData.phoneNumber}
@@ -525,8 +543,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               </p>
             </div>
 
-            <form onSubmit={handleOTPSubmission}>
-              <div style={{ display: "flex", gap: "10px" }}>
+            <form
+              onSubmit={handleOTPSubmission}
+              style={{ marginBottom: "20px" }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  justifyContent: "center",
+                }}
+              >
                 {Array(4)
                   .fill(0)
                   .map((_, index) => (
@@ -538,21 +565,54 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                     />
                   ))}
               </div>
+            </form>
 
-              <button
-                type="submit"
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
+                fontSize: "18px",
+                marginBottom: "10px",
+                padding: "0 20px",
+              }}
+            >
+              <p
                 style={{
-                  marginTop: "20px",
-                  padding: "10px 20px",
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  border: "none",
-                  cursor: "pointer",
+                  margin: "0",
+                  width: "max-content",
+                  color: "#475467",
                 }}
               >
-                Verify OTP
+                Didn’t get a code?
+              </p>
+
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  color: "#98A2B3",
+                  fontWeight: "700",
+                  textDecoration: "underline",
+                }}
+              >
+                Resend the code (59)
               </button>
-            </form>
+            </div>
+
+            <a
+              href="/privacy-policy"
+              style={{
+                margin: "0",
+                width: "max-content",
+                padding: "0 20px",
+                color: "#475467",
+                fontSize: "16px",
+              }}
+            >
+              Privacy Policy
+            </a>
           </div>
         </div>
       )}

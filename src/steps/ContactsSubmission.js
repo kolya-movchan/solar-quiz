@@ -365,6 +365,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                   width: "100%",
                   border: "1px solid #D0D5DD",
                   borderRadius: "8px",
+                  outline: "none",
                 }}
                 name="firstName"
                 value={formData.firstName}

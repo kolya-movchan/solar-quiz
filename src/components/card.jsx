@@ -7,7 +7,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
       "card",
       {
         "card-active": isActive,
-        "card-disabled": isDisabled && !isActive
+        "card-disabled": isDisabled && !isActive,
       }
     )}>
       <button
@@ -28,6 +28,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
           "card-button",
           {
             "card-button-padding": containerPadding,
+            "card-emojie": classImg === "card-emojie"
           }
         )}
         onClick={() => {
@@ -39,7 +40,8 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
           {
             "card-icon-image": classImg === "card-icon-image",
             "card-img-own-home" : classImg === "card-img-own-home",
-            "card-img-roof-condition" : classImg === "card-img-roof-condition"
+            "card-img-roof-condition" : classImg === "card-img-roof-condition",
+            "card-emojie-img": classImg === "card-emojie"
           }
         )} />
 

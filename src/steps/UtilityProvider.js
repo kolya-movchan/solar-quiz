@@ -44,7 +44,6 @@ export const UtilityProvider = ({
             classImg={"card-img-roof-condition"}
           />
         ))}
-
         <input
           type="text"
           className="input-other-provider"

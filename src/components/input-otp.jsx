@@ -25,8 +25,8 @@ export const InputOTP = forwardRef(({ value, onChange }, ref) => {
         ref={ref}
         type="text"
         style={{
-          height: '90%',
-          width: '90%',
+          height: '80%',
+          width: '80%',
           border: 'none',
           outline: 'none',
           textAlign: 'center',

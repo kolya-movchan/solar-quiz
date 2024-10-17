@@ -326,8 +326,10 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         </p>
 
         <div
+        className="qualified"
           style={{
             display: "flex",
+            boxSizing: "border-box",
             gap: "20px",
             padding: "15px",
             border: "1px solid #027A48",
@@ -359,7 +361,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 type="text"
                 placeholder="First Name*"
                 style={{
-                  padding: "15px 10px",
+                  padding: "20px 10px",
                   width: "100%",
                   border: "1px solid #D0D5DD",
                   borderRadius: "8px",
@@ -373,7 +375,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 type="text"
                 placeholder="Last Name*"
                 style={{
-                  padding: "15px 10px",
+                  padding: "20px 10px",
                   width: "100%",
                   border: "1px solid #D0D5DD",
                   borderRadius: "8px",
@@ -388,7 +390,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               type="email"
               placeholder="Email*"
               style={{
-                padding: "15px 10px",
+                padding: "20px 10px",
                 border: "1px solid #D0D5DD",
                 borderRadius: "8px",
                 outline: "none",
@@ -401,7 +403,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               type="tel"
               placeholder="Phone Number*"
               style={{
-                padding: "15px 10px",
+                padding: "20px 10px",
                 border: "1px solid #D0D5DD",
                 borderRadius: "8px",
                 outline: "none",

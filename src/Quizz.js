@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(8);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -29,10 +29,10 @@ const Quiz = () => {
 
     const { home_ownership, home_type, credit_score } = data;
     const conditionsToRefuse =
-      home_ownership === "no" ||
+      home_ownership === "rent" ||
       home_type === "mobile-manufactured" ||
       home_type === "apartment-condo" ||
-      credit_score === "below-600";
+      credit_score === "below-550";
 
     if (conditionsToRefuse) {
       setStep(-1);
@@ -138,14 +138,11 @@ const Quiz = () => {
             maxWidth: "790px",
             margin: "0 auto",
             display: "flex",
-            // alignItems: step > 1 && step < 8 ? "initial" : "center",
-            // justifyContent: step > 1 && step < 8 ? "space-between" : "center",
           }}
           className={classNames(
             { wrapper: step < 8 && step > 0 },
             { "first-and-last-step-wrapper": step === 0 || step === 8 },
             { "unqualified-wrapper": step === -1 }
-            // { "middle-steps-wrapper": step > 1 && step < 8 }
           )}
         >
           {renderStep()}

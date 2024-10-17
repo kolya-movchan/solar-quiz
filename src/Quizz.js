@@ -19,7 +19,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(2);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -142,6 +142,8 @@ const Quiz = () => {
                 isDisabled={step > Object.keys(quizData).length}
               />
             )}
+
+            <NextButton onClick={handleNextQuizNavigation} />
 
             {step === 0 && <StartButton onClick={handleNextQuizNavigation} />}
           </div>

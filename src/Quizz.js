@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -138,12 +138,13 @@ const Quiz = () => {
             maxWidth: "790px",
             margin: "0 auto",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            // alignItems: step > 1 && step < 8 ? "initial" : "center",
+            // justifyContent: step > 1 && step < 8 ? "space-between" : "center",
           }}
           className={classNames(
             { wrapper: step < 8 && step > 0 },
-            { "first-and-last-step-wrapper": step === 0 || step === 8 }
+            { "first-and-last-step-wrapper": step === 0 || step === 8 },
+            // { "middle-steps-wrapper": step > 1 && step < 8 }
           )}
         >
           {renderStep()}
@@ -179,7 +180,7 @@ const Quiz = () => {
             {step > 0 && step < 8 && (
               <NextButton
                 onClick={handleNextQuizNavigation}
-                isDisabled={step > Object.keys(quizData).length}
+                // isDisabled={step > Object.keys(quizData).length}
               />
             )}
           </div>

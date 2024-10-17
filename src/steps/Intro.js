@@ -82,7 +82,6 @@ export const Intro = ({ handleNextQuizNavigation }) => {
         style={{
           margin: "0",
           marginBottom: "32px",
-          textAlign: "left",
         }}
         className="title"
 

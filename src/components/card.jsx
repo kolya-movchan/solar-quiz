@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames';
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, className, imgStyle = {}, containerPadding = "0", isOneBg, isActive, isDisabled}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, className='', classImg, containerPadding = "", isOneBg, isActive, isDisabled}) => {
   return (
     <div className={classNames(
       "card",
@@ -12,7 +12,6 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
     )}>
       <button
         style={{
-          padding: containerPadding,
           zIndex: "3",
           paddingBottom: "0",
           width: "300px",
@@ -20,33 +19,36 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
           fontWeight: "bold",
           border: isActive ? "1px solid transparent" : "1px solid #D2D2D2",
           borderRadius: "8px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
           cursor: "pointer",
           type: "button",
           overflow: "hidden",
           backgroundColor: isOneBg ? "#fff" : "transparent",
           ...className
         }}
+        className={classNames(
+          "card-button",
+          {
+            "card-button-padding": containerPadding,
+          }
+        )}
         onClick={() => {
         onClick(quizData)
         }}
       >
 
-        <img style={{objectFit: "cover", ...imgStyle}} src={img} alt="Own" height={imgHeight} width={imgWidth} />
+        <img style={{objectFit: "cover"}} src={img} alt="Own" height={imgHeight} width={imgWidth} className={`card-img ${classImg}`} />
+
         <div
         style={{
-          padding: "15px 20px 15px",
           backgroundColor: "#fff",
           width: "100%",
         }}
+        className='card-content'
         >
-      <span style={{ fontSize: "20px" }}>{title}</span>
+      <span className='card-content-title'>{title}</span>
       </div>
       </button>
-          </div>
+      </div>
 
   )
 }

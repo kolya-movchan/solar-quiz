@@ -21,6 +21,10 @@ button {
   position: relative;
 }
 
+.card-button {
+  display: flex;
+}
+
 .card:hover:not(.card-active) {
   border-color: #E6E6E6;
   opacity: 0.8;
@@ -89,9 +93,20 @@ button {
   min-height: 100vh;
 }
 
+/* MOBILE */
 @media (max-width: 768px) {
   .container {
     padding: 60px 20px 0;
+  }
+
+  .container-with-cards {
+    justify-content: space-between;
+    padding-top: 100px;
+  }
+
+  .container-without-cards  {
+    justify-content: center;
+    align-items: center;
   }
 
   .paragraph {
@@ -142,8 +157,41 @@ button {
   .wrapper {
     min-height: 85vh;
   }
+
+  .card-container {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .card-button {
+    flex-direction: row;
+    padding: 0;
+    align-items: center;
+  }
+
+  .card-img {
+    margin-bottom: 0;
+    padding: 20px;
+    background-color: #FAFAFA;
+  }
+
+  .card-content {
+    text-align: left;
+    padding: 21px;
+  }
+
+  .card-content-title {
+    height: 100%;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .middle-steps-wrapper {
+    justify-content: space-between;
+  }
 }
 
+/* DESKTOP */
 @media (min-width: 769px) {
   .wrapper {
     height: 85vh;
@@ -157,9 +205,45 @@ button {
     padding: 15px 15px 15px 65px;
   }
 
-  /* .nav-btn-wrapper {
-    padding: 20px;
-  } */
+  .card-container {
+    gap: "20px",
+  }
+
+  .card-button {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-button-padding {
+    padding: 20px 20px 0px 20px;
+  }
+
+  .card-img-own-home {
+    margin-bottom: 10px;
+  }
+
+  .card-content {
+    padding: 15px 20px 15px;
+  }
+
+  .card-content-title {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .first-and-last-step-wrapper {
+    align-items: center;
+  }
+
+  .middle-steps-wrapper {
+    justify-content: center;
+  }
+
+  .container-with-cards {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 

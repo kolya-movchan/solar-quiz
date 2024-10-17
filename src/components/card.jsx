@@ -14,7 +14,6 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
         style={{
           zIndex: "3",
           paddingBottom: "0",
-          width: "300px",
           fontSize: "2rem",
           fontWeight: "bold",
           border: isActive ? "1px solid transparent" : "1px solid #D2D2D2",

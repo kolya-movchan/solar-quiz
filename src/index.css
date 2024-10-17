@@ -100,8 +100,9 @@ button {
   }
 
   .container-with-cards {
+    width: 100%;
     justify-content: space-between;
-    padding-top: 100px;
+    padding-top: 200px;
   }
 
   .container-without-cards  {
@@ -120,6 +121,8 @@ button {
     line-height: 38px;
     font-weight: 700;
     text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .intro-boolet-container {
@@ -158,9 +161,14 @@ button {
     min-height: 85vh;
   }
 
+  .card-button {
+    width: 100%;
+  }
+
   .card-container {
     flex-direction: column;
     gap: 4px;
+    margin-bottom: 20px;
   }
 
   .card-button {
@@ -189,6 +197,11 @@ button {
   .middle-steps-wrapper {
     justify-content: space-between;
   }
+
+  .nav-btn-wrapper {
+    align-items: center;
+    gap: 20px;
+  }
 }
 
 /* DESKTOP */
@@ -203,6 +216,10 @@ button {
 
   .input-search-map {
     padding: 15px 15px 15px 65px;
+  }
+
+  .card-button {
+    width: 300px;
   }
 
   .card-container {

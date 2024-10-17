@@ -16,6 +16,16 @@ button {
   font-family: 'Roobert', sans-serif;
 }
 
+/* Reset the placeholder styles */
+input::placeholder, 
+textarea::placeholder {
+  color: inherit;  /* Inherit the color from the input field */
+  opacity: 1;      /* Reset the default lower opacity */
+  font-style: normal;  /* Reset to normal font style */
+  font-weight: inherit; /* Inherit the font weight */
+  text-transform: none; /* Reset text-transform */
+}
+
 .card {
   border: 4px solid transparent;
   border-radius: 12px;
@@ -254,6 +264,32 @@ button {
   .unqualified-btn {
     width: 100%;
   }
+
+  .submission-container {
+    padding: 100px 20px
+  }
+
+  .unqualified-top-banner {
+    margin-bottom: 20px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0 auto;
+    /* padding: 0 80px; */
+    /* max-width: 320px; */
+  }
+
+  input::placeholder {
+    color: #475467;
+  }
+
+  .form-notification {
+    display: none;
+  }
 }
 
 /* DESKTOP */
@@ -356,6 +392,20 @@ button {
 
   .unqualified-btn {
     width: 285px;
+  }
+
+  .unqualified-top-banner {
+    margin-bottom: 32px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0 auto;
+    padding: 0 80px;
+    max-width: 320px;
   }
 }
 

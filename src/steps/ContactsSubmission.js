@@ -243,7 +243,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   return (
     <>
       <div
-        className="container"
+        className="container submission-container"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -252,28 +252,25 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           width: "100%",
           height: "100%",
           boxSizing: "border-box",
-          padding: "40px",
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
         }}
       >
         <div
+          className="unqualified-top-banner"
           style={{
             background:
               "linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #FE4A19, #982C0F) border-box",
             color: "#313149",
-            padding: "10px",
+            padding: "5px 10px",
             border: "1px solid transparent",
             borderRadius: "55px",
             display: "inline-block",
-            marginBottom: "32px",
           }}
         >
           <p
             style={{
-              paddingLeft: "16px",
-              paddingRight: "16px",
               paddingTop: "4px",
               paddingBottom: "4px",
               display: "flex",
@@ -293,15 +290,23 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               }}
             />
 
-            <span
-              style={{ fontWeight: "500", fontSize: "14px", color: "#FE4A19" }}
+            <p
+              style={{
+                fontWeight: "500",
+                margin: "0",
+                fontSize: "14px",
+                color: "#FE4A19",
+                textAlign: "left",
+                lineHeight: "21px",
+              }}
             >
               Free Home Solar Design – Requested by 
               <span style={{ fontWeight: 800 }}>180,000+</span> Homeowners
-            </span>
+            </p>
           </p>
         </div>
-        <h1 style={{ fontSize: "3rem", margin: "0", marginBottom: "25px" }}>
+
+        <h1 style={{ margin: "0", marginBottom: "25px" }} className="title">
           One more step...
         </h1>
         <p
@@ -311,6 +316,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             maxWidth: "410px",
             lineHeight: "27px",
             marginTop: "0",
+            fontSize: "18px",
           }}
         >
           Amazing!!! Now we can calculate how much you could save with 
@@ -343,15 +349,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
         <div style={{ width: "100%" }}>
           <form
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              flexWrap: "nowrap",
-              gap: "10px",
-              margin: "0 auto",
-              padding: "0 80px",
-              maxWidth: "320px",
-            }}
+            className="contact-form"
+            style={{ marginBottom: "15px" }}
             onSubmit={handleOTPVerification}
             novalidate
           >
@@ -364,7 +363,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                   width: "100%",
                   border: "1px solid #D0D5DD",
                   borderRadius: "8px",
-                  outline: "none",
                 }}
                 name="firstName"
                 value={formData.firstName}
@@ -407,6 +405,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 border: "1px solid #D0D5DD",
                 borderRadius: "8px",
                 outline: "none",
+                marginBottom: "10px",
               }}
               name="phoneNumber"
               value={formData.phoneNumber}
@@ -420,6 +419,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             />
 
             <p
+              className="form-notification"
               style={{
                 textAlign: "left",
                 fontSize: "12px",
@@ -437,15 +437,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 backgroundColor: isFormValid() ? "#FE4A19" : "#ccc",
                 color: "#fff",
                 cursor: isFormValid() ? "pointer" : "not-allowed",
-                padding: "10px 20px",
+                padding: "0 24px",
+                height: "56px",
+                boxSizing: "content-box",
                 justifyContent: "center",
                 alignItems: "center",
                 fontWeight: "bold",
-                height: "20px",
-                boxSizing: "content-box",
                 textAlign: "center",
                 display: "flex",
                 gap: "10px",
+                borderRadius: "8px",
+                fontSize: "16px",
               }}
               type="submit"
               disabled={!isFormValid()}
@@ -453,7 +455,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               {isLoading ? (
                 <span>Loading...</span>
               ) : (
-                <span>Confirm My Request</span>
+                <span>Confirm Solar Report Request</span>
               )}
 
               <img
@@ -465,7 +467,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             </button>
           </form>
 
-          <p style={{ fontSize: "0.8rem" }}>
+          <p style={{ fontSize: "0.8rem", margin: "0", color: "#475467" }}>
             Your data is secured by our{" "}
             <a
               href="/privacy-policy"

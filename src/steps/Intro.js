@@ -32,7 +32,7 @@ export const Intro = ({ handleNextQuizNavigation }) => {
           background:
             "linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #FE4A19, #982C0F) border-box",
           color: "#313149",
-          padding: "10px",
+          padding: "5px 10px",
           border: "1px solid transparent",
           borderRadius: "55px",
           display: "inline-block",
@@ -41,8 +41,6 @@ export const Intro = ({ handleNextQuizNavigation }) => {
       >
         <p
           style={{
-            paddingLeft: "16px",
-            paddingRight: "16px",
             paddingTop: "4px",
             paddingBottom: "4px",
             display: "flex",

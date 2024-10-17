@@ -93,7 +93,6 @@ export const Intro = ({ handleNextQuizNavigation }) => {
           display: "flex",
           gap: "24px",
           flexDirection: "column",
-          marginBottom: "20px",
           maxWidth: "340px",
           textAlign: "left",
         }}

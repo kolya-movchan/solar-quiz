@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames';
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, className='', classImg = "", containerPadding = "", isOneBg, isActive, isDisabled}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, style='', classImg = "", containerPadding = "", isOneBg, isActive, isDisabled}) => {
   return (
     <div className={classNames(
       "card",
@@ -16,13 +16,12 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
           paddingBottom: "0",
           fontSize: "2rem",
           fontWeight: "bold",
-          border: isActive ? "1px solid transparent" : "1px solid #D2D2D2",
           borderRadius: "8px",
           cursor: "pointer",
           type: "button",
           overflow: "hidden",
           backgroundColor: isOneBg ? "#fff" : "transparent",
-          ...className
+          ...style
         }}
         className={classNames(
           "card-button",

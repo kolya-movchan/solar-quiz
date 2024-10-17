@@ -57,6 +57,7 @@ export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
             isActive={quizData.utility_bill_amount === bill.id}
             isDisabled={quizData.hasOwnProperty("utility_bill_amount")}
             classImg={"card-emojie"}
+            style={{ border: "1px solid #D2D2D2" }}
           />
         ))}
       </div>

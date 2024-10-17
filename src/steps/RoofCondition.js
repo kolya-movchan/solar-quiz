@@ -64,6 +64,7 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
             isActive={quizData.roof_condition === condition.id}
             isDisabled={quizData.hasOwnProperty("roof_condition")}
             classImg={"card-img-roof-condition"}
+            style={{border: "1px solid #D2D2D2"}}
           />
         ))}
       </div>

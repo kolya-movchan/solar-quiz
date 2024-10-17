@@ -33,6 +33,7 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
           containerPadding={"20px 20px 0px 20px"}
           isActive={quizData.home_ownership === "own"}
           isDisabled={quizData.hasOwnProperty("home_ownership")}
+          style={{border: "1px solid #D2D2D2"}}
         />
 
         <Card
@@ -44,6 +45,7 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
           containerPadding={"20px 20px 0px 20px"}
           isActive={quizData.home_ownership === "rent"}
           isDisabled={quizData.hasOwnProperty("home_ownership")}
+          style={{border: "1px solid #D2D2D2"}}
         />
       </div>
     </div>

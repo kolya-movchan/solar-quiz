@@ -55,7 +55,6 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
             style={{
               display: "flex",
               gap: "20px",
-              // width: "100%"
             }}
           >
             <Card
@@ -66,6 +65,7 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
               classImg={"card-icon-image"}
               isActive={quizData.home_type === homeType.id}
               isDisabled={quizData.hasOwnProperty("home_type")}
+              style={{border: "none"}}
             />
           </div>
         ))}

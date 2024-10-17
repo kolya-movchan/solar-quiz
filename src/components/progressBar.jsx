@@ -5,11 +5,12 @@ export const ProgressBar = ({ step }) => {
     <div
       style={{
         width: `${(step / 8) * 100}%`,
-        height: "10px",
+        height: "12px",
         backgroundColor: "#FE4A19",
         transition: "width 0.3s ease-in-out",
+        borderTopRightRadius: "6px",
+        borderBottomRightRadius: "6px",
       }}
     />
   );
 };
-

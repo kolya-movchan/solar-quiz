@@ -59,6 +59,7 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
             isActive={quizData.credit_score === score.id}
             isDisabled={quizData.hasOwnProperty("credit_score")}
             classImg={"card-emojie"}
+            style={{border: "1px solid #D2D2D2"}}
           />
         ))}
       </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { statesProviders } from "../statesProviders";
 import { Card } from "../components/card";
-export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
+export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation, quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const providersList = statesProviders.find(
@@ -40,7 +40,7 @@ export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
           alignItems: "center",
           margin: "0 auto",
           width: "100%",
-          maxWidth: "620px",
+          maxWidth: "645px",
         }}
       >
         {providersList?.map((provider, idx) => (
@@ -53,6 +53,8 @@ export const UtilityProvider = ({ handleUserAnswer, stateAbbreviation }) => {
             containerPadding={"20px 20px 0px 20px"}
             imgHeight={64}
             imgWidth={64}
+            isActive={quizData.provider === provider}
+            isDisabled={quizData.hasOwnProperty("provider")}
           />
         ))}
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames';
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, imgStyle = {}, containerPadding = "0", isOneBg, className, isActive, isDisabled}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, imgStyle = {}, containerPadding = "0", isOneBg, isActive, isDisabled}) => {
   return (
     <div className={classNames(
       "card",
@@ -18,7 +18,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, imgSty
           width: "300px",
           fontSize: "2rem",
           fontWeight: "bold",
-          border: isActive ? "none" : "1px solid #D2D2D2",
+          border: isActive ? "1px solid transparent" : "1px solid #D2D2D2",
           borderRadius: "8px",
           display: "flex",
           flexDirection: "column",

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../components/card";
 
-export const RoofCondition = ({ handleUserAnswer }) => {
+export const RoofCondition = ({ handleUserAnswer, quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const roofConditions = [
@@ -76,6 +76,8 @@ export const RoofCondition = ({ handleUserAnswer }) => {
             onClick={() => handleUserAnswer({ roof_condition: condition.id })}
             isOneBg={true}
             containerPadding={"20px 20px 0px 20px"}
+            isActive={quizData.roof_condition === condition.id}
+            isDisabled={quizData.hasOwnProperty("roof_condition")}
           />
         ))}
       </div>

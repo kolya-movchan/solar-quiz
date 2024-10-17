@@ -152,7 +152,7 @@ textarea::placeholder {
   .container-with-cards {
     width: 100%;
     justify-content: space-between;
-    padding-top: 50px;
+    padding-top: 100px;
   }
 
   .container-without-cards  {
@@ -190,9 +190,9 @@ textarea::placeholder {
 
   .start-btn-mobile-wrapper  {
     display: flex;
-    padding: 20px;
+    padding: 20px 20px 0;
     min-height: 15vh;
-    align-items: center;
+    /* align-items: center; */
   }
 
   .first-and-last-step-wrapper {

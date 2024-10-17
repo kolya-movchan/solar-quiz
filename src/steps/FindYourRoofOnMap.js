@@ -181,7 +181,7 @@ export const FindYourRoofOnMap = ({
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
         gap: "24px",
-        paddingTop: "30px",
+        // paddingTop: "30px",
       }}
     >
       <h1 style={{ margin: "0" }} className="title">

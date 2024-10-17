@@ -17,6 +17,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [showOTPInput, setShowOTPInput] = useState(false);
   const [otp, setOtp] = useState([]);
   const [isOTPSubmitted, setIsOTPSubmitted] = useState(false);
+  const [resendTimer, setResendTimer] = useState(0);
 
   const otpRefs = useRef([]);
 
@@ -107,7 +108,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     );
   };
 
-  const handleOTPVerification = async (e) => {
+  const handleOTPVerification = async (e, isRetry = false) => {
     e.preventDefault(); // Prevent page reload
 
     const validationErrors = validateInputs(formData);
@@ -135,6 +136,10 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         setShowOTPInput(true);
       }
       setShowOTPInput(true);
+
+      if (isRetry) {
+        setResendTimer(60);
+      }
     } catch (error) {
       toast.error(
         error.response
@@ -146,7 +151,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
   const handleOTPSubmission = async () => {
     try {
+      // setIsOTPSubmitted(true);
       const verificationResponse = await axios.post(
+        // `http://localhost:3001/twilio-sms/verify-otp`,
         `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
         {
           countryCode: formData.phoneNumber.trim().slice(1, -10),
@@ -156,9 +163,11 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       );
       if (verificationResponse.data.isVerified === true) {
         console.log("Verification Response:", verificationResponse);
-        onSubmit({ isQuizDataSubmitted: true });
-        toast.success("Success! We will contact you soon.");
         // handleSubmit();
+        onSubmit({ isQuizDataSubmitted: true });
+        setIsOTPSubmitted(true);
+
+        toast.success("Success! We will contact you soon.");
       } else {
         toast.error("Invalid confirmation code. Please try again.");
         setIsOTPSubmitted(false);
@@ -214,6 +223,18 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       handleOTPSubmission();
     }
   }, [otp, isOTPSubmitted]);
+
+  useEffect(() => {
+    let interval;
+    if (resendTimer > 0) {
+      interval = setInterval(() => {
+        setResendTimer((prev) => prev - 1);
+      }, 1000);
+    } else if (resendTimer === 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [resendTimer]);
 
   return (
     <>
@@ -590,14 +611,20 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 style={{
                   backgroundColor: "transparent",
                   border: "none",
-                  cursor: "pointer",
+                  cursor: resendTimer === 0 ? "pointer" : "not-allowed",
                   fontSize: "18px",
                   color: "#98A2B3",
                   fontWeight: "700",
                   textDecoration: "underline",
                 }}
+                onClick={(e) => {
+                  if (resendTimer === 0) {
+                    handleOTPVerification(e, true);
+                  }
+                }}
+                disabled={resendTimer !== 0}
               >
-                Resend the code (59)
+                Resend the code {resendTimer > 0 ? `(${resendTimer})` : ""}
               </button>
             </div>
 

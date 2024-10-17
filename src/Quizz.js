@@ -37,9 +37,9 @@ const Quiz = () => {
       setStep(-1);
     }
 
-    // else {
-    //   setStep((prevStep) => prevStep + 1);
-    // }
+    if (data.isQuizDataSubmitted === true) {
+      setStep((prevStep) => prevStep + 1);
+    }
   };
 
   const handleGoBack = () => {

@@ -143,8 +143,8 @@ const Quiz = () => {
           }}
           className={classNames(
             { wrapper: step < 8 && step > 0 },
-            { "first-and-last-step-wrapper": step === 0  || step === 8 },
-            { "unqualified-wrapper": step === -1 },
+            { "first-and-last-step-wrapper": step === 0 || step === 8 },
+            { "unqualified-wrapper": step === -1 }
             // { "middle-steps-wrapper": step > 1 && step < 8 }
           )}
         >
@@ -172,11 +172,11 @@ const Quiz = () => {
             }}
             className="nav-btn-wrapper"
           >
-            <div>
-              {step > 1 && !quizData.isQuizDataSubmitted && (
+            {step > 1 && !quizData.isQuizDataSubmitted && (
+              <div>
                 <BackButton onClick={handleGoBack} />
-              )}
-            </div>
+              </div>
+            )}
 
             {step > 0 && step < 8 && (
               <NextButton

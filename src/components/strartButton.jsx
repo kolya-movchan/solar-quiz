@@ -5,6 +5,7 @@ export const StartButton = ({onClick, className}) => {
     <button
     style={{
       width: "100%",
+      fontSize: "16px",
       height: "56px",
       border: "none",
       backgroundColor: "#FE4A19",

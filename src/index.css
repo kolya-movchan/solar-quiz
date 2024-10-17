@@ -16,6 +16,10 @@ button {
   font-family: 'Roobert', sans-serif;
 }
 
+span {
+  color: black;
+}
+
 /* Reset the placeholder styles */
 input::placeholder, 
 textarea::placeholder {
@@ -146,13 +150,13 @@ textarea::placeholder {
 @media (max-width: 768px) {
   .container {
     justify-content: space-between;
-    padding: 60px 20px 0;
+    padding: 20px 20px 0;
   }
 
   .container-with-cards {
     width: 100%;
     justify-content: space-between;
-    padding-top: 150px;
+    padding-top: 50px;
   }
 
   .container-without-cards  {

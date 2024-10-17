@@ -479,7 +479,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         </div>
       </div>
 
-      {!showOTPInput && (
+      {showOTPInput && (
         <div className="otp-modal">
           <div className="otp-container">
             <div className="otp-wrapper">

@@ -68,8 +68,10 @@ export const Intro = ({ handleNextQuizNavigation }) => {
               margin: "0",
               fontSize: "14px",
               color: "#FE4A19",
+              textAlign: "left",
+              lineHeight: "21px",
             }}
-            className="intro-banner-paragraph"
+
           >
             Free Home Solar Design – Requested by 
             <span style={{ fontWeight: 800 }}>180,000+</span> Homeowners
@@ -80,8 +82,10 @@ export const Intro = ({ handleNextQuizNavigation }) => {
         style={{
           margin: "0",
           marginBottom: "32px",
+          textAlign: "left",
         }}
-        className="intro-title"
+        className="title"
+
       >
         See How Much Money You Could Save w/ This $0 Solar Program That Cuts
         Electric Bills by 30-50% – Instantly

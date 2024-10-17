@@ -68,7 +68,7 @@ button {
   padding: 40px;
 }
 
-.intro-title {
+.title {
   font-size: 48px;
 }
 
@@ -98,17 +98,17 @@ button {
     padding: 60px 20px 0;
   }
 
-  .intro-banner-paragraph {
-    text-align: left;
-    line-height: 21px;
-    /* width: max-content */
+  .paragraph {
+    color: #475467;
+    text-align: center;
+    line-height: 27px;
   }
 
-  .intro-title {
+  .title {
     font-size: 32px;
     line-height: 38px;
     font-weight: 700;
-    text-align: left;
+    text-align: center;
   }
 
   .intro-boolet-container {
@@ -134,12 +134,32 @@ button {
   .first-and-last-step-wrapper {
     min-height: 85vh;
   }
+
+  .input-search-map {
+    padding: 15px 15px 15px 45px;
+  }
+
+  .next-btn {
+    width: 100%;
+  }
+
+  /* .nav-btn-wrapper {
+    padding: 20px;
+  } */
 }
 
 @media (min-width: 769px) {
   .start-btn-mobile {
     display: none;
   }
+
+  .input-search-map {
+    padding: 15px 15px 15px 65px;
+  }
+
+  /* .nav-btn-wrapper {
+    padding: 20px;
+  } */
 }
 
 

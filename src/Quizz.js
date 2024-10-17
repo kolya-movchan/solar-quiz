@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -137,7 +137,6 @@ const Quiz = () => {
           style={{
             maxWidth: "790px",
             margin: "0 auto",
-            // minHeight: step < 8 && step > 0 ? "88vh" : "100vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -150,23 +149,26 @@ const Quiz = () => {
           {renderStep()}
         </div>
 
-        <div className="start-btn-mobile-wrapper">
-          <StartButton
-            onClick={handleNextQuizNavigation}
-            className="start-btn-mobile"
-          />
-        </div>
+        {step === 0 && (
+          <div className="start-btn-mobile-wrapper">
+            <StartButton
+              onClick={handleNextQuizNavigation}
+              className="start-btn-mobile"
+            />
+          </div>
+        )}
 
         {step < 8 && step > 0 && (
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
-              padding: "20px",
               paddingRight: "50px",
               backgroundColor: "#fff",
               maxHeight: "12vh",
+              padding: "20px",
             }}
+            className="nav-btn-wrapper"
           >
             <div>
               {step > 1 && !quizData.isQuizDataSubmitted && (

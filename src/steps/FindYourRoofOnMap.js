@@ -177,7 +177,6 @@ export const FindYourRoofOnMap = ({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
@@ -185,11 +184,11 @@ export const FindYourRoofOnMap = ({
         paddingTop: "30px",
       }}
     >
-      <h1 style={{ fontSize: "3rem", margin: "0" }}>
+      <h1 style={{ margin: "0" }} className="title">
         Let's check your roof's sun exposure{" "}
       </h1>
 
-      <p style={{ margin: "0" }}>
+      <p style={{ margin: "0" }} className="paragraph">
         We'll use your location to provide you with tailored information about
         solar panels in your area. Your privacy is important to us, so we won't
         share your address!
@@ -214,7 +213,6 @@ export const FindYourRoofOnMap = ({
             style={{
               width: "100%",
               height: "20px",
-              padding: "15px 15px 15px 64px",
               border: "1px solid #D0D5DD",
               outline: "none",
               color: "#475467",
@@ -222,12 +220,13 @@ export const FindYourRoofOnMap = ({
               backgroundImage: "url(./icons/map-pin.png)",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "left center",
-              backgroundPositionX: "20px",
+              backgroundPositionX: "15px",
               backgroundSize: "24px",
               "::placeholder": {
                 color: "#475467",
               },
             }}
+            className="input-search-map"
             value={inputValue}
             onChange={handleInputChange}
           />

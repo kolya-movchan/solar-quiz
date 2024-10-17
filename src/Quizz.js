@@ -69,7 +69,7 @@ const Quiz = () => {
           />
         );
       case 2:
-        return <DoYouOwnYourHome handleUserAnswer={handleUserAnswer} />;
+        return <DoYouOwnYourHome handleUserAnswer={handleUserAnswer} quizData={quizData} />;
       case 3:
         return <YourHomeType handleUserAnswer={handleUserAnswer} />;
       case 4:

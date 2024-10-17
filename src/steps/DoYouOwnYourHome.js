@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../components/card";
 
-export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
+export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -44,6 +44,7 @@ export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "own" }}
           containerPadding={"20px 20px 0px 20px"}
+          isActive={quizData.home_ownership === "own"}
         />
 
         <Card
@@ -54,6 +55,7 @@ export const DoYouOwnYourHome = ({ handleUserAnswer }) => {
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "rent" }}
           containerPadding={"20px 20px 0px 20px"}
+          isActive={quizData.home_ownership === "rent"}
         />
       </div>
     </div>

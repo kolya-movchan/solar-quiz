@@ -1,8 +1,14 @@
 import React from 'react'
+import classNames from 'classnames';
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, containerPadding, isOneBg, className}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, containerPadding, isOneBg, className, isActive}) => {
   return (
-    <div className='card'>
+    <div className={classNames(
+      "card",
+      {
+        "card-active": isActive
+      }
+    )}>
       <button
         style={{
           padding: containerPadding,

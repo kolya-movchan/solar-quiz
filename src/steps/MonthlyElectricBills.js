@@ -34,11 +34,6 @@ export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
     <div
       className="container container-with-cards"
       style={{
-        // display: "flex",
-        // flexDirection: "column",
-        // alignItems: "center",
-        // justifyContent: "center",
-        // padding: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",

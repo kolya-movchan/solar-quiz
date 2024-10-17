@@ -37,28 +37,17 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
 
   return (
     <div
-      className="container"
+      className="container container-with-cards"
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
         gap: "20px",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>What is your credit score?</h1>
+      <h1 className="title">What is your credit score?</h1>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          width: "100%",
-        }}
-      >
+      <div className="card-container-emojie" style={{ marginBottom: "20px" }}>
         {creditScoreList.map((score) => (
           <Card
             key={score.id}
@@ -67,15 +56,9 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
             onClick={() => handleUserAnswer({ credit_score: score.id })}
             imgHeight={64}
             imgWidth={64}
-            className={{
-              width: "175px",
-              height: "225px",
-              justifyContent: "space-between",
-              backgroundColor: score.color,
-              paddingTop: "50px",
-            }}
             isActive={quizData.credit_score === score.id}
             isDisabled={quizData.hasOwnProperty("credit_score")}
+            classImg={"card-emojie"}
           />
         ))}
       </div>

@@ -230,6 +230,7 @@ export const FindYourRoofOnMap = ({
             value={inputValue}
             onChange={handleInputChange}
           />
+
           {/* 
           <button
             style={{

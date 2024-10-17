@@ -85,10 +85,6 @@ button {
   align-items: center; 
   justify-content: center;}
 
-.wrapper {
-  min-height: 88vh;
-}
-
 .first-and-last-step-wrapper {
   min-height: 100vh;
 }
@@ -143,12 +139,16 @@ button {
     width: 100%;
   }
 
-  /* .nav-btn-wrapper {
-    padding: 20px;
-  } */
+  .wrapper {
+    min-height: 85vh;
+  }
 }
 
 @media (min-width: 769px) {
+  .wrapper {
+    height: 85vh;
+  }
+
   .start-btn-mobile {
     display: none;
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames';
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, className='', classImg, containerPadding = "", isOneBg, isActive, isDisabled}) => {
+export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, className='', classImg = "", containerPadding = "", isOneBg, isActive, isDisabled}) => {
   return (
     <div className={classNames(
       "card",
@@ -35,7 +35,12 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, classN
         }}
       >
 
-        <img style={{objectFit: "cover"}} src={img} alt="Own" height={imgHeight} width={imgWidth} className={`card-img ${classImg}`} />
+        <img style={{objectFit: "cover"}} src={img} alt="Own" height={imgHeight} width={imgWidth} className={classNames(
+          {
+            "card-icon-image": classImg === "card-icon-image",
+            "card-img-own-home" : classImg === "card-img-own-home"
+          }
+        )} />
 
         <div
         style={{

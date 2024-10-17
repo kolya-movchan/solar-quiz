@@ -161,10 +161,6 @@ button {
     min-height: 85vh;
   }
 
-  .card-button {
-    width: 100%;
-  }
-
   .card-container {
     flex-direction: column;
     gap: 4px;
@@ -175,17 +171,32 @@ button {
     flex-direction: row;
     padding: 0;
     align-items: center;
+    width: 100%;
   }
 
-  .card-img {
+  /* .card-img {
+    margin-bottom: 0;
+    padding: 20px;
+    background-color: #FAFAFA;
+  } */
+
+  .card-img-own-home {
+    height: 40px;
+    width: 40px;
     margin-bottom: 0;
     padding: 20px;
     background-color: #FAFAFA;
   }
 
+  .card-icon-image {
+    height: 80px;
+    width: 106px;
+  }
+
   .card-content {
     text-align: left;
     padding: 21px;
+    width: 100%;
   }
 
   .card-content-title {
@@ -201,6 +212,10 @@ button {
   .nav-btn-wrapper {
     align-items: center;
     gap: 20px;
+  }
+
+  .card {
+    width: 100%;
   }
 }
 
@@ -223,7 +238,11 @@ button {
   }
 
   .card-container {
-    gap: "20px",
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .card-button {
@@ -260,6 +279,11 @@ button {
   .container-with-cards {
     justify-content: center;
     align-items: center;
+  }
+
+  .card-icon-image {
+    height: 100%;
+    width: 100%;
   }
 }
 

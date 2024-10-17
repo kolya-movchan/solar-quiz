@@ -37,35 +37,25 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
 
   return (
     <div
-      className="container"
+      className="container container-with-cards"
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "40px",
         gap: "40px",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ fontSize: "3rem" }}>What is your home type?</h1>
+      <h1 className="title">What is your home type?</h1>
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "20px",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className="card-container">
         {homeTypes.map((homeType) => (
           <div
             style={{
               display: "flex",
               gap: "20px",
+              // width: "100%"
             }}
           >
             <Card
@@ -73,9 +63,8 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
               img={homeType.icon}
               onClick={handleUserAnswer}
               quizData={{ home_type: homeType.id }}
-              imgHeight={"100%"}
-              imgWidth={"100%"}
-              isActive={quizData.home_type === homeType.id }
+              classImg={"card-icon-image"}
+              isActive={quizData.home_type === homeType.id}
               isDisabled={quizData.hasOwnProperty("home_type")}
             />
           </div>

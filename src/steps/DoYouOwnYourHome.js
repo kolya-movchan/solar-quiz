@@ -26,17 +26,10 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
     >
       <h1 className="title">Do you own or rent your home?</h1>
 
-      <div
-        style={{
-          display: "flex",
-        }}
-        className="card-container"
-      >
+      <div className="card-container">
         <Card
           title={"Own"}
           img={"/icons/own.svg"}
-          imgHeight={40}
-          imgWidth={40}
           classImg={"card-img-own-home"}
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "own" }}
@@ -48,8 +41,6 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
         <Card
           title={"Rent"}
           img={"/icons/rent.svg"}
-          imgHeight={40}
-          imgWidth={40}
           classImg={"card-img-own-home"}
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "rent" }}

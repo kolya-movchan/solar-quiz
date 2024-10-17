@@ -33,7 +33,6 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
         style={{
           display: "flex",
           gap: "20px",
-          // width: "550px",
         }}
       >
         <Card
@@ -41,10 +40,12 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
           img={"/icons/own.svg"}
           imgHeight={40}
           imgWidth={40}
+          imgStyle={{marginBottom: "10px"}}
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "own" }}
           containerPadding={"20px 20px 0px 20px"}
           isActive={quizData.home_ownership === "own"}
+          isDisabled={quizData.hasOwnProperty("home_ownership")}
         />
 
         <Card
@@ -52,10 +53,12 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
           img={"/icons/rent.svg"}
           imgHeight={40}
           imgWidth={40}
+          imgStyle={{marginBottom: "10px"}}
           onClick={handleUserAnswer}
           quizData={{ home_ownership: "rent" }}
           containerPadding={"20px 20px 0px 20px"}
           isActive={quizData.home_ownership === "rent"}
+          isDisabled={quizData.hasOwnProperty("home_ownership")}
         />
       </div>
     </div>

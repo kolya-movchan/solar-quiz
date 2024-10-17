@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../components/card";
 
-export const YourHomeType = ({ handleUserAnswer }) => {
+export const YourHomeType = ({ handleUserAnswer, quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const homeTypes = [
@@ -73,8 +73,10 @@ export const YourHomeType = ({ handleUserAnswer }) => {
               img={homeType.icon}
               onClick={handleUserAnswer}
               quizData={{ home_type: homeType.id }}
-              imgHeight={"100%" }
+              imgHeight={"100%"}
               imgWidth={"100%"}
+              isActive={quizData.home_type === homeType.id }
+              isDisabled={quizData.hasOwnProperty("home_type")}
             />
           </div>
         ))}

@@ -19,7 +19,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(3);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -69,22 +69,48 @@ const Quiz = () => {
           />
         );
       case 2:
-        return <DoYouOwnYourHome handleUserAnswer={handleUserAnswer} quizData={quizData} />;
+        return (
+          <DoYouOwnYourHome
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
       case 3:
-        return <YourHomeType handleUserAnswer={handleUserAnswer} />;
+        return (
+          <YourHomeType
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
       case 4:
-        return <RoofCondition handleUserAnswer={handleUserAnswer} />;
+        return (
+          <RoofCondition
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
       case 5:
         return (
           <UtilityProvider
             handleUserAnswer={handleUserAnswer}
             stateAbbreviation={stateAbbreviation}
+            quizData={quizData}
           />
         );
       case 6:
-        return <MonthlyElectricBills handleUserAnswer={handleUserAnswer} />;
+        return (
+          <MonthlyElectricBills
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
       case 7:
-        return <CreditScore handleUserAnswer={handleUserAnswer} />;
+        return (
+          <CreditScore
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
 
       case 8:
         return (

@@ -27,6 +27,7 @@ button {
 
 .card:hover:not(.card-active) {
   border-color: #E6E6E6;
+  opacity: 0.8;
 }
 
 .card:hover:not(.card-active)::before {
@@ -59,4 +60,9 @@ button {
   background-color: #FE4A19;
   border-bottom-right-radius: 8px;
   padding: 12px;
+}
+
+.card-disabled {
+  opacity: 0.5;
+  transition: opacity 0.3s ease-out;
 }

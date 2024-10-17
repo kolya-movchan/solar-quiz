@@ -69,7 +69,6 @@ export const Intro = ({ handleNextQuizNavigation }) => {
               textAlign: "left",
               lineHeight: "21px",
             }}
-
           >
             Free Home Solar Design – Requested by 
             <span style={{ fontWeight: 800 }}>180,000+</span> Homeowners
@@ -82,7 +81,6 @@ export const Intro = ({ handleNextQuizNavigation }) => {
           marginBottom: "32px",
         }}
         className="title"
-
       >
         See How Much Money You Could Save w/ This $0 Solar Program That Cuts
         Electric Bills by 30-50% – Instantly
@@ -154,7 +152,10 @@ export const Intro = ({ handleNextQuizNavigation }) => {
           </div>
         </div>
 
-        <StartButton onClick={handleNextQuizNavigation} className="start-btn-desktop" />
+        <StartButton
+          onClick={handleNextQuizNavigation}
+          className="start-btn-desktop"
+        />
       </div>
     </div>
   );

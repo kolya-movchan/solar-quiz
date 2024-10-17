@@ -8,7 +8,6 @@ export const NextButton = ({onClick, isDisabled}) => {
       backgroundColor: isDisabled ? "grey" : "#FE4A19",
       borderRadius: "8px",
       color: "#fff",
-      cursor: "pointer",
       padding: "12px 24px",
       display: "flex",
       gap: "10px",
@@ -17,7 +16,8 @@ export const NextButton = ({onClick, isDisabled}) => {
       fontWeight: "bold",
       height: "20px",
       boxSizing: "content-box",
-      cursor: isDisabled ? "not-allowed" : "pointer"
+      cursor: isDisabled ? "not-allowed" : "pointer",
+      transition: "background-color 0.3s ease"
     }}
     type="button"
     onClick={onClick}

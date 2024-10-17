@@ -10,10 +10,6 @@ html, body,#root {
   height: 100%;
 }
 
-code {
-  font-family: 'Roboto', monospace;
-}
-
 button {
   padding: 0;
 }
@@ -66,4 +62,57 @@ button {
 .card-disabled {
   opacity: 0.5;
   transition: opacity 0.3s ease-out;
+}
+
+.intro {
+  
+}
+
+
+/* Regular */
+@font-face {
+  font-family: 'Roobert';
+  src: url('/public/fonts/roobert/Roobert-Regular.otf') format('opentype');  
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Roobert';
+  src: url('/public/fonts/roobert/Roobert-Bold.otf') format('opentype');  
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Light */
+@font-face {
+  font-family: 'Roobert';
+  src: url('/public/fonts/roobert/Roobert-Light.otf') format('opentype');  
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Roobert';
+  src: url('/public/fonts/roobert/Roobert-Medium.otf') format('opentype');  
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: 'Roobert';
+  src: url('/public/fonts/roobert/Roobert-SemiBold.otf') format('opentype');  
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Heavy */
+@font-face {
+  font-family: 'Roobert';
+  src: url('/public/fonts/roobert/Roobert-Heavy.otf') format('opentype');  
+  font-weight: 800;
+  font-style: normal;
 }

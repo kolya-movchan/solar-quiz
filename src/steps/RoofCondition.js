@@ -44,7 +44,7 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 className="title">
+      <h1 style={{ marginTop: "10vh" }} className="title">
         How would you describe the condition of your roof?
       </h1>
       {/* 
@@ -65,7 +65,7 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
             isActive={quizData.roof_condition === condition.id}
             isDisabled={quizData.hasOwnProperty("roof_condition")}
             classImg={"card-img-roof-condition"}
-            style={{border: "1px solid #D2D2D2"}}
+            style={{ border: "1px solid #D2D2D2" }}
           />
         ))}
       </div>

@@ -35,7 +35,9 @@ export const UtilityProvider = ({
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 className="title">Who is your utility provider?</h1>
+      <h1 style={{ marginTop: "10vh" }} className="title">
+        Who is your utility provider?
+      </h1>
       <div className="card-container">
         {providersList?.map((provider, idx) => (
           <Card
@@ -79,16 +81,14 @@ export const UtilityProvider = ({
             }}
             type="text"
             placeholder="Other Utility Provider"
-            className={"input-other-provider "}
+            className={"input-other-provider"}
             onChange={(e) => {
               handleUserAnswer({
                 mannual_provider: e.target.value,
                 is_mannual_provider: e.target.value.length > 0 ? true : null,
                 provider: null,
-              })
-            }
-             
-            }
+              });
+            }}
           />
         </div>
       </div>

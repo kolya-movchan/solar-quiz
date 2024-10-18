@@ -110,7 +110,7 @@ textarea::placeholder {
   justify-content: center;}
 
 .first-and-last-step-wrapper {
-  min-height: 98vh;
+  /* min-height: 98vh; */
   justify-content: center;
 }
 
@@ -207,14 +207,17 @@ input::placeholder {
 @media (max-width: 768px) {
   .container {
     justify-content: space-between;
-    padding: 20px 20px 0;
+    padding: 40px 20px 20px;
     align-items: center;
   }
 
   .container-with-cards {
+    /* min-height: 80vh;
+    max-height: 80vh; */
+    min-height: 78vh;
     width: 100%;
     justify-content: space-between;
-    padding-top: 75px;
+    /* padding-top: 75px; */
   }
 
   .container-without-cards  {
@@ -247,20 +250,32 @@ input::placeholder {
     line-height: 24px;
   }
 
+  .input-other-provider {
+    font-size: 20px;
+  }
+
+  .input-other-provider::placeholder {
+    font-size: 20px;
+    color: #727272;
+    line-height: 30px;
+  }
+
   .start-btn-desktop {
     display: none;
   }
 
   .start-btn-mobile-wrapper  {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     display: flex;
-    padding: 20px 20px 0;
-    min-height: 15vh;
-    /* align-items: center; */
+    padding: 20px;
+    box-sizing: border-box;
   }
 
-  .first-and-last-step-wrapper {
-    min-height: 70vh;
-  }
+  /* .first-and-last-step-wrapper {
+    min-height: 100vh;
+  } */
 
   .input-search-map {
     padding: 15px 15px 15px 45px;
@@ -268,17 +283,14 @@ input::placeholder {
 
   .next-btn {
     width: 100%;
-  }
-
-  .wrapper {
-    min-height: 70vh;
+    align-items: center;
   }
 
   .card-container {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     width: 100%;
   }
 
@@ -333,10 +345,21 @@ input::placeholder {
   }
 
   .nav-btn-wrapper {
-    align-items: center;
+    position: fixed;
+    bottom: 0;
     gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    display: flex;
     padding: 20px;
+    height: 12vh;
+    box-sizing: border-box;
   }
+
+  /* .back-btn-wrapper {
+   margin-right: 20px;
+  } */
 
   .card {
     width: 100%;
@@ -402,10 +425,6 @@ input::placeholder {
     margin-bottom: 20px;
     padding: 0 20px;
   }
-
-  /* .back-btn-wrapper {
-    display: none;
-  } */
 
   .qualified {
     width: 100%;

@@ -14,7 +14,7 @@ export const NextButton = ({onClick, isDisabled}) => {
       gap: "10px",
       justifyContent: "center",
       alignItems: "center",
-      fontWeight: "bold",
+      // fontWeight: "bold",
       height: "56px",
       boxSizing: "content-box",
       cursor: isDisabled ? "not-allowed" : "pointer",
@@ -30,8 +30,11 @@ export const NextButton = ({onClick, isDisabled}) => {
     <img
       alt="arrow"
       src="/icons/right-arrow.png"
-      height={20}
-      width={20}
+      height={16}
+      width={16}
+      style={{
+        marginTop: "2px",
+      }}
     />
   </button>
   )

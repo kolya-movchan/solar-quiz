@@ -21,7 +21,9 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 className="title">Do you own or rent your home?</h1>
+      <h1 style={{ marginTop: "10vh" }} className="title card-title">
+        Do you own or rent your home?
+      </h1>
 
       <div className="card-container">
         <Card
@@ -33,7 +35,7 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
           containerPadding={"20px 20px 0px 20px"}
           isActive={quizData.home_ownership === "own"}
           isDisabled={quizData.hasOwnProperty("home_ownership")}
-          style={{border: "1px solid #D2D2D2"}}
+          style={{ border: "1px solid #D2D2D2" }}
         />
 
         <Card
@@ -45,7 +47,7 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
           containerPadding={"20px 20px 0px 20px"}
           isActive={quizData.home_ownership === "rent"}
           isDisabled={quizData.hasOwnProperty("home_ownership")}
-          style={{border: "1px solid #D2D2D2"}}
+          style={{ border: "1px solid #D2D2D2" }}
         />
       </div>
     </div>

@@ -45,7 +45,9 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
         gap: "20px",
       }}
     >
-      <h1 className="title">What is your credit score?</h1>
+      <h1 style={{ marginTop: "10vh" }} className="title">
+        What is your credit score?
+      </h1>
 
       <div className="card-container-emojie" style={{ marginBottom: "20px" }}>
         {creditScoreList.map((score) => (
@@ -59,7 +61,7 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
             isActive={quizData.credit_score === score.id}
             isDisabled={quizData.hasOwnProperty("credit_score")}
             classImg={"card-emojie"}
-            style={{border: "1px solid #D2D2D2"}}
+            style={{ border: "1px solid #D2D2D2" }}
           />
         ))}
       </div>

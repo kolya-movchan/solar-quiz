@@ -14,7 +14,7 @@ export const StartButton = ({onClick, className}) => {
       cursor: "pointer",
       padding: "0 24px",
       gap: "10px",
-      fontWeight: "bold",
+      // fontWeight: "bold",
       boxSizing: "content-box",
     }}
     className={className}

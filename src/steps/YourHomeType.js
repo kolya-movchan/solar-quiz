@@ -47,7 +47,9 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 className="title">What is your home type?</h1>
+      <h1 style={{ marginTop: "10vh" }} className="title">
+        What is your home type?
+      </h1>
 
       <div className="card-container">
         {homeTypes.map((homeType) => (
@@ -66,7 +68,7 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
               classImg={"card-icon-image"}
               isActive={quizData.home_type === homeType.id}
               isDisabled={quizData.hasOwnProperty("home_type")}
-              style={{border: "none"}}
+              style={{ border: "none" }}
             />
           </div>
         ))}

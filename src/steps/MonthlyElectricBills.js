@@ -39,7 +39,9 @@ export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 className="title">How much are your monthly electric bills?</h1>
+      <h1 style={{ marginTop: "10vh" }} className="title">
+        How much are your monthly electric bills?
+      </h1>
 
       {/* <p style={{ marginBottom: "40px" }}>
         Your monthly bill helps us calculate your potential solar savings

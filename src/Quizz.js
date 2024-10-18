@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -172,15 +172,15 @@ const Quiz = () => {
             style={{
               display: "flex",
               backgroundColor: "#fff",
-              justifyContent: "space-between",
+              justifyContent: step === 1 ? "flex-end" : "space-between",
             }}
             className="nav-btn-wrapper"
           >
-            <div className="back-btn-wrapper">
-              {step > 1 && !quizData.isQuizDataSubmitted && (
+            {step > 1 && !quizData.isQuizDataSubmitted && (
+              <div className="back-btn-wrapper">
                 <BackButton onClick={handleGoBack} />
-              )}
-            </div>
+              </div>
+            )}
 
             {step > 0 && step < 8 && (
               <NextButton

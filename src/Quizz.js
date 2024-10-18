@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(5);
+  const [step, setStep] = useState(-1);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -42,14 +42,9 @@ const Quiz = () => {
       return;
     }
 
-    if (data.is_mannual_provider) {
-
+    if (data.is_mannual_provider || data.is_mannual_provider === null) {
       return;
     }
-
-    // if (data.is_mannual_provider === null) {
-    //   return;
-    // }
 
     setTimeout(() => {
       setStep((prevStep) => prevStep + 1);

@@ -267,6 +267,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             border: "1px solid transparent",
             borderRadius: "55px",
             display: "inline-block",
+            marginBottom: "20px",
           }}
         >
           <p
@@ -306,7 +307,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           </p>
         </div>
 
-        <h1 style={{ margin: "0", marginBottom: "25px" }} className="title">
+        <h1 style={{ margin: "0", marginBottom: "16px" }} className="title">
           One more step...
         </h1>
         <p
@@ -326,7 +327,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         </p>
 
         <div
-        className="qualified"
+          className="qualified"
           style={{
             display: "flex",
             boxSizing: "border-box",
@@ -339,14 +340,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           }}
         >
           <span style={{ color: "#027A48" }}>Your home status:</span>
-          <span style={{ fontWeight: "bold", color: "#027A48" }}>
-            Pre-Qualified
-          </span>
-          <img
-            src="/icons/alert-circle.svg"
-            alt="Info"
-            style={{ width: "20px" }}
-          />
+
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <span style={{ fontWeight: "bold", color: "#027A48" }}>
+              Pre-Qualified
+            </span>
+            <img
+              src="/icons/alert-circle.svg"
+              alt="Info"
+              style={{ width: "20px" }}
+            />
+          </div>
         </div>
 
         <div style={{ width: "100%" }}>
@@ -421,7 +425,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               }}
             />
 
-            <p
+            {/* <p
               className="form-notification"
               style={{
                 textAlign: "left",
@@ -432,7 +436,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             >
               We'll text you to confirm your number. Standard message and data
               rates apply.{" "}
-            </p>
+            </p> */}
 
             <button
               style={{

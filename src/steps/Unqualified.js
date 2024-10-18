@@ -48,12 +48,16 @@ export const Unqualified = () => {
         }}
       >
         <span style={{ color: "#B42318" }}>Your home status:</span>
-        <span style={{ color: "#B42318", fontWeight: "650" }}>Unqualified</span>
-        <img
-          src="/icons/red-alert-circle.svg"
-          alt="Info"
-          style={{ width: "20px" }}
-        />
+        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <span style={{ color: "#B42318", fontWeight: "650" }}>
+            Unqualified
+          </span>
+          <img
+            src="/icons/red-alert-circle.svg"
+            alt="Info"
+            style={{ width: "20px" }}
+          />
+        </div>
       </div>
 
       <a

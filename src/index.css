@@ -23,7 +23,7 @@ input {
 /* Reset the placeholder styles */
 input::placeholder, 
 textarea::placeholder {
-  color: inherit;  /* Inherit the color from the input field */
+  font-weight: 400;
   opacity: 1;      /* Reset the default lower opacity */
   font-style: normal;  /* Reset to normal font style */
   font-weight: inherit; /* Inherit the font weight */
@@ -553,7 +553,7 @@ input::placeholder {
     gap: 10px;
     margin: 0 auto;
     padding: 0 80px;
-    max-width: 320px;
+    max-width: 364px;
   }
 
   .otp-wrapper {
@@ -584,6 +584,12 @@ input::placeholder {
     font-size: 18px;
     margin-bottom: 10px;
     padding: 0 20px;
+  }
+
+  .qualified {
+    width: 364px;
+    display: flex;
+    justify-content: space-between;
   }
 }
 

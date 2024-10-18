@@ -110,13 +110,12 @@ textarea::placeholder {
   justify-content: center;}
 
 .first-and-last-step-wrapper {
-  min-height: 100vh;
+  min-height: 98vh;
   justify-content: center;
 }
 
 .unqualified-wrapper {
-  min-height: 100vh;
-  max-height: 100vh;
+  height: 98vh;
   align-items: center;
   justify-content: center;
 }

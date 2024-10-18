@@ -47,7 +47,7 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ marginTop: "10vh" }} className="title">
+      <h1 style={{ paddingTop: "10vh" }} className="title">
         What is your home type?
       </h1>
 

@@ -205,6 +205,11 @@ input::placeholder {
 
 /* MOBILE */
 @media (max-width: 768px) {
+  .first-and-last-step-wrapper {
+    height: 100%;
+    justify-content: center;
+  }
+
   .container {
     justify-content: space-between;
     padding: 40px 20px 20px;
@@ -214,7 +219,7 @@ input::placeholder {
   .container-with-cards {
     /* min-height: 80vh;
     max-height: 80vh; */
-    min-height: 78vh;
+    min-height: 70vh;
     width: 100%;
     justify-content: space-between;
     /* padding-top: 75px; */

@@ -152,6 +152,8 @@ textarea::placeholder {
 input::placeholder {
   color: #475467;
   font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
 }
 
 

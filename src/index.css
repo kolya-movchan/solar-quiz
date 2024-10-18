@@ -440,7 +440,7 @@ input::placeholder {
     position: fixed;
     bottom: 0;
     box-sizing: border-box;
-    padding: 25px 150px;
+    padding: 20px 150px;
     /* left: 0; */
     /* padding-right: 50px; */
     justify-content: space-between;

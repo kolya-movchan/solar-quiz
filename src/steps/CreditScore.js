@@ -45,9 +45,7 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
         gap: "20px",
       }}
     >
-      <h1 style={{ paddingTop: "10vh" }} className="title">
-        What is your credit score?
-      </h1>
+      <h1 className="title title-master">What is your credit score?</h1>
 
       <div className="card-container-emojie" style={{ marginBottom: "20px" }}>
         {creditScoreList.map((score) => (

@@ -21,9 +21,7 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ paddingTop: "10vh" }} className="title card-title">
-        Do you own or rent your home?
-      </h1>
+      <h1 className="title card-title title-master">Do you own or rent your home?</h1>
 
       <div className="card-container">
         <Card

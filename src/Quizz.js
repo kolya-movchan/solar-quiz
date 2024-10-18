@@ -185,7 +185,7 @@ const Quiz = () => {
             {step > 0 && step < 8 && (
               <NextButton
                 onClick={handleNextQuizNavigation}
-                // isDisabled={step > Object.keys(quizData).length}
+                isDisabled={step === 1 && !quizData.location}
               />
             )}
           </div>

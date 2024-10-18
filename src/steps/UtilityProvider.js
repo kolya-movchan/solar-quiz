@@ -35,9 +35,7 @@ export const UtilityProvider = ({
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ paddingTop: "10vh" }} className="title">
-        Who is your utility provider?
-      </h1>
+      <h1 className="title title-master">Who is your utility provider?</h1>
       <div className="card-container">
         {providersList?.map((provider, idx) => (
           <Card

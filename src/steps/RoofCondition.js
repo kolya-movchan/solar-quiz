@@ -44,7 +44,7 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 style={{ paddingTop: "10vh" }} className="title">
+      <h1 className="title title-master">
         How would you describe the condition of your roof?
       </h1>
       {/* 

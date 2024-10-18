@@ -307,7 +307,10 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           </p>
         </div>
 
-        <h1 style={{ margin: "0", marginBottom: "16px" }} className="title">
+        <h1
+          style={{ margin: "0", marginBottom: "16px" }}
+          className="title"
+        >
           One more step...
         </h1>
         <p

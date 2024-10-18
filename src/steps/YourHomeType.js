@@ -52,6 +52,7 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
       <div className="card-container">
         {homeTypes.map((homeType) => (
           <div
+            key={homeType.id}
             style={{
               display: "flex",
               gap: "20px",

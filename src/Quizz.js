@@ -20,7 +20,7 @@ import { Intro } from "./steps/Intro";
 import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(5);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -35,12 +35,25 @@ const Quiz = () => {
       credit_score === "below-550";
 
     if (conditionsToRefuse) {
-      setStep(-1);
+      setTimeout(() => {
+        setStep(-1);
+      }, 200);
+
+      return;
     }
 
-    if (data.isQuizDataSubmitted === true) {
-      setStep((prevStep) => prevStep + 1);
+    if (data.is_mannual_provider) {
+
+      return;
     }
+
+    // if (data.is_mannual_provider === null) {
+    //   return;
+    // }
+
+    setTimeout(() => {
+      setStep((prevStep) => prevStep + 1);
+    }, 200);
   };
 
   const handleGoBack = () => {
@@ -54,6 +67,8 @@ const Quiz = () => {
 
     setStep(step + 1);
   };
+
+  console.log("Quiz Data:", quizData);
 
   const renderStep = () => {
     switch (step) {
@@ -161,11 +176,8 @@ const Quiz = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              paddingRight: "50px",
               backgroundColor: "#fff",
-              hright: "10vh",
-              padding: "20px",
+              justifyContent: "space-between",
             }}
             className="nav-btn-wrapper"
           >
@@ -178,7 +190,7 @@ const Quiz = () => {
             {step > 0 && step < 8 && (
               <NextButton
                 onClick={handleNextQuizNavigation}
-                isDisabled={step > Object.keys(quizData).length}
+                // isDisabled={step > Object.keys(quizData).length}
               />
             )}
           </div>

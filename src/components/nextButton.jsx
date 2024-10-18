@@ -10,7 +10,7 @@ export const NextButton = ({onClick, isDisabled}) => {
       borderRadius: "8px",
       color: "#fff",
       padding: "0 24px",
-      display: "flex",
+      display: "flex",  
       gap: "10px",
       justifyContent: "center",
       alignItems: "center",

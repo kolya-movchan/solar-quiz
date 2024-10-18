@@ -56,6 +56,7 @@ export const RoofCondition = ({ handleUserAnswer, quizData }) => {
       <div className="card-container">
         {roofConditions.map((condition) => (
           <Card
+            key={condition.id}
             title={condition.name}
             img={condition.icon}
             onClick={() => handleUserAnswer({ roof_condition: condition.id })}

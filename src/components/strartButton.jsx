@@ -9,7 +9,7 @@ export const StartButton = ({onClick, className}) => {
       height: "56px",
       border: "none",
       backgroundColor: "#FE4A19",
-      borderRadius: "8px",
+      borderRadius: "4px",
       color: "#fff",
       cursor: "pointer",
       padding: "0 24px",

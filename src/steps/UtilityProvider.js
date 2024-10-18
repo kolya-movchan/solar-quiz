@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { statesProviders } from "../statesProviders";
 import { Card } from "../components/card";
+import classNames from "classnames";
+
 export const UtilityProvider = ({
   handleUserAnswer,
   stateAbbreviation,
@@ -20,6 +22,10 @@ export const UtilityProvider = ({
     return () => clearTimeout(timer);
   }, []);
 
+  console.log(111, quizData.is_mannual_provider);
+  console.log(222, quizData.mannual_provider);
+  console.log(333, quizData);
+
   return (
     <div
       className="container container-with-cards"
@@ -36,28 +42,55 @@ export const UtilityProvider = ({
             key={idx}
             title={provider}
             img={"/providers/provider.png"}
-            onClick={() => handleUserAnswer({ provider })}
+            onClick={() => {
+              handleUserAnswer({
+                provider,
+                is_mannual_provider: false,
+                mannual_provider: null,
+              });
+            }}
             isOneBg={true}
             containerPadding={"20px 20px 0px 20px"}
             isActive={quizData.provider === provider}
             isDisabled={quizData.hasOwnProperty("provider")}
             classImg={"card-img-roof-condition"}
-            style={{border: "1px solid #D2D2D2"}}
+            style={{ border: "1px solid #D2D2D2" }}
           />
         ))}
-        <input
-          type="text"
-          className="input-other-provider"
-          placeholder="Other Utility Provider"
+
+        <div
           style={{
-            border: "1px solid #D2D2D2",
-            borderRadius: "8px",
             width: "100%",
-            boxSizing: "border-box",
-            outline: "none",
+            borderRadius: "8px",
           }}
-          onChange={(e) => handleUserAnswer({ provider: e.target.value })}
-        />
+          className={classNames("input-other-provider-container", {
+            "input-other-provider-container--active":
+              quizData.is_mannual_provider,
+          })}
+        >
+          <input
+            value={quizData.mannual_provider}
+            style={{
+              borderRadius: "4px",
+              width: "100%",
+              boxSizing: "border-box",
+              outline: "none",
+              border: "1px solid #D2D2D2",
+            }}
+            type="text"
+            placeholder="Other Utility Provider"
+            className={"input-other-provider "}
+            onChange={(e) => {
+              handleUserAnswer({
+                mannual_provider: e.target.value,
+                is_mannual_provider: e.target.value.length > 0 ? true : null,
+                provider: null,
+              })
+            }
+             
+            }
+          />
+        </div>
       </div>
     </div>
   );

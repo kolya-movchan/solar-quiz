@@ -7,7 +7,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, style=
       "card",
       {
         "card-active": isActive,
-        "card-disabled": isDisabled && !isActive,
+        // "card-disabled": isDisabled && !isActive,
       }
     )}>
       <button
@@ -16,7 +16,7 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, style=
           paddingBottom: "0",
           fontSize: "2rem",
           fontWeight: "bold",
-          borderRadius: "8px",
+          borderRadius: "4px",
           cursor: "pointer",
           type: "button",
           overflow: "hidden",

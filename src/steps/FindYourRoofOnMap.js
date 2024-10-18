@@ -175,13 +175,10 @@ export const FindYourRoofOnMap = ({
       style={{
         display: "flex",
         flexDirection: "column",
-        // alignItems: "center",
-        // justifyContent: "center",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
         gap: "20px",
-        // paddingTop: "30px",
       }}
     >
       <h1 style={{ margin: "0" }} className="title">
@@ -224,6 +221,7 @@ export const FindYourRoofOnMap = ({
               "::placeholder": {
                 color: "#475467",
               },
+              borderRadius: "4px",
             }}
             className="input-search-map"
             value={inputValue}
@@ -262,10 +260,12 @@ export const FindYourRoofOnMap = ({
               right: 0,
               backgroundColor: "#fff",
               // border: "1px solid #ccc",
+              borderRadius: "4px",
               borderTop: "none",
               maxHeight: "200px",
               overflowY: "auto",
               zIndex: 2,
+              marginTop: "10px",
             }}
           >
             {streetsData.map((street, index) => (
@@ -314,10 +314,12 @@ export const FindYourRoofOnMap = ({
               maxHeight: "200px",
               overflowY: "auto",
               zIndex: 1,
+              marginTop: "10px",
+              borderRadius: "4px",
             }}
           >
             {inputValue.trim().length > 0 && !isStreetSelected && (
-              <li style={{ padding: "10px" }}>
+              <li style={{ padding: "20px" }}>
                 {isLoading ? "Loading..." : "No results found"}
               </li>
             )}

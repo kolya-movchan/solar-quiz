@@ -335,7 +335,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
             border: "1px solid #027A48",
             backgroundColor: "#E0ECE2",
             marginBottom: "20px",
-            borderRadius: "8px",
+            borderRadius: "4px",
           }}
         >
           <span style={{ color: "#027A48" }}>Your home status:</span>
@@ -364,7 +364,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                   padding: "20px 10px",
                   width: "100%",
                   border: "1px solid #D0D5DD",
-                  borderRadius: "8px",
+                  borderRadius: "4px",
                   outline: "none",
                 }}
                 name="firstName"
@@ -379,7 +379,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                   padding: "20px 10px",
                   width: "100%",
                   border: "1px solid #D0D5DD",
-                  borderRadius: "8px",
+                  borderRadius: "4px",
                   outline: "none",
                 }}
                 name="lastName"
@@ -393,7 +393,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               style={{
                 padding: "20px 10px",
                 border: "1px solid #D0D5DD",
-                borderRadius: "8px",
+                borderRadius: "4px",
                 outline: "none",
               }}
               name="email"
@@ -406,7 +406,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               style={{
                 padding: "20px 10px",
                 border: "1px solid #D0D5DD",
-                borderRadius: "8px",
+                borderRadius: "4px",
                 outline: "none",
                 marginBottom: "10px",
               }}
@@ -449,7 +449,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 textAlign: "center",
                 display: "flex",
                 gap: "10px",
-                borderRadius: "8px",
+                borderRadius: "4px",
                 fontSize: "16px",
               }}
               type="submit"

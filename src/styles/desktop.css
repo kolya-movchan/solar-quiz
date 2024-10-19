@@ -202,7 +202,8 @@
   
     .otp-container {
       width: 450px;
-      padding: 20px
+      padding: 20px;
+      padding-bottom: 40px;
     }
   
     .resend-otp-container {

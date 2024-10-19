@@ -29,6 +29,10 @@ export const OTPModal = ({
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      otpRefs.current[0].focus();
+    }, 300);
+
     const handleKeyUp = (e, index) => {
       if (e.target.value && index < otpRefs.current.length - 1) {
         otpRefs.current[index + 1].focus();
@@ -37,14 +41,14 @@ export const OTPModal = ({
 
     otpRefs.current.forEach((ref, index) => {
       if (ref) {
-        ref.addEventListener('keyup', (e) => handleKeyUp(e, index));
+        ref.addEventListener("keyup", (e) => handleKeyUp(e, index));
       }
     });
 
     return () => {
       otpRefs.current.forEach((ref, index) => {
         if (ref) {
-          ref.removeEventListener('keyup', (e) => handleKeyUp(e, index));
+          ref.removeEventListener("keyup", (e) => handleKeyUp(e, index));
         }
       });
     };

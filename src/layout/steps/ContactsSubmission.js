@@ -127,22 +127,19 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
-        {
-          countryCode,
-          phoneNumber,
-        }
-      );
+      // const response = await axios.post(
+      //   `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+      //   {
+      //     countryCode,
+      //     phoneNumber,
+      //   }
+      // );
 
-      if (response.status === 200) {
-        setShowOTPInput(true);
-      }
-      setShowOTPInput(true);
-
-      // if (isRetry) {
-      //   setResendTimer(60);
+      // if (response.status === 200) {
+      //   setShowOTPInput(true);
       // }
+
+      setShowOTPInput(true);
     } catch (error) {
       toast.error(
         error.response
@@ -277,11 +274,14 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}
-          handleOTPSubmission={handleOTPSubmission}
-          handleOTPChange={handleOTPChange}
+          // handleOTPSubmission={handleOTPSubmission}
+          handleOTPSubmission={() => {}}
+          // handleOTPChange={handleOTPChange}
+          handleOTPChange={() => {}}
           otp={otp}
           otpRefs={otpRefs}
-          handleOTPVerification={handleOTPVerification}
+          // handleOTPVerification={handleOTPVerification}
+          handleOTPVerification={() => {}}
         />
       )}
     </Container>

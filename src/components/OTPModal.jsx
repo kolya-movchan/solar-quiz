@@ -55,6 +55,7 @@ export const OTPModal = ({
   };
 
   const handlePaste = (event) => {
+    event.preventDefault(); // Prevent default paste action
     const pastedData = event.clipboardData.getData("Text").slice(0, 4); // Handle 4 digits
     for (let i = 0; i < pastedData.length; i++) {
       if (otpRefs.current[i]) {
@@ -62,7 +63,14 @@ export const OTPModal = ({
         handleOTPChange({ target: { value: pastedData[i] } }, i);
       }
     }
-    event.preventDefault(); // Prevent default paste action
+
+    // Force re-render to update the input values
+    setAutofilledOTP(pastedData);
+
+    // Focus on the last input after pasting
+    if (otpRefs.current[pastedData.length - 1]) {
+      otpRefs.current[pastedData.length - 1].focus();
+    }
   };
 
   useEffect(() => {
@@ -127,7 +135,7 @@ export const OTPModal = ({
               gap: "10px",
               justifyContent: "center",
             }}
-            onPaste={handlePaste} // Add onPaste handler
+            onPaste={handlePaste}
           >
             {Array(4)
               .fill(0)

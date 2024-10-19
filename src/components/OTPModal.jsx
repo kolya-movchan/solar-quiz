@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { OTPInput } from "./OTPInput";
 
 export const OTPModal = ({
@@ -27,6 +27,28 @@ export const OTPModal = ({
       otpRefs.current[pastedData.length - 1].focus();
     }
   };
+
+  useEffect(() => {
+    const handleKeyUp = (e, index) => {
+      if (e.target.value && index < otpRefs.current.length - 1) {
+        otpRefs.current[index + 1].focus();
+      }
+    };
+
+    otpRefs.current.forEach((ref, index) => {
+      if (ref) {
+        ref.addEventListener('keyup', (e) => handleKeyUp(e, index));
+      }
+    });
+
+    return () => {
+      otpRefs.current.forEach((ref, index) => {
+        if (ref) {
+          ref.removeEventListener('keyup', (e) => handleKeyUp(e, index));
+        }
+      });
+    };
+  }, []);
 
   return (
     <div className="otp-modal">

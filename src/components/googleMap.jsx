@@ -1,6 +1,6 @@
 import React from "react";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
-import { GoogleMapMarker } from "../components/googleMapMarker";
+import { GoogleMapMarker } from "./GoogleMapMarker";
 
 const mapContainerStyle = {
   width: "100%",

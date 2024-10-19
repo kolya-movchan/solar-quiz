@@ -2,9 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { InputOTP } from "../../components/inputOTP";
+import { InputOTP } from "../../components/InputOTP";
 import { Container } from "../../layout/container";
-import { QualificationBanner } from "../../components/qualification-banner";
+import { QualificationBanner } from "../../components/QualificationBanner";
+import { QualifiedBanner } from "../../components/QualifiedBanner";
 
 export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -252,32 +253,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         and the new roof design. 
       </p>
 
-      <div
-        className="qualified"
-        style={{
-          display: "flex",
-          boxSizing: "border-box",
-          gap: "20px",
-          padding: "15px",
-          border: "1px solid #027A48",
-          backgroundColor: "#E0ECE2",
-          marginBottom: "20px",
-          borderRadius: "4px",
-        }}
-      >
-        <span style={{ color: "#027A48" }}>Your home status:</span>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <span style={{ fontWeight: "bold", color: "#027A48" }}>
-            Pre-Qualified
-          </span>
-          <img
-            src="/icons/alert-circle.svg"
-            alt="Info"
-            style={{ width: "20px" }}
-          />
-        </div>
-      </div>
+      <QualifiedBanner />
 
       <div style={{ width: "100%" }}>
         <form

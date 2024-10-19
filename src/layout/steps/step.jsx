@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { Container } from "../container";
-import { Card } from "../../components/card";
+import { Card } from "../../components/Card";
 
 import { homeTypes } from "../../mop/home-types";
 import { roofConditions } from "../../mop/roof-conditions";

@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Container } from "../container";
-import { QualificationBanner } from "../../components/qualification-banner";
-import { StartButton } from "../../components/strartButton";
-import { IntroDescriptionItem } from "../../components/introDescriptionItem";
+import { QualificationBanner } from "../../components/QualificationBanner";
+import { StartButton } from "../../components/StrartButton";
+import { IntroDescriptionItem } from "../../components/IntroDescriptionItem";
 import { introDescriptionBullets } from "../../mop/intro-description-bullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {

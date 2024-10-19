@@ -3,8 +3,8 @@ import axios from "axios";
 
 import { debounce } from "../../hooks/useDebounce";
 import { Container } from "../container";
-import { SearchLocation } from "../../components/searchLocation";
-import { GoogleMapLayout } from "../../components/googleMap";
+import { SearchLocation } from "../../components/SearchLocation";
+import { GoogleMapLayout } from "../../components/GoogleMap";
 
 const center = {
   lat: 42.3601,

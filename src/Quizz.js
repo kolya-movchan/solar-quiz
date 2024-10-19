@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { ProgressBar } from "./components/progressBar";
-import { StartButton } from "./components/strartButton";
-import { BackButton } from "./components/backButton";
-import { NextButton } from "./components/nextButton";
-import { PopUp } from "./components/popUp";
+import { ProgressBar } from "./components/ProgressBar";
+import { StartButton } from "./components/StrartButton";
+import { BackButton } from "./components/BackButton";
+import { NextButton } from "./components/NextButton";
+import { PopUp } from "./components/PopUp";
 
 import { Step } from "./layout/steps/step";
 import { FindYourRoofOnMap } from "./layout/steps/FindYourRoofOnMap";
@@ -15,7 +15,7 @@ import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(8);
+  const [step, setStep] = useState(0);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 

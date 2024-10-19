@@ -15,8 +15,9 @@ export const Intro = ({ handleNextQuizNavigation }) => {
         style={{
           margin: "0",
           marginBottom: "32px",
+          // textAlign: "left",
         }}
-        className="title-intro-mobile title"
+        className="title-intro title"
       >
         See How Much Money You Could Save w/ This $0 Solar Program That Cuts
         Electric Bills by 30-50% – Instantly

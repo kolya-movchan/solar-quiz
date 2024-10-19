@@ -5,7 +5,7 @@
       justify-content: center;
     }
   
-    .title-intro-mobile {
+    .title-intro {
       text-align: left;
       font-size: 32px;
       line-height: 38px;
@@ -26,11 +26,7 @@
       width: 100%;
       justify-content: space-between;
     }
-  
-    /* .container-without-cards  {
-      justify-content: center;
-      align-items: center;
-    } */
+
   
     .paragraph {
       color: #475467;
@@ -42,7 +38,7 @@
       font-size: 32px;
       line-height: 38px;
       font-weight: 700;
-      text-align: center;
+      /* text-align: center; */
       max-width: 370px;
       margin: 0 auto;
       margin-bottom: 10px;
@@ -50,6 +46,10 @@
   
     .title-master {
       padding-top: 8vh;
+    }
+
+    .intro-container {
+      align-items: center;
     }
   
     .intro-boolet-container {

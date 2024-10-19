@@ -127,17 +127,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
-        {
-          countryCode,
-          phoneNumber,
-        }
-      );
+      // const response = await axios.post(
+      //   `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+      //   {
+      //     countryCode,
+      //     phoneNumber,
+      //   }
+      // );
 
-      if (response.status === 200) {
-        setShowOTPInput(true);
-      }
+      // if (response.status === 200) {
+      //   setShowOTPInput(true);
+      // }
       setShowOTPInput(true);
 
       // if (isRetry) {
@@ -201,10 +201,20 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
   useEffect(() => {
     if (showOTPInput) {
-      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
     } else {
-      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
     }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+    };
   }, [showOTPInput]);
 
   useEffect(() => {
@@ -267,11 +277,14 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}
-          handleOTPSubmission={handleOTPSubmission}
-          handleOTPChange={handleOTPChange}
+          handleOTPSubmission={() => {}}
+          // handleOTPSubmission={handleOTPSubmission}
+          handleOTPChange={() => {}}
+          // handleOTPChange={handleOTPChange}
           otp={otp}
           otpRefs={otpRefs}
-          handleOTPVerification={handleOTPVerification}
+          handleOTPVerification={() => {}}
+          // handleOTPVerification={handleOTPVerification}
         />
       )}
     </Container>

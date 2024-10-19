@@ -145,6 +145,13 @@ textarea::placeholder {
   font-size: 16px;
 }
 
+.google-map-container {
+  width: 100%;
+  position: relative;
+  height: 300px;
+}
+
+
 .intro-wrapper {
   display: flex;
   gap: 24px;

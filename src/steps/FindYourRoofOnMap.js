@@ -1,23 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import axios from "axios";
 
 import { debounce } from "../hooks/useDebounce";
 import { Container } from "../components/container";
-import { GoogleMapMarker } from "../components/googleMapMarker";
 import { SearchLocation } from "../components/searchLocation";
-
-const mapContainerStyle = {
-  width: "100%",
-  height: "300px",
-};
+import { GoogleMapLayout } from "../components/googleMap";
 
 const center = {
   lat: 42.3601,
   lng: -71.0589,
 };
-
-const libraries = ["places", "visualization"];
 
 export const FindYourRoofOnMap = ({
   handleUserAnswer,
@@ -36,11 +28,6 @@ export const FindYourRoofOnMap = ({
 
   const dropdownRef = useRef(null);
   const mapRef = useRef(null);
-
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries,
-  });
 
   const fetchAddressesData = debounce(async (value) => {
     try {
@@ -97,27 +84,6 @@ export const FindYourRoofOnMap = ({
     }
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowDropdown(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (quizData.location) {
-      handleSelectStreet(quizData.location);
-      // setIsStreetSelected(true);
-      // setSelectedStreet(quizData.location.palce_id);
-    }
-  }, [quizData.location]);
-
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
     fetchAddressesData(e);
@@ -134,8 +100,24 @@ export const FindYourRoofOnMap = ({
     getCoordinates(street.place_id);
   };
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "";
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (quizData.location) {
+      handleSelectStreet(quizData.location);
+    }
+  }, [quizData.location]);
 
   return (
     <Container className="container-without-cards">
@@ -162,26 +144,13 @@ export const FindYourRoofOnMap = ({
         isLoading={isLoading}
       />
 
-      <div style={{ width: "100%", position: "relative" }}>
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={17}
-          center={mapCenter}
-          mapTypeId="satellite"
-          onLoad={(map) => {
-            mapRef.current = map;
-          }}
-          onDragEnd={() => {
-            const center = mapRef.current.getCenter();
-            const newCenter = { lat: center.lat(), lng: center.lng() };
-            setMapCenter(newCenter);
-          }}
-        ></GoogleMap>
-
-        <GoogleMapMarker />
+      <div className="google-map-container">
+        <GoogleMapLayout
+          mapCenter={mapCenter}
+          setMapCenter={setMapCenter}
+          mapRef={mapRef}
+        />
       </div>
     </Container>
   );
 };
-
-// 380 lines

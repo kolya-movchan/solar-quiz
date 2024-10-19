@@ -24,6 +24,8 @@ export const OTPInput = forwardRef(({ value, onChange }, ref) => {
       <input
         ref={ref}
         type="text"
+        inputMode="numeric" // Ensures that only numbers are entered
+        autoComplete="one-time-code" // Enables OTP autofill
         style={{
           height: "80%",
           width: "80%",

@@ -50,20 +50,20 @@ export const OTPModal = ({
     };
   }, []);
 
-
   useEffect(() => {
-    const handleAutofocus = () => {
-      if (otpRefs.current[0]) {
-        otpRefs.current[0].focus();
-        otpRefs.current[0].click(); // Simulate a user interaction
+    // Check for auto-filled OTP in the first input and distribute to other inputs
+    otpRefs.current[0]?.addEventListener("input", (e) => {
+      const fullValue = e.target.value;
+      if (fullValue.length === 4) {
+        fullValue.split("").forEach((char, i) => {
+          if (otpRefs.current[i]) {
+            otpRefs.current[i].value = char;
+            handleOTPChange({ target: { value: char } }, i);
+          }
+        });
       }
-    };
-  
-    const timer = setTimeout(() => handleAutofocus(), 500);
-  
-    return () => clearTimeout(timer);
-  }, []);
-  
+    });
+  }, [otpRefs, handleOTPChange]);
 
   return (
     <div className="otp-modal">

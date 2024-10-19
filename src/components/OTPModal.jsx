@@ -35,9 +35,25 @@ export const OTPModal = ({
       }
     };
 
+    const handleFirstInputChange = (e) => {
+      const value = e.target.value;
+      if (value.length === 4) {
+        for (let i = 0; i < 4; i++) {
+          if (otpRefs.current[i]) {
+            otpRefs.current[i].value = value[i];
+            handleOTPChange({ target: { value: value[i] } }, i);
+          }
+        }
+        otpRefs.current[3].focus();
+      }
+    };
+
     otpRefs.current.forEach((ref, index) => {
       if (ref) {
         ref.addEventListener("keyup", (e) => handleKeyUp(e, index));
+        if (index === 0) {
+          ref.addEventListener("input", handleFirstInputChange);
+        }
       }
     });
 
@@ -45,39 +61,13 @@ export const OTPModal = ({
       otpRefs.current.forEach((ref, index) => {
         if (ref) {
           ref.removeEventListener("keyup", (e) => handleKeyUp(e, index));
+          if (index === 0) {
+            ref.removeEventListener("input", handleFirstInputChange);
+          }
         }
       });
     };
   }, []);
-
-  useEffect(() => {
-    // Check for auto-filled OTP in any input and distribute to other inputs
-    const handleAutoFill = (e) => {
-      const fullValue = e.target.value;
-      if (fullValue.length === 4) {
-        fullValue.split("").forEach((char, i) => {
-          if (otpRefs.current[i]) {
-            otpRefs.current[i].value = char;
-            handleOTPChange({ target: { value: char } }, i);
-          }
-        });
-      }
-    };
-
-    otpRefs.current.forEach((ref) => {
-      if (ref) {
-        ref.addEventListener("input", handleAutoFill);
-      }
-    });
-
-    return () => {
-      otpRefs.current.forEach((ref) => {
-        if (ref) {
-          ref.removeEventListener("input", handleAutoFill);
-        }
-      });
-    };
-  }, [otpRefs, handleOTPChange]);
 
   return (
     <div className="otp-modal">

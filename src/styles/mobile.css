@@ -27,10 +27,10 @@
       justify-content: space-between;
     }
   
-    .container-without-cards  {
+    /* .container-without-cards  {
       justify-content: center;
       align-items: center;
-    }
+    } */
   
     .paragraph {
       color: #475467;

@@ -91,6 +91,10 @@ textarea::placeholder {
   justify-content: space-between;
 }
 
+.container-without-cards  {
+  gap: 20px;
+}
+
 .card {
   border: 4px solid transparent;
   border-radius: 8px;

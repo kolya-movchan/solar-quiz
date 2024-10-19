@@ -15,10 +15,6 @@
         min-height: 100vh;
     }
   
-    .container-without-cards  {
-      justify-content: center;
-    }
-  
     .card:hover:not(.card-active) {
       border-color: #E6E6E6;
       opacity: 0.8;

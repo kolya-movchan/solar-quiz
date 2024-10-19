@@ -192,30 +192,36 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
     otpRefs.current[index].value = value;
 
-    setTimeout(() => {
-      setOtp((prev) => {
-        const newOtp = [...prev];
-        newOtp[index] = value;
-        return newOtp;
-      });
-    }, 500);
+    console.log(111, otpRefs.current);
+
+    if (index === 3 && otpRefs.current.every((ref) => ref.value)) {
+      handleOTPSubmission();
+    }
+
+    // setTimeout(() => {
+    //   setOtp((prev) => {
+    //     const newOtp = [...prev];
+    //     newOtp[index] = value;
+    //     return newOtp;
+    //   });
+    // }, 500);
   };
 
-  useEffect(() => {
-    // console.log("OTP:", otp);
-    // console.log("OTP Length:", otp.length);
-    // console.log("OTP Submitted:", isOTPSubmitted);
+  // useEffect(() => {
+  //   // console.log("OTP:", otp);
+  //   // console.log("OTP Length:", otp.length);
+  //   // console.log("OTP Submitted:", isOTPSubmitted);
 
-    if (
-      otp.length === 4 &&
-      otp.every((digit) => digit !== "") &&
-      !isOTPSubmitted
-    ) {
-      setTimeout(() => {
-        handleOTPSubmission();
-      }, 1000);
-    }
-  }, [otp, isOTPSubmitted]);
+  //   if (
+  //     otp.length === 4 &&
+  //     otp.every((digit) => digit !== "") &&
+  //     !isOTPSubmitted
+  //   ) {
+  //     setTimeout(() => {
+  //       handleOTPSubmission();
+  //     }, 1000);
+  //   }
+  // }, [otp, isOTPSubmitted]);
 
   useEffect(() => {
     if (showOTPInput) {
@@ -272,7 +278,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         isLoading={isLoading}
       />
 
-      {showOTPInput && (
+      {!showOTPInput && (
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}
@@ -280,8 +286,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           // handleOTPSubmission={() => {}}
           handleOTPChange={handleOTPChange}
           // handleOTPChange={() => {}}
-          setOtp={setOtp}
-          otp={otp}
+          // setOtp={setOtp}
+          // otp={otp}
           otpRefs={otpRefs}
           handleOTPVerification={handleOTPVerification}
           // handleOTPVerification={() => {}}

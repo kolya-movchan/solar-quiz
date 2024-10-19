@@ -120,7 +120,7 @@ textarea::placeholder {
   justify-content: space-between;
 }
 
-.container-without-cards  {
+.container-with-cards   {
   gap: 20px;
 }
 

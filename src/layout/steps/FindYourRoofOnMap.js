@@ -120,7 +120,7 @@ export const FindYourRoofOnMap = ({
   }, [quizData.location]);
 
   return (
-    <Container className="container-without-cards">
+    <Container className="container-with-cards ">
       <h1 style={{ margin: "0" }} className="title">
         Let's check your roof's sun exposure
       </h1>

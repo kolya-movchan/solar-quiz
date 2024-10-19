@@ -4,7 +4,11 @@ import { Container } from "../container";
 import { statesProviders } from "../../mop/statesProviders";
 import classNames from "classnames";
 
-export const UtilityProvider = ({ handleUserAnswer, quizData, stateAbbreviation }) => {
+export const UtilityProvider = ({
+  handleUserAnswer,
+  quizData,
+  stateAbbreviation,
+}) => {
   const providersList = statesProviders.find(
     (data) => data.State === stateAbbreviation
   )?.Providers || ["APS", "SRP", "TEP"];
@@ -14,7 +18,7 @@ export const UtilityProvider = ({ handleUserAnswer, quizData, stateAbbreviation 
   }, []);
 
   return (
-    <Container className="container-without-cards">
+    <Container className="container-with-cards ">
       <h1 className="title title-master">Who is your utility provider?</h1>
       <div className="card-container">
         {providersList?.map((provider, idx) => (

@@ -9,7 +9,7 @@ export const RoofConditions = ({ handleUserAnswer, quizData }) => {
   }, []);
 
   return (
-    <Container className="container-without-cards">
+    <Container className="container-with-cards">
       <h1 className="title title-master">
         How would you describe the condition of your roof?
       </h1>

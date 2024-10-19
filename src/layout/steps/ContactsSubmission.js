@@ -195,26 +195,26 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       return newOtp;
     });
   };
-  useEffect(() => {
-    const handleBodyStyles = () => {
-      if (showOTPInput) {
-        document.body.style.overflow = "hidden";
-        document.body.style.position = "fixed";
-        document.body.style.width = "100%";
-        document.body.style.height = "100%";
-        document.body.style.top = "0";
-        document.body.style.left = "0";
-      } else {
-        document.body.style.overflow = "";
-        document.body.style.position = "";
-        document.body.style.width = "";
-        document.body.style.height = "";
-        document.body.style.top = "";
-        document.body.style.left = "";
-      }
-    };
+  // useEffect(() => {
+  //   const handleBodyStyles = () => {
+  //     if (showOTPInput) {
+  //       document.body.style.overflow = "hidden";
+  //       document.body.style.position = "fixed";
+  //       document.body.style.width = "100%";
+  //       document.body.style.height = "100%";
+  //       document.body.style.top = "0";
+  //       document.body.style.left = "0";
+  //     } else {
+  //       document.body.style.overflow = "";
+  //       document.body.style.position = "";
+  //       document.body.style.width = "";
+  //       document.body.style.height = "";
+  //       document.body.style.top = "";
+  //       document.body.style.left = "";
+  //     }
+  //   };
 
-    handleBodyStyles();
+  //   handleBodyStyles();
 
     // For Safari, we need to delay the focus
     if (showOTPInput) {

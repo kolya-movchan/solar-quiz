@@ -31,6 +31,18 @@ textarea::placeholder {
   text-transform: none; /* Reset text-transform */
 }
 
+.wrapper-default {
+  max-width: 790px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.nav-btn-wrapper {
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+}
+
 .card {
   border: 4px solid transparent;
   border-radius: 8px;

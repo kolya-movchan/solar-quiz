@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
 import classNames from "classnames";
 
@@ -6,6 +5,8 @@ import { ProgressBar } from "./components/progressBar";
 import { StartButton } from "./components/strartButton";
 import { BackButton } from "./components/backButton";
 import { NextButton } from "./components/nextButton";
+import { PopUp } from "./components/popUp";
+
 import { FindYourRoofOnMap } from "./steps/FindYourRoofOnMap";
 import { DoYouOwnYourHome } from "./steps/DoYouOwnYourHome";
 import { YourHomeType } from "./steps/YourHomeType";
@@ -16,14 +17,11 @@ import { CreditScore } from "./steps/CreditScore";
 import { ContactsSubmission } from "./steps/ContactsSubmission";
 import { Unqualified } from "./steps/Unqualified";
 import { Intro } from "./steps/Intro";
-import { PopUp } from "./components/popUp";
 
 const Quiz = () => {
   const [step, setStep] = useState(0);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
-
-  console.log(111, quizData);
 
   const handleUserAnswer = (data) => {
     setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
@@ -63,8 +61,6 @@ const Quiz = () => {
 
     setStep(step + 1);
   };
-
-  console.log("Quiz Data:", quizData);
 
   const renderStep = () => {
     switch (step) {
@@ -145,12 +141,8 @@ const Quiz = () => {
       {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
 
       <div
-        style={{
-          maxWidth: "790px",
-          margin: "0 auto",
-          display: "flex",
-        }}
         className={classNames(
+          "wrapper-default",
           { wrapper: step < 8 && step > 0 },
           { "first-and-last-step-wrapper": step === 0 || step === 8 },
           { "unqualified-wrapper": step === -1 }
@@ -169,28 +161,21 @@ const Quiz = () => {
       )}
 
       {step < 8 && step > 0 && (
-          <div
-            style={{
-              display: "flex",
-              backgroundColor: "#fff",
-              justifyContent: step === 1 ? "flex-end" : "space-between",
-            }}
-            className="nav-btn-wrapper"
-          >
-            {step > 1 && !quizData.isQuizDataSubmitted && (
-              <div className="back-btn-wrapper">
-                <BackButton onClick={handleGoBack} />
-              </div>
-            )}
+        <div className="nav-btn-wrapper">
+          {step > 1 && !quizData.isQuizDataSubmitted && (
+            <div className="back-btn-wrapper">
+              <BackButton onClick={handleGoBack} />
+            </div>
+          )}
 
-            {step > 0 && step < 8 && (
-              <NextButton
-                onClick={handleNextQuizNavigation}
-                isDisabled={step === 1 && !quizData.location}
-              />
-            )}
-          </div>
-        )}
+          {step > 0 && step < 8 && (
+            <NextButton
+              onClick={handleNextQuizNavigation}
+              isDisabled={step === 1 && !quizData.location}
+            />
+          )}
+        </div>
+      )}
 
       <PopUp />
     </>

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Container } from "../layout/container";
-import { UnqualifiedBanner } from "../components/unqualified-banner";
+import { Container } from "../container";
+import { UnqualifiedBanner } from "../../components/unqualified-banner";
 
 export const Unqualified = () => {
   return (

@@ -1,13 +1,13 @@
 import React from "react";
 import classNames from "classnames";
-import { Container } from "./container";
-import { Card } from "../components/card";
+import { Container } from "../container";
+import { Card } from "../../components/card";
 
-import { homeTypes } from "../mop/home-types";
-import { roofConditions } from "../mop/roof-conditions";
-import { statesProviders } from "../statesProviders";
-import { utilityBillsList } from "../mop/utilityBillsList";
-import { creditScoreList } from "../mop/creditScoreList";
+import { homeTypes } from "../../mop/home-types";
+import { roofConditions } from "../../mop/roof-conditions";
+import { statesProviders } from "../../statesProviders";
+import { utilityBillsList } from "../../mop/utilityBillsList";
+import { creditScoreList } from "../../mop/creditScoreList";
 
 export const Step = ({
   step,

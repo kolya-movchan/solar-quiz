@@ -35,7 +35,7 @@ export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
         }}
         value={inputValue}
         onChange={handleChange}
-        maxLength="1"
+        maxLength="6"
         autoComplete="one-time-code"
         name={`otp-${index}`}
       />

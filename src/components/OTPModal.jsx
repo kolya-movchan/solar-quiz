@@ -29,10 +29,6 @@ export const OTPModal = ({
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      otpRefs.current[0].focus();
-    }, 300);
-
     const handleKeyUp = (e, index) => {
       if (e.target.value && index < otpRefs.current.length - 1) {
         otpRefs.current[index + 1].focus();
@@ -52,6 +48,17 @@ export const OTPModal = ({
         }
       });
     };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (otpRefs.current[0]) {
+        otpRefs.current[0].focus();
+        otpRefs.current[0].select(); // Ensures the keyboard is triggered
+      }
+    }, 500); // Slightly longer delay
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (

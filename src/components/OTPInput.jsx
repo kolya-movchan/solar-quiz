@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from "react";
 
-export const OTPInput = forwardRef(({ value, onChange }, ref) => {
+export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
   const [inputValue, setInputValue] = useState(value);
 
   const handleChange = (e) => {
@@ -25,7 +25,7 @@ export const OTPInput = forwardRef(({ value, onChange }, ref) => {
         ref={ref}
         type="text"
         inputMode="numeric" // Ensures that only numbers are entered
-        autoComplete="one-time-code" // Enables OTP autofill
+        // autoComplete="one-time-code" // Enables OTP autofill
         style={{
           height: "80%",
           width: "80%",
@@ -37,6 +37,8 @@ export const OTPInput = forwardRef(({ value, onChange }, ref) => {
         value={inputValue}
         onChange={handleChange}
         maxLength="1"
+        autoComplete={`one-time-code-${index}`} // Unique for each input
+        name={`otp-${index}`} // Unique name for each input
       />
     </div>
   );

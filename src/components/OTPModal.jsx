@@ -50,20 +50,20 @@ export const OTPModal = ({
     };
   }, []);
 
-  useEffect(() => {
-    // Check for auto-filled OTP in the first input and distribute to other inputs
-    otpRefs.current[0]?.addEventListener("input", (e) => {
-      const fullValue = e.target.value;
-      if (fullValue.length === 4) {
-        fullValue.split("").forEach((char, i) => {
-          if (otpRefs.current[i]) {
-            otpRefs.current[i].value = char;
-            handleOTPChange({ target: { value: char } }, i);
-          }
-        });
-      }
-    });
-  }, [otpRefs, handleOTPChange]);
+  // useEffect(() => {
+  //   // Check for auto-filled OTP in the first input and distribute to other inputs
+  //   otpRefs.current[0]?.addEventListener("input", (e) => {
+  //     const fullValue = e.target.value;
+  //     if (fullValue.length === 4) {
+  //       fullValue.split("").forEach((char, i) => {
+  //         if (otpRefs.current[i]) {
+  //           otpRefs.current[i].value = char;
+  //           handleOTPChange({ target: { value: char } }, i);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }, [otpRefs, handleOTPChange]);
 
   return (
     <div className="otp-modal">
@@ -128,6 +128,7 @@ export const OTPModal = ({
               .map((_, index) => (
                 <OTPInput
                   key={index}
+                  index={index}
                   value={otp[index] || ""}
                   onChange={(e) => handleOTPChange(e, index)}
                   ref={(el) => {

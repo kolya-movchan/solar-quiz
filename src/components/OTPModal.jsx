@@ -50,18 +50,20 @@ export const OTPModal = ({
     };
   }, []);
 
+  let test;
   // New useEffect to handle Chrome autocomplete
   useEffect(() => {
     const handleAutoFill = (e) => {
       const autoFilledValue = e.target.value;
-      if (autoFilledValue.length === 4) {
-        autoFilledValue.split("").forEach((digit, i) => {
-          if (otpRefs.current[i]) {
-            otpRefs.current[i].value = digit;
-            handleOTPChange({ target: { value: digit } }, i);
-          }
-        });
-      }
+
+      test = autoFilledValue;
+
+      autoFilledValue.split("").forEach((digit, i) => {
+        if (otpRefs.current[i]) {
+          otpRefs.current[i].value = digit;
+          handleOTPChange({ target: { value: digit } }, i);
+        }
+      });
     };
 
     const firstInput = otpRefs.current[0];
@@ -82,6 +84,7 @@ export const OTPModal = ({
         <div className="otp-wrapper">
           <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "650" }}>
             Phone Number Verification
+            {test}
           </h2>
 
           <button

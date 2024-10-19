@@ -34,7 +34,7 @@ export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
 
   return (
     <div
-      className="container card-container-emojie"
+      className="container container-with-cards"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",

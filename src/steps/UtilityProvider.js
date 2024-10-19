@@ -12,7 +12,7 @@ export const UtilityProvider = ({
 
   const providersList = statesProviders.find(
     (data) => data.State === stateAbbreviation
-  )?.Providers || ["APS", "SRP", "TEP"] 
+  )?.Providers || ["APS", "SRP", "TEP"];
 
   useEffect(() => {
     const timer = setTimeout(() => {

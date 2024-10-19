@@ -17,9 +17,12 @@ const libraries = ["places", "visualization"];
 export const FindYourRoofOnMap = ({
   handleUserAnswer,
   setStateAbbreviation,
+  quizData,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(
+    quizData.location ? quizData.location.description : ""
+  );
   const [showDropdown, setShowDropdown] = useState(false);
   const [isStreetSelected, setIsStreetSelected] = useState(false);
   const [mapCenter, setMapCenter] = useState(center);
@@ -149,6 +152,14 @@ export const FindYourRoofOnMap = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if (quizData.location) {
+      handleSelectStreet(quizData.location);
+      // setIsStreetSelected(true);
+      // setSelectedStreet(quizData.location.palce_id);
+    }
+  }, [quizData.location]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -292,7 +303,10 @@ export const FindYourRoofOnMap = ({
                 }}
                 onClick={() => {
                   setTimeout(() => {
-                    handleUserAnswer({ location: street });
+                    handleUserAnswer({
+                      location: street,
+                      place_id: street.place_id,
+                    });
                   }, 1000);
                   handleSelectStreet(street);
                 }}

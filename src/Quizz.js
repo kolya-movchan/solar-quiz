@@ -78,6 +78,7 @@ const Quiz = () => {
           <FindYourRoofOnMap
             handleUserAnswer={handleUserAnswer}
             setStateAbbreviation={setStateAbbreviation}
+            quizData={quizData}
           />
         );
       case 2:

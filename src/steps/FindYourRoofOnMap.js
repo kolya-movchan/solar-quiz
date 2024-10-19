@@ -8,7 +8,7 @@ const mapContainerStyle = {
 };
 
 const center = {
-  lat: 42.3601, // Default center (can be set dynamically)
+  lat: 42.3601,
   lng: -71.0589,
 };
 
@@ -291,7 +291,9 @@ export const FindYourRoofOnMap = ({
                       : "transparent";
                 }}
                 onClick={() => {
-                  handleUserAnswer({ location: street });
+                  setTimeout(() => {
+                    handleUserAnswer({ location: street });
+                  }, 1000);
                   handleSelectStreet(street);
                 }}
               >

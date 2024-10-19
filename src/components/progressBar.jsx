@@ -10,7 +10,7 @@ export const ProgressBar = ({ step }) => {
         transition: "width 0.3s ease-in-out",
         borderTopRightRadius: "6px",
         borderBottomRightRadius: "6px",
-        position: "absolute",
+        position: "fixed",
         top: "0",
         left: "0",
       }}

@@ -14,38 +14,55 @@ export const OTPModal = ({
   const firstInputRef = useRef(null);
 
   useEffect(() => {
-    // Focus the first input when the component mounts
-    if (otpRefs.current[0]) {
-      setTimeout(() => otpRefs.current[0].focus(), 100); // Delay to ensure DOM is ready
-    }
+    // Delay focusing to ensure iOS doesn't block it
+    const timeoutId = setTimeout(() => {
+      if (otpRefs.current[0]) {
+        otpRefs.current[0].focus();
+      }
 
-    // Autofill OTP on mobile devices using the OTPCredential API
+      // Trigger keyboard on mobile devices after focus
+      if (firstInputRef.current) {
+        firstInputRef.current.focus();
+      }
+    }, 300); // Short delay for iOS
+
+    // Add listener for SMS autofill (iOS specific)
     if ("OTPCredential" in window) {
       navigator.credentials
         .get({
           otp: { transport: ["sms"] },
-          signal: AbortSignal.timeout(120000), // Timeout in 2 minutes
+          signal: AbortSignal.timeout(120000),
         })
         .then((otp) => {
-          if (otp && otp.code) {
-            setAutofilledOTP(otp.code);
-            autofillOTPInputs(otp.code);
-          }
+          setAutofilledOTP(otp.code);
+          autofillOTPInputs(otp.code);
         })
         .catch((err) => {
-          console.error("Error getting OTP", err);
+          console.error(err);
         });
     }
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const autofillOTPInputs = (code) => {
-    // Automatically insert OTP into inputs
     for (let i = 0; i < code.length; i++) {
       if (otpRefs.current[i]) {
         otpRefs.current[i].value = code[i];
         handleOTPChange({ target: { value: code[i] } }, i);
       }
     }
+  };
+
+  const handlePaste = (event) => {
+    const pastedData = event.clipboardData.getData("Text").slice(0, 4); // Handle 4 digits
+    for (let i = 0; i < pastedData.length; i++) {
+      if (otpRefs.current[i]) {
+        otpRefs.current[i].value = pastedData[i];
+        handleOTPChange({ target: { value: pastedData[i] } }, i);
+      }
+    }
+    event.preventDefault(); // Prevent default paste action
   };
 
   useEffect(() => {
@@ -61,6 +78,7 @@ export const OTPModal = ({
           <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "650" }}>
             Phone Number Verification
           </h2>
+
           <button
             style={{
               backgroundColor: "transparent",
@@ -98,7 +116,7 @@ export const OTPModal = ({
           >
             We sent a 4-digit personal code to the{" "}
             <span style={{ fontWeight: "bold" }}>{formData.phoneNumber}</span>.
-            This helps us verify your request. Enter the code below:
+            This helps us to verify your request. Enter the code below:
           </p>
         </div>
 
@@ -109,6 +127,7 @@ export const OTPModal = ({
               gap: "10px",
               justifyContent: "center",
             }}
+            onPaste={handlePaste} // Add onPaste handler
           >
             {Array(4)
               .fill(0)
@@ -117,7 +136,10 @@ export const OTPModal = ({
                   key={index}
                   value={otp[index] || ""}
                   onChange={(e) => handleOTPChange(e, index)}
-                  ref={(el) => (otpRefs.current[index] = el)}
+                  ref={(el) => {
+                    otpRefs.current[index] = el;
+                    if (index === 0) firstInputRef.current = el;
+                  }}
                 />
               ))}
           </div>

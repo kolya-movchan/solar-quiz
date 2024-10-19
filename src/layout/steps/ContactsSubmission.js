@@ -6,7 +6,7 @@ import { InputOTP } from "../../components/OTPInput";
 import { Container } from "../../layout/container";
 import { QualificationBanner } from "../../components/QualificationBanner";
 import { QualifiedBanner } from "../../components/QualifiedBanner";
-
+import { Form } from "../../components/Form";
 export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -255,141 +255,13 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
       <QualifiedBanner />
 
-      <div style={{ width: "100%" }}>
-        <form
-          className="contact-form"
-          style={{ marginBottom: "15px" }}
-          onSubmit={handleOTPVerification}
-          novalidate
-        >
-          <div style={{ display: "flex", gap: "10px" }}>
-            <input
-              type="text"
-              placeholder="First Name*"
-              style={{
-                // fontSize: "20px",
-                padding: "20px 10px",
-                width: "100%",
-                border: "1px solid #D0D5DD",
-                borderRadius: "4px",
-                outline: "none",
-              }}
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleInputChange}
-            />
-
-            <input
-              type="text"
-              placeholder="Last Name*"
-              style={{
-                padding: "20px 10px",
-                // fontSize: "20px",
-                width: "100%",
-                border: "1px solid #D0D5DD",
-                borderRadius: "4px",
-                outline: "none",
-              }}
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleInputChange}
-            />
-          </div>
-          <input
-            type="email"
-            placeholder="Email*"
-            style={{
-              padding: "20px 10px",
-              // fontSize: "20px",
-              border: "1px solid #D0D5DD",
-              borderRadius: "4px",
-              outline: "none",
-            }}
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          <input
-            type="tel"
-            placeholder="Phone Number*"
-            style={{
-              padding: "20px 10px",
-              // fontSize: "20px",
-              border: "1px solid #D0D5DD",
-              borderRadius: "4px",
-              outline: "none",
-              marginBottom: "10px",
-            }}
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleInputChange}
-            onFocus={(e) => {
-              const newValue = "+1";
-              handleInputChange({
-                target: { name: e.target.name, value: newValue },
-              });
-            }}
-          />
-
-          {/* <p
-              className="form-notification"
-              style={{
-                textAlign: "left",
-                fontSize: "12px",
-                color: "#475467",
-                margin: "0",
-              }}
-            >
-              We'll text you to confirm your number. Standard message and data
-              rates apply.{" "}
-            </p> */}
-
-          <button
-            style={{
-              border: "none",
-              backgroundColor: isFormValid() ? "#FE4A19" : "#ccc",
-              color: "#fff",
-              cursor: isFormValid() ? "pointer" : "not-allowed",
-              padding: "0 24px",
-              height: "56px",
-              boxSizing: "content-box",
-              justifyContent: "center",
-              alignItems: "center",
-              fontWeight: "bold",
-              textAlign: "center",
-              display: "flex",
-              gap: "10px",
-              borderRadius: "4px",
-              fontSize: "16px",
-            }}
-            type="submit"
-            disabled={!isFormValid()}
-          >
-            {isLoading ? (
-              <span>Loading...</span>
-            ) : (
-              <span>Confirm Solar Report Request</span>
-            )}
-
-            <img
-              src="/icons/right-arrow.png"
-              alt="Right Arrow"
-              height={16}
-              width={16}
-            />
-          </button>
-        </form>
-
-        <p style={{ fontSize: "0.8rem", margin: "0", color: "#475467" }}>
-          Your data is secured by our{" "}
-          <a
-            href="/privacy-policy"
-            style={{ color: "#000", fontWeight: "bold" }}
-          >
-            Privacy policies
-          </a>
-        </p>
-      </div>
+      <Form
+        handleOTPVerification={handleOTPVerification}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        isFormValid={isFormValid}
+        isLoading={isLoading}
+      />
 
       {showOTPInput && (
         <div className="otp-modal">

@@ -20,7 +20,7 @@ import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(8);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -141,7 +141,7 @@ const Quiz = () => {
 
       <div
         className={classNames(
-          "wrapper-default",
+          { "wrapper-default": step < 8 },
           { wrapper: step < 8 && step > 0 },
           { "first-and-last-step-wrapper": step === 0 || step === 8 },
           { "unqualified-wrapper": step === -1 }

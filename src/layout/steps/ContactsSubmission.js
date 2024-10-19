@@ -210,6 +210,19 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     }
   }, [otp, isOTPSubmitted]);
 
+  useEffect(() => {
+    if (showOTPInput) {
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0);
+    } else {
+      document.body.style.overflow = "visible";
+    }
+
+    return () => {
+      document.body.style.overflow = "visible";
+    };
+  }, [showOTPInput]);
+
   // useEffect(() => {
   //   let interval;
   //   if (resendTimer > 0) {

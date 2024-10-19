@@ -35,25 +35,9 @@ export const OTPModal = ({
       }
     };
 
-    const handleFirstInputChange = (e) => {
-      const value = e.target.value;
-      if (value.length === 4) {
-        for (let i = 0; i < 4; i++) {
-          if (otpRefs.current[i]) {
-            otpRefs.current[i].value = value[i];
-            handleOTPChange({ target: { value: value[i] } }, i);
-          }
-        }
-        otpRefs.current[3].focus();
-      }
-    };
-
     otpRefs.current.forEach((ref, index) => {
       if (ref) {
         ref.addEventListener("keyup", (e) => handleKeyUp(e, index));
-        if (index === 0) {
-          ref.addEventListener("input", handleFirstInputChange);
-        }
       }
     });
 
@@ -61,13 +45,36 @@ export const OTPModal = ({
       otpRefs.current.forEach((ref, index) => {
         if (ref) {
           ref.removeEventListener("keyup", (e) => handleKeyUp(e, index));
-          if (index === 0) {
-            ref.removeEventListener("input", handleFirstInputChange);
-          }
         }
       });
     };
   }, []);
+
+  // New useEffect to handle Chrome autocomplete
+  useEffect(() => {
+    const handleAutoFill = (e) => {
+      const autoFilledValue = e.target.value;
+      if (autoFilledValue.length === 4) {
+        autoFilledValue.split("").forEach((digit, i) => {
+          if (otpRefs.current[i]) {
+            otpRefs.current[i].value = digit;
+            handleOTPChange({ target: { value: digit } }, i);
+          }
+        });
+      }
+    };
+
+    const firstInput = otpRefs.current[0];
+    if (firstInput) {
+      firstInput.addEventListener("input", handleAutoFill);
+    }
+
+    return () => {
+      if (firstInput) {
+        firstInput.removeEventListener("input", handleAutoFill);
+      }
+    };
+  }, [otpRefs, handleOTPChange]);
 
   return (
     <div className="otp-modal">

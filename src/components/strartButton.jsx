@@ -5,6 +5,7 @@ export const StartButton = ({onClick, className}) => {
     <button
     style={{
       width: "100%",
+      boxSizing: "border-box",
       fontSize: "16px",
       height: "56px",
       border: "none",
@@ -14,8 +15,7 @@ export const StartButton = ({onClick, className}) => {
       cursor: "pointer",
       padding: "0 24px",
       gap: "10px",
-      // fontWeight: "bold",
-      boxSizing: "content-box",
+      fontWeight: "bold",
     }}
     className={className}
     type="button"

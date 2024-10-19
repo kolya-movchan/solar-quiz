@@ -78,7 +78,7 @@ export const Intro = ({ handleNextQuizNavigation }) => {
           margin: "0",
           marginBottom: "32px",
         }}
-        className="title title-first-mobile"
+        className="title-first-mobile"
       >
         See How Much Money You Could Save w/ This $0 Solar Program That Cuts
         Electric Bills by 30-50% – Instantly

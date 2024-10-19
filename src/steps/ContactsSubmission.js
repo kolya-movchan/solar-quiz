@@ -367,7 +367,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 type="text"
                 placeholder="First Name*"
                 style={{
-                  fontSize: "20px",
+                  // fontSize: "20px",
                   padding: "20px 10px",
                   width: "100%",
                   border: "1px solid #D0D5DD",
@@ -384,7 +384,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
                 placeholder="Last Name*"
                 style={{
                   padding: "20px 10px",
-                  fontSize: "20px",
+                  // fontSize: "20px",
                   width: "100%",
                   border: "1px solid #D0D5DD",
                   borderRadius: "4px",
@@ -400,7 +400,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               placeholder="Email*"
               style={{
                 padding: "20px 10px",
-                fontSize: "20px",
+                // fontSize: "20px",
                 border: "1px solid #D0D5DD",
                 borderRadius: "4px",
                 outline: "none",
@@ -414,7 +414,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               placeholder="Phone Number*"
               style={{
                 padding: "20px 10px",
-                fontSize: "20px",
+                // fontSize: "20px",
                 border: "1px solid #D0D5DD",
                 borderRadius: "4px",
                 outline: "none",

@@ -131,9 +131,9 @@ textarea::placeholder {
 input::placeholder {
   font-family: "Roobert", sans-serif;
   color: #475467;
-  font-size: 20px;
+  /* font-size: 20px;
   line-height: 24px;
-  font-weight: 400;
+  font-weight: 400; */
 }
 
 

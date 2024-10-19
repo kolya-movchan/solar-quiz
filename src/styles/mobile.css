@@ -7,11 +7,17 @@
   
     .title-first-mobile {
       text-align: left;
+      font-size: 32px;
+      line-height: 38px;
+      font-weight: 700;
+      max-width: 370px;
+      margin: 0 auto;
+      margin-bottom: 10px;
     }
   
     .container {
       justify-content: space-between;
-      padding: 40px 20px 20px;
+      padding: 40px 20px 90px;
       align-items: center;
     }
   

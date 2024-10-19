@@ -32,7 +32,7 @@ export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
 
   return (
     <div
-      className="container container-with-cards"
+      className="container card-container-emojie"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -59,7 +59,7 @@ export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
             isActive={quizData.utility_bill_amount === bill.id}
             isDisabled={quizData.hasOwnProperty("utility_bill_amount")}
             classImg={"card-emojie"}
-            style={{ border: "1px solid #D2D2D2" }}
+            style={{ border: "1px solid #D2D2D2", backgroundColor: "#FAFAFA" }}
           />
         ))}
       </div>

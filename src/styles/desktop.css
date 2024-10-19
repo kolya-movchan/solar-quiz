@@ -30,7 +30,7 @@
     }
   
     .wrapper {
-      height: 86vh;
+      /* height: 86vh; */
       align-items: center;
     }
   
@@ -76,6 +76,8 @@
     .card-container-emojie {
       gap: 20px;
       display: flex;
+      align-items: center; 
+      justify-content: center;
       /* width: 100%; */
       /* flex-wrap: wrap; */
     }
@@ -97,10 +99,18 @@
     .card-content {
       padding: 15px 20px 15px;
     }
+
+    .title-first-mobile {
+       font-size: 48px;
+    }
   
     .card-content-title {
       font-size: 20px;
       font-weight: 400;
+    }
+
+    .submission-container {
+        padding-top: 52px;
     }
   
     .first-and-last-step-wrapper {

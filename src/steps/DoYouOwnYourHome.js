@@ -5,6 +5,8 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
@@ -21,7 +23,9 @@ export const DoYouOwnYourHome = ({ handleUserAnswer, quizData }) => {
         transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
       }}
     >
-      <h1 className="title card-title title-master">Do you own or rent your home?</h1>
+      <h1 className="title card-title title-master">
+        Do you own or rent your home?
+      </h1>
 
       <div className="card-container">
         <Card

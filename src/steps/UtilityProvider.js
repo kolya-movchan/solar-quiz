@@ -15,6 +15,8 @@ export const UtilityProvider = ({
   )?.Providers || ["APS", "SRP", "TEP"];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);

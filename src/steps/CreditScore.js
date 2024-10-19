@@ -28,13 +28,14 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
   ];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
 
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <div
       className="container container-with-cards"

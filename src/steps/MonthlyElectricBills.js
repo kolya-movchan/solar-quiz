@@ -23,6 +23,8 @@ export const MonthlyElectricBills = ({ handleUserAnswer, quizData }) => {
   ];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);

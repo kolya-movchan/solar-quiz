@@ -28,9 +28,10 @@ export const YourHomeType = ({ handleUserAnswer, quizData }) => {
   ];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const timer = setTimeout(() => {
       setIsVisible(true);
-      window.scrollTo(0, 0);
     }, 100);
 
     return () => clearTimeout(timer);

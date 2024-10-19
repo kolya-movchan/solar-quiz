@@ -7,7 +7,7 @@ import { BackButton } from "./components/BackButton";
 import { NextButton } from "./components/NextButton";
 import { PopUp } from "./components/PopUp";
 
-import { Step } from "./layout/steps/step";
+import { Step } from "./layout/steps/Step";
 import { FindYourRoofOnMap } from "./layout/steps/FindYourRoofOnMap";
 
 import { ContactsSubmission } from "./layout/steps/ContactsSubmission";

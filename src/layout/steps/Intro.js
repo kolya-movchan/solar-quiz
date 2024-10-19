@@ -4,7 +4,7 @@ import { Container } from "../container";
 import { QualificationBanner } from "../../components/QualificationBanner";
 import { StartButton } from "../../components/StrartButton";
 import { IntroDescriptionItem } from "../../components/IntroDescriptionItem";
-import { introDescriptionBullets } from "../../mop/intro-description-bullets";
+import { introDescriptionBullets } from "../../mop/introDescriptionBullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {
   return (

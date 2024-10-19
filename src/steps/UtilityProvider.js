@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { statesProviders } from "../statesProviders";
 import { Card } from "../components/card";
 import classNames from "classnames";
-// import "../styles/App.css";
 
 export const UtilityProvider = ({
   handleUserAnswer,
@@ -13,13 +12,7 @@ export const UtilityProvider = ({
 
   const providersList = statesProviders.find(
     (data) => data.State === stateAbbreviation
-  )?.Providers || [
-    "AES Ohio",
-    "Duke Energy",
-    "Ohio Edison",
-    "Ohio Power",
-    "Southern Power",
-  ] || ["APS", "SRP", "TEP"] 
+  )?.Providers || ["APS", "SRP", "TEP"] 
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,10 +21,6 @@ export const UtilityProvider = ({
 
     return () => clearTimeout(timer);
   }, []);
-
-  console.log(111, quizData.is_mannual_provider);
-  console.log(222, quizData.mannual_provider);
-  console.log(333, quizData);
 
   return (
     <div

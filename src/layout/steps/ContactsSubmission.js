@@ -16,8 +16,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     phoneNumber: "",
   });
   const [showOTPInput, setShowOTPInput] = useState(false);
-  const [otp, setOtp] = useState([]);
-  const [isOTPSubmitted, setIsOTPSubmitted] = useState(false);
   // const [resendTimer, setResendTimer] = useState(0);
 
   const otpRefs = useRef([]);
@@ -110,7 +108,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   };
 
   const handleOTPVerification = async (e, isRetry = false) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
 
     const validationErrors = validateInputs(formData);
 
@@ -153,9 +151,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
   const handleOTPSubmission = async () => {
     try {
-      // setIsOTPSubmitted(true);
       const verificationResponse = await axios.post(
-        // `http://localhost:3001/twilio-sms/verify-otp`,
         `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
         {
           countryCode: formData.phoneNumber.trim().slice(1, -10),
@@ -165,22 +161,14 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       );
       if (verificationResponse.data.isVerified === true) {
         console.log("Verification Response:", verificationResponse);
-        // handleSubmit();
         onSubmit({ isQuizDataSubmitted: true });
-        setIsOTPSubmitted(true);
 
         toast.success("Success! We will contact you soon.");
       } else {
         toast.error("Invalid confirmation code. Please try again.");
-        setIsOTPSubmitted(false);
       }
     } catch (error) {
-      toast.error(
-        error.response
-          ? error.response.data
-          : "Something went wrong. Please try again later."
-      );
-      setIsOTPSubmitted(false);
+      toast.error("Something went wrong. Please try again later.");
     }
   };
 
@@ -192,36 +180,10 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
     otpRefs.current[index].value = value;
 
-    console.log(111, otpRefs.current);
-
     if (index === 3 && otpRefs.current.every((ref) => ref.value)) {
       handleOTPSubmission();
     }
-
-    // setTimeout(() => {
-    //   setOtp((prev) => {
-    //     const newOtp = [...prev];
-    //     newOtp[index] = value;
-    //     return newOtp;
-    //   });
-    // }, 500);
   };
-
-  // useEffect(() => {
-  //   // console.log("OTP:", otp);
-  //   // console.log("OTP Length:", otp.length);
-  //   // console.log("OTP Submitted:", isOTPSubmitted);
-
-  //   if (
-  //     otp.length === 4 &&
-  //     otp.every((digit) => digit !== "") &&
-  //     !isOTPSubmitted
-  //   ) {
-  //     setTimeout(() => {
-  //       handleOTPSubmission();
-  //     }, 1000);
-  //   }
-  // }, [otp, isOTPSubmitted]);
 
   useEffect(() => {
     if (showOTPInput) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { OTPInput } from "./OTPInput";
 
 export const OTPModal = ({
@@ -11,11 +11,17 @@ export const OTPModal = ({
   handleOTPVerification,
 }) => {
   const [autofilledOTP, setAutofilledOTP] = useState("");
+  const firstInputRef = useRef(null);
 
   useEffect(() => {
     // Focus on the first input when the component mounts
     if (otpRefs.current[0]) {
       otpRefs.current[0].focus();
+    }
+
+    // Open keyboard on mobile devices
+    if (firstInputRef.current) {
+      firstInputRef.current.focus();
     }
 
     // Set up event listener for SMS autofill
@@ -127,7 +133,10 @@ export const OTPModal = ({
                   key={index}
                   value={otp[index] || ""}
                   onChange={(e) => handleOTPChange(e, index)}
-                  ref={(el) => (otpRefs.current[index] = el)}
+                  ref={(el) => {
+                    otpRefs.current[index] = el;
+                    if (index === 0) firstInputRef.current = el;
+                  }}
                 />
               ))}
           </div>

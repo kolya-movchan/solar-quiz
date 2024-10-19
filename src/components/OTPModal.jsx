@@ -15,16 +15,20 @@ export const OTPModal = ({
   const handlePaste = (event) => {
     event.preventDefault(); // Prevent default paste action
     const pastedData = event.clipboardData.getData("Text").slice(0, 4); // Handle 4 digits
-    for (let i = 0; i < pastedData.length; i++) {
+    handleAutoCompleteOrPaste(pastedData);
+  };
+
+  const handleAutoCompleteOrPaste = (data) => {
+    for (let i = 0; i < data.length; i++) {
       if (otpRefs.current[i]) {
-        otpRefs.current[i].value = pastedData[i];
-        handleOTPChange({ target: { value: pastedData[i] } }, i);
+        otpRefs.current[i].value = data[i];
+        handleOTPChange({ target: { value: data[i] } }, i);
       }
     }
 
-    // Focus on the last input after pasting
-    if (otpRefs.current[pastedData.length - 1]) {
-      otpRefs.current[pastedData.length - 1].focus();
+    // Focus on the last input after autofill or paste
+    if (otpRefs.current[data.length - 1]) {
+      otpRefs.current[data.length - 1].focus();
     }
   };
 
@@ -50,25 +54,25 @@ export const OTPModal = ({
     };
   }, []);
 
-  let test;
-
-  const handleAutoFill = (e) => {
-    const autoFilledValue = e.target.value;
-    test = autoFilledValue;
-
-    if (autoFilledValue.length === 4) {
-      for (let i = 0; i < autoFilledValue.length; i++) {
-        if (otpRefs.current[i]) {
-          otpRefs.current[i].value = autoFilledValue[i];
-          handleOTPChange({ target: { value: autoFilledValue[i] } }, i);
-        }
+  // Use this effect to handle Chrome's autofill event for OTP
+  useEffect(() => {
+    const handleInputEvent = (e) => {
+      // Check if Chrome autofills the entire OTP in the first field
+      if (e.target.value.length > 1) {
+        handleAutoCompleteOrPaste(e.target.value);
       }
-      // Focus on the last input after autofill
-      if (otpRefs.current[autoFilledValue.length - 1]) {
-        otpRefs.current[autoFilledValue.length - 1].focus();
-      }
+    };
+
+    if (firstInputRef.current) {
+      firstInputRef.current.addEventListener("input", handleInputEvent);
     }
-  };
+
+    return () => {
+      if (firstInputRef.current) {
+        firstInputRef.current.removeEventListener("input", handleInputEvent);
+      }
+    };
+  }, []);
 
   return (
     <div className="otp-modal">
@@ -128,7 +132,6 @@ export const OTPModal = ({
             }}
             onPaste={handlePaste}
           >
-            {test}
             {Array(4)
               .fill(0)
               .map((_, index) => (
@@ -136,10 +139,7 @@ export const OTPModal = ({
                   key={index}
                   index={index}
                   value={otp[index] || ""}
-                  onChange={(e) => {
-                    handleOTPChange(e, index);
-                    handleAutoFill(e);
-                  }}
+                  onChange={(e) => handleOTPChange(e, index)}
                   ref={(el) => {
                     otpRefs.current[index] = el;
                     if (index === 0) firstInputRef.current = el;

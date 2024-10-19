@@ -4,7 +4,7 @@ export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
   const [inputValue, setInputValue] = useState(value);
 
   const handleChange = (e) => {
-    const newValue = e.target.value.replace(/\D/g, ""); // Remove non-digit characters
+    const newValue = e.target.value.replace(/\D/g, "");
     setInputValue(newValue);
     onChange({ ...e, target: { ...e.target, value: newValue } });
   };
@@ -35,9 +35,9 @@ export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
         }}
         value={inputValue}
         onChange={handleChange}
-        maxLength="1" // Change maxLength to 1 to ensure each input only takes one digit
-        autoComplete="one-time-code" // Use the same autoComplete value for all inputs
-        name={`otp-${index}`} // Unique name for each input
+        maxLength="1"
+        autoComplete="one-time-code"
+        name={`otp-${index}`}
       />
     </div>
   );

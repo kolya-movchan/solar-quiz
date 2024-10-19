@@ -16,9 +16,9 @@
     }
   
     .container {
-      justify-content: space-between;
+      /* justify-content: space-between; */
       padding: 40px 20px 90px;
-      align-items: center;
+      /* align-items: center; */
     }
   
     .container-with-cards {

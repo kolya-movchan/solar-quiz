@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+
+import { Container } from "../components/container";
 import { StartButton } from "../components/strartButton";
 
 export const Intro = ({ handleNextQuizNavigation }) => {
@@ -13,18 +15,7 @@ export const Intro = ({ handleNextQuizNavigation }) => {
   }, []);
 
   return (
-    <div
-      className="container intro-container"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0)" : "translateY(20px)",
-        transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
-      }}
-    >
+    <Container isVisible={isVisible} className="intro-container">
       <div
         style={{
           background:
@@ -155,6 +146,6 @@ export const Intro = ({ handleNextQuizNavigation }) => {
           className="start-btn-desktop"
         />
       </div>
-    </div>
+    </Container>
   );
 };

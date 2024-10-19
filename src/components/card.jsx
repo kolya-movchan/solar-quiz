@@ -1,15 +1,27 @@
-import React from 'react'
-import classNames from 'classnames';
+import React from "react";
+import classNames from "classnames";
 
-export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, style='', classImg = "", containerPadding = "", isOneBg, isActive, isDisabled}) => {
+export const Card = ({
+  title,
+  img,
+  onClick,
+  quizData,
+  imgHeight,
+  imgWidth,
+  style = "",
+  classImg = "",
+  containerPadding = "",
+  isOneBg,
+  isActive,
+  isDisabled,
+}) => {
   return (
-    <div className={classNames(
-      "card",
-      {
+    <div
+      className={classNames("card", {
         "card-active": isActive,
         // "card-disabled": isDisabled && !isActive,
-      }
-    )}>
+      })}
+    >
       <button
         style={{
           zIndex: "3",
@@ -21,40 +33,40 @@ export const Card = ({title, img, onClick, quizData, imgHeight, imgWidth, style=
           type: "button",
           overflow: "hidden",
           backgroundColor: isOneBg ? "#fff" : "transparent",
-          ...style
+          ...style,
         }}
-        className={classNames(
-          "card-button",
-          {
-            "card-button-padding": containerPadding,
-            "card-emojie": classImg === "card-emojie"
-          }
-        )}
+        className={classNames("card-button", {
+          "card-button-padding": containerPadding,
+          "card-emojie": classImg === "card-emojie",
+        })}
         onClick={() => {
-        onClick(quizData)
+          onClick(quizData);
         }}
       >
-
-        <img style={{objectFit: "cover"}} src={img} alt="Own" height={imgHeight} width={imgWidth} className={classNames(
-          {
+        <img
+          style={{ objectFit: "cover" }}
+          src={img}
+          alt="Own"
+          height={imgHeight}
+          width={imgWidth}
+          className={classNames({
             "card-icon-image": classImg === "card-icon-image",
-            "card-img-own-home" : classImg === "card-img-own-home",
-            "card-img-roof-condition" : classImg === "card-img-roof-condition",
-            "card-emojie-img": classImg === "card-emojie"
-          }
-        )} />
+            "card-img-own-home": classImg === "card-img-own-home",
+            "card-img-roof-condition": classImg === "card-img-roof-condition",
+            "card-emojie-img": classImg === "card-emojie",
+          })}
+        />
 
         <div
-        style={{
-          backgroundColor: "#fff",
-          width: "100%",
-        }}
-        className='card-content'
+          style={{
+            backgroundColor: "#fff",
+            width: "100%",
+          }}
+          className="card-content"
         >
-      <span className='card-content-title'>{title}</span>
-      </div>
+          <span className="card-content-title">{title}</span>
+        </div>
       </button>
-      </div>
-
-  )
-}
+    </div>
+  );
+};

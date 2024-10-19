@@ -1,11 +1,13 @@
 /* DESKTOP */
 @media (min-width: 769px) {
     .container {
-      /* padding: 40px; */
-      /* align-items: center; */
-      /* padding-bottom: 90px; */
-      /* min-height: 100vh; */
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+
     }
 
     .intro-container {

@@ -14,7 +14,7 @@ export const NextButton = ({onClick, isDisabled}) => {
       gap: "10px",
       justifyContent: "center",
       alignItems: "center",
-      // fontWeight: "bold",
+      fontWeight: "bold",
       height: "56px",
       boxSizing: "content-box",
       cursor: isDisabled ? "not-allowed" : "pointer",

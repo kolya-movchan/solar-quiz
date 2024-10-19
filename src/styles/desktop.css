@@ -4,6 +4,11 @@
       padding: 40px;
       align-items: center;
     }
+
+    .intro-container {
+        box-sizing: border-box;
+        min-height: 100vh;
+    }
   
     .container-without-cards  {
       justify-content: center;
@@ -32,6 +37,7 @@
     .wrapper {
       /* height: 86vh; */
       align-items: center;
+      justify-content: center;
     }
   
     .nav-btn-wrapper {
@@ -98,6 +104,9 @@
   
     .card-content {
       padding: 15px 20px 15px;
+      display: flex;
+      align-items: center;  
+      justify-content: center;
     }
 
     .title-first-mobile {
@@ -110,6 +119,7 @@
     }
 
     .submission-container {
+        min-height: 100vh;
         padding-top: 52px;
     }
   

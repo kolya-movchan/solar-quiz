@@ -14,7 +14,7 @@ export const Intro = ({ handleNextQuizNavigation }) => {
 
   return (
     <div
-      className="container"
+      className="container intro-container"
       style={{
         display: "flex",
         flexDirection: "column",

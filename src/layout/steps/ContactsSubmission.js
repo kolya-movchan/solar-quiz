@@ -190,11 +190,15 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       otpRefs.current[index + 1].focus();
     }
 
-    setOtp((prev) => {
-      const newOtp = [...prev];
-      newOtp[index] = value;
-      return newOtp;
-    });
+    otpRefs.current[index].value = value;
+
+    setTimeout(() => {
+      setOtp((prev) => {
+        const newOtp = [...prev];
+        newOtp[index] = value;
+        return newOtp;
+      });
+    }, 500);
   };
 
   useEffect(() => {
@@ -209,7 +213,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     ) {
       setTimeout(() => {
         handleOTPSubmission();
-      }, 300);
+      }, 1000);
     }
   }, [otp, isOTPSubmitted]);
 
@@ -268,7 +272,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         isLoading={isLoading}
       />
 
-      {showOTPInput && (
+      {!showOTPInput && (
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}
@@ -276,8 +280,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           // handleOTPSubmission={() => {}}
           handleOTPChange={handleOTPChange}
           // handleOTPChange={() => {}}
-          otp={otp}
           setOtp={setOtp}
+          otp={otp}
           otpRefs={otpRefs}
           handleOTPVerification={handleOTPVerification}
           // handleOTPVerification={() => {}}

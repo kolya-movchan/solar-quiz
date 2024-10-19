@@ -4,10 +4,10 @@ import { OTPInput } from "./OTPInput";
 export const OTPModal = ({
   setShowOTPInput,
   formData,
+  setOtp,
   handleOTPSubmission,
   handleOTPChange,
   otp,
-  setOtp,
   otpRefs,
   handleOTPVerification,
 }) => {
@@ -19,23 +19,20 @@ export const OTPModal = ({
     handleAutoCompleteOrPaste(pastedData);
   };
 
-  // const handleAutoCompleteOrPaste = (data) => {
-  //   for (let i = 0; i < data.length; i++) {
-  //     if (otpRefs.current[i]) {
-  //       otpRefs.current[i].value = data[i];
-  //       handleOTPChange({ target: { value: data[i] } }, i);
-  //     }
-  //   }
-
-  //   // Focus on the last input after autofill or paste
-  //   if (otpRefs.current[data.length - 1]) {
-  //     otpRefs.current[data.length - 1].focus();
-  //   }
-  // };
-
   const handleAutoCompleteOrPaste = (data) => {
-    setOtp(data);
-    otpRefs.current[data.length - 1].focus();
+    for (let i = 0; i < data.length; i++) {
+      if (otpRefs.current[i]) {
+        otpRefs.current[i].value = data[i];
+        setTimeout(() => {
+          handleOTPChange({ target: { value: data[i] } }, i);
+        }, 100);
+      }
+    }
+
+    // Focus on the last input after autofill or paste
+    if (otpRefs.current[data.length - 1]) {
+      otpRefs.current[data.length - 1].focus();
+    }
   };
 
   useEffect(() => {

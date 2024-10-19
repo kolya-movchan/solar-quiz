@@ -4,10 +4,8 @@ import { OTPInput } from "./OTPInput";
 export const OTPModal = ({
   setShowOTPInput,
   formData,
-  // setOtp,
   handleOTPSubmission,
   handleOTPChange,
-  // otp,
   otpRefs,
   handleOTPVerification,
 }) => {
@@ -141,7 +139,6 @@ export const OTPModal = ({
                 <OTPInput
                   key={index}
                   index={index}
-                  // value={otp[index] || ""}
                   onChange={(e) => handleOTPChange(e, index)}
                   ref={(el) => {
                     otpRefs.current[index] = el;

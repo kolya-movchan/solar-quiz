@@ -245,14 +245,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           setShowOTPInput={setShowOTPInput}
           formData={formData}
           handleOTPSubmission={handleOTPSubmission}
-          // handleOTPSubmission={() => {}}
           handleOTPChange={handleOTPChange}
-          // handleOTPChange={() => {}}
-          // setOtp={setOtp}
-          // otp={otp}
           otpRefs={otpRefs}
           handleOTPVerification={handleOTPVerification}
-          // handleOTPVerification={() => {}}
         />
       )}
     </Container>

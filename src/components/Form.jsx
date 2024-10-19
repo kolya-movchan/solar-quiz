@@ -22,8 +22,7 @@ export const Form = ({
             style={{ width: "100%" }}
             placeholder="First Name*"
             name="firstName"
-            // value={formData.firstName}
-            value="d"
+            value={formData.firstName}
             onChange={handleInputChange}
           />
 
@@ -31,8 +30,7 @@ export const Form = ({
             style={{ width: "100%" }}
             placeholder="Last Name*"
             name="lastName"
-            value="d"
-            // value={formData.lastName}
+            value={formData.lastName}
             onChange={handleInputChange}
           />
         </div>
@@ -40,8 +38,7 @@ export const Form = ({
         <FormInput
           placeholder="Email*"
           name="email"
-          value="kmovchan@gmail.com"
-          // value={formData.email}
+          value={formData.email}
           onChange={handleInputChange}
         />
 
@@ -49,8 +46,7 @@ export const Form = ({
           type="tel"
           placeholder="Phone Number*"
           name="phoneNumber"
-          // value={formData.phoneNumber}
-          value="+380660724608"
+          value={formData.phoneNumber}
           onChange={handleInputChange}
         />
 

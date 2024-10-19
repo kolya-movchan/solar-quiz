@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { OTPInput } from "./OTPInput";
 
 export const OTPModal = ({
@@ -10,6 +10,58 @@ export const OTPModal = ({
   otpRefs,
   handleOTPVerification,
 }) => {
+  const [autofilledOTP, setAutofilledOTP] = useState("");
+
+  useEffect(() => {
+    // Focus on the first input when the component mounts
+    if (otpRefs.current[0]) {
+      otpRefs.current[0].focus();
+    }
+
+    // Set up event listener for SMS autofill
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", handleOrientation);
+    }
+
+    return () => {
+      if (window.DeviceOrientationEvent) {
+        window.removeEventListener("deviceorientation", handleOrientation);
+      }
+    };
+  }, []);
+
+  const handleOrientation = (event) => {
+    if (event.gamma !== null && event.gamma !== undefined) {
+      // This is likely an iOS device
+      if ("OTPCredential" in window) {
+        navigator.credentials.get({
+          otp: { transport: ["sms"] },
+          signal: AbortSignal.timeout(120000) // Wait for 2 minutes
+        }).then(otp => {
+          setAutofilledOTP(otp.code);
+          autofillOTPInputs(otp.code);
+        }).catch(err => {
+          console.error(err);
+        });
+      }
+    }
+  };
+
+  const autofillOTPInputs = (code) => {
+    for (let i = 0; i < code.length; i++) {
+      if (otpRefs.current[i]) {
+        otpRefs.current[i].value = code[i];
+        handleOTPChange({ target: { value: code[i] } }, i);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (autofilledOTP) {
+      autofillOTPInputs(autofilledOTP);
+    }
+  }, [autofilledOTP]);
+
   return (
     <div className="otp-modal">
       <div className="otp-container">
@@ -81,16 +133,7 @@ export const OTPModal = ({
           </div>
         </form>
 
-        <div
-          className="resend-otp-container"
-          // style={{
-          //   display: "flex",
-          //   gap: "10px",
-          //   fontSize: "18px",
-          //   marginBottom: "10px",
-          //   padding: "0 20px",
-          // }}
-        >
+        <div className="resend-otp-container">
           <p
             style={{
               margin: "0",
@@ -98,7 +141,7 @@ export const OTPModal = ({
               color: "#475467",
             }}
           >
-            Didn’t get a code?
+            Didn't get a code?
           </p>
 
           <button
@@ -106,7 +149,6 @@ export const OTPModal = ({
               backgroundColor: "transparent",
               border: "none",
               cursor: "pointer",
-              // cursor: resendTimer === 0 ? "pointer" : "not-allowed",
               width: "max-content",
               fontSize: "18px",
               color: "#98A2B3",
@@ -114,10 +156,8 @@ export const OTPModal = ({
               textDecoration: "underline",
             }}
             onClick={(e) => handleOTPVerification(e, true)}
-            // disabled={resendTimer !== 0}
           >
             Resend the code
-            {/* Resend the code {resendTimer > 0 ? `(${resendTimer})` : ""} */}
           </button>
         </div>
 

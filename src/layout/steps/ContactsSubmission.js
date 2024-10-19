@@ -272,7 +272,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         isLoading={isLoading}
       />
 
-      {!showOTPInput && (
+      {showOTPInput && (
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}

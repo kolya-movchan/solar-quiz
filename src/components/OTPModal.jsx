@@ -51,32 +51,24 @@ export const OTPModal = ({
   }, []);
 
   let test;
-  // New useEffect to handle Chrome autocomplete
-  useEffect(() => {
-    const handleAutoFill = (e) => {
-      const autoFilledValue = e.target.value;
 
-      test = autoFilledValue;
+  const handleAutoFill = (e) => {
+    const autoFilledValue = e.target.value;
+    test = autoFilledValue;
 
-      autoFilledValue.split("").forEach((digit, i) => {
+    if (autoFilledValue.length === 4) {
+      for (let i = 0; i < autoFilledValue.length; i++) {
         if (otpRefs.current[i]) {
-          otpRefs.current[i].value = digit;
-          handleOTPChange({ target: { value: digit } }, i);
+          otpRefs.current[i].value = autoFilledValue[i];
+          handleOTPChange({ target: { value: autoFilledValue[i] } }, i);
         }
-      });
-    };
-
-    const firstInput = otpRefs.current[0];
-    if (firstInput) {
-      firstInput.addEventListener("input", handleAutoFill);
-    }
-
-    return () => {
-      if (firstInput) {
-        firstInput.removeEventListener("input", handleAutoFill);
       }
-    };
-  }, [otpRefs, handleOTPChange]);
+      // Focus on the last input after autofill
+      if (otpRefs.current[autoFilledValue.length - 1]) {
+        otpRefs.current[autoFilledValue.length - 1].focus();
+      }
+    }
+  };
 
   return (
     <div className="otp-modal">
@@ -84,7 +76,6 @@ export const OTPModal = ({
         <div className="otp-wrapper">
           <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "650" }}>
             Phone Number Verification
-            {test}
           </h2>
 
           <button
@@ -137,6 +128,7 @@ export const OTPModal = ({
             }}
             onPaste={handlePaste}
           >
+            {test}
             {Array(4)
               .fill(0)
               .map((_, index) => (
@@ -144,7 +136,10 @@ export const OTPModal = ({
                   key={index}
                   index={index}
                   value={otp[index] || ""}
-                  onChange={(e) => handleOTPChange(e, index)}
+                  onChange={(e) => {
+                    handleOTPChange(e, index);
+                    handleAutoFill(e);
+                  }}
                   ref={(el) => {
                     otpRefs.current[index] = el;
                     if (index === 0) firstInputRef.current = el;

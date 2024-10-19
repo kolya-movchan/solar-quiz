@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StartButton } from "../components/strartButton";
 
-import "../App.css";
-
 export const Intro = ({ handleNextQuizNavigation }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -79,9 +77,8 @@ export const Intro = ({ handleNextQuizNavigation }) => {
         style={{
           margin: "0",
           marginBottom: "32px",
-          textAlign: "left",
         }}
-        className="title"
+        className="title title-first-mobile"
       >
         See How Much Money You Could Save w/ This $0 Solar Program That Cuts
         Electric Bills by 30-50% – Instantly

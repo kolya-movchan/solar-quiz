@@ -1,0 +1,242 @@
+/* MOBILE */
+@media (max-width: 768px) {
+    .first-and-last-step-wrapper {
+      height: 100%;
+      justify-content: center;
+    }
+  
+    .title-first-mobile {
+      text-align: left;
+    }
+  
+    .container {
+      justify-content: space-between;
+      padding: 40px 20px 20px;
+      align-items: center;
+    }
+  
+    .container-with-cards {
+      min-height: 70vh;
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .container-without-cards  {
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .paragraph {
+      color: #475467;
+      text-align: center;
+      line-height: 27px;
+    }
+  
+    .title {
+      font-size: 32px;
+      line-height: 38px;
+      font-weight: 700;
+      text-align: center;
+      max-width: 370px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+  
+    .title-master {
+      padding-top: 8vh;
+    }
+  
+    .intro-boolet-container {
+      gap: 4px
+    }
+  
+    .intro-title-2 {
+      font-weight: 600;
+      line-height: 24px;
+    }
+  
+    .input-other-provider {
+      font-size: 20px;
+    }
+  
+    .input-other-provider::placeholder {
+      font-size: 20px;
+      color: #727272;
+      line-height: 30px;
+    }
+  
+    .start-btn-desktop {
+      display: none;
+    }
+  
+    .start-btn-mobile-wrapper  {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+  
+    /* .first-and-last-step-wrapper {
+      min-height: 100vh;
+    } */
+  
+    .input-search-map {
+      padding: 15px 15px 15px 45px;
+    }
+  
+    .next-btn {
+      width: 100%;
+      align-items: center;
+    }
+  
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      /* margin-bottom: 20px; */
+      width: 100%;
+    }
+  
+    .card-button {
+      flex-direction: row;
+      padding: 0;
+      align-items: center;
+      width: 100%;
+    }
+  
+    /* .card-img {
+      margin-bottom: 0;
+      padding: 20px;
+      background-color: #FAFAFA;
+    } */
+  
+    .card-img-own-home {
+      height: 40px;
+      width: 40px;
+      margin-bottom: 0;
+      padding: 20px;
+      background-color: #FAFAFA;
+    }
+  
+    .card-img-roof-condition {
+      height: 40px;
+      width: 40px;
+      margin-bottom: 0;
+      padding-left: 15px;
+    }
+  
+    .card-icon-image {
+      height: 80px;
+      width: 106px;
+    }
+  
+    .card-content {
+      text-align: left;
+      padding: 21px;
+      width: 100%;
+    }
+  
+    .card-content-title {
+      height: 100%;
+      font-size: 20px;
+      font-weight: 400;
+      color: black;
+    }
+  
+    .middle-steps-wrapper {
+      justify-content: space-between;
+    }
+  
+    .nav-btn-wrapper {
+      position: fixed;
+      bottom: 0;
+      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      display: flex;
+      padding: 20px;
+      height: 12vh;
+      box-sizing: border-box;
+    }
+  
+    /* .back-btn-wrapper {
+     margin-right: 20px;
+    } */
+  
+    .card {
+      width: 100%;
+    }
+  
+    .input-other-provider {
+      padding: 25px;
+      font-size: 20px;
+    }
+  
+    .card-emojie-img {
+      padding: 0 20px 0 20px;
+    }
+  
+    .unqualified-banner {
+      width: 100%;
+    }
+  
+    .unqualified-btn {
+      width: 100%;
+    }
+  
+    .submission-container {
+      padding: 40px 20px
+    }
+  
+    .unqualified-top-banner {
+      margin-bottom: 20px;
+    }
+  
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 10px;
+      margin: 0 auto;
+    }
+  
+    .form-notification {
+      display: none;
+    }
+  
+    .otp-title-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  
+    .otp-container {
+      max-width: 330px;
+      padding: 16px 16px 30px 16px;
+    }
+  
+    .resend-otp-container {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: start;
+      gap: 4px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+  
+    .qualified {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .card-container-emojie {
+      width: 100%;
+    }
+  }

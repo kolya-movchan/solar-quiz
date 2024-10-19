@@ -1,0 +1,196 @@
+/* DESKTOP */
+@media (min-width: 769px) {
+    .container {
+      padding: 40px;
+      align-items: center;
+    }
+  
+    .container-without-cards  {
+      justify-content: center;
+    }
+  
+    .card:hover:not(.card-active) {
+      border-color: #E6E6E6;
+      opacity: 0.8;
+    }
+    
+    .card:hover:not(.card-active)::before {
+      background-image: url('../../public/icons/gray-checkmark.svg');
+      content: '';
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #E6E6E6;
+      border-bottom-right-radius: 4px;
+      border-top-left-radius: 4px;
+      padding: 12px;
+    }
+  
+    .wrapper {
+      height: 86vh;
+      align-items: center;
+    }
+  
+    .nav-btn-wrapper {
+      /* height: 56px; */
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      box-sizing: border-box;
+      padding: 20px 150px;
+      /* left: 0; */
+      /* padding-right: 50px; */
+      justify-content: space-between;
+    }
+    
+    .start-btn-mobile {
+      display: none;
+    }
+  
+    .input-search-map {
+      padding: 15px 15px 15px 65px;
+    }
+  
+    .card-button {
+      height: 100%;
+      width: 300px;
+    }
+  
+    /* .next-btn {
+      margin-right: 20px;
+    } */
+  
+    .card-container {
+      gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      width: 100%;
+      align-items: center;
+      max-width: 638px;
+    }
+  
+    .card-container-emojie {
+      gap: 20px;
+      display: flex;
+      /* width: 100%; */
+      /* flex-wrap: wrap; */
+    }
+  
+    .card-button {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .card-button-padding {
+      padding: 20px 20px 0px 20px;
+    }
+  
+    .card-img-own-home {
+      margin-bottom: 10px;
+    }
+  
+    .card-content {
+      padding: 15px 20px 15px;
+    }
+  
+    .card-content-title {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  
+    .first-and-last-step-wrapper {
+      align-items: center;
+    }
+  
+    .middle-steps-wrapper {
+      justify-content: center;
+    }
+  
+    .container-with-cards {
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .card-icon-image {
+      height: 100%;
+      width: 100%;
+    }
+  
+    .input-other-provider {
+      padding: 25px;
+      font-size: 20px;
+    }
+  
+    .card-img-roof-condition {
+      height: 100px;
+      width: 100px;  
+      margin-bottom: 0;
+    }
+  
+    .card-emojie {
+      width: 175px;
+      height: 225px;
+      justify-content: space-between;
+      background-color: #FAFAFA;
+      padding-top: 50px;
+    }
+  
+    .unqualified-btn {
+      width: 285px;
+    }
+  
+    .unqualified-top-banner {
+      margin-bottom: 32px;
+    }
+  
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 10px;
+      margin: 0 auto;
+      padding: 0 80px;
+      max-width: 364px;
+    }
+  
+    .otp-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      width: 100%;
+    }
+  
+    .otp-title-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+  
+    .otp-container {
+      width: 450px;
+      padding: 20px
+    }
+  
+    .resend-otp-container {
+      display: flex;
+      gap: 10px;
+      font-size: 18px;
+      margin-bottom: 10px;
+      padding: 0 20px;
+    }
+  
+    .qualified {
+      width: 364px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }

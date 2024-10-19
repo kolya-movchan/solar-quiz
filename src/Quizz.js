@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
-import "./Quiz.css";
 import classNames from "classnames";
 
 import { ProgressBar } from "./components/progressBar";

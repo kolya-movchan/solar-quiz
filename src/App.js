@@ -1,4 +1,3 @@
-import "./App.css";
 import Quiz from "./Quizz";
 
 function App() {

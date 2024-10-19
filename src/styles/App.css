@@ -40,11 +40,3 @@
     transform: rotate(360deg);
   }
 }
-
-.container {
-  height: 620px;
-
-  @media (max-width: 768px) {
-    height: auto;
-  }
-}

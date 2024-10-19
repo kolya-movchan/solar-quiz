@@ -23,6 +23,8 @@ const Quiz = () => {
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
+  console.log(111, quizData);
+
   const handleUserAnswer = (data) => {
     setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
 
@@ -141,32 +143,31 @@ const Quiz = () => {
     <>
       {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
 
-      <div>
-        <div
-          style={{
-            maxWidth: "790px",
-            margin: "0 auto",
-            display: "flex",
-          }}
-          className={classNames(
-            { wrapper: step < 8 && step > 0 },
-            { "first-and-last-step-wrapper": step === 0 || step === 8 },
-            { "unqualified-wrapper": step === -1 }
-          )}
-        >
-          {renderStep()}
-        </div>
-
-        {step === 0 && (
-          <div className="start-btn-mobile-wrapper">
-            <StartButton
-              onClick={handleNextQuizNavigation}
-              className="start-btn-mobile"
-            />
-          </div>
+      <div
+        style={{
+          maxWidth: "790px",
+          margin: "0 auto",
+          display: "flex",
+        }}
+        className={classNames(
+          { wrapper: step < 8 && step > 0 },
+          { "first-and-last-step-wrapper": step === 0 || step === 8 },
+          { "unqualified-wrapper": step === -1 }
         )}
+      >
+        {renderStep()}
+      </div>
 
-        {step < 8 && step > 0 && (
+      {step === 0 && (
+        <div className="start-btn-mobile-wrapper">
+          <StartButton
+            onClick={handleNextQuizNavigation}
+            className="start-btn-mobile"
+          />
+        </div>
+      )}
+
+      {step < 8 && step > 0 && (
           <div
             style={{
               display: "flex",
@@ -189,7 +190,6 @@ const Quiz = () => {
             )}
           </div>
         )}
-      </div>
 
       <PopUp />
     </>

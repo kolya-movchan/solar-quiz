@@ -13,7 +13,13 @@ export const UtilityProvider = ({
 
   const providersList = statesProviders.find(
     (data) => data.State === stateAbbreviation
-  )?.Providers || ["APS", "SRP", "TEP"];
+  )?.Providers || [
+    "AES Ohio",
+    "Duke Energy",
+    "Ohio Edison",
+    "Ohio Power",
+    "Southern Power",
+  ] || ["APS", "SRP", "TEP"] 
 
   useEffect(() => {
     const timer = setTimeout(() => {

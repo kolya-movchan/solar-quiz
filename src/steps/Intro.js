@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container } from "../components/container";
+import { Container } from "../layout/container";
 import { QualificationBanner } from "../components/qualification-banner";
 import { StartButton } from "../components/strartButton";
 import { IntroDescriptionItem } from "../components/introDescriptionItem";

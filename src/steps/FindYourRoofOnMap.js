@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
 import { debounce } from "../hooks/useDebounce";
-import { Container } from "../components/container";
+import { Container } from "../layout/container";
 import { SearchLocation } from "../components/searchLocation";
 import { GoogleMapLayout } from "../components/googleMap";
 

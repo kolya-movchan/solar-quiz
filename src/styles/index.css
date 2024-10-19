@@ -58,10 +58,19 @@ textarea::placeholder {
   display: "flex";
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .start-btn {
   background-color: #FE4A19;
+}
+
+.unqualified-btn {
+  background-color: #FE4A19;
+  color: "#fff";
+  display: "flex";
+  align-items: center;
+  justify-content: center;
 }
 
 .back-btn {
@@ -178,6 +187,12 @@ textarea::placeholder {
   height: 98vh;
   align-items: center;
   justify-content: center;
+}
+
+.container-unqualified {
+  gap: 24px;
+  /* align-items: center;
+  justify-content: center; */
 }
 
 .otp-modal {

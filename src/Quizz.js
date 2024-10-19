@@ -7,19 +7,19 @@ import { BackButton } from "./components/backButton";
 import { NextButton } from "./components/nextButton";
 import { PopUp } from "./components/popUp";
 
+import { Step } from "./layout/step";
 import { FindYourRoofOnMap } from "./steps/FindYourRoofOnMap";
-import { DoYouOwnYourHome } from "./steps/DoYouOwnYourHome";
-import { YourHomeType } from "./steps/YourHomeType";
-import { RoofCondition } from "./steps/RoofCondition";
-import { UtilityProvider } from "./steps/UtilityProvider";
-import { MonthlyElectricBills } from "./steps/MonthlyElectricBills";
-import { CreditScore } from "./steps/CreditScore";
+
+// import { RoofCondition } from "./steps/RoofCondition";
+// import { UtilityProvider } from "./steps/UtilityProvider";
+// import { MonthlyElectricBills } from "./steps/MonthlyElectricBills";
+// import { CreditScore } from "./steps/CreditScore";
 import { ContactsSubmission } from "./steps/ContactsSubmission";
 import { Unqualified } from "./steps/Unqualified";
 import { Intro } from "./steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -78,48 +78,55 @@ const Quiz = () => {
           />
         );
       case 2:
-        return (
-          <DoYouOwnYourHome
-            handleUserAnswer={handleUserAnswer}
-            quizData={quizData}
-          />
-        );
       case 3:
-        return (
-          <YourHomeType
-            handleUserAnswer={handleUserAnswer}
-            quizData={quizData}
-          />
-        );
       case 4:
-        return (
-          <RoofCondition
-            handleUserAnswer={handleUserAnswer}
-            quizData={quizData}
-          />
-        );
       case 5:
-        return (
-          <UtilityProvider
-            handleUserAnswer={handleUserAnswer}
-            stateAbbreviation={stateAbbreviation}
-            quizData={quizData}
-          />
-        );
       case 6:
-        return (
-          <MonthlyElectricBills
-            handleUserAnswer={handleUserAnswer}
-            quizData={quizData}
-          />
-        );
       case 7:
         return (
-          <CreditScore
+          <Step
+            step={step}
             handleUserAnswer={handleUserAnswer}
+            setStateAbbreviation={setStateAbbreviation}
             quizData={quizData}
           />
         );
+      // case 3:
+      //   return (
+      //     <YourHomeType
+      //       handleUserAnswer={handleUserAnswer}
+      //       quizData={quizData}
+      //     />
+      //   );
+      // case 4:
+      //   return (
+      //     <RoofCondition
+      //       handleUserAnswer={handleUserAnswer}
+      //       quizData={quizData}
+      //     />
+      //   );
+      // case 5:
+      //   return (
+      //     <UtilityProvider
+      //       handleUserAnswer={handleUserAnswer}
+      //       stateAbbreviation={stateAbbreviation}
+      //       quizData={quizData}
+      //     />
+      //   );
+      // case 6:
+      //   return (
+      //     <MonthlyElectricBills
+      //       handleUserAnswer={handleUserAnswer}
+      //       quizData={quizData}
+      //     />
+      //   );
+      // case 7:
+      //   return (
+      //     <CreditScore
+      //       handleUserAnswer={handleUserAnswer}
+      //       quizData={quizData}
+      //     />
+      //   );
 
       case 8:
         return (

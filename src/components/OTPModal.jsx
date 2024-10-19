@@ -50,16 +50,20 @@ export const OTPModal = ({
     };
   }, []);
 
+
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleAutofocus = () => {
       if (otpRefs.current[0]) {
         otpRefs.current[0].focus();
-        otpRefs.current[0].select(); // Ensures the keyboard is triggered
+        otpRefs.current[0].click(); // Simulate a user interaction
       }
-    }, 500); // Slightly longer delay
-
+    };
+  
+    const timer = setTimeout(() => handleAutofocus(), 500);
+  
     return () => clearTimeout(timer);
   }, []);
+  
 
   return (
     <div className="otp-modal">

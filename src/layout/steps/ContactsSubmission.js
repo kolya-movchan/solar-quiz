@@ -189,6 +189,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     if (value.length === 1 && index < otpRefs.current.length - 1) {
       otpRefs.current[index + 1].focus();
     }
+
     setOtp((prev) => {
       const newOtp = [...prev];
       newOtp[index] = value;

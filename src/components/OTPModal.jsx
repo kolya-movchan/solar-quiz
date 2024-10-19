@@ -18,18 +18,33 @@ export const OTPModal = ({
     handleAutoCompleteOrPaste(pastedData);
   };
 
-  const handleAutoCompleteOrPaste = (data) => {
-    for (let i = 0; i < data.length; i++) {
-      if (otpRefs.current[i]) {
-        otpRefs.current[i].value = data[i];
-        handleOTPChange({ target: { value: data[i] } }, i);
-      }
-    }
+  // const handleAutoCompleteOrPaste = (data) => {
+  //   for (let i = 0; i < data.length; i++) {
+  //     if (otpRefs.current[i]) {
+  //       otpRefs.current[i].value = data[i];
+  //       handleOTPChange({ target: { value: data[i] } }, i);
+  //     }
+  //   }
 
-    // Focus on the last input after autofill or paste
-    if (otpRefs.current[data.length - 1]) {
-      otpRefs.current[data.length - 1].focus();
-    }
+  //   // Focus on the last input after autofill or paste
+  //   if (otpRefs.current[data.length - 1]) {
+  //     otpRefs.current[data.length - 1].focus();
+  //   }
+  // };
+
+  const handleAutoCompleteOrPaste = (data) => {
+    setTimeout(() => {
+      for (let i = 0; i < data.length; i++) {
+        if (otpRefs.current[i]) {
+          otpRefs.current[i].value = data[i];
+          handleOTPChange({ target: { value: data[i] } }, i); // Trigger onChange
+        }
+      }
+
+      if (otpRefs.current[data.length - 1]) {
+        otpRefs.current[data.length - 1].focus();
+      }
+    }, 300); // Short timeout to allow autofill to settle
   };
 
   useEffect(() => {

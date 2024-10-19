@@ -127,17 +127,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
-        {
-          countryCode,
-          phoneNumber,
-        }
-      );
+      // const response = await axios.post(
+      //   `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+      //   {
+      //     countryCode,
+      //     phoneNumber,
+      //   }
+      // );
 
-      if (response.status === 200) {
-        setShowOTPInput(true);
-      }
+      // if (response.status === 200) {
+      //   setShowOTPInput(true);
+      // }
 
       setShowOTPInput(true);
     } catch (error) {
@@ -195,46 +195,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       return newOtp;
     });
   };
-  // useEffect(() => {
-  //   const handleBodyStyles = () => {
-  //     if (showOTPInput) {
-  //       document.body.style.overflow = "hidden";
-  //       document.body.style.position = "fixed";
-  //       document.body.style.width = "100%";
-  //       document.body.style.height = "100%";
-  //       document.body.style.top = "0";
-  //       document.body.style.left = "0";
-  //     } else {
-  //       document.body.style.overflow = "";
-  //       document.body.style.position = "";
-  //       document.body.style.width = "";
-  //       document.body.style.height = "";
-  //       document.body.style.top = "";
-  //       document.body.style.left = "";
-  //     }
-  //   };
-
-  //   handleBodyStyles();
-
-    // For Safari, we need to delay the focus
-    if (showOTPInput) {
-      setTimeout(() => {
-        const firstInput = document.querySelector('.otp-modal input');
-        if (firstInput) {
-          firstInput.focus();
-        }
-      }, 100);
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.height = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-    };
-  }, [showOTPInput]);
 
   useEffect(() => {
     // console.log("OTP:", otp);
@@ -296,14 +256,14 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}
-          handleOTPSubmission={handleOTPSubmission}
-          // handleOTPSubmission={() => {}}
-          handleOTPChange={handleOTPChange}
-          // handleOTPChange={() => {}}
+          // handleOTPSubmission={handleOTPSubmission}
+          handleOTPSubmission={() => {}}
+          // handleOTPChange={handleOTPChange}
+          handleOTPChange={() => {}}
           otp={otp}
           otpRefs={otpRefs}
-          handleOTPVerification={handleOTPVerification}
-          // handleOTPVerification={() => {}}
+          // handleOTPVerification={handleOTPVerification}
+          handleOTPVerification={() => {}}
         />
       )}
     </Container>

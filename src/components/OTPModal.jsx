@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import { OTPInput } from "./OTPInput";
 
 export const OTPModal = ({
@@ -10,49 +10,7 @@ export const OTPModal = ({
   otpRefs,
   handleOTPVerification,
 }) => {
-  const [autofilledOTP, setAutofilledOTP] = useState("");
   const firstInputRef = useRef(null);
-
-  useEffect(() => {
-    // Delay focusing to ensure iOS doesn't block it
-    const timeoutId = setTimeout(() => {
-      if (otpRefs.current[0]) {
-        otpRefs.current[0].focus();
-      }
-
-      // Trigger keyboard on mobile devices after focus
-      if (firstInputRef.current) {
-        firstInputRef.current.focus();
-      }
-    }, 300); // Short delay for iOS
-
-    // Add listener for SMS autofill (iOS specific)
-    if ("OTPCredential" in window) {
-      navigator.credentials
-        .get({
-          otp: { transport: ["sms"] },
-          signal: AbortSignal.timeout(120000),
-        })
-        .then((otp) => {
-          setAutofilledOTP(otp.code);
-          autofillOTPInputs(otp.code);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  const autofillOTPInputs = (code) => {
-    for (let i = 0; i < code.length; i++) {
-      if (otpRefs.current[i]) {
-        otpRefs.current[i].value = code[i];
-        handleOTPChange({ target: { value: code[i] } }, i);
-      }
-    }
-  };
 
   const handlePaste = (event) => {
     event.preventDefault(); // Prevent default paste action
@@ -64,20 +22,11 @@ export const OTPModal = ({
       }
     }
 
-    // Force re-render to update the input values
-    setAutofilledOTP(pastedData);
-
     // Focus on the last input after pasting
     if (otpRefs.current[pastedData.length - 1]) {
       otpRefs.current[pastedData.length - 1].focus();
     }
   };
-
-  useEffect(() => {
-    if (autofilledOTP) {
-      autofillOTPInputs(autofilledOTP);
-    }
-  }, [autofilledOTP]);
 
   return (
     <div className="otp-modal">

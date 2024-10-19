@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from "react";
 
-export const InputOTP = forwardRef(({ value, onChange }, ref) => {
+export const OTPInput = forwardRef(({ value, onChange }, ref) => {
   const [inputValue, setInputValue] = useState(value);
 
   const handleChange = (e) => {

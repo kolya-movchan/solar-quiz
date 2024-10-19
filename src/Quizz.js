@@ -161,7 +161,12 @@ const Quiz = () => {
       )}
 
       {step < 8 && step > 0 && (
-        <div className="nav-btn-wrapper">
+        <div
+          style={{
+            justifyContent: step === 1 ? "flex-end" : "space-between",
+          }}
+          className="nav-btn-wrapper"
+        >
           {step > 1 && !quizData.isQuizDataSubmitted && (
             <div className="back-btn-wrapper">
               <BackButton onClick={handleGoBack} />

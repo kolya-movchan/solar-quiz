@@ -1,34 +1,14 @@
-import React from 'react'
+import React from "react";
 
-export const StartButton = ({onClick, className}) => {
+export const StartButton = ({ onClick, className }) => {
   return (
     <button
-    style={{
-      width: "100%",
-      boxSizing: "border-box",
-      fontSize: "16px",
-      height: "56px",
-      border: "none",
-      backgroundColor: "#FE4A19",
-      borderRadius: "4px",
-      color: "#fff",
-      cursor: "pointer",
-      padding: "0 24px",
-      gap: "10px",
-      fontWeight: "bold",
-    }}
-    className={className}
-    type="button"
-    onClick={onClick}
-  >
-    <span>Start</span>
-
-    <img
-      alt="arrow"
-      src="/icons/right-arrow.png"
-      height={20}
-      width={20}
-    />
-  </button>
-  )
-}
+      className={`${className} button start-btn`}
+      type="button"
+      onClick={onClick}
+    >
+      <span>Start</span>
+      <img alt="arrow" src="/icons/right-arrow.png" height={20} width={20} />
+    </button>
+  );
+};

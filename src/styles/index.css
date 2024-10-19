@@ -31,6 +31,54 @@ textarea::placeholder {
   text-transform: none; /* Reset text-transform */
 }
 
+.progres-bar {
+  height: 12px;
+  background-color: #FE4A19;
+  transition: width 0.3s ease-in-out;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.button {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 56px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  padding: 0 24px;
+  gap: 10px;
+  font-weight: bold;
+  display: "flex";
+  align-items: center;
+  justify-content: center;
+}
+
+.start-btn {
+  background-color: #FE4A19;
+}
+
+.back-btn {
+  background-color: transparent;
+  border: 1px solid #000;
+  height: 48px;
+}
+
+.next-btn {
+  font-size: 16px;
+  display: flex;
+  width: 100%;
+  color: #fff;
+  gap: "10px";
+  transition: "background-color 0.3s ease",
+}
+
 .wrapper-default {
   max-width: 790px;
   margin: 0 auto;

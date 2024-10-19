@@ -45,15 +45,11 @@
     }
 
     .nav-btn-wrapper {
-      /* height: 56px; */
       width: 100%;
       position: fixed;
       bottom: 0;
       box-sizing: border-box;
       padding: 20px 150px;
-      /* left: 0; */
-      /* padding-right: 50px; */
-      justify-content: space-between;
     }
     
     .start-btn-mobile {
@@ -68,10 +64,10 @@
       height: 100%;
       width: 300px;
     }
-  
-    /* .next-btn {
-      margin-right: 20px;
-    } */
+
+    .next-btn {
+      max-width: 120px;
+    }
   
     .card-container {
       gap: 20px;

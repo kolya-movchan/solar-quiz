@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { InputOTP } from "../components/input-otp";
+import { InputOTP } from "../components/inputOTP";
 
 export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);

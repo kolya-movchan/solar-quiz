@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { InputOTP } from "../../components/InputOTP";
+import { InputOTP } from "../../components/OTPInput";
 import { Container } from "../../layout/container";
 import { QualificationBanner } from "../../components/QualificationBanner";
 import { QualifiedBanner } from "../../components/QualifiedBanner";

@@ -2,8 +2,8 @@ import React from "react";
 
 import { Container } from "../container";
 import { QualificationBanner } from "../../components/QualificationBanner";
-import { StartButton } from "../../components/StrartButton";
-import { IntroDescriptionItem } from "../../components/IntroDescriptionItem";
+import { StartButton } from "../../components/ButtonStart";
+import { IntroDescriptionItem } from "../../components/IntroDescription";
 import { introDescriptionBullets } from "../../mop/introDescriptionBullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {

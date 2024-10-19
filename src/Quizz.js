@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import { ProgressBar } from "./components/progressBar";
-import { StartButton } from "./components/strartButton";
-import { BackButton } from "./components/backButton";
+import { StartButton } from "./components/ButtonStart";
+import { BackButton } from "./components/GoBackButton";
 import { NextButton } from "./components/nextButton";
-import { PopUp } from "./components/popUp";
+import { PopUp } from "./components/PopUpMessage";
 
-import { Step } from "./layout/steps/Step";
+import { Step } from "./layout/steps/InteractiveStep";
 import { FindYourRoofOnMap } from "./layout/steps/FindYourRoofOnMap";
 
 import { ContactsSubmission } from "./layout/steps/ContactsSubmission";

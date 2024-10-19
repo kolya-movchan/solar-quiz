@@ -7,15 +7,20 @@ import { BackButton } from "./components/GoBackButton";
 import { NextButton } from "./components/nextButton";
 import { PopUp } from "./components/PopUpMessage";
 
-import { Step } from "./layout/steps/InteractiveStep";
 import { FindYourRoofOnMap } from "./layout/steps/FindYourRoofOnMap";
-
+import { HomeOwnership } from "./layout/steps/HomeOwnership";
+import { HomeType } from "./layout/steps/HomeType";
+import { RoofConditions } from "./layout/steps/RoofConditions";
 import { ContactsSubmission } from "./layout/steps/ContactsSubmission";
+import { UtilityProvider } from "./layout/steps/UtilityProvider";
+import { UtilityBill } from "./layout/steps/UtilityBill";
+import { CreditScore } from "./layout/steps/CreditScore";
+
 import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(2);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -74,17 +79,44 @@ const Quiz = () => {
           />
         );
       case 2:
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-      case 7:
         return (
-          <Step
-            step={step}
+          <HomeOwnership
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
+      case 3:
+        return (
+          <HomeType handleUserAnswer={handleUserAnswer} quizData={quizData} />
+        );
+      case 4:
+        return (
+          <RoofConditions
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
+      case 5:
+        return (
+          <UtilityProvider
             handleUserAnswer={handleUserAnswer}
             quizData={quizData}
             stateAbbreviation={stateAbbreviation}
+          />
+        );
+      case 6:
+        return (
+          <UtilityBill
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
+          />
+        );
+
+      case 7:
+        return (
+          <CreditScore
+            handleUserAnswer={handleUserAnswer}
+            quizData={quizData}
           />
         );
 

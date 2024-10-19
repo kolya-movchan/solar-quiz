@@ -88,6 +88,15 @@ textarea::placeholder {
   transition: "background-color 0.3s ease",
 }
 
+.submission-description {
+  margin-bottom: 20px;
+  color: #475467;
+  max-width: 410px;
+  line-height: 27px;
+  margin-top: 0;
+  font-size: 18px;
+}
+
 .wrapper-default {
   max-width: 790px;
   margin: 0 auto;

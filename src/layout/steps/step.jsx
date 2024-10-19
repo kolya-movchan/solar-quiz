@@ -5,7 +5,7 @@ import { Card } from "../../components/card";
 
 import { homeTypes } from "../../mop/home-types";
 import { roofConditions } from "../../mop/roof-conditions";
-import { statesProviders } from "../../statesProviders";
+import { statesProviders } from "../../mop/statesProviders";
 import { utilityBillsList } from "../../mop/utilityBillsList";
 import { creditScoreList } from "../../mop/creditScoreList";
 

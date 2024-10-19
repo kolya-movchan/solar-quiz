@@ -3,9 +3,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import { InputOTP } from "../../components/inputOTP";
+import { Container } from "../../layout/container";
+import { QualificationBanner } from "../../components/qualification-banner";
 
 export const ContactsSubmission = ({ quizData, onSubmit }) => {
-  const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -198,16 +199,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     if (showOTPInput) {
       document.body.style.overflow = "hidden";
     } else {
@@ -216,9 +207,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   }, [showOTPInput]);
 
   useEffect(() => {
-    console.log("OTP:", otp);
-    console.log("OTP Length:", otp.length);
-    console.log("OTP Submitted:", isOTPSubmitted);
+    // console.log("OTP:", otp);
+    // console.log("OTP Length:", otp.length);
+    // console.log("OTP Submitted:", isOTPSubmitted);
 
     if (
       otp.length === 4 &&
@@ -242,195 +233,129 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   // }, [resendTimer]);
 
   return (
-    <>
+    <Container
+      className="container submission-container"
+      style={{
+        boxSizing: "border-box",
+      }}
+    >
+      <QualificationBanner />
+
+      <h1 style={{ margin: "0", marginBottom: "16px" }} className="title">
+        One more step...
+      </h1>
+
+      <p className="submission-description">
+        Amazing!!! Now we can calculate how much you could save with 
+        <strong style={{ fontWeight: 650 }}>$0 Solar Program</strong> and share
+        it with you shortly. Let us know where we can share your calculations
+        and the new roof design. 
+      </p>
+
       <div
-        className="container submission-container"
+        className="qualified"
         style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-          height: "100%",
           boxSizing: "border-box",
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? "translateY(0)" : "translateY(20px)",
-          transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
+          gap: "20px",
+          padding: "15px",
+          border: "1px solid #027A48",
+          backgroundColor: "#E0ECE2",
+          marginBottom: "20px",
+          borderRadius: "4px",
         }}
       >
-        <div
-          className="unqualified-top-banner"
-          style={{
-            background:
-              "linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #FE4A19, #982C0F) border-box",
-            color: "#313149",
-            padding: "5px 10px",
-            border: "1px solid transparent",
-            borderRadius: "55px",
-            display: "inline-block",
-            marginBottom: "20px",
-          }}
+        <span style={{ color: "#027A48" }}>Your home status:</span>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <span style={{ fontWeight: "bold", color: "#027A48" }}>
+            Pre-Qualified
+          </span>
+          <img
+            src="/icons/alert-circle.svg"
+            alt="Info"
+            style={{ width: "20px" }}
+          />
+        </div>
+      </div>
+
+      <div style={{ width: "100%" }}>
+        <form
+          className="contact-form"
+          style={{ marginBottom: "15px" }}
+          onSubmit={handleOTPVerification}
+          novalidate
         >
-          <p
-            style={{
-              paddingTop: "4px",
-              paddingBottom: "4px",
-              display: "flex",
-              alignItems: "center",
-              margin: "0",
-              gap: "8px",
-            }}
-          >
-            <img
-              src="/icons/checkmark.svg"
-              alt="Checkmark"
+          <div style={{ display: "flex", gap: "10px" }}>
+            <input
+              type="text"
+              placeholder="First Name*"
               style={{
-                width: "20px",
-                height: "20px",
-                margin: "0",
-                marginTop: "2px",
+                // fontSize: "20px",
+                padding: "20px 10px",
+                width: "100%",
+                border: "1px solid #D0D5DD",
+                borderRadius: "4px",
+                outline: "none",
               }}
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
             />
 
-            <p
+            <input
+              type="text"
+              placeholder="Last Name*"
               style={{
-                fontWeight: "500",
-                margin: "0",
-                fontSize: "14px",
-                color: "#FE4A19",
-                textAlign: "left",
-                lineHeight: "21px",
+                padding: "20px 10px",
+                // fontSize: "20px",
+                width: "100%",
+                border: "1px solid #D0D5DD",
+                borderRadius: "4px",
+                outline: "none",
               }}
-            >
-              Free Home Solar Design – Requested by 
-              <span style={{ fontWeight: 800 }}>180,000+</span> Homeowners
-            </p>
-          </p>
-        </div>
-
-        <h1 style={{ margin: "0", marginBottom: "16px" }} className="title">
-          One more step...
-        </h1>
-        <p
-          style={{
-            marginBottom: "20px",
-            color: "#475467",
-            maxWidth: "410px",
-            lineHeight: "27px",
-            marginTop: "0",
-            fontSize: "18px",
-          }}
-        >
-          Amazing!!! Now we can calculate how much you could save with 
-          <strong style={{ fontWeight: 650 }}>$0 Solar Program</strong> and
-          share it with you shortly. Let us know where we can share your
-          calculations and the new roof design. 
-        </p>
-
-        <div
-          className="qualified"
-          style={{
-            display: "flex",
-            boxSizing: "border-box",
-            gap: "20px",
-            padding: "15px",
-            border: "1px solid #027A48",
-            backgroundColor: "#E0ECE2",
-            marginBottom: "20px",
-            borderRadius: "4px",
-          }}
-        >
-          <span style={{ color: "#027A48" }}>Your home status:</span>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <span style={{ fontWeight: "bold", color: "#027A48" }}>
-              Pre-Qualified
-            </span>
-            <img
-              src="/icons/alert-circle.svg"
-              alt="Info"
-              style={{ width: "20px" }}
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
             />
           </div>
-        </div>
+          <input
+            type="email"
+            placeholder="Email*"
+            style={{
+              padding: "20px 10px",
+              // fontSize: "20px",
+              border: "1px solid #D0D5DD",
+              borderRadius: "4px",
+              outline: "none",
+            }}
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number*"
+            style={{
+              padding: "20px 10px",
+              // fontSize: "20px",
+              border: "1px solid #D0D5DD",
+              borderRadius: "4px",
+              outline: "none",
+              marginBottom: "10px",
+            }}
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+            onFocus={(e) => {
+              const newValue = "+1";
+              handleInputChange({
+                target: { name: e.target.name, value: newValue },
+              });
+            }}
+          />
 
-        <div style={{ width: "100%" }}>
-          <form
-            className="contact-form"
-            style={{ marginBottom: "15px" }}
-            onSubmit={handleOTPVerification}
-            novalidate
-          >
-            <div style={{ display: "flex", gap: "10px" }}>
-              <input
-                type="text"
-                placeholder="First Name*"
-                style={{
-                  // fontSize: "20px",
-                  padding: "20px 10px",
-                  width: "100%",
-                  border: "1px solid #D0D5DD",
-                  borderRadius: "4px",
-                  outline: "none",
-                }}
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-              />
-
-              <input
-                type="text"
-                placeholder="Last Name*"
-                style={{
-                  padding: "20px 10px",
-                  // fontSize: "20px",
-                  width: "100%",
-                  border: "1px solid #D0D5DD",
-                  borderRadius: "4px",
-                  outline: "none",
-                }}
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <input
-              type="email"
-              placeholder="Email*"
-              style={{
-                padding: "20px 10px",
-                // fontSize: "20px",
-                border: "1px solid #D0D5DD",
-                borderRadius: "4px",
-                outline: "none",
-              }}
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-            <input
-              type="tel"
-              placeholder="Phone Number*"
-              style={{
-                padding: "20px 10px",
-                // fontSize: "20px",
-                border: "1px solid #D0D5DD",
-                borderRadius: "4px",
-                outline: "none",
-                marginBottom: "10px",
-              }}
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              onFocus={(e) => {
-                const newValue = "+1";
-                handleInputChange({
-                  target: { name: e.target.name, value: newValue },
-                });
-              }}
-            />
-
-            {/* <p
+          {/* <p
               className="form-notification"
               style={{
                 textAlign: "left",
@@ -443,52 +368,51 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
               rates apply.{" "}
             </p> */}
 
-            <button
-              style={{
-                border: "none",
-                backgroundColor: isFormValid() ? "#FE4A19" : "#ccc",
-                color: "#fff",
-                cursor: isFormValid() ? "pointer" : "not-allowed",
-                padding: "0 24px",
-                height: "56px",
-                boxSizing: "content-box",
-                justifyContent: "center",
-                alignItems: "center",
-                fontWeight: "bold",
-                textAlign: "center",
-                display: "flex",
-                gap: "10px",
-                borderRadius: "4px",
-                fontSize: "16px",
-              }}
-              type="submit"
-              disabled={!isFormValid()}
-            >
-              {isLoading ? (
-                <span>Loading...</span>
-              ) : (
-                <span>Confirm Solar Report Request</span>
-              )}
+          <button
+            style={{
+              border: "none",
+              backgroundColor: isFormValid() ? "#FE4A19" : "#ccc",
+              color: "#fff",
+              cursor: isFormValid() ? "pointer" : "not-allowed",
+              padding: "0 24px",
+              height: "56px",
+              boxSizing: "content-box",
+              justifyContent: "center",
+              alignItems: "center",
+              fontWeight: "bold",
+              textAlign: "center",
+              display: "flex",
+              gap: "10px",
+              borderRadius: "4px",
+              fontSize: "16px",
+            }}
+            type="submit"
+            disabled={!isFormValid()}
+          >
+            {isLoading ? (
+              <span>Loading...</span>
+            ) : (
+              <span>Confirm Solar Report Request</span>
+            )}
 
-              <img
-                src="/icons/right-arrow.png"
-                alt="Right Arrow"
-                height={16}
-                width={16}
-              />
-            </button>
-          </form>
+            <img
+              src="/icons/right-arrow.png"
+              alt="Right Arrow"
+              height={16}
+              width={16}
+            />
+          </button>
+        </form>
 
-          <p style={{ fontSize: "0.8rem", margin: "0", color: "#475467" }}>
-            Your data is secured by our{" "}
-            <a
-              href="/privacy-policy"
-              style={{ color: "#000", fontWeight: "bold" }}
-            >
-              Privacy policies
-            </a>
-          </p>
-        </div>
+        <p style={{ fontSize: "0.8rem", margin: "0", color: "#475467" }}>
+          Your data is secured by our{" "}
+          <a
+            href="/privacy-policy"
+            style={{ color: "#000", fontWeight: "bold" }}
+          >
+            Privacy policies
+          </a>
+        </p>
       </div>
 
       {showOTPInput && (
@@ -622,6 +546,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           </div>
         </div>
       )}
-    </>
+    </Container>
   );
 };

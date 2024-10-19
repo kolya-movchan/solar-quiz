@@ -160,7 +160,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         {
           countryCode: formData.phoneNumber.trim().slice(1, -10),
           phoneNumber: formData.phoneNumber.trim().slice(-10),
-          otp: otp.join(""),
+          otp: otpRefs.current.map((ref) => ref.value).join(""),
         }
       );
       if (verificationResponse.data.isVerified === true) {
@@ -278,7 +278,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         isLoading={isLoading}
       />
 
-      {showOTPInput && (
+      {!showOTPInput && (
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}

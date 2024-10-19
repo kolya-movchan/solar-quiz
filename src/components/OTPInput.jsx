@@ -35,8 +35,8 @@ export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
         }}
         value={inputValue}
         onChange={handleChange}
-        maxLength="4"
-        autoComplete={`one-time-code-${index}`} // Unique for each input
+        maxLength="1" // Change maxLength to 1 to ensure each input only takes one digit
+        autoComplete="one-time-code" // Use the same autoComplete value for all inputs
         name={`otp-${index}`} // Unique name for each input
       />
     </div>

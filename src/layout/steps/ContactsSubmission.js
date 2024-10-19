@@ -201,9 +201,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
   useEffect(() => {
     if (showOTPInput) {
-      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
     }
   }, [showOTPInput]);
 
@@ -263,7 +263,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         isLoading={isLoading}
       />
 
-      {!showOTPInput && (
+      {showOTPInput && (
         <OTPModal
           setShowOTPInput={setShowOTPInput}
           formData={formData}

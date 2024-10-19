@@ -207,7 +207,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       otp.every((digit) => digit !== "") &&
       !isOTPSubmitted
     ) {
-      handleOTPSubmission();
+      setTimeout(() => {
+        handleOTPSubmission();
+      }, 300);
     }
   }, [otp, isOTPSubmitted]);
 
@@ -275,6 +277,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           handleOTPChange={handleOTPChange}
           // handleOTPChange={() => {}}
           otp={otp}
+          setOtp={setOtp}
           otpRefs={otpRefs}
           handleOTPVerification={handleOTPVerification}
           // handleOTPVerification={() => {}}

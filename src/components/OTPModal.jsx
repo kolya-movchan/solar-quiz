@@ -7,6 +7,7 @@ export const OTPModal = ({
   handleOTPSubmission,
   handleOTPChange,
   otp,
+  setOtp,
   otpRefs,
   handleOTPVerification,
 }) => {
@@ -33,18 +34,8 @@ export const OTPModal = ({
   // };
 
   const handleAutoCompleteOrPaste = (data) => {
-    setTimeout(() => {
-      for (let i = 0; i < data.length; i++) {
-        if (otpRefs.current[i]) {
-          otpRefs.current[i].value = data[i];
-          handleOTPChange({ target: { value: data[i] } }, i); // Trigger onChange
-        }
-      }
-
-      if (otpRefs.current[data.length - 1]) {
-        otpRefs.current[data.length - 1].focus();
-      }
-    }, 300); // Short timeout to allow autofill to settle
+    setOtp(data);
+    otpRefs.current[data.length - 1].focus();
   };
 
   useEffect(() => {

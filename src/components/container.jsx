@@ -1,6 +1,9 @@
 import React from "react";
+import { useVisibility } from "../hooks/useVisibility";
 
-export const Container = ({ isVisible, children }) => {
+export const Container = ({ children }) => {
+  const isVisible = useVisibility(100);
+
   return (
     <div
       className="container intro-container"

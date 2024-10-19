@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { Container } from "../components/container";
 import { QualificationBanner } from "../components/qualification-banner";
@@ -7,18 +7,8 @@ import { IntroDescriptionItem } from "../components/introDescriptionItem";
 import { introDescriptionBullets } from "../mop/intro-description-bullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <Container isVisible={isVisible} className="intro-container">
+    <Container className="intro-container">
       <QualificationBanner />
 
       <h1

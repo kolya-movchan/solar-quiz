@@ -23,6 +23,7 @@
       min-height: 70vh;
       width: 100%;
       justify-content: space-between;
+      align-items: center;
     }
   
     .paragraph {

@@ -16,7 +16,7 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
           <Card
             key={score.id}
             title={score.name}
-            img={`/emojies/${score.id}.png`}
+            img={`/emojies/${score.id}.webp`}
             onClick={() => handleUserAnswer({ credit_score: score.id })}
             imgHeight={64}
             imgWidth={64}

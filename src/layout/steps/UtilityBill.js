@@ -18,7 +18,7 @@ export const UtilityBill = ({ handleUserAnswer, quizData }) => {
           <Card
             key={bill.id}
             title={bill.name}
-            img={`/emojies/${bill.id}.png`}
+            img={`/emojies/${bill.id}.webp`}
             onClick={() => handleUserAnswer({ utility_bill_amount: bill.id })}
             imgHeight={64}
             imgWidth={64}

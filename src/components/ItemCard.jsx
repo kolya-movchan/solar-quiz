@@ -43,19 +43,21 @@ export const Card = ({
           onClick(quizData);
         }}
       >
-        <img
-          style={{ objectFit: "cover" }}
-          src={img}
-          alt="Own"
-          height={imgHeight}
-          width={imgWidth}
-          className={classNames({
-            "card-icon-image": classImg === "card-icon-image",
-            "card-img-own-home": classImg === "card-img-own-home",
-            "card-img-roof-condition": classImg === "card-img-roof-condition",
-            "card-emojie-img": classImg === "card-emojie",
-          })}
-        />
+        <div>
+          <img
+            style={{ objectFit: "cover" }}
+            src={img}
+            alt="Own"
+            height={imgHeight}
+            width={imgWidth}
+            className={classNames({
+              "card-icon-image": classImg === "card-icon-image",
+              "card-img-own-home": classImg === "card-img-own-home",
+              "card-img-roof-condition": classImg === "card-img-roof-condition",
+              "card-emojie-img": classImg === "card-emojie",
+            })}
+          />
+        </div>
 
         <div
           style={{

@@ -128,12 +128,15 @@
     .container-with-cards {
       justify-content: center;
       align-items: center;
-      padding-bottom: 100px;
     }
   
     .card-icon-image {
       height: 100%;
       width: 100%;
+    }
+
+    .input-other-provider-container {
+      padding-bottom: 100px;
     }
   
     .input-other-provider {

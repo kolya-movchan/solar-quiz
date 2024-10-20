@@ -9,7 +9,7 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
   }, []);
 
   return (
-    <Container className="container-with-cards ">
+    <Container className="container-with-cards">
       <h1 className="title title-master">What is your credit score?</h1>
       <div className="card-container-emojie" style={{ marginBottom: "20px" }}>
         {creditScoreList.map((score) => (

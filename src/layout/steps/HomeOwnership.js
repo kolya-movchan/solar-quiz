@@ -8,7 +8,7 @@ export const HomeOwnership = ({ handleUserAnswer, quizData }) => {
   }, []);
 
   return (
-    <Container className="container-with-cards ">
+    <Container className="container-with-cards">
       <h1 className="title title-master">Do you own or rent your home?</h1>
       <div className="card-container">
         {["Own", "Rent"].map((option) => (

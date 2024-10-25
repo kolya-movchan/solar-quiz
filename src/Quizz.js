@@ -26,7 +26,11 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
-    setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
+    if (data.location) {
+      setQuizData({ ...data });
+    } else {
+      setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
+    }
 
     const { home_ownership, home_type, credit_score } = data;
     const conditionsToRefuse =
@@ -182,7 +186,15 @@ const Quiz = () => {
           {step > 0 && step < 8 && (
             <NextButton
               onClick={handleNextQuizNavigation}
-              isDisabled={step === 1 && !quizData.location}
+              isDisabled={
+                (step === 1 && !quizData.location) ||
+                (step === 2 && !quizData.home_ownership) ||
+                (step === 3 && !quizData.home_type) ||
+                (step === 4 && !quizData.roof_condition) ||
+                (step === 5 && !quizData.provider) ||
+                (step === 6 && !quizData.utility_bill_amount) ||
+                (step === 7 && !quizData.credit_score)
+              }
             />
           )}
         </div>

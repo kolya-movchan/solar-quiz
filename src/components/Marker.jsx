@@ -11,10 +11,7 @@ export const GoogleMapMarker = () => {
         zIndex: 1,
       }}
     >
-      <img
-        src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"
-        alt="marker"
-      />
+      <img src="/icons/map-pin.svg" alt="marker" />
     </div>
   );
 };

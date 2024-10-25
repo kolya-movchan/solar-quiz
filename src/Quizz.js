@@ -21,7 +21,7 @@ import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -43,7 +43,11 @@ const Quiz = () => {
       return;
     }
 
-    if (data.is_mannual_provider || data.is_mannual_provider === null) {
+    if (
+      data.is_mannual_provider ||
+      data.is_mannual_provider === null ||
+      data.is_manual_location
+    ) {
       return;
     }
 
@@ -53,7 +57,7 @@ const Quiz = () => {
   };
 
   const handleGoBack = () => {
-    if (step > 1) {
+    if (step > 0) {
       setStep(step - 1);
     }
   };
@@ -165,11 +169,11 @@ const Quiz = () => {
       {step < 8 && step > 0 && (
         <div
           style={{
-            justifyContent: step === 1 ? "flex-end" : "space-between",
+            justifyContent: "space-between",
           }}
           className="nav-btn-wrapper"
         >
-          {step > 1 && !quizData.isQuizDataSubmitted && (
+          {step > 0 && !quizData.isQuizDataSubmitted && (
             <div className="back-btn-wrapper">
               <BackButton onClick={handleGoBack} />
             </div>

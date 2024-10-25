@@ -94,6 +94,9 @@ textarea::placeholder {
   background-color: transparent;
   border: 1px solid #000;
   height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .next-btn {

@@ -6,10 +6,7 @@ import { Container } from "../container";
 import { SearchLocation } from "../../components/LocationSearch";
 import { GoogleMapLayout } from "../../components/GoogleMapFrame";
 
-const center = {
-  lat: 42.3601,
-  lng: -71.0589,
-};
+const center = { lat: 38.8292347, lng: -90.4875674 };
 
 export const FindYourRoofOnMap = ({
   handleUserAnswer,
@@ -17,10 +14,10 @@ export const FindYourRoofOnMap = ({
   quizData,
 }) => {
   const [inputValue, setInputValue] = useState(
-    quizData.location ? quizData.location.description : ""
-  );
+    quizData.location ? quizData.location : ""
+  );  
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isStreetSelected, setIsStreetSelected] = useState(false);
+  const [isStreetSelected, setIsStreetSelected] = useState(quizData.location);
   const [mapCenter, setMapCenter] = useState(center);
   const [streetsData, setStreetsData] = useState([]);
   const [selectedStreet, setSelectedStreet] = useState(null);
@@ -113,15 +110,36 @@ export const FindYourRoofOnMap = ({
     };
   }, []);
 
-  useEffect(() => {
-    if (quizData.location) {
-      handleSelectStreet(quizData.location);
+  // useEffect(() => {
+  //   if (quizData.location) {
+  //     console.log(666, quizData.location);
+      
+  //     handleSelectStreet(quizData.location);
+  //   }
+  // }, [quizData.location]);
+
+  const getSuggestedAddress = async (coordinates) => {
+    const response = await axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.lat},${coordinates.lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&language=en`
+    );
+
+    if (response.data.status === "OK") {
+      const firstResult = response.data.results[0];
+
+      setInputValue(firstResult.formatted_address);
+      setIsStreetSelected(true);
+      handleUserAnswer({
+        location: firstResult.formatted_address,
+        is_manual_location: true,
+      });
+    } else {
+      console.error("No results found or error:", response.data.status);
     }
-  }, [quizData.location]);
+  };
 
   return (
     <Container className="container-with-cards">
-      <h1 style={{ margin: "0" }} className="title">
+      <h1 style={{ margin: "0", maxWidth: "450px" }} className="title">
         Let's check your roof's sun exposure
       </h1>
 
@@ -148,6 +166,7 @@ export const FindYourRoofOnMap = ({
         <GoogleMapLayout
           mapCenter={mapCenter}
           setMapCenter={setMapCenter}
+          onDrag={getSuggestedAddress}
           mapRef={mapRef}
         />
       </div>

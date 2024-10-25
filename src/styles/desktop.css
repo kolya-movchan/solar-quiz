@@ -36,10 +36,15 @@
     }
   
     .wrapper {
-      min-height: 100vh;
+      min-height: 90vh;
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
+    }
+
+    .paragraph {
+      color: #475467;
+      font-size: 18px;
     }
 
     .nav-btn-wrapper {

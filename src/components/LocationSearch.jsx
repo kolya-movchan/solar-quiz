@@ -33,9 +33,11 @@ export const SearchLocation = ({
             height: "20px",
             border: "1px solid #D0D5DD",
             outline: "none",
-            color: "#475467",
+            color: "#000",
             fontSize: "16px",
-            backgroundImage: "url(./icons/map-pin.png)",
+            backgroundImage: isStreetSelected
+              ? "url(./icons/map-pin-selected.png)"
+              : "url(./icons/map-pin.png)",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "left center",
             backgroundPositionX: "15px",
@@ -114,7 +116,7 @@ export const SearchLocation = ({
               onClick={() => {
                 setTimeout(() => {
                   handleUserAnswer({
-                    location: street,
+                    location: street.description,
                     place_id: street.place_id,
                   });
                 }, 1000);

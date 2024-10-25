@@ -14,10 +14,12 @@ export const IntroDescriptionItem = ({ title, description }) => {
         }}
         className="intro-boolet-container"
       >
-        <h2 style={{ margin: 0 }} className="intro-title-2">
+        <h2 style={{ margin: 0, color: "#1D2939" }} className="intro-title-2">
           {title}
         </h2>
-        <p style={{ margin: 0, color: "#475467" }}>{description}</p>
+        <p style={{ margin: 0, color: "#475467", fontFamily: "Inter" }}>
+          {description}
+        </p>
       </div>
     </div>
   );

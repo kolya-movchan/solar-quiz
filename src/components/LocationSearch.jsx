@@ -11,6 +11,7 @@ export const SearchLocation = ({
   dropdownRef,
   isStreetSelected,
   isLoading,
+  mapCenter,
 }) => {
   return (
     <div
@@ -114,13 +115,16 @@ export const SearchLocation = ({
                     : "transparent";
               }}
               onClick={() => {
+                handleSelectStreet(street).then((coordinates) => {
+
                 setTimeout(() => {
                   handleUserAnswer({
                     location: street.description,
                     place_id: street.place_id,
-                  });
-                }, 1000);
-                handleSelectStreet(street);
+                    coordinates,
+                    });
+                  }, 1500);
+                });
               }}
             >
               {street.description}

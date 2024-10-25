@@ -4,12 +4,12 @@ import { GoogleMapMarker } from "./Marker";
 
 const mapContainerStyle = {
   width: "100%",
-  height: "300px",
+  height: window.innerWidth <= 768 ? "250px" : "300px",
 };
 
 const libraries = ["places", "visualization"];
 
-export const GoogleMapLayout = ({ mapCenter, setMapCenter, mapRef, onDrag }) => {
+export const GoogleMapLayout = ({ mapCenter, mapRef, onDrag }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -38,6 +38,7 @@ export const GoogleMapLayout = ({ mapCenter, setMapCenter, mapRef, onDrag }) => 
         }}
         onDragEnd={() => {
           const center = mapRef.current.getCenter();
+          
           const newCenter = { lat: center.lat(), lng: center.lng() };
           onDrag(newCenter);
         }}

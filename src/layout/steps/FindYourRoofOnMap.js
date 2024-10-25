@@ -15,10 +15,16 @@ export const FindYourRoofOnMap = ({
 }) => {
   const [inputValue, setInputValue] = useState(
     quizData.location ? quizData.location : ""
-  );  
+  );
   const [showDropdown, setShowDropdown] = useState(false);
   const [isStreetSelected, setIsStreetSelected] = useState(quizData.location);
-  const [mapCenter, setMapCenter] = useState(center);
+  const [mapCenter, setMapCenter] = useState(
+    quizData.coordinates ? quizData.coordinates : center
+  );
+
+  console.log("quiz coords", quizData.coordinates);
+  console.log("mapCenter", mapCenter);
+
   const [streetsData, setStreetsData] = useState([]);
   const [selectedStreet, setSelectedStreet] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +53,7 @@ export const FindYourRoofOnMap = ({
     }
   }, 300);
 
-  const getCoordinates = async (placeId) => {
+  const getCoordinates = async (placeId, skipUpdateMap = false) => {
     try {
       const response = await axios.get(
         `https://${process.env.REACT_APP_BACKEND_HOST}/api/geocode`,
@@ -72,9 +78,11 @@ export const FindYourRoofOnMap = ({
 
       setStateAbbreviation(stateAbbreviation);
 
-      if (location) {
+      if (location && !skipUpdateMap) {
         setMapCenter({ lat: location.lat, lng: location.lng });
       }
+
+      return { lat: location.lat, lng: location.lng };
     } catch (error) {
       console.error("Error fetching coordinates:", error);
       throw error;
@@ -88,13 +96,15 @@ export const FindYourRoofOnMap = ({
     setIsStreetSelected(false);
   };
 
-  const handleSelectStreet = (street) => {
+  const handleSelectStreet = async (street) => {
     setInputValue(street.description);
     setShowDropdown(false);
     setSelectedStreet(street);
     setIsStreetSelected(true);
 
-    getCoordinates(street.place_id);
+    return await getCoordinates(street.place_id).then((coordinates) => {
+      return coordinates;
+    });
   };
 
   useEffect(() => {
@@ -110,14 +120,6 @@ export const FindYourRoofOnMap = ({
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (quizData.location) {
-  //     console.log(666, quizData.location);
-      
-  //     handleSelectStreet(quizData.location);
-  //   }
-  // }, [quizData.location]);
-
   const getSuggestedAddress = async (coordinates) => {
     const response = await axios.get(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.lat},${coordinates.lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&language=en`
@@ -125,11 +127,20 @@ export const FindYourRoofOnMap = ({
 
     if (response.data.status === "OK") {
       const firstResult = response.data.results[0];
+      const placeId = firstResult.place_id;
+
+      try {
+        await getCoordinates(placeId, true);
+      } catch (error) {
+        console.error("Error fetching coordinates:", error);
+      }
 
       setInputValue(firstResult.formatted_address);
       setIsStreetSelected(true);
       handleUserAnswer({
         location: firstResult.formatted_address,
+        coordinates: { lat: coordinates.lat, lng: coordinates.lng },
+        placeId: placeId,
         is_manual_location: true,
       });
     } else {
@@ -160,6 +171,7 @@ export const FindYourRoofOnMap = ({
         dropdownRef={dropdownRef}
         isStreetSelected={isStreetSelected}
         isLoading={isLoading}
+        mapCenter={mapCenter}
       />
 
       <div className="google-map-container">

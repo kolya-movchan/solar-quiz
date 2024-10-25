@@ -3,11 +3,12 @@ import React from "react";
 export const QualificationBanner = () => {
   return (
     <div
+      className="qualification-container"
       style={{
         background:
           "linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #FE4A19, #982C0F) border-box",
         color: "#313149",
-        padding: "5px 10px",
+        padding: "5px 20px",
         border: "1px solid transparent",
         borderRadius: "55px",
         display: "inline-block",
@@ -22,6 +23,7 @@ export const QualificationBanner = () => {
           alignItems: "center",
           margin: "0",
           gap: "8px",
+          padding: "0",
         }}
       >
         <img
@@ -36,6 +38,7 @@ export const QualificationBanner = () => {
         />
 
         <p
+          className="qualification-banner"
           style={{
             fontWeight: "500",
             margin: "0",
@@ -43,10 +46,15 @@ export const QualificationBanner = () => {
             color: "#FE4A19",
             textAlign: "left",
             lineHeight: "21px",
+            padding: "0",
           }}
         >
-          Free Home Solar Design – Requested by 
-          <span style={{ fontWeight: 800 }}>180,000+</span> Homeowners
+          Free Home Solar Design{" "}
+          <span className="qualification-banner-dash">–</span>{" "}
+          <span>
+            Requested by 
+            <span style={{ fontWeight: 700 }}>180,000+</span> Homeowners
+          </span>
         </p>
       </p>
     </div>

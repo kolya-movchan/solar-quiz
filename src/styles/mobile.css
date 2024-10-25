@@ -68,6 +68,21 @@
       color: #727272;
       line-height: 30px;
     }
+
+    .qualification-container {
+      width: 90%;
+    }
+
+    .qualification-banner {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .qualification-banner-dash {
+      display: none;
+    }
   
     .start-btn-desktop {
       display: none;

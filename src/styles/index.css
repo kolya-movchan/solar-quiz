@@ -59,7 +59,8 @@ textarea::placeholder {
   cursor: pointer;
   padding: 0 24px;
   gap: 10px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-weight: 650;
   display: "flex";
   align-items: center;
   justify-content: center;
@@ -115,6 +116,7 @@ textarea::placeholder {
 
 .wrapper-default {
   width: 100%;
+  /* box-sizing: border-box; */
   max-width: 790px;
   margin: 0 auto;
   display: flex;
@@ -184,6 +186,11 @@ textarea::placeholder {
   width: 100%;
   position: relative;
   height: 300px;
+}
+
+.logo-container {
+  height: 40px;
+  width: 40px;
 }
 
 

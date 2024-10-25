@@ -8,7 +8,13 @@ export const StartButton = ({ onClick, className }) => {
       onClick={onClick}
     >
       <span>Start</span>
-      <img alt="arrow" src="/icons/right-arrow.png" height={20} width={20} />
+      <img
+        style={{ marginTop: "2px" }}
+        alt="arrow"
+        src="/icons/right-arrow.png"
+        height={20}
+        width={20}
+      />
     </button>
   );
 };

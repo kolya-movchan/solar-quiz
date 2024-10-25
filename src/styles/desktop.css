@@ -11,8 +11,8 @@
     }
 
     .intro-container {
-        box-sizing: border-box;
-        min-height: 100vh;
+      box-sizing: border-box;
+      min-height: 100vh;
     }
   
     .card:hover:not(.card-active) {
@@ -36,7 +36,7 @@
     }
   
     .wrapper {
-      min-height: 90vh;
+      min-height: 100vh;
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
@@ -47,7 +47,11 @@
       position: fixed;
       bottom: 0;
       box-sizing: border-box;
-      padding: 20px 150px;
+      padding: 16px 150px;
+    }
+
+    .start-btn {
+      margin-top: 20px;
     }
     
     .start-btn-mobile {
@@ -174,6 +178,11 @@
       margin: 0 auto;
       padding: 0 80px;
       max-width: 364px;
+    }
+
+    .logo-container {
+      position: absolute;
+      padding: 40px 0 0 50px
     }
   
     .otp-wrapper {

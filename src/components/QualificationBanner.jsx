@@ -8,7 +8,7 @@ export const QualificationBanner = () => {
         background:
           "linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #FE4A19, #982C0F) border-box",
         color: "#313149",
-        padding: "5px 20px",
+        padding: "4px 20px",
         border: "1px solid transparent",
         borderRadius: "55px",
         display: "inline-block",

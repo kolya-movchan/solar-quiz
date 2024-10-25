@@ -6,6 +6,7 @@ import { StartButton } from "./components/ButtonStart";
 import { BackButton } from "./components/GoBackButton";
 import { NextButton } from "./components/nextButton";
 import { PopUp } from "./components/PopUpMessage";
+import { Logo } from "./components/Logo";
 
 import { FindYourRoofOnMap } from "./layout/steps/FindYourRoofOnMap";
 import { HomeOwnership } from "./layout/steps/HomeOwnership";
@@ -138,6 +139,8 @@ const Quiz = () => {
   return (
     <>
       {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
+
+      <Logo />
 
       <div
         className={classNames(

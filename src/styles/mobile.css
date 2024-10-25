@@ -87,13 +87,21 @@
     .start-btn-desktop {
       display: none;
     }
+
+    .logo-container {
+      padding: 20px 0 0 16px;
+      margin-bottom: -20px;
+      height: 40px;
+      width: 40px;
+    }
   
     .start-btn-mobile-wrapper  {
-      position: sticky;
+      background-color: #fff;
+      position: fixed;
       bottom: 0;
       width: 100%;
       display: flex;
-      padding: 20px;
+      padding: 16px;
       box-sizing: border-box;
     }
   

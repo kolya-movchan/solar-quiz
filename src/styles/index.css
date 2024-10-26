@@ -372,12 +372,12 @@ input::placeholder {
   outline: none;
 }
 
-.form-input:hover {
+/* .form-input:hover {
   border: 2px solid #D0D5DD;
-}
+} */
 
 .form-input:focus {
-  border: 2px solid #FE4A19;
+  border: 1px solid #FE4A19;
 }
 
 

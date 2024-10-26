@@ -126,11 +126,17 @@ export const FindYourRoofOnMap = ({
 
   const getSuggestedAddress = async (coordinates) => {
     const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.lat},${coordinates.lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&language=en`
+      `https://${process.env.REACT_APP_BACKEND_HOST}/api/reverse-geocode`,
+      {
+        params: {
+          lat: coordinates.lat,
+          lng: coordinates.lng,
+        },
+      }
     );
 
-    if (response.data.status === "OK") {
-      const firstResult = response.data.results[0];
+    if (response.request.status === 200) {
+      const firstResult = response.data.data;
       const placeId = firstResult.place_id;
 
       try {

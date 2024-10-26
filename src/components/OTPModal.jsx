@@ -108,7 +108,7 @@ export const OTPModal = ({
 
         <div className="otp-title-container">
           <h3 style={{ margin: "0" }} className="title">
-            Confirm your Request
+            Confirm My Request
           </h3>
           <p
             style={{
@@ -120,7 +120,7 @@ export const OTPModal = ({
           >
             We sent a 4-digit personal code to the{" "}
             <span style={{ fontWeight: "bold" }}>{formData.phoneNumber}</span>.
-            This helps us to verify your request. Enter the code below:
+            This allows us to verify your request. Enter the code below:
           </p>
         </div>
 
@@ -171,7 +171,7 @@ export const OTPModal = ({
           </button>
         </div>
 
-        <a
+        {/* <a
           href="/privacy-policy"
           style={{
             margin: "0",
@@ -182,7 +182,7 @@ export const OTPModal = ({
           }}
         >
           Privacy Policy
-        </a>
+        </a> */}
       </div>
     </div>
   );

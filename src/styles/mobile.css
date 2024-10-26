@@ -306,8 +306,8 @@
       justify-content: start;
       gap: 4px;
       font-size: 18px;
-      margin-bottom: 20px;
-      padding: 0 20px;
+      /* margin-bottom: 20px;
+      padding: 0 20px; */
     }
   
     .qualified {

@@ -20,7 +20,7 @@ export const RoofConditions = ({ handleUserAnswer, quizData }) => {
             title={condition.name}
             img={condition.icon}
             onClick={() => handleUserAnswer({ roof_condition: condition.id })}
-            isOneBg={true}
+            // isOneBg={true}
             containerPadding="20px 20px 0px 20px"
             isActive={quizData.roof_condition === condition.id}
             isDisabled={quizData.hasOwnProperty("roof_condition")}

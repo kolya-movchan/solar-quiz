@@ -25,14 +25,14 @@ export const Card = ({
       <button
         style={{
           zIndex: "3",
-          // paddingBottom: "0",
+          paddingBottom: "0",
           fontSize: "2rem",
           fontWeight: "bold",
           borderRadius: "4px",
           cursor: "pointer",
           type: "button",
           overflow: "hidden",
-          backgroundColor: isOneBg ? "#fff" : "transparent",
+          backgroundColor: isOneBg ? "#FAFAFA" : "#fff",
           ...style,
         }}
         className={classNames("card-button", {

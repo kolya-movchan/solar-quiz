@@ -23,6 +23,7 @@ export const HomeOwnership = ({ handleUserAnswer, quizData }) => {
             isActive={quizData.home_ownership === option.toLowerCase()}
             isDisabled={quizData.hasOwnProperty("home_ownership")}
             style={{ border: "1px solid #D2D2D2" }}
+            isOneBg={true}
           />
         ))}
       </div>

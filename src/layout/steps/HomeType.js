@@ -17,6 +17,7 @@ export const HomeType = ({ handleUserAnswer, quizData }) => {
             key={homeType.id}
             title={homeType.name}
             img={homeType.icon}
+            // imgHeight={'124px'}
             onClick={handleUserAnswer}
             quizData={{ home_type: homeType.id }}
             classImg="card-icon-image"

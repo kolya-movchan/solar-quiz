@@ -43,7 +43,7 @@ export const Card = ({
           onClick(quizData);
         }}
       >
-        <div>
+        {/* <div> */}
           <img
             style={{ objectFit: "cover" }}
             src={img}
@@ -57,7 +57,7 @@ export const Card = ({
               "card-emojie-img": classImg === "card-emojie",
             })}
           />
-        </div>
+        {/* </div> */}
 
         <div
           style={{

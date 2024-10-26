@@ -131,6 +131,10 @@ textarea::placeholder {
   justify-content: space-between;
 }
 
+.container-with-map {
+  gap: 20px;
+}
+
 .container-with-cards   {
   gap: 20px;
 }

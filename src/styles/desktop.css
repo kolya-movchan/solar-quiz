@@ -47,6 +47,11 @@
       font-size: 18px;
     }
 
+    .container-with-cards {
+      margin-top: 60px;
+      align-self: flex-start;
+    }
+
     .nav-btn-wrapper {
       width: 100%;
       position: fixed;
@@ -133,14 +138,14 @@
     .middle-steps-wrapper {
       justify-content: center;
     }
-  
-    .container-with-cards {
+
+    .container-with-map {
       justify-content: center;
       align-items: center;
     }
-  
+
     .card-icon-image {
-      height: 100%;
+      height: 110%;
       width: 100%;
     }
 

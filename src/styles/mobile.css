@@ -18,6 +18,13 @@
     .container {
       padding: 40px 20px 90px;
     }
+
+    .container-with-map {
+      min-height: 70vh;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
   
     .container-with-cards {
       min-height: 70vh;

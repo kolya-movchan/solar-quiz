@@ -149,7 +149,7 @@ export const FindYourRoofOnMap = ({
   };
 
   return (
-    <Container className="container-with-cards">
+    <Container className="container-with-map">
       <h1 style={{ margin: "0", maxWidth: "450px" }} className="title">
         Let's check your roof's sun exposure
       </h1>

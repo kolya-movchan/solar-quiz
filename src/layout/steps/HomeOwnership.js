@@ -15,7 +15,7 @@ export const HomeOwnership = ({ handleUserAnswer, quizData }) => {
           <Card
             key={option}
             title={option}
-            img={`/icons/${option.toLowerCase()}.svg`}
+            img={`/home-ownership/${option.toLowerCase()}.svg`}
             classImg="card-img-own-home"
             onClick={handleUserAnswer}
             quizData={{ home_ownership: option.toLowerCase() }}

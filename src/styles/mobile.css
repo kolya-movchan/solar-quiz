@@ -36,6 +36,12 @@
       /* width: 100%; */
       /* justify-content: space-between; */
       align-items: center;
+
+      height: 90vh;
+      /* display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; */
     }
   
     .paragraph {
@@ -73,9 +79,21 @@
       /* padding-top: 8vh; */
     }
 
-    .card-container {
+    /* .card-container {
       min-height: 40vh;
       box-sizing: border-box;
+      overflow: auto;
+    } */
+
+    .card-container {
+      flex-grow: 1; /* Allows it to take remaining space */
+      width: 100%; /* Optional: Adjust as needed */
+      overflow-y: auto;
+      overflow-x: hidden;
+       /* Enable vertical scroll within this container */
+      -webkit-overflow-scrolling: touch; /* Smooth 
+      scrolling on iOS */
+      padding-right: 14px;
     }
 
     .intro-container {

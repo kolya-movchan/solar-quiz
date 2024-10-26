@@ -21,7 +21,7 @@ import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(5);
+  const [step, setStep] = useState(2);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 

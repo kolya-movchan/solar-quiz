@@ -9,12 +9,19 @@ export const UtilityProvider = ({
   quizData,
   stateAbbreviation,
 }) => {
-  const providersList = statesProviders.find(
-    (data) => data.State === stateAbbreviation
-  )?.Providers || statesProviders[0].Providers;
+  const providersList =
+    statesProviders.find((data) => data.State === stateAbbreviation)
+      ?.Providers || statesProviders[0].Providers;
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, []);
 
   return (

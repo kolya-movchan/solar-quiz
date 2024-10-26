@@ -8,6 +8,13 @@ export const UtilityBill = ({ handleUserAnswer, quizData }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return (
     <Container className="container-with-cards ">
       <h1 className="title title-master">

@@ -74,7 +74,7 @@
   
     .card-button {
       height: 100%;
-      width: 300px;
+      width: 270px;
     }
 
     .next-btn {
@@ -101,13 +101,14 @@
     }
   
     .card-button {
+      gap: 20px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
   
     .card-button-padding {
-      padding: 20px 20px 0px 20px;
+      padding: 20px 0 20px 0;
     }
   
     .card-img-own-home {
@@ -115,15 +116,15 @@
     }
   
     .card-content {
-      padding: 15px 20px 15px;
+      /* padding: 15px 20px 15px;
       display: flex;
       align-items: center;  
-      justify-content: center;
+      justify-content: center; */
     }
   
     .card-content-title {
       font-size: 20px;
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .submission-container {
@@ -159,8 +160,7 @@
     }
   
     .card-img-roof-condition {
-      height: 100px;
-      width: 100px;  
+      height: 64px;
       margin-bottom: 0;
     }
   

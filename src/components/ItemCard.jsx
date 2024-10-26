@@ -25,7 +25,7 @@ export const Card = ({
       <button
         style={{
           zIndex: "3",
-          paddingBottom: "0",
+          // paddingBottom: "0",
           fontSize: "2rem",
           fontWeight: "bold",
           borderRadius: "4px",

@@ -21,7 +21,7 @@ import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(5);
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
@@ -193,7 +193,7 @@ const Quiz = () => {
                 (step === 2 && !quizData.home_ownership) ||
                 (step === 3 && !quizData.home_type) ||
                 (step === 4 && !quizData.roof_condition) ||
-                (step === 5 && !quizData.provider) ||
+                (step === 5 && !quizData.provider && !quizData.is_mannual_provider) ||
                 (step === 6 && !quizData.utility_bill_amount) ||
                 (step === 7 && !quizData.credit_score)
               }

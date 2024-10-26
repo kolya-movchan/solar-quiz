@@ -9,9 +9,18 @@ export const UtilityProvider = ({
   quizData,
   stateAbbreviation,
 }) => {
-  const providersList =
-    statesProviders.find((data) => data.State === stateAbbreviation)
-      ?.Providers || statesProviders[0].Providers;
+  const providersList = statesProviders.find(
+    (data) => data.State === stateAbbreviation
+  )?.Providers || [
+    { name: "Austin Energy", img: "/austin-energy.webp" },
+    { name: "Bluebonnet Electric", img: "/bluebonnet-electric.webp" },
+    { name: "Centerpoint Energy", img: "/centerpoint-energy.webp" },
+    { name: "CPS Energy", img: "/cps-energy.webp" },
+    { name: "El Paso Electric", img: "/el-paso-electric.svg" },
+    { name: "Entergy", img: "/entergy.svg" },
+    { name: "Oncor", img: "/oncor.svg" },
+    { name: "Pedernales Electric", img: "/pedernales-electric.svg" },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);

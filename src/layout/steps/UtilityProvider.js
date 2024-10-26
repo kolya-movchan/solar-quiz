@@ -11,11 +11,17 @@ export const UtilityProvider = ({
 }) => {
   const providersList = statesProviders.find(
     (data) => data.State === stateAbbreviation
-  )?.Providers || ["APS", "SRP", "TEP"];
+  )?.Providers || [
+    { name: "APS", img: "/aps.svg" },
+    { name: "SRP", img: "/srp.svg" },
+    { name: "TEP", img: "/tep.webp" },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  console.log(111, providersList);
 
   return (
     <Container className="container-with-cards ">
@@ -24,8 +30,8 @@ export const UtilityProvider = ({
         {providersList?.map((provider, idx) => (
           <Card
             key={idx}
-            title={provider}
-            img="/providers/provider.png"
+            title={provider.name}
+            img={`/providers/${provider.img}`}
             onClick={() =>
               handleUserAnswer({
                 provider,
@@ -33,6 +39,8 @@ export const UtilityProvider = ({
                 mannual_provider: null,
               })
             }
+            imgWidth={145}
+            imgHeight={65}
             // isOneBg={true}
             containerPadding="20px 20px 0px 20px"
             isActive={quizData.provider === provider}

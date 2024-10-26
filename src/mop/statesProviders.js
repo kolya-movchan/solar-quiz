@@ -1,7 +1,11 @@
 export const statesProviders = [
   {
     State: "AZ",
-    Providers: ["APS", "SRP", "TEP"],
+    Providers: [
+      { name: "APS", img: "/aps.svg" },
+      { name: "SRP", img: "/srp.svg" },
+      { name: "TEP", img: "/trp.webp" },
+    ],
   },
   {
     State: "AR",

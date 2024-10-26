@@ -159,6 +159,7 @@
 
     .input-other-provider-container {
       margin-bottom: 100px;
+      max-width: 570px;
     }
   
     .input-other-provider {
@@ -167,7 +168,6 @@
     }
   
     .card-img-roof-condition {
-      height: 64px;
       margin-bottom: 0;
     }
   

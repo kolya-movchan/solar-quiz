@@ -45,7 +45,7 @@ export const Card = ({
       >
         {/* <div> */}
           <img
-            style={{ objectFit: "cover" }}
+            // style={{ objectFit: "cover" }}
             src={img}
             alt="Own"
             height={imgHeight}

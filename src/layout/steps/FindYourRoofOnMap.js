@@ -22,9 +22,6 @@ export const FindYourRoofOnMap = ({
     quizData.coordinates ? quizData.coordinates : center
   );
 
-  console.log("quiz coords", quizData.coordinates);
-  console.log("mapCenter", mapCenter);
-
   const [streetsData, setStreetsData] = useState([]);
   const [selectedStreet, setSelectedStreet] = useState(null);
   const [isLoading, setIsLoading] = useState(false);

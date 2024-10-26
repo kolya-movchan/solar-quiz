@@ -33,8 +33,6 @@ export const UtilityProvider = ({
     };
   }, []);
 
-  console.log(222, quizData.provider);
-
   return (
     <Container className="container-with-cards ">
       <h1 className="title title-master">Who is your utility provider?</h1>

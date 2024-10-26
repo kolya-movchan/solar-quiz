@@ -96,8 +96,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    console.log(111, name, value);
-
     let newValue = value;
     if (name === "phoneNumber") {
       newValue = value.replace(/[^\d+]/g, "");
@@ -105,8 +103,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
     setFormData((prevData) => ({ ...prevData, [name]: newValue }));
   };
-
-  console.log(222, formData.phoneNumber);
 
   const isFormValid = () => {
     return (
@@ -130,8 +126,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     const countryCode = formData.phoneNumber.trim().slice(1, -10);
     const phoneNumber = formData.phoneNumber.trim().slice(-10);
 
-    console.log("Phone Number:", phoneNumber);
-    console.log("Country Code:", countryCode);
     try {
       setIsLoading(true);
 
@@ -170,7 +164,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         }
       );
       if (verificationResponse.data.isVerified === true) {
-        console.log("Verification Response:", verificationResponse);
         onSubmit({ isQuizDataSubmitted: true });
 
         toast.success("Success! We will contact you soon.");

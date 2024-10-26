@@ -25,8 +25,6 @@ const Quiz = () => {
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
-  console.log("stateAbbreviation", stateAbbreviation);
-
   const handleUserAnswer = (data) => {
     if (data.location) {
       setQuizData({ ...data });
@@ -145,6 +143,7 @@ const Quiz = () => {
   };
 
   console.log("Quiz Data:", quizData);
+  console.log("state: ", stateAbbreviation);
 
   return (
     <>

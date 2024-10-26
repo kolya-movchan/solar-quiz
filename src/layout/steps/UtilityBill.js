@@ -16,7 +16,7 @@ export const UtilityBill = ({ handleUserAnswer, quizData }) => {
   }, []);
 
   return (
-    <Container className="container-with-cards ">
+    <Container className="container-with-cards">
       <h1 className="title title-master">
         How much are your monthly electric bills?
       </h1>

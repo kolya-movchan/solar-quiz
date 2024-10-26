@@ -1,11 +1,14 @@
 import React from "react";
+import classNames from "classnames";
 
 export const NextButton = ({ onClick, isDisabled }) => {
   return (
     <button
-      className="button next-btn"
+      className={classNames("button next-btn", {
+        disabled: isDisabled,
+      })}
       style={{
-        backgroundColor: isDisabled ? "grey" : "#FE4A19",
+        // backgroundColor: isDisabled ? "grey" : "#FE4A19",
         cursor: isDisabled ? "not-allowed" : "pointer",
       }}
       type="button"

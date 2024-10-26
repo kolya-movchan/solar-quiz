@@ -15,6 +15,7 @@ html, body,#root {
 button {
   padding: 0;
   font-family: 'Roobert', sans-serif;
+  box-sizing: border-box;
 }
 
 input {
@@ -82,14 +83,6 @@ textarea::placeholder {
   border-radius: 4px;
 }
 
-.unqualified-btn {
-  background-color: #FE4A19;
-  color: "#fff";
-  display: "flex";
-  align-items: center;
-  justify-content: center;
-}
-
 .back-btn {
   background-color: transparent;
   border: 1px solid #000;
@@ -104,8 +97,60 @@ textarea::placeholder {
   display: flex;
   width: 100%;
   color: #fff;
-  gap: "10px";
-  transition: "background-color 0.3s ease",
+  gap: 10px;
+  transition: background-color 0.3s ease;
+  max-width: 300px;
+  background-color: #FE4A19;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+}
+
+.next-btn:hover {
+  background-color: #D43E15;
+}
+
+.disabled, .disabled:hover {
+  background-color: grey;
+}
+
+.next-btn:active {
+  border: 2px solid #eacdc4;
+  box-sizing: border-box;
+}
+
+
+.start-btn-mobile, .start-btn-desktop {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  border: 2px solid transparent;
+  transition: background-color 0.3s ease;
+}
+
+.start-btn-mobile:hover, .start-btn-desktop:hover {
+  background-color: #D43E15; /* Adjust the color as needed */
+}
+
+.start-btn-mobile:active, .start-btn-desktop:active {
+  border: 2px solid #eacdc4;
+  box-sizing: border-box;
+}
+
+.unqualified-btn {
+  background-color: #FE4A19;
+  color: "#fff";
+  display: "flex";
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.unqualified-btn:hover {
+  background-color: #D43E15; /* Adjust the color as needed */
+}
+
+.unqualified-btn:active {
+  border: 2px solid #eacdc4;
 }
 
 .paragraph {
@@ -217,11 +262,6 @@ textarea::placeholder {
 .intro-boolet-container {
   gap: "16px"
 }
-
-.start-btn-mobile, .start-btn-desktop {
-  display: flex;
-  align-items: center; 
-  justify-content: center;}
 
 .first-and-last-step-wrapper {
   /* min-height: 98vh; */

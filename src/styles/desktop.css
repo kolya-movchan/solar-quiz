@@ -105,7 +105,8 @@
       max-width: 638px;
       overflow-y: auto;
       overflow-x: hidden;
-      justify-content: center;
+      margin-left: 60px
+      /* justify-content: center; */
     }
   
     .card-container-emojie {
@@ -176,7 +177,7 @@
     }
 
     .input-other-provider-container {
-      margin-bottom: 100px;
+      margin-bottom: 10px;
       max-width: 570px;
     }
   

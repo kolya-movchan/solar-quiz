@@ -33,6 +33,8 @@ export const UtilityProvider = ({
     };
   }, []);
 
+  console.log(222, quizData.provider);
+
   return (
     <Container className="container-with-cards ">
       <h1 className="title title-master">Who is your utility provider?</h1>
@@ -44,7 +46,7 @@ export const UtilityProvider = ({
             img={`/providers/${provider.img}`}
             onClick={() =>
               handleUserAnswer({
-                provider,
+                provider: provider.name,
                 is_mannual_provider: false,
                 mannual_provider: null,
               })
@@ -53,7 +55,7 @@ export const UtilityProvider = ({
             imgHeight={65}
             isOneBg={true}
             containerPadding="20px 20px 0px 20px"
-            isActive={quizData.provider === provider}
+            isActive={quizData.provider === provider.name}
             isDisabled={quizData.hasOwnProperty("provider")}
             classImg="card-img-roof-condition"
             style={{ border: "1px solid #D2D2D2" }}

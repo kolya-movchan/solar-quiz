@@ -95,6 +95,11 @@
       -webkit-overflow-scrolling: touch; /* Smooth 
       scrolling on iOS */
       padding-right: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      /* margin-bottom: 20px; */
+      width: 100%;
     }
 
     .intro-container {
@@ -165,13 +170,13 @@
       padding: 15px 15px 15px 45px;
     }
   
-    .card-container {
+    /* .card-container {
       display: flex;
       flex-direction: column;
       gap: 8px;
       /* margin-bottom: 20px; */
-      width: 100%;
-    }
+      /* width: 100%;
+    } */
   
     .card-button {
       flex-direction: row;

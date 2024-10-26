@@ -149,8 +149,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
       setShowOTPInput(true);
     } catch (error) {
-      console.log(111, error);
-      
       toast.error(
         error.response
           ? error.response.data.message

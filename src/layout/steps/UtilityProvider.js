@@ -33,7 +33,7 @@ export const UtilityProvider = ({
                 mannual_provider: null,
               })
             }
-            isOneBg={true}
+            // isOneBg={true}
             containerPadding="20px 20px 0px 20px"
             isActive={quizData.provider === provider}
             isDisabled={quizData.hasOwnProperty("provider")}

@@ -104,7 +104,7 @@
   
     .start-btn-mobile-wrapper  {
       background-color: #fff;
-      position: sticky;
+      position: fixed;
       bottom: 0;
       width: 100%;
       display: flex;
@@ -179,7 +179,7 @@
     }
   
     .nav-btn-wrapper {
-      position: sticky;
+      position: fixed;
       bottom: 0;
       gap: 20px;
       justify-content: space-between;

@@ -136,7 +136,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       setIsLoading(true);
 
       const response = await axios.post(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+        `http://localhost:3001/twilio-sms/send-otp`,
         {
           countryCode,
           phoneNumber,
@@ -149,9 +149,11 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
       setShowOTPInput(true);
     } catch (error) {
+      console.log(111, error);
+      
       toast.error(
         error.response
-          ? error.response.data
+          ? error.response.data.message
           : "Something went wrong. Please try again later."
       );
     } finally {

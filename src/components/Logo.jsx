@@ -4,7 +4,7 @@ export const Logo = () => {
   return (
     <div className="logo-container" style={{ zIndex: "1000" }}>
       <a href="/">
-        <img src="/logo.svg" alt="logo" />
+        <img src="/logo.png" alt="logo" height="40px" width="40px" />
       </a>
     </div>
   )

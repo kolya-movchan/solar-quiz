@@ -11,7 +11,7 @@ export const GoogleMapMarker = () => {
         zIndex: 1,
       }}
     >
-      <img src="/icons/map-pin.svg" alt="marker" />
+      <img src="/icons/mappin.png" alt="marker" height="30px" width="26px" />
     </div>
   );
 };

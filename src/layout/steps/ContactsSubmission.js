@@ -130,7 +130,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       setIsLoading(true);
 
       const response = await axios.post(
-        `http://localhost:3001/twilio-sms/send-otp`,
+        `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
         {
           countryCode,
           phoneNumber,

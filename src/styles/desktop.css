@@ -54,7 +54,7 @@
 
     .nav-btn-wrapper {
       width: 100%;
-      position: fixed;
+      position: sticky;
       bottom: 0;
       box-sizing: border-box;
       padding: 16px 150px;

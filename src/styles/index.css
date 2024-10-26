@@ -42,7 +42,7 @@ textarea::placeholder {
   transition: width 0.3s ease-in-out;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -236,7 +236,7 @@ textarea::placeholder {
 }
 
 .otp-modal {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100vw;

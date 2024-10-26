@@ -365,6 +365,21 @@ input::placeholder {
   padding: 12px;
 }
 
+.form-input {
+  padding: 20px 10px;
+  border: 1px solid #D0D5DD;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form-input:hover {
+  border: 2px solid #D0D5DD;
+}
+
+.form-input:focus {
+  border: 2px solid #FE4A19;
+}
+
 
 /* Regular */
 @font-face {

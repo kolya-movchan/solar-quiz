@@ -58,11 +58,8 @@ export const FormInput = ({
       placeholder={placeholder}
       style={{
         ...style,
-        padding: "20px 10px",
-        border: "1px solid #D0D5DD",
-        borderRadius: "4px",
-        outline: "none",
       }}
+      className="form-input"
       name={name}
       value={value}
       onChange={(e) => {

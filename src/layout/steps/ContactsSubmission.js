@@ -95,8 +95,18 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    console.log(111, name, value);
+
+    let newValue = value;
+    if (name === "phoneNumber") {
+      newValue = value.replace(/[^\d+]/g, "");
+    }
+
+    setFormData((prevData) => ({ ...prevData, [name]: newValue }));
   };
+
+  console.log(222, formData.phoneNumber);
 
   const isFormValid = () => {
     return (

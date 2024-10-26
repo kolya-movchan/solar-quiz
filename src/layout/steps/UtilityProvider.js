@@ -7,10 +7,10 @@ import classNames from "classnames";
 export const UtilityProvider = ({
   handleUserAnswer,
   quizData,
-  stateAbbreviation,
+  stateAbbreviation = "AZ",
 }) => {
   const providersList = statesProviders.find(
-    (data) => data.State === stateAbbreviation || data.State === "AZ"
+    (data) => data.State === stateAbbreviation
   )?.Providers;
 
   useEffect(() => {

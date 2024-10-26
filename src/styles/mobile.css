@@ -16,7 +16,7 @@
     }
 
     .container {
-      padding: 40px 20px 90px;
+      padding: 0 20px 90px;
     }
 
     .container-with-map {
@@ -27,9 +27,14 @@
     }
   
     .container-with-cards {
-      min-height: 70vh;
       width: 100%;
-      justify-content: space-between;
+      gap: 0;
+      min-height: 100%;
+      gap: 20px;
+      /* min-height: 76vh; */
+      box-sizing: border-box;
+      /* width: 100%; */
+      /* justify-content: space-between; */
       align-items: center;
     }
   
@@ -48,9 +53,29 @@
       margin: 0 auto;
       margin-bottom: 10px;
     }
+
+    .title-wrapper {
+      /* width: 100vw; */
+      /* display: flex; */
+    }
   
     .title-master {
-      padding-top: 8vh;
+      margin: 0 auto;
+      height: 32vh;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      max-width: 350px;
+      /* width: 100%; */
+      text-align: center;
+      justify-content: center;
+      /* padding-top: 8vh; */
+    }
+
+    .card-container {
+      min-height: 40vh;
+      box-sizing: border-box;
     }
 
     .intro-container {
@@ -98,8 +123,9 @@
     .logo-container {
       padding: 30px 0 0 16px;
       margin-bottom: -20px;
-      height: 40px;
-      width: 40px;
+      height: 10vh;
+      /* height: 40px;
+      width: 40px; */
     }
   
     .start-btn-mobile-wrapper  {
@@ -160,11 +186,13 @@
     .card-icon-image {
       height: 80px;
       width: 106px;
+      object-fit: cover;
     }
   
     .card-content {
       text-align: left;
       padding: 21px;
+      padding-right: 5px;
       width: 100%;
     }
   
@@ -188,7 +216,7 @@
       width: 100%;
       display: flex;
       padding: 20px;
-      height: 12vh;
+      height: 10vh;
       box-sizing: border-box;
     }
   

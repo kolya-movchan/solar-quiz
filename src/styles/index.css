@@ -108,7 +108,12 @@ textarea::placeholder {
   transition: "background-color 0.3s ease",
 }
 
+.paragraph {
+  font-family: 'Inter', sans-serif;
+}
+
 .submission-description {
+  font-family: 'Inter', sans-serif;
   margin-bottom: 20px;
   color: #475467;
   max-width: 410px;

@@ -10,7 +10,9 @@ export const HomeType = ({ handleUserAnswer, quizData }) => {
 
   return (
     <Container className="container-with-cards">
-      <h1 className="title title-master">What is your home type?</h1>
+      {/* <div className="title-wrapper"> */}
+        <h1 className="title title-master">What is your home type?</h1>
+      {/* </div> */}
       <div className="card-container">
         {homeTypes.map((homeType) => (
           <Card

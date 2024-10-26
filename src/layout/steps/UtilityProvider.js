@@ -7,11 +7,11 @@ import classNames from "classnames";
 export const UtilityProvider = ({
   handleUserAnswer,
   quizData,
-  stateAbbreviation = "AZ",
+  stateAbbreviation,
 }) => {
   const providersList = statesProviders.find(
     (data) => data.State === stateAbbreviation
-  )?.Providers;
+  )?.Providers || statesProviders[0].Providers;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +35,7 @@ export const UtilityProvider = ({
             }
             imgWidth={145}
             imgHeight={65}
-            // isOneBg={true}
+            isOneBg={true}
             containerPadding="20px 20px 0px 20px"
             isActive={quizData.provider === provider}
             isDisabled={quizData.hasOwnProperty("provider")}

@@ -236,6 +236,7 @@ textarea::placeholder {
 
 .container-unqualified {
   gap: 24px;
+  margin-top: 15vh;
   /* align-items: center;
   justify-content: center; */
 }

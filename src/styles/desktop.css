@@ -118,6 +118,7 @@
 
   .card-img-roof-condition {
       padding: 25px 0;
+      object-fit: contain;
       /* margin-bottom: 10px; */
     }
   

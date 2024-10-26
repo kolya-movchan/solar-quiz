@@ -4,177 +4,246 @@ export const statesProviders = [
     Providers: [
       { name: "APS", img: "/aps.svg" },
       { name: "SRP", img: "/srp.svg" },
-      { name: "TEP", img: "/trp.webp" },
+      { name: "TEP", img: "/tep.webp" },
     ],
   },
   {
     State: "AR",
-    Providers: ["Entergy", "First Electric (Co-op)"],
+    Providers: [
+      { name: "Entergy", img: "/entergy.svg" },
+      { name: "First Electric (Co-op)", img: "/first-electric(co-op).webp" },
+    ],
   },
   {
     State: "CA",
-    Providers: ["PG&E", "SCE", "SDG&E"],
+    Providers: [
+      { name: "PG&E", img: "/PG&E.webp" },
+      { name: "SCE", img: "sce.webp" },
+      { name: "SDG&E", img: "/SDG&E.svg" },
+    ],
   },
   {
     State: "CO",
     Providers: [
-      "Black Hills Energy",
-      "Colorado Springs Providers",
-      "Excel Energy",
-      "Grand Valley Power",
-      "United Power",
+      { name: "Black Hills Energy", img: "/bhe-logo-ready.webp" },
+      {
+        name: "Colorado Springs Utilities",
+        img: "/colorado-springs-utilities.webp",
+      },
+      { name: "Excel Energy", img: "/xcel-energy.svg" },
+      { name: "Grand Valley Power", img: "/grand-valley.webp" },
+      { name: "United Power", img: "/united-power.webp" },
     ],
   },
   {
     State: "CT",
-    Providers: ["Eversource", "United Illuminating"],
+    Providers: [
+      { name: "Eversource", img: "/eversource.svg" },
+      { name: "United Illuminating", img: "/united-illuminating.webp" },
+    ],
   },
+
   {
     State: "DE",
-    Providers: ["Delaware Electric", "Delmarva Power"],
+    Providers: [
+      { name: "Delaware Electric", img: "/delaware-electric.svg" },
+      { name: "Delmarva Power", img: "/delmarva-power.svg" },
+    ],
   },
   {
     State: "DC",
-    Providers: ["Potomac Electric Power Co"],
+    Providers: [
+      {
+        name: "Potomac Electric Power Co",
+        img: "/pepco.svg",
+      },
+    ],
   },
   {
     State: "FL",
     Providers: [
-      "Duke Energy",
-      "Florida Power & Light",
-      "Florida Public Providers",
-      "Gulf Power",
-      "Tampa Electric",
+      { name: "Duke Energy", img: "/duke-energy.webp" },
+      { name: "Florida Power & Light", img: "/florida-power-light.webp" },
+      {
+        name: "Florida Public Utilities",
+        img: "/florida-public-utilities.webp",
+      },
+      { name: "Gulf Power", img: "/gulf-power.webp" },
+      { name: "Tampa Electric", img: "/tampa-electric.svg" },
     ],
   },
   {
     State: "GA",
-    Providers: ["Georgia Power"],
+    Providers: [{ name: "Georgia Power", img: "/georgia-power.webp" }],
   },
   {
     State: "ID",
-    Providers: ["Avista Providers", "Idaho Power", "Rocky Mountain Power"],
+    Providers: [
+      { name: "Avista Utilities", img: "/avista.svg" },
+      { name: "Idaho Power", img: "/idaho-power.svg" },
+      { name: "Rocky Mountain Power", img: "/rocky-mountain-power.svg" },
+    ],
   },
   {
     State: "IL",
-    Providers: ["Ameren", "ComEd", "Mid-America"],
+    Providers: [
+      { name: "Ameren", img: "/ameren.svg" },
+      { name: "ComEd", img: "/comed.svg" },
+      { name: "Mid-America", img: "/mid-america.webp" },
+    ],
   },
   {
     State: "MD",
-    Providers: ["Baltimore G&E", "Delmarva Power", "PEPCO", "Potomac Edison"],
+    Providers: [
+      { name: "Baltimore G&E", img: "/baltimore-g&e.svg" },
+      { name: "Delmarva Power", img: "/delmarva-power.svg" },
+      { name: "PEPCO", img: "/pepco.svg" },
+      { name: "Potomac Edison", img: "/potomac-edison.webp" },
+    ],
   },
   {
     State: "MA",
     Providers: [
-      'Eversource "East"',
-      'Eversource "West"',
-      "National Grid",
-      "Unitil",
+      { name: 'Eversource "East"', img: "/eversource-east.svg" },
+      { name: 'Eversource "West"', img: "/eversource-west.svg" },
+      { name: "National Grid", img: "/national-grid.svg" },
+      { name: "Unitil", img: "/unitil.svg" },
     ],
   },
   {
     State: "MO",
     Providers: [
-      "Ameren",
-      'Evergy Missouri "Metro"',
-      'Evergy Missouri "West"',
-      "Liberty",
+      { name: "Ameren", img: "/ameren.svg" },
+      { name: 'Evergy Missouri "Metro"', img: "/evergy-metro.webp" },
+      { name: 'Evergy Missouri "West"', img: "/evergy-west.webp" },
+      { name: "Liberty", img: "/liberty.svg" },
     ],
   },
   {
     State: "NV",
-    Providers: ["NV Energy"],
+    Providers: [{ name: "NV Energy", img: "/nv-energy.svg" }],
   },
   {
     State: "NH",
     Providers: [
-      "Eversource",
-      "NH Electric (Co-op)",
-      "Liberty Providers",
-      "Unitil",
+      { name: "Eversource", img: "/eversource.svg" },
+      { name: "NH Electric (Co-op)", img: "/nh-electric.webp" },
+      { name: "Liberty Utilities", img: "/liberty.svg" },
+      { name: "Unitil", img: "/unitil.svg" },
     ],
   },
   {
     State: "NJ",
     Providers: [
-      "Atlantic City Electric",
-      "JCP&L",
-      "PSE&G",
-      "Rockland Electric",
-      "Vineland Municipal",
+      { name: "Atlantic City Electric", img: "/atlantic-city-electric.svg" },
+      { name: "JCP&L", img: "/jcp&l.webp" },
+      { name: "PSE&G", img: "/pseg.webp" },
+      { name: "Rockland Electric", img: "/rockland-electric.svg" },
+      { name: "Vineland Municipal", img: "/vineland-municipal.webp" },
     ],
   },
   {
     State: "NM",
-    Providers: ["El Paso Electric", "PNM", "Xcel Energy"],
+    Providers: [
+      { name: "El Paso Electric", img: "/el-paso-electric.svg" },
+      { name: "PNM", img: "/pnm.svg" },
+      { name: "Xcel Energy", img: "/xcel-energy.svg" },
+    ],
   },
   {
     State: "NY",
     Providers: [
-      "Central Hudson G&E",
-      "Con Edison",
-      "National Grid",
-      "NYSEG",
-      "RG&E",
+      { name: "Central Hudson G&E", img: "/central-hudson-ge.webp" },
+      { name: "Con Edison", img: "/con-edison.webp" },
+      { name: "National Grid", img: "/national-grid.svg" },
+      { name: "NYSEG", img: "/nyseg.webp" },
+      { name: "RG&E", img: "/rg&e.webp" },
     ],
   },
   {
     State: "NC",
-    Providers: ["Dominion Energy", "Duke Energy"],
+    Providers: [
+      { name: "Dominion Energy", img: "/dominion-energy.webp" },
+      { name: "Duke Energy", img: "/duke-energy.webp" },
+    ],
   },
   {
     State: "OH",
     Providers: [
-      "AES Ohio",
-      "Duke Energy",
-      "Ohio Edison",
-      "Ohio Power",
-      "Southern Power",
+      { name: "AES Ohio", img: "/aes-ohio.webp" },
+      { name: "Duke Energy", img: "/duke-energy.webp" },
+      { name: "Ohio Edison", img: "/ohio-edison.webp" },
+      { name: "Ohio Power", img: "/ohio-power.webp" },
+      { name: "Southern Power", img: "/southern-power.webp" },
     ],
   },
   {
     State: "OR",
-    Providers: ["Idaho Power", "Pacific Power", "Portal General Electric"],
+    Providers: [
+      { name: "Idaho Power", img: "/idaho-power.webp" },
+      { name: "Pacific Power", img: "/pacific-power.webp" },
+      { name: "Portal General Electric", img: "/portal-general-electric.webp" },
+    ],
   },
   {
     State: "PA",
-    Providers: ["Metropolitan Edison", "PECO", "PPL"],
+    Providers: [
+      { name: "Metropolitan Edison", img: "/metropolitan-edison.webp" },
+      { name: "PECO", img: "/peco.svg" },
+      { name: "PPL", img: "/ppl.svg" },
+    ],
   },
   {
     State: "RI",
-    Providers: ["National Grid"],
+    Providers: [{ name: "National Grid", img: "/national-grid.svg" }],
   },
   {
     State: "SC",
-    Providers: ["Dominion Energy", "Duke Energy", "Lockhart Power"],
+    Providers: [
+      { name: "Dominion Energy", img: "/dominion-energy.webp" },
+      { name: "Duke Energy", img: "/duke-energy.webp" },
+      { name: "Lockhart Power", img: "/lockhart-power.webp" },
+    ],
   },
   {
     State: "TX",
     Providers: [
-      "Austin Energy",
-      "Bluebonnet Electric",
-      "Centerpoint Energy",
-      "CPS Energy",
-      "El Paso Electric",
-      "Entergy",
-      "Oncor",
-      "Pedernales Electric",
+      { name: "Austin Energy", img: "/austin-energy.webp" },
+      { name: "Bluebonnet Electric", img: "/bluebonnet-electric.webp" },
+      { name: "Centerpoint Energy", img: "/centerpoint-energy.webp" },
+      { name: "CPS Energy", img: "/cps-energy.webp" },
+      { name: "El Paso Electric", img: "/el-paso-electric.svg" },
+      { name: "Entergy", img: "/entergy.svg" },
+      { name: "Oncor", img: "/oncor.svg" },
+      { name: "Pedernales Electric", img: "/pedernales-electric.svg" },
     ],
   },
   {
     State: "UT",
-    Providers: ["Rocky Mountain Power"],
+    Providers: [
+      { name: "Rocky Mountain Power", img: "/rocky-mountain-power.svg" },
+    ],
   },
   {
     State: "VT",
-    Providers: ["Green Mountain Power"],
+    Providers: [
+      { name: "Green Mountain Power", img: "/green-mountain-power.webp" },
+    ],
   },
   {
     State: "VA",
-    Providers: ["Appalachian Power", "Dominion Energy", "Kentucky Providers"],
+    Providers: [
+      { name: "Appalachian Power", img: "/appalachian-power.svg" },
+      { name: "Dominion Energy", img: "/dominion-energy.webp" },
+      { name: "Kentucky Utilities", img: "/kentucky-utilities.webp" },
+    ],
   },
   {
     State: "WI",
-    Providers: ["Alliant Energy", "Madison Gas & Electric", "We Energies"],
+    Providers: [
+      { name: "Alliant Energy", img: "/alliant-energy.webp" },
+      { name: "Madison Gas & Electric", img: "/madison-gas&electric.webp" },
+      { name: "We Energies", img: "/we-energies.webp" },
+    ],
   },
 ];

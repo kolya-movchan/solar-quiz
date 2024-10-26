@@ -10,18 +10,12 @@ export const UtilityProvider = ({
   stateAbbreviation,
 }) => {
   const providersList = statesProviders.find(
-    (data) => data.State === stateAbbreviation
-  )?.Providers || [
-    { name: "APS", img: "/aps.svg" },
-    { name: "SRP", img: "/srp.svg" },
-    { name: "TEP", img: "/tep.webp" },
-  ];
+    (data) => data.State === stateAbbreviation || data.State === "AZ"
+  )?.Providers;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  console.log(111, providersList);
 
   return (
     <Container className="container-with-cards ">

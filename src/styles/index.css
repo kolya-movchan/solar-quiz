@@ -294,7 +294,7 @@ textarea::placeholder {
 
 .otp-modal {
   position: fixed;
-  top: -10vh;
+  /* top: -10vh; */
   left: 0;
   width: 100vw;
   height: 100vh;

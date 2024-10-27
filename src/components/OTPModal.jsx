@@ -107,7 +107,7 @@ export const OTPModal = ({
         ></div>
 
         <div className="otp-title-container">
-          <h3 style={{ margin: "0" }} className="title">
+          <h3 style={{ margin: "0", fontSize: "32px" }} className="title">
             Confirm My Request
           </h3>
           <p

@@ -238,6 +238,10 @@
       margin-bottom: 20px;
     }
 
+    .otp-modal {
+      top: 5px;
+    }
+
     .container-unqualified {
       /* height: 70vh; */
       gap: 24px;

@@ -15,7 +15,7 @@ export const FormInput = ({
     let mask;
     if (name === "phoneNumber") {
       const maskOptions = {
-        mask: "+38 (000)-000-00-00",
+        mask: "+1 (000)-000-00-00",
         lazy: true,
       };
       mask = IMask(inputRef.current, maskOptions);

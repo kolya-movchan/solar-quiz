@@ -373,12 +373,13 @@ input::placeholder {
   outline: none;
 }
 
-/* .form-input:hover {
-  border: 2px solid #D0D5DD;
-} */
+.form-input:hover {
+  box-shadow: 0px 0px 0px 2px #D0D5DD66;
+}
 
 .form-input:focus {
   border: 1px solid #FE4A19;
+  box-shadow: 0px 0px 0px 2px #FE4A194D;
 }
 
 

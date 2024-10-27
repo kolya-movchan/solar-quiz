@@ -15,8 +15,8 @@ export const FormInput = ({
     let mask;
     if (name === "phoneNumber") {
       const maskOptions = {
-        mask: "+1 (000) 000-0000",
-        lazy: false,
+        mask: "+1 (000)-000-00-00",
+        lazy: true,
       };
       mask = IMask(inputRef.current, maskOptions);
       mask.on("accept", () => {
@@ -25,23 +25,6 @@ export const FormInput = ({
           onChange({ target: { name, value: mask.value } });
         }
       });
-    } else if (name === "email") {
-      const maskOptions = {
-        mask: function (value) {
-          if (/^[a-z0-9_\.-]+$/.test(value)) return true;
-          if (/^[a-z0-9_\.-]+@$/.test(value)) return true;
-          if (/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value)) return true;
-          if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value)) return true;
-          if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value)) return true;
-          if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
-            return true;
-          if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
-            return true;
-          return false;
-        },
-        lazy: false,
-      };
-      mask = IMask(inputRef.current, maskOptions);
     }
 
     return () => {
@@ -61,7 +44,7 @@ export const FormInput = ({
       }}
       className="form-input"
       name={name}
-      value={value}
+      // value={name === "phoneNumber" && !value ? "+1" : value}
       onChange={(e) => {
         const { selectionStart, selectionEnd } = e.target;
         onChange(e);

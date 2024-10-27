@@ -213,6 +213,9 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   //   return () => clearInterval(interval);
   // }, [resendTimer]);
 
+  console.log('quizData', quizData);
+  
+
   return (
     <Container
       className="container submission-container"

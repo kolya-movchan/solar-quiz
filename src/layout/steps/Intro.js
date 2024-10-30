@@ -25,7 +25,7 @@ export const Intro = ({ handleNextQuizNavigation }) => {
       <div className="intro-wrapper">
         {introDescriptionBullets.map((bullet, idx) => (
           <IntroDescriptionItem
-            key={bullet.idx}
+            key={idx}
             description={bullet.description}
           />
         ))}

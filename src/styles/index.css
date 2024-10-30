@@ -215,6 +215,11 @@ textarea::placeholder {
 .card-button {
   display: flex;
   height: 80px;
+  border: 1px solid #d2d2d2;
+}
+
+.card-button-active {
+  border: none;
 }
 
 .card-active {

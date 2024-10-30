@@ -32,7 +32,7 @@ export const HomeType = ({ handleUserAnswer, quizData }) => {
             classImg="card-icon-image"
             isActive={quizData.home_type === homeType.id}
             isDisabled={quizData.hasOwnProperty("home_type")}
-            style={{ border: "none" }}
+            // style={{ border: "1px solid #D2D2D2" }}
           />
         ))}
       </div>

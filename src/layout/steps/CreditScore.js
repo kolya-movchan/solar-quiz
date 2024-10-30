@@ -31,7 +31,7 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
             isDisabled={quizData.hasOwnProperty("credit_score")}
             classImg="card-emojie"
             style={{
-              border: "1px solid #D2D2D2",
+              // border: "1px solid #D2D2D2",
               backgroundColor: score.color,
             }}
           />

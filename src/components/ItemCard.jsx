@@ -38,6 +38,7 @@ export const Card = ({
         className={classNames("card-button", {
           "card-button-padding": containerPadding,
           "card-emojie": classImg === "card-emojie",
+          "card-button-active": isActive,
         })}
         onClick={() => {
           onClick(quizData);

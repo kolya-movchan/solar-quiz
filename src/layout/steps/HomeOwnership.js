@@ -29,7 +29,7 @@ export const HomeOwnership = ({ handleUserAnswer, quizData }) => {
             containerPadding="20px 20px 0px 20px"
             isActive={quizData.home_ownership === option.toLowerCase()}
             isDisabled={quizData.hasOwnProperty("home_ownership")}
-            style={{ border: "1px solid #D2D2D2" }}
+            // style={{ border: "1px solid #D2D2D2" }}
             isOneBg={true}
           />
         ))}

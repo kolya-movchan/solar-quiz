@@ -56,7 +56,7 @@ export const UtilityProvider = ({
             isActive={quizData.provider === provider.name}
             isDisabled={quizData.hasOwnProperty("provider")}
             classImg="card-img-roof-condition"
-            style={{ border: "1px solid #D2D2D2" }}
+            // style={{ border: "1px solid #D2D2D2" }}
           />
         ))}
         <div

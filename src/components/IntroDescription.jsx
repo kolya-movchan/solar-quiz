@@ -6,7 +6,7 @@ export const IntroDescriptionItem = ({ title, description }) => {
       style={{ display: "flex", gap: "10px", alignItems: "start" }}
       className="intro-description-item"
     >
-      <img src="/icons/checkmark-box.png" alt="" height={24} width={24} />
+      <img src="/icons/checkmark-box.svg" alt="" height={24} width={24} />
 
       <div
         style={{

@@ -6,8 +6,13 @@ export const StartButton = ({ onClick, className }) => {
       className={`${className} button start-btn`}
       type="button"
       onClick={onClick}
+      style={{
+        padding: "10px",
+      }}
     >
-      <span className="start-btn-title">Get a Solar Savings Report — It’s Free</span>
+      <span className="start-btn-title">
+        Get a Solar Savings Report — It’s Free
+      </span>
       <img
         style={{ marginTop: "2px" }}
         alt="arrow"

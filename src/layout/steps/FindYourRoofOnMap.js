@@ -90,7 +90,10 @@ export const FindYourRoofOnMap = ({
     setInputValue(e.target.value);
     fetchAddressesData(e);
     setShowDropdown(true);
-    setIsStreetSelected(false);
+
+    if (e.target.value === "") {
+      setIsStreetSelected(false);
+    }
   };
 
   const handleSelectStreet = async (street) => {
@@ -162,7 +165,7 @@ export const FindYourRoofOnMap = ({
       </h1>
 
       <p style={{ margin: "0" }} className="map-paragraph">
-        Using satellite technology, we'll check your roof's sun exposure  to
+        Using satellite technology, we'll check your roof's sun exposure to
         determine your home's solar potential — no site visit needed.
       </p>
 
@@ -181,12 +184,20 @@ export const FindYourRoofOnMap = ({
       />
 
       <div className="google-map-container">
-        <GoogleMapLayout
-          mapCenter={mapCenter}
-          setMapCenter={setMapCenter}
-          onDrag={getSuggestedAddress}
-          mapRef={mapRef}
-        />
+        {isStreetSelected ? (
+          <GoogleMapLayout
+            mapCenter={mapCenter}
+            setMapCenter={setMapCenter}
+            onDrag={getSuggestedAddress}
+            mapRef={mapRef}
+          />
+        ) : (
+          <img
+            src="/icons/map-placeholder.png"
+            alt="Map Placeholder"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        )}
       </div>
     </Container>
   );

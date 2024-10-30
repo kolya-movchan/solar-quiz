@@ -14,8 +14,7 @@ export const Intro = ({ handleNextQuizNavigation }) => {
       <h1
         style={{
           margin: "0",
-          marginBottom: "32px",
-          // textAlign: "left",
+          marginBottom: "16px",
         }}
         className="title-intro title"
       >

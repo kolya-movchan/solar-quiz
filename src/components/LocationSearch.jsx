@@ -48,7 +48,7 @@ export const SearchLocation = ({
             },
             borderRadius: "4px",
           }}
-          className="input-search-map"
+          className="input-search-map form-input"
           value={inputValue}
           onChange={handleInputChange}
         />
@@ -116,12 +116,11 @@ export const SearchLocation = ({
               }}
               onClick={() => {
                 handleSelectStreet(street).then((coordinates) => {
-
-                setTimeout(() => {
-                  handleUserAnswer({
-                    location: street.description,
-                    place_id: street.place_id,
-                    coordinates,
+                  setTimeout(() => {
+                    handleUserAnswer({
+                      location: street.description,
+                      place_id: street.place_id,
+                      coordinates,
                     });
                   }, 1500);
                 });

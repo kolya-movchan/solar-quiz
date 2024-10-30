@@ -22,7 +22,7 @@ export const GoogleMapLayout = ({ mapCenter, mapRef, onDrag }) => {
     <>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={17}
+        zoom={19}
         center={mapCenter}
         options={{
           zoomControl: true,

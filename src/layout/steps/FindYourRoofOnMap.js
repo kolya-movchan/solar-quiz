@@ -161,10 +161,9 @@ export const FindYourRoofOnMap = ({
         Let's check your roof's sun exposure
       </h1>
 
-      <p style={{ margin: "0" }} className="paragraph">
-        We'll use your location to provide you with tailored information about
-        solar panels in your area. Your privacy is important to us, so we won't
-        share your address!
+      <p style={{ margin: "0" }} className="map-paragraph">
+        Using satellite technology, we'll check your roof's sun exposure  to
+        determine your home's solar potential — no site visit needed.
       </p>
 
       <SearchLocation

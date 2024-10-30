@@ -41,9 +41,15 @@
     box-sizing: border-box;
   }
 
-  .paragraph {
+  /* .google-map-container {
+    height: 320px;
+  } */
+
+  .map-paragraph {
     color: #475467;
     font-size: 18px;
+    max-width: 545px;
+    text-align: left;
   }
 
   .container-with-cards {
@@ -172,6 +178,7 @@
   .container-with-map {
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
 
   .card-icon-image {

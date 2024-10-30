@@ -32,7 +32,7 @@ export const SearchLocation = ({
           style={{
             width: "100%",
             height: "20px",
-            border: "1px solid #D0D5DD",
+            // border: "1px solid #D0D5DD",
             outline: "none",
             color: "#000",
             fontSize: "16px",

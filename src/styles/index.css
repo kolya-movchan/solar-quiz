@@ -1,12 +1,13 @@
-
 body {
-  font-family: 'Roobert', sans-serif;
+  font-family: "Roobert", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body,#root {
-  font-family: 'Roobert', sans-serif;
+html,
+body,
+#root {
+  font-family: "Roobert", sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -14,7 +15,7 @@ html, body,#root {
 
 button {
   padding: 0;
-  font-family: 'Roobert', sans-serif;
+  font-family: "Roobert", sans-serif;
   box-sizing: border-box;
 }
 
@@ -28,18 +29,18 @@ input {
 }
 
 /* Reset the placeholder styles */
-input::placeholder, 
+input::placeholder,
 textarea::placeholder {
   font-weight: 400;
-  opacity: 1;      /* Reset the default lower opacity */
-  font-style: normal;  /* Reset to normal font style */
+  opacity: 1; /* Reset the default lower opacity */
+  font-style: normal; /* Reset to normal font style */
   font-weight: inherit; /* Inherit the font weight */
   text-transform: none; /* Reset text-transform */
 }
 
 .progres-bar {
   height: 12px;
-  background-color: #FE4A19;
+  background-color: #fe4a19;
   transition: width 0.3s ease-in-out;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -69,7 +70,7 @@ textarea::placeholder {
 }
 
 .start-btn {
-  background-color: #FE4A19;
+  background-color: #fe4a19;
 }
 
 .qualified {
@@ -77,8 +78,8 @@ textarea::placeholder {
   box-sizing: border-box;
   gap: 20px;
   padding: 15px;
-  border: 1px solid #027A48;
-  background-color: #E0ECE2;
+  border: 1px solid #027a48;
+  background-color: #e0ece2;
   margin-bottom: 20px;
   border-radius: 4px;
 }
@@ -95,12 +96,12 @@ textarea::placeholder {
 
 .back-btn:hover {
   background-color: #fff;
-  border: 1px solid #BFBFBF;
+  border: 1px solid #bfbfbf;
 }
 
 .back-btn:active {
-  background-color: #F2F2F2;
-  box-shadow: 0px 0px 0px 2px #C5C5C540;
+  background-color: #f2f2f2;
+  box-shadow: 0px 0px 0px 2px #c5c5c540;
 }
 
 .next-btn {
@@ -111,16 +112,17 @@ textarea::placeholder {
   gap: 10px;
   transition: background-color 0.3s ease;
   max-width: 300px;
-  background-color: #FE4A19;
+  background-color: #fe4a19;
   box-sizing: border-box;
   border: 2px solid transparent;
 }
 
 .next-btn:hover {
-  background-color: #D43E15;
+  background-color: #d43e15;
 }
 
-.disabled, .disabled:hover {
+.disabled,
+.disabled:hover {
   background-color: grey;
 }
 
@@ -129,26 +131,28 @@ textarea::placeholder {
   box-sizing: border-box;
 }
 
-
-.start-btn-mobile, .start-btn-desktop {
+.start-btn-mobile,
+.start-btn-desktop {
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   border: 2px solid transparent;
   transition: background-color 0.3s ease;
 }
 
-.start-btn-mobile:hover, .start-btn-desktop:hover {
-  background-color: #D43E15; /* Adjust the color as needed */
+.start-btn-mobile:hover,
+.start-btn-desktop:hover {
+  background-color: #d43e15; /* Adjust the color as needed */
 }
 
-.start-btn-mobile:active, .start-btn-desktop:active {
+.start-btn-mobile:active,
+.start-btn-desktop:active {
   border: 2px solid #eacdc4;
   box-sizing: border-box;
 }
 
 .unqualified-btn {
-  background-color: #FE4A19;
+  background-color: #fe4a19;
   color: "#fff";
   display: "flex";
   align-items: center;
@@ -157,19 +161,20 @@ textarea::placeholder {
 }
 
 .unqualified-btn:hover {
-  background-color: #D43E15; /* Adjust the color as needed */
+  background-color: #d43e15; /* Adjust the color as needed */
 }
 
 .unqualified-btn:active {
   border: 2px solid #eacdc4;
 }
 
-.paragraph {
-  font-family: 'Inter', sans-serif;
+.map-paragraph {
+  font-family: "Inter", sans-serif;
+  line-height: 27px;
 }
 
 .submission-description {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   margin-bottom: 20px;
   color: #475467;
   max-width: 410px;
@@ -196,7 +201,7 @@ textarea::placeholder {
   gap: 20px;
 }
 
-.container-with-cards   {
+.container-with-cards {
   gap: 20px;
 }
 
@@ -213,19 +218,19 @@ textarea::placeholder {
 }
 
 .card-active {
-  border-color: #FE4A19;
+  border-color: #fe4a19;
 }
 
 .card-active::before {
-  background-image: url('../../public/icons/white-checkmark.svg');
-  content: '';
+  background-image: url("../../public/icons/white-checkmark.svg");
+  content: "";
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
   top: -1px;
   left: -2px;
-  background-color: #FE4A19;
+  background-color: #fe4a19;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 8px;
   padding: 12px;
@@ -261,7 +266,6 @@ textarea::placeholder {
   width: 40px;
 }
 
-
 .intro-wrapper {
   display: flex;
   gap: 16px;
@@ -271,7 +275,7 @@ textarea::placeholder {
 }
 
 .intro-boolet-container {
-  gap: "16px"
+  gap: "16px";
 }
 
 .first-and-last-step-wrapper {
@@ -328,7 +332,6 @@ input::placeholder {
   font-weight: 400; */
 }
 
-
 .input-other-provider-container {
   border: 4px solid transparent;
   border-radius: 12px;
@@ -336,42 +339,46 @@ input::placeholder {
   position: relative;
 }
 
-.input-other-provider-container:not(.input-other-provider-container--active):hover {
-  border-color: #E6E6E6;
+.input-other-provider-container:not(
+    .input-other-provider-container--active
+  ):hover {
+  border-color: #e6e6e6;
   border-width: 4px;
   opacity: 0.8;
 }
 
-.input-other-provider-container:not(.input-other-provider-container--active):hover::before {
-  background-image: url('../../public/icons/gray-checkmark.svg');
-  content: '';
+.input-other-provider-container:not(
+    .input-other-provider-container--active
+  ):hover::before {
+  background-image: url("../../public/icons/gray-checkmark.svg");
+  content: "";
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
   top: -2px;
   left: -2px;
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
   border-bottom-right-radius: 4px;
   border-top-left-radius: 4px;
   padding: 12px;
 }
 
 .input-other-provider-container--active {
-  border-color: #FE4A19;
+  border-color: #fe4a19;
   transition: background-color 0.3s;
 }
 
 .input-other-provider-container--active::before {
-  background-image: url('../../public/icons/white-checkmark.svg');
-  content: '';
+  background-image: url("../../public/icons/white-checkmark.svg");
+  content: "";
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
   top: -2px;
   left: -2px;
-  background-color: #FE4A19;
+  background-color: #fe4a19;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 8px;
   padding: 12px;
@@ -379,65 +386,72 @@ input::placeholder {
 
 .form-input {
   padding: 20px 10px;
-  border: 1px solid #D0D5DD;
+  border: 1px solid #d0d5dd;
   border-radius: 4px;
   outline: none;
 }
 
 .form-input:hover {
-  box-shadow: 0px 0px 0px 2px #D0D5DD66;
+  box-shadow: 0px 0px 0px 2px #d0d5dd66;
 }
 
 .form-input:focus {
-  border: 1px solid #FE4A19;
-  box-shadow: 0px 0px 0px 2px #FE4A194D;
+  border: 1px solid #fe4a19;
+  box-shadow: 0px 0px 0px 2px #fe4a194d;
 }
 
+input {
+  border: 1px solid #d0d5dd;
+}
+
+input:focus {
+  border: 1px solid #fe4a19;
+}
 
 /* Regular */
 @font-face {
-  font-family: 'Roobert';
-  src: url('../../public/fonts/roobert/Roobert-Regular.otf') format('opentype');  
+  font-family: "Roobert";
+  src: url("../../public/fonts/roobert/Roobert-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 /* Bold */
 @font-face {
-  font-family: 'Roobert';
-  src: url('../../public/fonts/roobert/Roobert-Bold.otf') format('opentype');  
+  font-family: "Roobert";
+  src: url("../../public/fonts/roobert/Roobert-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 
 /* Light */
 @font-face {
-  font-family: 'Roobert';
-  src: url('../../public/fonts/roobert/Roobert-Light.otf') format('opentype');  
+  font-family: "Roobert";
+  src: url("../../public/fonts/roobert/Roobert-Light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 
 /* Medium */
 @font-face {
-  font-family: 'Roobert';
-  src: url('../../public/fonts/roobert/Roobert-Medium.otf') format('opentype');  
+  font-family: "Roobert";
+  src: url("../../public/fonts/roobert/Roobert-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 
 /* SemiBold */
 @font-face {
-  font-family: 'Roobert';
-  src: url('../../public/fonts/roobert/Roobert-SemiBold.otf') format('opentype');  
+  font-family: "Roobert";
+  src: url("../../public/fonts/roobert/Roobert-SemiBold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
 }
 
 /* Heavy */
 @font-face {
-  font-family: 'Roobert';
-  src: url('../../public/fonts/roobert/Roobert-Heavy.otf') format('opentype');  
+  font-family: "Roobert";
+  src: url("../../public/fonts/roobert/Roobert-Heavy.otf") format("opentype");
   font-weight: 800;
   font-style: normal;
 }

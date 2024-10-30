@@ -2,8 +2,11 @@ import React from "react";
 
 export const IntroDescriptionItem = ({ title, description }) => {
   return (
-    <div style={{ display: "flex", gap: "20px", alignItems: "start" }}>
-      <img src="/icons/triple-lines.svg" alt="" />
+    <div
+      style={{ display: "flex", gap: "10px", alignItems: "start" }}
+      className="intro-description-item"
+    >
+      <img src="/icons/checkmark-box.png" alt="" height={24} width={24} />
 
       <div
         style={{
@@ -14,10 +17,10 @@ export const IntroDescriptionItem = ({ title, description }) => {
         }}
         className="intro-boolet-container"
       >
-        <h2 style={{ margin: 0, color: "#1D2939" }} className="intro-title-2">
+        {/* <h2 style={{ margin: 0, color: "#1D2939" }} className="intro-title-2">
           {title}
-        </h2>
-        <p style={{ margin: 0, color: "#475467", fontFamily: "Inter" }}>
+        </h2> */}
+        <p style={{ margin: 0, color: "#505050", fontWeight: 650 }}>
           {description}
         </p>
       </div>

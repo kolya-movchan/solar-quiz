@@ -19,15 +19,14 @@ export const Intro = ({ handleNextQuizNavigation }) => {
         }}
         className="title-intro title"
       >
-        See How Much Money You Could Save w/ This $0 Solar Program That Cuts
-        Electric Bills by 30-50% – Instantly
+        Find out if solar is worth it for your home in a matter of minutes.
+        Ready to go?
       </h1>
 
       <div className="intro-wrapper">
-        {introDescriptionBullets.map((bullet) => (
+        {introDescriptionBullets.map((bullet, idx) => (
           <IntroDescriptionItem
-            key={bullet.title}
-            title={bullet.title}
+            key={bullet.idx}
             description={bullet.description}
           />
         ))}

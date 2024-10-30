@@ -1,14 +1,11 @@
 export const introDescriptionBullets = [
   {
-    title: "Easily Compare Utility vs Solar Costs",
-    description: "Description 1",
+    description: "Check qualification status",
   },
   {
-    title: "Get a Free Custom Home Solar Design",
-    description: "Description 2",
+    description: "Compare utility vs solar costs",
   },
   {
-    title: "Watch a Personalized Video Explanation",
-    description: "Description 3",
+    description: "Review custom home solar design",
   },
 ];

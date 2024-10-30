@@ -266,7 +266,7 @@ textarea::placeholder {
   display: flex;
   gap: 16px;
   flex-direction: column;
-  max-width: 340px;
+  /* max-width: 380px; */
   text-align: left;
 }
 

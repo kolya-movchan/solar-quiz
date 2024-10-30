@@ -109,8 +109,13 @@
       /* justify-content: center; */
     }
 
+    .start-btn-title {
+      max-width: 220px;
+    }
+
     .intro-container {
-      align-items: center;
+      margin-top: 15px;
+      /* align-items: center; */
     }
   
     .intro-boolet-container {

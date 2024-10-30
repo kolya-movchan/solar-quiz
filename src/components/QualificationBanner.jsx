@@ -6,7 +6,7 @@ export const QualificationBanner = () => {
       className="qualification-container"
       style={{
         background:
-          "linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #FE4A19, #982C0F) border-box",
+          "#FE4A191A",
         color: "#313149",
         padding: "4px 20px",
         border: "1px solid transparent",
@@ -49,11 +49,11 @@ export const QualificationBanner = () => {
             padding: "0",
           }}
         >
-          Free Home Solar Design{" "}
-          <span className="qualification-banner-dash">–</span>{" "}
+          {/* Free Home Solar Design{" "} */}
+          {/* <span className="qualification-banner-dash">–</span>{" "} */}
           <span>
-            Requested by 
-            <span style={{ fontWeight: 700 }}>180,000+</span> Homeowners
+            Requested by 180,000+ homeowners
+            {/* <span style={{ fontWeight: 700 }}>180,000+</span> Homeowners */}
           </span>
         </p>
       </p>

@@ -7,7 +7,7 @@ export const StartButton = ({ onClick, className }) => {
       type="button"
       onClick={onClick}
     >
-      <span>Start</span>
+      <span className="start-btn-title">Get a Solar Savings Report — It’s Free</span>
       <img
         style={{ marginTop: "2px" }}
         alt="arrow"

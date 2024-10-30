@@ -6,7 +6,8 @@ import { Container } from "../container";
 import { SearchLocation } from "../../components/LocationSearch";
 import { GoogleMapLayout } from "../../components/GoogleMapFrame";
 
-const center = { lat: 38.8292347, lng: -90.4875674 };
+// const center = { lat: 38.8292347, lng: -90.4875674 };
+const center = {}
 
 export const FindYourRoofOnMap = ({
   handleUserAnswer,
@@ -160,11 +161,14 @@ export const FindYourRoofOnMap = ({
 
   return (
     <Container className="container-with-map">
-      <h1 style={{ margin: "0", maxWidth: "450px" }} className="title">
+      <h1
+        style={{ margin: "0", maxWidth: "450px" }}
+        className="title"
+      >
         Let's check your roof's sun exposure
       </h1>
 
-      <p style={{ margin: "0" }} className="map-paragraph">
+      <p style={{ margin: "0", color: "#505050" }} className="map-paragraph">
         Using satellite technology, we'll check your roof's sun exposure to
         determine your home's solar potential — no site visit needed.
       </p>
@@ -183,7 +187,7 @@ export const FindYourRoofOnMap = ({
         mapCenter={mapCenter}
       />
 
-      <div className="google-map-container">
+      <div className="google-map-container" style={{ marginTop: "-8px" }}>
         {isStreetSelected ? (
           <GoogleMapLayout
             mapCenter={mapCenter}

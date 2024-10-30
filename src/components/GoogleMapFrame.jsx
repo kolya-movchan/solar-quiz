@@ -5,6 +5,8 @@ import { GoogleMapMarker } from "./Marker";
 const mapContainerStyle = {
   width: "100%",
   height: window.innerWidth <= 768 ? "250px" : "300px",
+  transition: "opacity 0.5s ease-in-out",
+  opacity: 0,
 };
 
 const libraries = ["places", "visualization"];
@@ -21,7 +23,7 @@ export const GoogleMapLayout = ({ mapCenter, mapRef, onDrag }) => {
   return (
     <>
       <GoogleMap
-        mapContainerStyle={mapContainerStyle}
+        mapContainerStyle={{ ...mapContainerStyle, opacity: 1 }}
         zoom={19}
         center={mapCenter}
         options={{

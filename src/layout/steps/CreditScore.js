@@ -25,8 +25,8 @@ export const CreditScore = ({ handleUserAnswer, quizData }) => {
             title={score.name}
             img={`/emojies/${score.id}.webp`}
             onClick={() => handleUserAnswer({ credit_score: score.id })}
-            imgHeight={64}
-            imgWidth={64}
+            imgHeight={56}
+            imgWidth={56}
             isActive={quizData.credit_score === score.id}
             isDisabled={quizData.hasOwnProperty("credit_score")}
             classImg="card-emojie"

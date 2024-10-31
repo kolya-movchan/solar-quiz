@@ -27,13 +27,12 @@ export const UtilityBill = ({ handleUserAnswer, quizData }) => {
             title={bill.name}
             img={`/emojies/${bill.id}.webp`}
             onClick={() => handleUserAnswer({ utility_bill_amount: bill.id })}
-            imgHeight={64}
-            imgWidth={64}
+            imgHeight={56}
+            imgWidth={56}
             isActive={quizData.utility_bill_amount === bill.id}
             isDisabled={quizData.hasOwnProperty("utility_bill_amount")}
             classImg="card-emojie"
             style={{
-              // border: "1px solid #D2D2D2",
               backgroundColor: "#FAFAFA",
             }}
           />

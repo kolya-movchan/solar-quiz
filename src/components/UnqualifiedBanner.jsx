@@ -10,7 +10,7 @@ export const UnqualifiedBanner = () => {
         padding: "15px",
         boxSizing: "border-box",
         border: "1px solid #B42318",
-        marginBottom: "0",
+        // marginBottom: "0",
         borderRadius: "8px",
         position: "relative",
         cursor: "default",

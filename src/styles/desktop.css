@@ -308,4 +308,8 @@
     right: -100px;
     color: #505050;
   }
+
+  .unqualified-banner {
+    margin-bottom: 16px;
+  }
 }

@@ -13,14 +13,20 @@ export const Unqualified = () => {
 
   return (
     <Container className="container container-unqualified">
-      <h1 className="title">Oh no!</h1>
+      <div>
+        <h1 className="title" style={{ marginBottom: "16px" }}>
+          It’s not a good fit
+        </h1>
 
-      <p style={{ margin: "0", color: "#475467", fontSize: "18px" }}>
-        Unfortunately, your home is not applicable for the program.
-      </p>
+        <p
+          style={{ margin: "0", color: "#475467", fontSize: "18px", maxWidth: 430 }}
+        >
+          Unfortunately, your home is not a good fit for solar.  Hover over the
+          information icon below to learn why.
+        </p>
+      </div>
 
       <UnqualifiedBanner />
-
       <a
         href="/"
         className="unqualified-btn button"

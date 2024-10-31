@@ -88,7 +88,11 @@ export const Form = ({
 
       <p style={{ fontSize: "0.8rem", margin: "0", color: "#475467" }}>
         Your data is secured by our{" "}
-        <a href="https://smartenergygeeks.com/legal/privacy-policy" style={{ color: "#000", fontWeight: "bold" }}>
+        <a
+          href="https://smartenergygeeks.com/legal/privacy-policy"
+          style={{ color: "#000", fontWeight: "bold" }}
+          target="_blank"
+        >
           Privacy policy
         </a>
       </p>

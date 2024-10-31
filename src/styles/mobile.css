@@ -103,7 +103,8 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-bottom: 12vh;
+      /* margin-bottom: 12vh; */
+      margin-bottom: 80px;
       width: 100%;
       /* word-break: break-all; */
       /* justify-content: center; */

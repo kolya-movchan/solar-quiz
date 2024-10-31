@@ -34,7 +34,7 @@
     overflow-y: scroll; /* Enable vertical scrolling */
     overflow-x: hidden; /* Disable horizontal scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    height: 650px;
+    height: 90vh;
   }
 
   .map-paragraph {

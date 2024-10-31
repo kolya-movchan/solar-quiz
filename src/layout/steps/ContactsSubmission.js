@@ -213,8 +213,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   //   return () => clearInterval(interval);
   // }, [resendTimer]);
 
-  console.log('quizData', quizData);
-  
+  console.log("quizData", quizData);
 
   return (
     <Container
@@ -225,15 +224,16 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     >
       <QualificationBanner />
 
-      <h1 style={{ margin: "0", marginBottom: "16px" }} className="title">
-        One more step...
+      <h1
+        style={{ margin: "0", marginBottom: "16px", maxWidth: "450px" }}
+        className="title"
+      >
+        Where should we send your report?
       </h1>
 
       <p className="submission-description">
-        Amazing!!! Now we can calculate how much you could save with 
-        <strong style={{ fontWeight: 650 }}>$0 Solar Program</strong> and share
-        it with you shortly. Let us know where we can share your calculations
-        and the new roof design. 
+        See how much money you could save  with this $0-down solar program that 
+        cuts electric bills by 30-50% – instantly.
       </p>
 
       <QualifiedBanner />

@@ -28,7 +28,7 @@ export const Unqualified = () => {
 
       <UnqualifiedBanner />
       <a
-        href="/"
+        href="https://smartenergygeeks.com/"
         className="unqualified-btn button"
         style={{
           display: "flex",

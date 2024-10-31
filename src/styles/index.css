@@ -435,11 +435,7 @@ input:focus {
   transition: background-color 0.3s ease;
 }
 
-.unqualified-banner:hover {
-  background-color: #ffd4d1;
-}
-
-.unqualified-banner .tooltip {
+.tooltip {
   position: absolute;
   background-color: white;
   color: #505050;
@@ -458,10 +454,6 @@ input:focus {
   line-height: 18px;
 }
 
-.unqualified-banner:hover .tooltip {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .qualified::after {
   content: "Your home is pre-qualified based on your home and energy details and may be a good fit to save money with solar. Keep in mind, the utility company has the final say on who qualifies for $0-down solar.";

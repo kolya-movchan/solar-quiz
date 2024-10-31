@@ -353,4 +353,9 @@
     /* right: -100px; */
     /* color: #505050; */
   }
+
+  .tooltip-mobile {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

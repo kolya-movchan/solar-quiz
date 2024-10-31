@@ -312,4 +312,13 @@
   .unqualified-banner {
     margin-bottom: 16px;
   }
+
+  .unqualified-banner:hover {
+    background-color: #ffd4d1;
+  }
+
+  .unqualified-banner:hover .tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

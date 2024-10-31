@@ -16,7 +16,7 @@ export const Unqualified = () => {
       <h1 className="title">Oh no!</h1>
 
       <p style={{ margin: "0", color: "#475467", fontSize: "18px" }}>
-        Unfortunately, your home is not applicable for the program..
+        Unfortunately, your home is not applicable for the program.
       </p>
 
       <UnqualifiedBanner />

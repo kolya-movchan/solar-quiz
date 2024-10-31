@@ -288,5 +288,24 @@
     width: 364px;
     display: flex;
     justify-content: space-between;
+    position: relative;
+  }
+
+  .qualified::after {
+    top: -120px;
+    right: -50px;
+  }
+
+  .qualified:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+    cursor: default;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: -165px;
+    right: -100px;
+    color: #505050;
   }
 }

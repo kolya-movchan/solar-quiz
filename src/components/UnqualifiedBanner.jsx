@@ -11,8 +11,9 @@ export const UnqualifiedBanner = () => {
         boxSizing: "border-box",
         border: "1px solid #B42318",
         marginBottom: "0",
-        backgroundColor: "#FFF3F2",
         borderRadius: "8px",
+        position: "relative",
+        cursor: "default",
       }}
     >
       <span style={{ color: "#B42318" }}>Your home status:</span>
@@ -23,6 +24,17 @@ export const UnqualifiedBanner = () => {
           alt="Info"
           style={{ width: "20px" }}
         />
+      </div>
+
+      <div className="tooltip">
+        Your home is unqualified based on the home and energy details you
+        shared. See below to learn of the different disqualification reasons:
+        <ul>
+          <li>Outside of service territory.</li>
+          <li>Not in single-family home.</li>
+          <li>Renting your home.</li>
+          <li>Low credit score.</li>
+        </ul>
       </div>
     </div>
   );

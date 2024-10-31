@@ -326,6 +326,7 @@
   .qualified {
     width: 100%;
     justify-content: center;
+    position: relative;
   }
 
   .card-container-emojie {
@@ -338,5 +339,17 @@
     -webkit-overflow-scrolling: touch; /* Smooth 
       scrolling on iOS */
     padding-right: 14px;
+  }
+
+  .qualified::after {
+    top: -120px;
+    /* right: -50px; */
+  }
+
+  .tooltip {
+    position: absolute;
+    top: -168px;
+    /* right: -100px; */
+    /* color: #505050; */
   }
 }

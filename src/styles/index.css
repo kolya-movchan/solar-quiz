@@ -11,6 +11,7 @@ body,
   margin: 0;
   padding: 0;
   height: 100%;
+  overscroll-behavior: none;
 }
 
 ul {
@@ -423,6 +424,10 @@ input {
 
 input:focus {
   border: 1px solid #fe4a19;
+}
+
+.otp-input-container:hover {
+  box-shadow: 0px 0px 0px 2px #d0d5dd66;
 }
 
 .unqualified-banner {

@@ -75,8 +75,10 @@ export const OTPModal = ({
     };
   }, []);
 
+  formData.phoneNumber = "+12737464648";
+
   return (
-    <div className="otp-modal">
+    <div className="otp-modal" style={{ zIndex: 1000 }}>
       <div className="otp-container">
         <div className="otp-wrapper">
           <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "650" }}>
@@ -119,7 +121,7 @@ export const OTPModal = ({
             }}
           >
             We sent a 4-digit personal code to the{" "}
-            <span style={{ fontWeight: "bold" }}>{formData.phoneNumber}</span>.
+            <span style={{ fontWeight: "bold" }}>{formData.phoneNumber.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "1 ($2) $3-$4")}</span>.
             This allows us to verify your request. Enter the code below:
           </p>
         </div>

@@ -2,6 +2,7 @@ import React, { useState, forwardRef } from "react";
 
 export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
   const [inputValue, setInputValue] = useState(value);
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleChange = (e) => {
     const newValue = e.target.value.replace(/\D/g, "");
@@ -11,10 +12,11 @@ export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
 
   return (
     <div
+      className="otp-input-container"
       style={{
         height: "80px",
         width: "80px",
-        border: "1px solid #D0D5DD",
+        border: isFocused ? "1px solid #fe4a19" : "1px solid #D0D5DD",
         borderRadius: "8px",
         display: "flex",
         alignItems: "center",
@@ -22,6 +24,7 @@ export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
       }}
     >
       <input
+        className="otp-input"
         ref={ref}
         type="text"
         inputMode="numeric"
@@ -35,6 +38,8 @@ export const OTPInput = forwardRef(({ index, value, onChange }, ref) => {
         }}
         value={inputValue}
         onChange={handleChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         maxLength="4"
         autoComplete="one-time-code"
         name={`otp-${index}`}

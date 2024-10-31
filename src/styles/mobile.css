@@ -349,6 +349,7 @@
   .tooltip {
     position: absolute;
     top: -168px;
+    left: 10px;
     /* right: -100px; */
     /* color: #505050; */
   }

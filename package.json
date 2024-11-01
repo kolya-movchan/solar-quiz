@@ -8,27 +8,28 @@
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
         "axios": "^1.7.7",
-        "classnames": "^2.5.1",
-        "imask": "^7.6.1",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "react-scripts": "5.0.1",
-        "react-toastify": "^10.0.5",
-        "react-transition-group": "^4.4.5",
-        "web-vitals": "^2.1.4",
         "body-parser": "^1.20.3",
+        "classnames": "^2.5.1",
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
         "express": "^4.21.0",
+        "imask": "^7.6.1",
         "nodemailer": "^6.9.15",
-        "twilio": "^5.3.3"
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-router-dom": "^6.27.0",
+        "react-scripts": "5.0.1",
+        "react-toastify": "^10.0.5",
+        "react-transition-group": "^4.4.5",
+        "twilio": "^5.3.3",
+        "web-vitals": "^2.1.4"
     },
     "scripts": {
         "dev": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "start": "node app.js"
+        "start:server": "node app.js"
     },
     "eslintConfig": {
         "extends": [

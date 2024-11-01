@@ -83,7 +83,7 @@ app.get("/api/autocomplete", async (req, res) => {
       {
         params: {
           input,
-          key: process.env.SOLAR_API_KEY, // Use your backend's environment variable
+          key: process.env.GOOGLE_MAPS_API_KEY, // Use your backend's environment variable
           components: "country:us",
           types: "address",
         },
@@ -107,7 +107,7 @@ app.get("/api/geocode", async (req, res) => {
       {
         params: {
           place_id,
-          key: process.env.SOLAR_API_KEY, // Use your backend's environment variable
+          key: process.env.GOOGLE_MAPS_API_KEY, // Use your backend's environment variable
         },
       }
     );

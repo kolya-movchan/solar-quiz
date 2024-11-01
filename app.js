@@ -4,11 +4,14 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const axios = require("axios");
 const twilioRouter = require("./src/routes/twilio-sms");
+const path = require("path");
 
 require("dotenv").config(); // Load environment variables from .env file
 
 const app = express();
 const port = process.env.PORT;
+
+app.use(express.static(path.join(__dirname, "build")));
 
 console.log("port: ", port);
 console.log("email: ", process.env.EMAIL_USER);

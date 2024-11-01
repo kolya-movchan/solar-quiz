@@ -1,23 +1,25 @@
 const express = require("express");
-// const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-// const axios = require("axios");
-const twilioRouter = require("./routes/twilio-sms");
 const path = require("path");
+const dotenv = require("dotenv");
+
+const twilioRouter = require("./routes/twilio-sms");
 const apiRouter = require("./routes/api-routes");
 const emailRouter = require("./routes/send-email");
 
-require("dotenv").config(); // Load environment variables from .env file
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
-const port = process.env.PORT;
+const PORT = process.env.PORT || 3001;
+
+console.log("Environment Variables:");
+console.log("PORT:", process.env.PORT);
+console.log("GOOGLE_MAPS_API_KEY:", process.env.GOOGLE_MAPS_API_KEY);
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
 
 app.use(express.static(path.join(__dirname, "build")));
-
-console.log("port: ", port);
-console.log("email: ", process.env.EMAIL_USER);
-console.log("pass: ", process.env.EMAIL_PASS);
 
 const corsOptions = {
   origin: "*", // Replace with your frontend URL
@@ -29,8 +31,8 @@ app.use(bodyParser.json());
 app.use("/twilio-sms", twilioRouter);
 app.use("/api", apiRouter);
 app.use("/send-email", emailRouter);
+
 // Start the server
-const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

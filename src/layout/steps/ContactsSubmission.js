@@ -130,7 +130,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       setIsLoading(true);
 
       const response = await axios.post(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
         {
           countryCode,
           phoneNumber,
@@ -156,7 +156,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const handleOTPSubmission = async () => {
     try {
       const verificationResponse = await axios.post(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
+        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
         {
           countryCode: formData.phoneNumber.trim().slice(1, -10),
           phoneNumber: formData.phoneNumber.trim().slice(-10),

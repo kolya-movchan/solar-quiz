@@ -35,7 +35,7 @@ export const FindYourRoofOnMap = ({
       setIsLoading(true);
 
       const response = await axios.get(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/api/autocomplete`,
+        `${process.env.REACT_APP_BACKEND_HOST}/api/autocomplete`,
         {
           params: {
             input: value.target.value,
@@ -54,7 +54,7 @@ export const FindYourRoofOnMap = ({
   const getCoordinates = async (placeId, skipUpdateMap = false) => {
     try {
       const response = await axios.get(
-        `https://${process.env.REACT_APP_BACKEND_HOST}/api/geocode`,
+        `${process.env.REACT_APP_BACKEND_HOST}/api/geocode`,
         {
           params: {
             place_id: placeId,
@@ -127,7 +127,7 @@ export const FindYourRoofOnMap = ({
 
   const getSuggestedAddress = async (coordinates) => {
     const response = await axios.get(
-      `https://${process.env.REACT_APP_BACKEND_HOST}/api/reverse-geocode`,
+      `${process.env.REACT_APP_BACKEND_HOST}/api/reverse-geocode`,
       {
         params: {
           lat: coordinates.lat,

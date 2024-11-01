@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const dotenv = require("dotenv");
 
-const twilioRouter = require("./routes/twilio-sms");
-const apiRouter = require("./routes/api-routes");
-const emailRouter = require("./routes/send-email");
+const twilioRouter = require("./routes/twilioRoutes");
+const apiRouter = require("./routes/googleApiRoutes");
+const emailRouter = require("./routes/emailRoutes");
 
 dotenv.config(); // Load environment variables from .env file
 

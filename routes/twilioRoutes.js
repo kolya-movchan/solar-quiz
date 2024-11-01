@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { sendOTP, verifyOTP } = require("../controller/twilio-sms");
+const { sendOTP, verifyOTP } = require("../controllers/twilioController");
 const router = express.Router();
 
 router.route("/send-otp").post(sendOTP);

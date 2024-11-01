@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 // const emailController = require("../controllers/emailController");
-const googleApiController = require("../controller/google-api");
+const googleApiController = require("../controllers/googleApiController");
 
 // router.post("/send-email", emailController.sendEmail);
 router.get("/autocomplete", googleApiController.autocomplete);

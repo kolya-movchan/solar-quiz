@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const axios = require("axios");
-const twilioRouter = require("./src/routes/twilio-sms");
+const twilioRouter = require("./routes/twilio-sms");
 const path = require("path");
 
 require("dotenv").config(); // Load environment variables from .env file

@@ -298,11 +298,11 @@
     /* top: -120px; */
     /* right: -100px; */
     color: #505050;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out,
+    transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out,
       visibility 0.3s ease-in-out;
     cursor: default;
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(0);
   }
 
   .unqualified-banner {
@@ -315,7 +315,7 @@
 
   .unqualified-banner:hover .tooltip {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-10px);
     visibility: visible;
   }
 
@@ -325,16 +325,16 @@
 
   .qualified:hover .tooltip {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-10px);
     visibility: visible;
   }
 
   .tooltip-qualified {
-    top: -120px;
+    top: -110px;
   }
 
   .tooltip-unqualified {
-    top: -150px;
+    top: -160px;
     right: -116px;
   }
 }

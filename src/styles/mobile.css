@@ -277,6 +277,10 @@
     background-color: #ffd4d1;
   }
 
+  .unqualified-banner-text {
+    flex: 0 0 50%;
+  }
+
   .qualified--active {
     background-color: #c4dace;
   }
@@ -354,12 +358,19 @@
     /* right: -50px; */
   }
 
-  .tooltip-mobile {
-    position: absolute;
-    opacity: 1;
+  .tooltip {
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out,
+      visibility 0.3s ease-in-out;
+    opacity: 0;
     transform: translateY(0);
-    /* top: -120px;
-    left: 10px; */
+  }
+
+  .tooltip-mobile {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-10px);
+    position: absolute;
   }
 
   .tooltip-qualified {

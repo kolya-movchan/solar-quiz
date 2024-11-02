@@ -447,6 +447,7 @@ input:focus {
   transform: translateY(10px);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   line-height: 18px;
+  visibility: hidden;
 }
 
 /* Regular */

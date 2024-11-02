@@ -41,13 +41,15 @@ export const UnqualifiedBanner = () => {
       onClick={handleClick}
     >
       <span
-        style={{ color: "#B42318", flex: "0 0 50%" }}
+        className="unqualified-banner-text"
+        style={{ color: "#B42318"}}
       >
         Your home status:
       </span>
       <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
         <span
-          style={{ color: "#B42318", flex: "0 0 50%", fontWeight: "650" }}
+          className="unqualified-banner-text"
+          style={{ color: "#B42318", fontWeight: "650" }}
         >
           Unqualified
         </span>

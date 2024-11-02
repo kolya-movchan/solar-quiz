@@ -375,11 +375,11 @@
 
   .tooltip-qualified {
     top: -120px;
-    left: 10px;
+    left: 0px;
   }
 
   .tooltip-unqualified {
     top: -168px;
-    left: 10px;
+    left: 0px;
   }
 }

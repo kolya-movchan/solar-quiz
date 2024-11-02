@@ -441,7 +441,7 @@ input:focus {
   border-radius: 4px;
   font-size: 14px;
   box-shadow: 0px 12px 16px -4px #0a0d1214;
-  width: 329px;
+  max-width: 329px;
   z-index: 10;
   opacity: 0;
   transform: translateY(10px);

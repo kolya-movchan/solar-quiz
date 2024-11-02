@@ -273,6 +273,14 @@
     width: 100%;
   }
 
+  .unqualified-banner--active {
+    background-color: #ffd4d1;
+  }
+
+  .qualified--active {
+    background-color: #c4dace;
+  }
+
   .unqualified-btn {
     width: 100%;
   }
@@ -346,16 +354,21 @@
     /* right: -50px; */
   }
 
-  .tooltip {
-    position: absolute;
-    top: -168px;
-    left: 10px;
-    /* right: -100px; */
-    /* color: #505050; */
-  }
-
   .tooltip-mobile {
+    position: absolute;
     opacity: 1;
     transform: translateY(0);
+    /* top: -120px;
+    left: 10px; */
+  }
+
+  .tooltip-qualified {
+    top: -120px;
+    left: 10px;
+  }
+
+  .tooltip-unqualified {
+    top: -168px;
+    left: 10px;
   }
 }

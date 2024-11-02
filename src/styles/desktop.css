@@ -291,22 +291,18 @@
     position: relative;
   }
 
-  .qualified::after {
-    top: -120px;
-    right: -50px;
-  }
-
-  .qualified:hover::after {
-    opacity: 1;
-    transform: translateY(0);
-    cursor: default;
-  }
-
   .tooltip {
+    /* display: none; */
+    visibility: hidden;
     position: absolute;
-    top: -165px;
-    right: -100px;
+    /* top: -120px; */
+    /* right: -100px; */
     color: #505050;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out,
+      visibility 0.3s ease-in-out;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(-10px);
   }
 
   .unqualified-banner {
@@ -320,5 +316,25 @@
   .unqualified-banner:hover .tooltip {
     opacity: 1;
     transform: translateY(0);
+    visibility: visible;
+  }
+
+  .qualified:hover {
+    background-color: #c4dace;
+  }
+
+  .qualified:hover .tooltip {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .tooltip-qualified {
+    top: -120px;
+  }
+
+  .tooltip-unqualified {
+    top: -150px;
+    right: -116px;
   }
 }

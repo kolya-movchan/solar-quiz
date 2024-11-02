@@ -25,7 +25,9 @@ export const UnqualifiedBanner = () => {
   return (
     <div
       ref={bannerRef}
-      className="unqualified-banner"
+      className={classNames("unqualified-banner", {
+        "unqualified-banner--active": showTooltip,
+      })}
       style={{
         display: "flex",
         gap: "20px",
@@ -33,14 +35,22 @@ export const UnqualifiedBanner = () => {
         boxSizing: "border-box",
         border: "1px solid #B42318",
         borderRadius: "8px",
-        position: "relative",
         cursor: "default",
+        position: "relative",
       }}
       onClick={handleClick}
     >
-      <span style={{ color: "#B42318" }}>Your home status:</span>
+      <span
+        style={{ color: "#B42318", flex: "0 0 50%" }}
+      >
+        Your home status:
+      </span>
       <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-        <span style={{ color: "#B42318", fontWeight: "650" }}>Unqualified</span>
+        <span
+          style={{ color: "#B42318", flex: "0 0 50%", fontWeight: "650" }}
+        >
+          Unqualified
+        </span>
         <img
           src="/icons/red-alert-circle.svg"
           alt="Info"
@@ -49,7 +59,7 @@ export const UnqualifiedBanner = () => {
       </div>
 
       <div
-        className={classNames("tooltip", {
+        className={classNames("tooltip tooltip-unqualified", {
           "tooltip-mobile": showTooltip,
         })}
       >

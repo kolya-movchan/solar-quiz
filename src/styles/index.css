@@ -91,11 +91,6 @@ textarea::placeholder {
   transition: background-color 0.3s ease;
 }
 
-.qualified:hover {
-  /* cursor: default; */
-  background-color: #c4dace;
-}
-
 .back-btn {
   background-color: transparent;
   border: 1px solid #000;
@@ -452,32 +447,7 @@ input:focus {
   transform: translateY(10px);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   line-height: 18px;
-}
-
-
-.qualified::after {
-  content: "Your home is pre-qualified based on your home and energy details and may be a good fit to save money with solar. Keep in mind, the utility company has the final say on who qualifies for $0-down solar.";
-  position: absolute;
-  background-color: white;
-  color: #505050;
-  font-family: "Inter", sans-serif;
-  text-align: left;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 14px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 329px;
-  z-index: 10;
-  box-shadow: 0px 12px 16px -4px #0a0d1214;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.qualified:hover::after {
-  opacity: 1;
-  transform: translateY(0);
-  cursor: default;
+  visibility: hidden;
 }
 
 /* Regular */

@@ -8,11 +8,12 @@ export const QualificationBanner = () => {
         background:
           "#FE4A191A",
         color: "#313149",
-        padding: "4px 20px",
+        padding: "4px 10px",
         border: "1px solid transparent",
         borderRadius: "55px",
         display: "inline-block",
         marginBottom: "32px",
+        width: "max-content",
       }}
     >
       <p
@@ -24,6 +25,7 @@ export const QualificationBanner = () => {
           margin: "0",
           gap: "8px",
           padding: "0",
+          width: "max-content",
         }}
       >
         <img

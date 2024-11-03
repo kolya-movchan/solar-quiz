@@ -8,7 +8,7 @@ import { introDescriptionBullets } from "../../mop/introDescriptionBullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {
   return (
-    <Container className="intro-container">
+    <Container className="intro-container" style={{ padding: 0 }}>
       <QualificationBanner />
 
       <h1
@@ -24,10 +24,7 @@ export const Intro = ({ handleNextQuizNavigation }) => {
 
       <div className="intro-wrapper">
         {introDescriptionBullets.map((bullet, idx) => (
-          <IntroDescriptionItem
-            key={idx}
-            description={bullet.description}
-          />
+          <IntroDescriptionItem key={idx} description={bullet.description} />
         ))}
 
         <StartButton

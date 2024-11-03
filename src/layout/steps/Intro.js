@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Container } from "../container";
 import { QualificationBanner } from "../../components/QualificationBanner";
@@ -7,6 +7,13 @@ import { IntroDescriptionItem } from "../../components/IntroDescription";
 import { introDescriptionBullets } from "../../mop/introDescriptionBullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return (
     <Container className="intro-container" style={{ padding: 0 }}>
       <QualificationBanner style={{ marginBottom: "32px" }} />

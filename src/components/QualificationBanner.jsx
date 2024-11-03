@@ -1,6 +1,6 @@
 import React from "react";
 
-export const QualificationBanner = () => {
+export const QualificationBanner = ({ style }) => {
   return (
     <div
       className="qualification-container"
@@ -12,8 +12,8 @@ export const QualificationBanner = () => {
         border: "1px solid transparent",
         borderRadius: "55px",
         display: "inline-block",
-        marginBottom: "32px",
         width: "max-content",
+        ...style
       }}
     >
       <p

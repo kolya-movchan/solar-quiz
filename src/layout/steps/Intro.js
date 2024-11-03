@@ -9,7 +9,7 @@ import { introDescriptionBullets } from "../../mop/introDescriptionBullets";
 export const Intro = ({ handleNextQuizNavigation }) => {
   return (
     <Container className="intro-container" style={{ padding: 0 }}>
-      <QualificationBanner />
+      <QualificationBanner style={{ marginBottom: "32px" }} />
 
       <h1
         style={{

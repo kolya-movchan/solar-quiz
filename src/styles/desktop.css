@@ -52,6 +52,10 @@
     text-align: left;
   }
 
+  .submission-description {
+    max-width: 345px;
+  }
+
   .container-with-cards {
     /* margin-top: 2vh; */
     /* align-self: flex-start; */
@@ -287,7 +291,8 @@
   .qualified {
     width: 364px;
     display: flex;
-    justify-content: space-between;
+    gap: 40px;
+    /* justify-content: space-between; */
     position: relative;
   }
 

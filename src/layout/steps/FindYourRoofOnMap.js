@@ -168,7 +168,7 @@ export const FindYourRoofOnMap = ({
         Let's check your roof's sun exposure
       </h1>
 
-      <p style={{ margin: "0", color: "#505050" }} className="map-paragraph">
+      <p style={{ marginTop: "0", color: "#505050" }} className="map-paragraph">
         Using satellite technology, we'll check your roof's sun exposure to
         determine your home's solar potential — no site visit needed.
       </p>
@@ -199,7 +199,8 @@ export const FindYourRoofOnMap = ({
           <img
             src="/icons/map-placeholder.png"
             alt="Map Placeholder"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            className="map-placeholder"
+            style={{ }}
           />
         )}
       </div>

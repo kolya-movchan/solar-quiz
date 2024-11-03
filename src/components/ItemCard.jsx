@@ -19,7 +19,6 @@ export const Card = ({
     <div
       className={classNames("card", {
         "card-active": isActive,
-        // "card-disabled": isDisabled && !isActive,
       })}
     >
       <button
@@ -45,7 +44,6 @@ export const Card = ({
         }}
       >
         <img
-          // style={{ objectFit: "cover" }}
           src={img}
           alt="Own"
           height={imgHeight}

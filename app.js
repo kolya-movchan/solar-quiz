@@ -20,6 +20,7 @@ console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
 
 app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static("public"));
 
 const corsOptions = {
   origin: "*", // Replace with your frontend URL
@@ -31,6 +32,10 @@ app.use(bodyParser.json());
 app.use("/twilio-sms", twilioRouter);
 app.use("/api", apiRouter);
 app.use("/send-email", emailRouter);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 // Start the server
 app.listen(PORT, () => {

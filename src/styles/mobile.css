@@ -6,7 +6,7 @@
   }
 
   .title-intro {
-    text-align: left;
+    /* text-align: left; */
     font-size: 32px;
     line-height: 38px;
     font-weight: 700;
@@ -23,7 +23,7 @@
   .container-with-map {
     min-height: 70vh;
     width: 100%;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
   }
 
@@ -107,7 +107,9 @@
     } */
 
   .intro-container {
+    align-items: center;
     margin-top: 15px;
+    margin-bottom: 16px;
     /* align-items: center; */
   }
 
@@ -160,9 +162,9 @@
   }
 
   .start-btn-mobile-wrapper {
-    background-color: #fff;
-    position: fixed;
-    bottom: 0;
+    /* background-color: #fff; */
+    /* position: fixed; */
+    /* bottom: 0; */
     width: 100%;
     display: flex;
     padding: 16px;

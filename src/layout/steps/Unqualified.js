@@ -12,7 +12,7 @@ export const Unqualified = () => {
   }, []);
 
   return (
-    <Container className="container container-unqualified">
+    <Container className="container container-unqualified" style={{ paddingY: 0 }}>
       <div>
         <h1 className="title" style={{ marginBottom: "16px" }}>
           It’s not a good fit
@@ -21,7 +21,7 @@ export const Unqualified = () => {
         <p
           style={{ margin: "0", color: "#475467", fontSize: "18px", maxWidth: 430 }}
         >
-          Unfortunately, your home is not a good fit for solar.  Hover over the
+          Unfortunately, your home is not a good fit for solar. Hover over the
           information icon below to learn why.
         </p>
       </div>

@@ -93,7 +93,7 @@ export const Form = ({
           style={{ color: "#000", fontWeight: "bold" }}
           target="_blank"
         >
-          Privacy policy
+          Privacy Policy
         </a>
       </p>
     </div>

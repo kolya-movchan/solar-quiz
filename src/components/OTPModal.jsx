@@ -118,7 +118,7 @@ export const OTPModal = ({
               fontSize: "18px",
             }}
           >
-            We sent a 4-digit personal code to the{" "}
+            We sent a 4-digit personal code to {" "}
             <span style={{ fontWeight: "bold" }}>
               {formData.phoneNumber.replace(
                 /(\d{1})(\d{3})(\d{3})(\d{4})/,

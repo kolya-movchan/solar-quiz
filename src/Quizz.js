@@ -147,7 +147,7 @@ const Quiz = () => {
 
   return (
     <>
-      {!quizData.isQuizDataSubmitted && <ProgressBar step={step} />}
+      {!quizData.isQuizDataSubmitted && step > 0 && <ProgressBar step={step} />}
 
       <Logo />
 

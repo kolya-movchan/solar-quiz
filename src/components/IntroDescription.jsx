@@ -20,7 +20,7 @@ export const IntroDescriptionItem = ({ title, description }) => {
         {/* <h2 style={{ margin: 0, color: "#1D2939" }} className="intro-title-2">
           {title}
         </h2> */}
-        <p style={{ margin: 0, color: "#505050", fontWeight: 650 }}>
+        <p style={{ margin: 0, color: "#505050"}}>
           {description}
         </p>
       </div>

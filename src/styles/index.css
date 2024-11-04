@@ -53,7 +53,7 @@ textarea::placeholder {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .button {
@@ -178,6 +178,7 @@ textarea::placeholder {
 .map-paragraph {
   font-family: "Inter", sans-serif;
   line-height: 27px;
+  margin-bottom: 24px;
 }
 
 .submission-description {
@@ -205,7 +206,7 @@ textarea::placeholder {
 }
 
 .container-with-map {
-  gap: 40px;
+  gap: 16px;
 }
 
 .container-with-cards {
@@ -448,6 +449,12 @@ input:focus {
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   line-height: 18px;
   visibility: hidden;
+}
+
+.map-placeholder {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
 }
 
 /* Regular */

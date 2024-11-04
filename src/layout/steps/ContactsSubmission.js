@@ -222,7 +222,7 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         boxSizing: "border-box",
       }}
     >
-      <QualificationBanner />
+      <QualificationBanner style={{ marginBottom: "16px" }} />
 
       <h1
         style={{ margin: "0", marginBottom: "16px", maxWidth: "450px" }}
@@ -232,8 +232,8 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       </h1>
 
       <p className="submission-description">
-        See how much money you could save  with this $0-down solar program that 
-        cuts electric bills by 30-50% – instantly.
+        See how much money you could save with this $0-down solar program that
+        cuts electric bills by 30-50% – instantly.
       </p>
 
       <QualifiedBanner />

@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 const twilioRouter = require("./routes/twilioRoutes");
 const apiRouter = require("./routes/googleApiRoutes");
 const emailRouter = require("./routes/emailRoutes");
-
+const axios = require("axios");
 dotenv.config(); // Load environment variables from .env file
 
 const app = express();
@@ -30,6 +30,27 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use("/twilio-sms", twilioRouter);
+app.post("/api/zapier-webhook", async (req, res) => {
+  const { data } = req.body;
+
+  try {
+    const response = await axios.post(
+      "https://hooks.zapier.com/hooks/catch/4525203/21zk4op/",
+      data
+    );
+
+    console.log("response", response.data);
+
+    if (response.data.status === "success") {
+      res.status(200).json({ status: "Success" });
+    } else {
+      res.status(400).json({ status: "Bad Request" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ status: "error" });
+  }
+});
 app.use("/api", apiRouter);
 app.use("/send-email", emailRouter);
 

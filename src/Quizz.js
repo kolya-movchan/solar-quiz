@@ -25,6 +25,24 @@ const Quiz = () => {
   const [stateAbbreviation, setStateAbbreviation] = useState(null);
   const [quizData, setQuizData] = useState({});
 
+  // const testData = {
+  //   location: "3rd Street Promenade, Santa Monica, CA, USA",
+  //   place_id: "EiszcmQgU3RyZWV0IFByb21lbmFkZSwgU2FudGEgTW9uaWNhLCBDQSwgVVNBIi4qLAoUChIJn00flM-kwoARJCyvzSGDm6oSFAoSCRkAkcLOpMKAEav1I_-1Che0",
+  //   coordinates: {
+  //     lat: 34.0164013,
+  //     lng: -118.4968895
+  //   },
+  //   home_ownership: "own",
+  //   home_type: "townhouse",
+  //   roof_condition: "good",
+  //   provider: "SCE",
+  //   is_mannual_provider: false,
+  //   mannual_provider: null,
+  //   utility_bill_amount: "$150-$300",
+  //   credit_score: "600-650",
+  //   isQuizDataSubmitted: true
+  // };
+
   const handleUserAnswer = (data) => {
     if (data.location) {
       setQuizData({ ...data });

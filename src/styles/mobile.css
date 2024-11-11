@@ -15,6 +15,10 @@
     margin-bottom: 10px;
   }
 
+  .loader-container {
+    transform: translateY(-12vh);
+  }
+
   .container {
     padding: 0 20px 12vh;
     width: 100%;

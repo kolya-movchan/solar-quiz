@@ -50,7 +50,8 @@ const Quiz = () => {
     if (
       data.is_mannual_provider ||
       data.is_mannual_provider === null ||
-      data.is_manual_location
+      data.is_manual_location ||
+      data.isQuizDataSubmitted === true
     ) {
       return;
     }
@@ -192,7 +193,9 @@ const Quiz = () => {
                 (step === 2 && !quizData.home_ownership) ||
                 (step === 3 && !quizData.home_type) ||
                 (step === 4 && !quizData.roof_condition) ||
-                (step === 5 && !quizData.provider && !quizData.is_mannual_provider) ||
+                (step === 5 &&
+                  !quizData.provider &&
+                  !quizData.is_mannual_provider) ||
                 (step === 6 && !quizData.utility_bill_amount) ||
                 (step === 7 && !quizData.credit_score)
               }

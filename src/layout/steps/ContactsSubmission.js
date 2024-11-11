@@ -9,6 +9,7 @@ import { QualifiedBanner } from "../../components/QualifiedBanner";
 import { Form } from "../../components/Form";
 export const ContactsSubmission = ({ quizData, onSubmit }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -45,54 +46,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     return newErrors;
   };
 
-  // const handleSubmit = () => {
-  //   setIsLoading(true);
-
-  //   const {
-  //     home_ownership,
-  //     home_type,
-  //     roof_condition,
-  //     provider,
-  //     utility_bill_amount,
-  //     credit_score,
-  //   } = quizData;
-
-  //   const data = {
-  //     ...formData,
-  //     home_ownership,
-  //     home_type,
-  //     roof_condition,
-  //     provider,
-  //     utility_bill_amount,
-  //     credit_score,
-  //   };
-
-  //   axios.post(``, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-
-  //       return response.text();
-  //     })
-  //     .then(() => {
-  //       onSubmit({ isQuizDataSubmitted: true });
-  //       toast.success("Success! We will contact you soon.");
-  //     }) // Log the response
-  //     .catch((error) => {
-  //       toast.error("Something went wrong. Please try again later.");
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -111,6 +64,54 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       formData.email &&
       formData.phoneNumber.length > 11
     );
+  };
+
+  const sendQuizDataWebhook = async () => {
+    const {
+      location,
+      home_ownership,
+      home_type,
+      roof_condition,
+      provider,
+      mannual_provider,
+      utility_bill_amount,
+      credit_score,
+    } = quizData;
+
+    const { firstName, lastName, email, phoneNumber } = formData;
+
+    const getPostcodeFromAddress = (address) => {
+      const zipCodeMatch = address.match(/\b\d{5}\b/);
+      return zipCodeMatch ? zipCodeMatch[0] : null;
+    };
+
+    const zipCode = getPostcodeFromAddress(location);
+
+    const dataToSend = {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      location,
+      home_ownership,
+      home_type,
+      roof_condition,
+      provider: provider || mannual_provider,
+      utility_bill_amount,
+      credit_score,
+      zipCode,
+    };
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
+        { data: dataToSend }
+      );
+
+      console.log("response webhook:", response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleOTPVerification = async (e, isRetry = false) => {
@@ -164,14 +165,20 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
         }
       );
       if (verificationResponse.data.isVerified === true) {
+        setTimeout(() => {
+          setShowOTPInput(false);
+          setIsSending(true);
+        }, 500);
         onSubmit({ isQuizDataSubmitted: true });
-
-        toast.success("Success! We will contact you soon.");
+        await sendQuizDataWebhook();
+        toast.success("Success! We will contact you soon!");
       } else {
         toast.error("Invalid confirmation code. Please try again.");
       }
     } catch (error) {
       toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -255,6 +262,43 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
           otpRefs={otpRefs}
           handleOTPVerification={handleOTPVerification}
         />
+      )}
+
+      {isSending && (
+        <div
+          className="loader-container"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              width: "50px",
+              height: "50px",
+              border: "5px solid #f3f3f3",
+              borderTop: "5px solid #fe4a19",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+            }}
+          />
+          <style>
+            {`
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+          `}
+          </style>
+        </div>
       )}
     </Container>
   );

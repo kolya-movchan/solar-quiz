@@ -7,7 +7,12 @@ import { OTPModal } from "../../components/OTPModal";
 import { QualificationBanner } from "../../components/QualificationBanner";
 import { QualifiedBanner } from "../../components/QualifiedBanner";
 import { Form } from "../../components/Form";
-export const ContactsSubmission = ({ quizData, onSubmit }) => {
+
+export const ContactsSubmission = ({
+  quizData,
+  locationCollection,
+  onSubmit,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
@@ -78,29 +83,38 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       credit_score,
     } = quizData;
 
-    const { firstName, lastName, email, phoneNumber } = formData;
+    let { firstName, lastName, email, phoneNumber } = formData;
+    let { streetAddress, city, zipCode, state } = locationCollection;
 
-    const getPostcodeFromAddress = (address) => {
-      const zipCodeMatch = address.match(/\b\d{5}\b/);
-      return zipCodeMatch ? zipCodeMatch[0] : null;
+    // let firstName = "john";
+    // let lastName = "doe";
+    // let email = "john.doe@example.com";
+    // let phoneNumber = "+1234567890";
+
+    const toTitleCase = (str) => {
+      return str.replace(/\b\w/g, (char) => char.toUpperCase());
     };
-
-    const zipCode = getPostcodeFromAddress(location);
 
     const dataToSend = {
-      firstName,
-      lastName,
+      first_name: toTitleCase(firstName),
+      last_name: toTitleCase(lastName),
       email,
-      phoneNumber,
-      location,
-      home_ownership,
-      home_type,
-      roof_condition,
-      provider: provider || mannual_provider,
+      phone_number: phoneNumber,
+      home_ownership: toTitleCase(home_ownership),
+      home_type: toTitleCase(home_type),
+      roof_condition: toTitleCase(roof_condition),
+      provider: toTitleCase(provider || mannual_provider),
       utility_bill_amount,
       credit_score,
-      zipCode,
+      zip_code: zipCode,
+      full_address: toTitleCase(location),
+      state,
+      city,
+      street_address: streetAddress,
+      submission_date: new Date().toLocaleDateString("en-US"),
     };
+
+    console.log("data to send Webhook:", dataToSend);
 
     try {
       const response = await axios.post(
@@ -219,8 +233,6 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
   //   }
   //   return () => clearInterval(interval);
   // }, [resendTimer]);
-
-  console.log("quizData", quizData);
 
   return (
     <Container

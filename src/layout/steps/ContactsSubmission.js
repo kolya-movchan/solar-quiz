@@ -7,7 +7,12 @@ import { OTPModal } from "../../components/OTPModal";
 import { QualificationBanner } from "../../components/QualificationBanner";
 import { QualifiedBanner } from "../../components/QualifiedBanner";
 import { Form } from "../../components/Form";
-export const ContactsSubmission = ({ quizData, onSubmit }) => {
+
+export const ContactsSubmission = ({
+  quizData,
+  locationCollection,
+  onSubmit,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
@@ -78,37 +83,120 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
       credit_score,
     } = quizData;
 
-    const { firstName, lastName, email, phoneNumber } = formData;
+    let { firstName, lastName, email, phoneNumber } = formData;
+    let { streetAddress, city, zipCode, state } = locationCollection;
 
-    const getPostcodeFromAddress = (address) => {
-      const zipCodeMatch = address.match(/\b\d{5}\b/);
-      return zipCodeMatch ? zipCodeMatch[0] : null;
+    // let firstName = "john";
+    // let lastName = "doe";
+    // let email = "john.doe@example.com";
+    // let phoneNumber = "+1234567890";
+
+    const toTitleCase = (str) => {
+      return str.replace(/\b\w/g, (char) => char.toUpperCase());
     };
-
-    const zipCode = getPostcodeFromAddress(location);
 
     const dataToSend = {
-      firstName,
-      lastName,
+      first_name: toTitleCase(firstName),
+      last_name: toTitleCase(lastName),
       email,
-      phoneNumber,
-      location,
-      home_ownership,
-      home_type,
-      roof_condition,
-      provider: provider || mannual_provider,
+      phone_number: phoneNumber,
+      home_ownership: toTitleCase(home_ownership),
+      home_type: toTitleCase(home_type),
+      roof_condition: toTitleCase(roof_condition),
+      provider: toTitleCase(provider || mannual_provider),
       utility_bill_amount,
       credit_score,
-      zipCode,
+      zip_code: zipCode,
+      full_address: toTitleCase(location),
+      state,
+      city,
+      street_address: streetAddress,
+      submission_date: new Date().toLocaleDateString("en-US"),
     };
 
+    console.log("data to send Webhook:", dataToSend);
+
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
-        { data: dataToSend }
+      // const response = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
+      //   { data: dataToSend }
+      // );
+
+      // console.log("response webhook:", response);
+
+      // const dataToSendSolarCopilot = {
+      //   campid: "SMARTENERGYGEEKS",
+      //   Email: "leadbyte@aol.com",
+      //   First_Name: "John",
+      //   Last_Name: "Doe",
+      //   Street_1: "Hope Street",
+      //   "Town/City": "Phoenix",
+      //   Postcode: "85001",
+      //   Phone_1: "4055158371",
+      //   "IP Address": "72.201.64.1",
+      //   Source: "https://quiz.smartenergygeeks.com",
+      //   utility_bill_amount,
+      //   home_type: toTitleCase(home_type),
+      //   roof_condition: toTitleCase(roof_condition),
+      //   state: "Arizona",
+      //   full_address: toTitleCase(location),
+      //   credit_score,
+      //   utility_company: toTitleCase(provider || mannual_provider),
+      //   own_rent: toTitleCase(home_ownership),
+      // };
+
+      const ipResponse = await axios.get("https://api.ipify.org?format=json");
+      const userIpAddress = ipResponse.data.ip;
+
+      const dataToSendSolarCopilot = {
+        campid: "SMARTENERGYGEEKS",
+        Email: email,
+        First_Name: toTitleCase(firstName),
+        Last_Name: toTitleCase(lastName),
+        Street_1: streetAddress,
+        "Town/City": city,
+        Postcode: zipCode,
+        Phone_1: phoneNumber,
+        "IP Address": userIpAddress,
+        Source: "https://quiz.smartenergygeeks.com",
+        utility_bill_amount,
+        home_type: toTitleCase(home_type),
+        roof_condition: toTitleCase(roof_condition),
+        state: state,
+        full_address: toTitleCase(location),
+        credit_score,
+        utility_company: toTitleCase(provider || mannual_provider),
+        own_rent: toTitleCase(home_ownership),
+      };
+
+      const response2 = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/api/solarcopilot`,
+        { data: dataToSendSolarCopilot }
       );
 
-      console.log("response webhook:", response);
+      if (response2.status === 200) {
+        const queueId = response2.data.results[0].queueId;
+        switch (queueId.charAt(0)) {
+          case "1":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/high-roller-marketing";
+            break;
+          case "2":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/zach-sweety";
+            break;
+          case "3":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/mark-medina";
+            break;
+          case "4":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/alex-baird";
+            break;
+          default:
+            window.location.href = "https://smartenergygeeks.com";
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -130,17 +218,17 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
-        {
-          countryCode,
-          phoneNumber,
-        }
-      );
+      // const response = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+      //   {
+      //     countryCode,
+      //     phoneNumber,
+      //   }
+      // );
 
-      if (response.status === 200) {
-        setShowOTPInput(true);
-      }
+      // if (response.status === 200) {
+      //   setShowOTPInput(true);
+      // }
 
       setShowOTPInput(true);
     } catch (error) {
@@ -156,14 +244,20 @@ export const ContactsSubmission = ({ quizData, onSubmit }) => {
 
   const handleOTPSubmission = async () => {
     try {
-      const verificationResponse = await axios.post(
-        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
-        {
-          countryCode: formData.phoneNumber.trim().slice(1, -10),
-          phoneNumber: formData.phoneNumber.trim().slice(-10),
-          otp: otpRefs.current.map((ref) => ref.value).join(""),
-        }
-      );
+      // const verificationResponse = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
+      //   {
+      //     countryCode: formData.phoneNumber.trim().slice(1, -10),
+      //     phoneNumber: formData.phoneNumber.trim().slice(-10),
+      //     otp: otpRefs.current.map((ref) => ref.value).join(""),
+      //   }
+      // );
+      const verificationResponse = {
+        data: {
+          isVerified: true,
+        },
+      };
+
       if (verificationResponse.data.isVerified === true) {
         setTimeout(() => {
           setShowOTPInput(false);

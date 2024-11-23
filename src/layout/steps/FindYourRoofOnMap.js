@@ -7,12 +7,13 @@ import { SearchLocation } from "../../components/LocationSearch";
 import { GoogleMapLayout } from "../../components/GoogleMapFrame";
 
 // const center = { lat: 38.8292347, lng: -90.4875674 };
-const center = {}
+const center = {};
 
 export const FindYourRoofOnMap = ({
   handleUserAnswer,
   setStateAbbreviation,
   quizData,
+  setLocationCollection,
 }) => {
   const [inputValue, setInputValue] = useState(
     quizData.location ? quizData.location : ""
@@ -63,16 +64,57 @@ export const FindYourRoofOnMap = ({
       );
 
       const location = response.data.data.results[0].geometry.location;
+      const locationData = response.data.data.results[0].address_components;
 
       // Extract state abbreviation
-      const stateComponent =
-        response.data.data.results[0].address_components.find((component) =>
-          component.types.includes("administrative_area_level_1")
-        );
+      const stateComponent = locationData.find((component) =>
+        component.types.includes("administrative_area_level_1")
+      );
 
       const stateAbbreviation = stateComponent
         ? stateComponent.short_name
         : null;
+
+      console.log("locationData", locationData);
+
+      let locationCollection = {
+        streetAddress: "",
+        city: "",
+        zipCode: "",
+        stateFullName: "",
+      };
+
+      for (let i = 0; i < locationData.length; i++) {
+        switch (locationData[i].types[0]) {
+          case "street_number":
+            locationCollection.streetAddress = locationData[i].long_name;
+            break;
+
+          case "route":
+            locationCollection.streetAddress =
+              `${locationCollection.streetAddress} ${locationData[i].long_name}`.trim();
+            break;
+
+          case "locality":
+            locationCollection.city = locationData[i].long_name;
+            break;
+
+          case "administrative_area_level_1":
+            locationCollection.state = locationData[i].long_name;
+            break;
+
+          case "postal_code":
+            locationCollection.zipCode = locationData[i].long_name;
+            break;
+
+          default:
+            break;
+        }
+      }
+
+      setLocationCollection(locationCollection);
+
+      console.log("location collection:", locationCollection);
 
       setStateAbbreviation(stateAbbreviation);
 
@@ -161,10 +203,7 @@ export const FindYourRoofOnMap = ({
 
   return (
     <Container className="container-with-map">
-      <h1
-        style={{ margin: "0", maxWidth: "450px" }}
-        className="title"
-      >
+      <h1 style={{ margin: "0", maxWidth: "450px" }} className="title">
         Let's check your roof's sun exposure
       </h1>
 
@@ -200,7 +239,7 @@ export const FindYourRoofOnMap = ({
             src="/icons/map-placeholder.png"
             alt="Map Placeholder"
             className="map-placeholder"
-            style={{ }}
+            style={{}}
           />
         )}
       </div>

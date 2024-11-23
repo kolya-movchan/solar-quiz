@@ -6,12 +6,12 @@ export const creditScoreList = [
   },
   {
     name: "550 - 600",
-    id: "550-600",
+    id: "550 - 600",
     color: "#FEF8CB",
   },
   {
     name: "600 - 650",
-    id: "600-650",
+    id: "600 - 650",
     color: "#F3FECB",
   },
   {

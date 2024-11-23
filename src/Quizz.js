@@ -21,27 +21,31 @@ import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(0);
-  const [stateAbbreviation, setStateAbbreviation] = useState(null);
-  const [quizData, setQuizData] = useState({});
+  const [step, setStep] = useState(1);
+  const [stateAbbreviation, setStateAbbreviation] = useState("");
+  const [locationCollection, setLocationCollection] = useState({
+    streetAddress: "",
+    city: "",
+    zipCode: "",
+    state: "",
+  });
 
-  // const testData = {
-  //   location: "3rd Street Promenade, Santa Monica, CA, USA",
-  //   place_id: "EiszcmQgU3RyZWV0IFByb21lbmFkZSwgU2FudGEgTW9uaWNhLCBDQSwgVVNBIi4qLAoUChIJn00flM-kwoARJCyvzSGDm6oSFAoSCRkAkcLOpMKAEav1I_-1Che0",
-  //   coordinates: {
-  //     lat: 34.0164013,
-  //     lng: -118.4968895
-  //   },
-  //   home_ownership: "own",
-  //   home_type: "townhouse",
-  //   roof_condition: "good",
-  //   provider: "SCE",
-  //   is_mannual_provider: false,
-  //   mannual_provider: null,
-  //   utility_bill_amount: "$150-$300",
-  //   credit_score: "600-650",
-  //   isQuizDataSubmitted: true
-  // };
+  const test = {
+    location: "3rd Street Promenade, Santa Monica, CA, USA 22323",
+    home_ownership: "own",
+    home_type: "Single Family",
+    roof_condition: "Good",
+    provider: "ABC Power",
+    electric_bills: "150",
+    credit_score: "700",
+    first_name: "john",
+    last_name: "doe",
+    email: "john.doe@example.com",
+    phone_number: "1234567890",
+    utility_bill_amount: "$150 - $300",
+  };
+
+  const [quizData, setQuizData] = useState({});
 
   const handleUserAnswer = (data) => {
     if (data.location) {
@@ -103,6 +107,7 @@ const Quiz = () => {
           <FindYourRoofOnMap
             handleUserAnswer={handleUserAnswer}
             setStateAbbreviation={setStateAbbreviation}
+            setLocationCollection={setLocationCollection}
             quizData={quizData}
           />
         );
@@ -150,7 +155,11 @@ const Quiz = () => {
 
       case 8:
         return (
-          <ContactsSubmission quizData={quizData} onSubmit={handleUserAnswer} />
+          <ContactsSubmission
+            quizData={quizData}
+            locationCollection={locationCollection}
+            onSubmit={handleUserAnswer}
+          />
         );
 
       case 9:

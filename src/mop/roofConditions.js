@@ -1,22 +1,22 @@
 export const roofConditions = [
   {
     name: "Good",
-    id: "good",
+    id: "Good",
     icon: "/houses-conditions/good.svg",
   },
   {
     name: "Need Repairs",
-    id: "need-repairs",
+    id: "Need-Repairs",
     icon: "/houses-conditions/need-repairs.svg",
   },
   {
-    name: "Needs Re-roof",
-    id: "needs-re-roof",
+    name: "Needs Re-Roof",
+    id: "Needs-Re-Roof",
     icon: "/houses-conditions/need-reroof.svg",
   },
   {
     name: "Unsure",
-    id: "unsure",
+    id: "Unsure",
     icon: "/houses-conditions/unsure.svg",
   },
 ];

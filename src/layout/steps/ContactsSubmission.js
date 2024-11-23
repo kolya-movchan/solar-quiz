@@ -171,12 +171,7 @@ export const ContactsSubmission = ({
 
       const response2 = await axios.post(
         `${process.env.REACT_APP_BACKEND_HOST}/api/solarcopilot`,
-        { data: dataToSendSolarCopilot },
-        {
-          headers: {
-            X_KEY: "7644d21b4597db181c55097f72c1eaa9",
-          },
-        }
+        { data: dataToSendSolarCopilot }
       );
 
       if (response2.status === 200) {

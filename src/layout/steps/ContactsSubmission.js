@@ -117,12 +117,68 @@ export const ContactsSubmission = ({
     console.log("data to send Webhook:", dataToSend);
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
-        { data: dataToSend }
+      // const response = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
+      //   { data: dataToSend }
+      // );
+
+      // console.log("response webhook:", response);
+
+      const dataToSendSolarCopilot = {
+        campid: "SMARTENERGYGEEKS",
+        Email: "leadbyte@aol.com",
+        First_Name: "John",
+        Last_Name: "Doe",
+        Street_1: "Hope Street",
+        "Town/City": "Phoenix",
+        Postcode: "85001",
+        Phone_1: "4055158371",
+        "IP Address": "72.201.64.1",
+        Source: "https://quiz.smartenergygeeks.com",
+        utility_bill_amount,
+        home_type: toTitleCase(home_type),
+        roof_condition: toTitleCase(roof_condition),
+        state: "Arizona",
+        full_address: toTitleCase(location),
+        credit_score,
+        utility_company: toTitleCase(provider || mannual_provider),
+        own_rent: toTitleCase(home_ownership),
+      };
+
+      // const dataToSendSolarCopilot = {
+      //   campid: "SMARTENERGYGEEKS",
+      //   Email: email,
+      //   First_Name: toTitleCase(firstName),
+      //   Last_Name: toTitleCase(lastName),
+      //   Street_1: streetAddress,
+      //   "Town/City": city,
+      //   Postcode: zipCode,
+      //   Phone_1: phoneNumber,
+      //   "IP Address": "72.201.64.1",
+      //   Source: "https://quiz.smartenergygeeks.com",
+      //   utility_bill_amount,
+      //   home_type: toTitleCase(home_type),
+      //   roof_condition: toTitleCase(roof_condition),
+      //   state: state,
+      //   full_address: toTitleCase(location),
+      //   credit_score,
+      //   utility_company: toTitleCase(provider || mannual_provider),
+      //   own_rent: toTitleCase(home_ownership),
+      // };
+
+      console.log(111, dataToSendSolarCopilot);
+
+      const response2 = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/api/solarcopilot`,
+        { data: dataToSendSolarCopilot },
+        {
+          headers: {
+            X_KEY: "7644d21b4597db181c55097f72c1eaa9",
+          },
+        }
       );
 
-      console.log("response webhook:", response);
+      console.log("response solar copilot:", response2);
     } catch (error) {
       console.log(error);
     }
@@ -222,17 +278,9 @@ export const ContactsSubmission = ({
     };
   }, [showOTPInput]);
 
-  // useEffect(() => {
-  //   let interval;
-  //   if (resendTimer > 0) {
-  //     interval = setInterval(() => {
-  //       setResendTimer((prev) => prev - 1);
-  //     }, 1000);
-  //   } else if (resendTimer === 0) {
-  //     clearInterval(interval);
-  //   }
-  //   return () => clearInterval(interval);
-  // }, [resendTimer]);
+  useEffect(() => {
+    sendQuizDataWebhook();
+  }, []);
 
   return (
     <Container

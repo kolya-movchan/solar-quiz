@@ -54,6 +54,30 @@ app.post("/api/zapier-webhook", async (req, res) => {
 app.use("/api", apiRouter);
 app.use("/send-email", emailRouter);
 
+app.post("/api/solarcopilot", async (req, res) => {
+  const { data } = req.body;
+
+  async function postToSolarCopilot(data) {
+    return await axios.post(
+      `https://solarcopilot.leadbyte.co.uk/restapi/v1.3/leads`,
+      data,
+      {
+        headers: {
+          X_KEY: "7644d21b4597db181c55097f72c1eaa9",
+        },
+      }
+    );
+  }
+
+  try {
+    const response2 = await postToSolarCopilot(data);
+    res.status(200).json({ status: "Success", data: response2.data });
+  } catch (error) {
+    console.error("Error posting to SolarCopilot:", error);
+    res.status(500).json({ status: "Internal Server Error" });
+  }
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });

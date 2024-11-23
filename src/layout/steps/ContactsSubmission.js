@@ -117,12 +117,12 @@ export const ContactsSubmission = ({
     console.log("data to send Webhook:", dataToSend);
 
     try {
-      // const response = await axios.post(
-      //   `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
-      //   { data: dataToSend }
-      // );
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
+        { data: dataToSend }
+      );
 
-      // console.log("response webhook:", response);
+      console.log("response webhook:", response);
 
       // const dataToSendSolarCopilot = {
       //   campid: "SMARTENERGYGEEKS",
@@ -218,17 +218,17 @@ export const ContactsSubmission = ({
     try {
       setIsLoading(true);
 
-      // const response = await axios.post(
-      //   `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
-      //   {
-      //     countryCode,
-      //     phoneNumber,
-      //   }
-      // );
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+        {
+          countryCode,
+          phoneNumber,
+        }
+      );
 
-      // if (response.status === 200) {
-      //   setShowOTPInput(true);
-      // }
+      if (response.status === 200) {
+        setShowOTPInput(true);
+      }
 
       setShowOTPInput(true);
     } catch (error) {
@@ -244,19 +244,19 @@ export const ContactsSubmission = ({
 
   const handleOTPSubmission = async () => {
     try {
-      // const verificationResponse = await axios.post(
-      //   `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
-      //   {
-      //     countryCode: formData.phoneNumber.trim().slice(1, -10),
-      //     phoneNumber: formData.phoneNumber.trim().slice(-10),
-      //     otp: otpRefs.current.map((ref) => ref.value).join(""),
-      //   }
-      // );
-      const verificationResponse = {
-        data: {
-          isVerified: true,
-        },
-      };
+      const verificationResponse = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
+        {
+          countryCode: formData.phoneNumber.trim().slice(1, -10),
+          phoneNumber: formData.phoneNumber.trim().slice(-10),
+          otp: otpRefs.current.map((ref) => ref.value).join(""),
+        }
+      );
+      // const verificationResponse = {
+      //   data: {
+      //     isVerified: true,
+      //   },
+      // };
 
       if (verificationResponse.data.isVerified === true) {
         setTimeout(() => {
@@ -301,10 +301,6 @@ export const ContactsSubmission = ({
       document.body.style.overflow = "visible";
     };
   }, [showOTPInput]);
-
-  useEffect(() => {
-    sendQuizDataWebhook();
-  }, []);
 
   return (
     <Container

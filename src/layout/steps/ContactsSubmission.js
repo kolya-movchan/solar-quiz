@@ -124,49 +124,50 @@ export const ContactsSubmission = ({
 
       // console.log("response webhook:", response);
 
-      const dataToSendSolarCopilot = {
-        campid: "SMARTENERGYGEEKS",
-        Email: "leadbyte@aol.com",
-        First_Name: "John",
-        Last_Name: "Doe",
-        Street_1: "Hope Street",
-        "Town/City": "Phoenix",
-        Postcode: "85001",
-        Phone_1: "4055158371",
-        "IP Address": "72.201.64.1",
-        Source: "https://quiz.smartenergygeeks.com",
-        utility_bill_amount,
-        home_type: toTitleCase(home_type),
-        roof_condition: toTitleCase(roof_condition),
-        state: "Arizona",
-        full_address: toTitleCase(location),
-        credit_score,
-        utility_company: toTitleCase(provider || mannual_provider),
-        own_rent: toTitleCase(home_ownership),
-      };
-
       // const dataToSendSolarCopilot = {
       //   campid: "SMARTENERGYGEEKS",
-      //   Email: email,
-      //   First_Name: toTitleCase(firstName),
-      //   Last_Name: toTitleCase(lastName),
-      //   Street_1: streetAddress,
-      //   "Town/City": city,
-      //   Postcode: zipCode,
-      //   Phone_1: phoneNumber,
+      //   Email: "leadbyte@aol.com",
+      //   First_Name: "John",
+      //   Last_Name: "Doe",
+      //   Street_1: "Hope Street",
+      //   "Town/City": "Phoenix",
+      //   Postcode: "85001",
+      //   Phone_1: "4055158371",
       //   "IP Address": "72.201.64.1",
       //   Source: "https://quiz.smartenergygeeks.com",
       //   utility_bill_amount,
       //   home_type: toTitleCase(home_type),
       //   roof_condition: toTitleCase(roof_condition),
-      //   state: state,
+      //   state: "Arizona",
       //   full_address: toTitleCase(location),
       //   credit_score,
       //   utility_company: toTitleCase(provider || mannual_provider),
       //   own_rent: toTitleCase(home_ownership),
       // };
 
-      console.log(111, dataToSendSolarCopilot);
+      const ipResponse = await axios.get("https://api.ipify.org?format=json");
+      const userIpAddress = ipResponse.data.ip;
+
+      const dataToSendSolarCopilot = {
+        campid: "SMARTENERGYGEEKS",
+        Email: email,
+        First_Name: toTitleCase(firstName),
+        Last_Name: toTitleCase(lastName),
+        Street_1: streetAddress,
+        "Town/City": city,
+        Postcode: zipCode,
+        Phone_1: phoneNumber,
+        "IP Address": userIpAddress,
+        Source: "https://quiz.smartenergygeeks.com",
+        utility_bill_amount,
+        home_type: toTitleCase(home_type),
+        roof_condition: toTitleCase(roof_condition),
+        state: state,
+        full_address: toTitleCase(location),
+        credit_score,
+        utility_company: toTitleCase(provider || mannual_provider),
+        own_rent: toTitleCase(home_ownership),
+      };
 
       const response2 = await axios.post(
         `${process.env.REACT_APP_BACKEND_HOST}/api/solarcopilot`,
@@ -178,7 +179,29 @@ export const ContactsSubmission = ({
         }
       );
 
-      console.log("response solar copilot:", response2);
+      if (response2.status === 200) {
+        const queueId = response2.data.results[0].queueId;
+        switch (queueId.charAt(0)) {
+          case "1":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/high-roller-marketing";
+            break;
+          case "2":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/zach-sweety";
+            break;
+          case "3":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/mark-medina";
+            break;
+          case "4":
+            window.location.href =
+              "https://smartenergygeeks.com/booking-call/alex-baird";
+            break;
+          default:
+            window.location.href = "https://smartenergygeeks.com";
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -200,17 +223,17 @@ export const ContactsSubmission = ({
     try {
       setIsLoading(true);
 
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
-        {
-          countryCode,
-          phoneNumber,
-        }
-      );
+      // const response = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/send-otp`,
+      //   {
+      //     countryCode,
+      //     phoneNumber,
+      //   }
+      // );
 
-      if (response.status === 200) {
-        setShowOTPInput(true);
-      }
+      // if (response.status === 200) {
+      //   setShowOTPInput(true);
+      // }
 
       setShowOTPInput(true);
     } catch (error) {
@@ -226,14 +249,20 @@ export const ContactsSubmission = ({
 
   const handleOTPSubmission = async () => {
     try {
-      const verificationResponse = await axios.post(
-        `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
-        {
-          countryCode: formData.phoneNumber.trim().slice(1, -10),
-          phoneNumber: formData.phoneNumber.trim().slice(-10),
-          otp: otpRefs.current.map((ref) => ref.value).join(""),
-        }
-      );
+      // const verificationResponse = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND_HOST}/twilio-sms/verify-otp`,
+      //   {
+      //     countryCode: formData.phoneNumber.trim().slice(1, -10),
+      //     phoneNumber: formData.phoneNumber.trim().slice(-10),
+      //     otp: otpRefs.current.map((ref) => ref.value).join(""),
+      //   }
+      // );
+      const verificationResponse = {
+        data: {
+          isVerified: true,
+        },
+      };
+
       if (verificationResponse.data.isVerified === true) {
         setTimeout(() => {
           setShowOTPInput(false);

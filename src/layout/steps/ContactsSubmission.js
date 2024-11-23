@@ -122,7 +122,7 @@ export const ContactsSubmission = ({
         { data: dataToSend }
       );
 
-      // console.log("response webhook:", response);
+      console.log("response webhook:", response);
 
       // const dataToSendSolarCopilot = {
       //   campid: "SMARTENERGYGEEKS",

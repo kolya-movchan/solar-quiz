@@ -21,7 +21,7 @@ import { Unqualified } from "./layout/steps/Unqualified";
 import { Intro } from "./layout/steps/Intro";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [stateAbbreviation, setStateAbbreviation] = useState("");
   const [locationCollection, setLocationCollection] = useState({
     streetAddress: "",

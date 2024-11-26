@@ -124,77 +124,106 @@ export const ContactsSubmission = ({
 
       console.log("response webhook:", response);
 
-      // const dataToSendSolarCopilot = {
-      //   campid: "SMARTENERGYGEEKS",
-      //   Email: "leadbyte@aol.com",
-      //   First_Name: "John",
-      //   Last_Name: "Doe",
-      //   Street_1: "Hope Street",
-      //   "Town/City": "Phoenix",
-      //   Postcode: "85001",
-      //   Phone_1: "4055158371",
-      //   "IP Address": "72.201.64.1",
-      //   Source: "https://quiz.smartenergygeeks.com",
-      //   utility_bill_amount,
-      //   home_type: toTitleCase(home_type),
-      //   roof_condition: toTitleCase(roof_condition),
-      //   state: "Arizona",
-      //   full_address: toTitleCase(location),
-      //   credit_score,
-      //   utility_company: toTitleCase(provider || mannual_provider),
-      //   own_rent: toTitleCase(home_ownership),
-      // };
-
       const ipResponse = await axios.get("https://api.ipify.org?format=json");
       const userIpAddress = ipResponse.data.ip;
 
+      // const TEST_dataToSendSolarCopilot = {
+      //   campid: "SMARTENERGYGEEKS",
+      //   First_Name: "Test",
+      //   Last_Name: "Test",
+      //   Email: "sdfsdf@gmail.com",
+      //   Phone_1: "+12237293829",
+      //   full_address: toTitleCase(location),
+      //   Street_1: streetAddress,
+      //   "Town/City": city,
+      //   State: state,
+      //   Postcode: "83728",
+      //   Own_Rent: toTitleCase(home_ownership),
+      //   Utility_Company: toTitleCase(provider || mannual_provider),
+      //   Utility_Bill_Amount: utility_bill_amount,
+      //   Home_Type: toTitleCase(home_type),
+      //   Roof_Condition: toTitleCase(roof_condition),
+      //   Credit_Score: credit_score,
+      //   Source: "SmartEnergyGeeks",
+      //   "IP Address": userIpAddress,
+      // };
+
       const dataToSendSolarCopilot = {
         campid: "SMARTENERGYGEEKS",
-        Email: email,
         First_Name: toTitleCase(firstName),
         Last_Name: toTitleCase(lastName),
+        Email: email,
+        Phone_1: phoneNumber,
+        full_address: toTitleCase(location),
         Street_1: streetAddress,
         "Town/City": city,
+        State: state,
         Postcode: zipCode,
-        Phone_1: phoneNumber,
+        Own_Rent: toTitleCase(home_ownership),
+        Utility_Company: toTitleCase(provider || mannual_provider),
+        Utility_Bill_Amount: utility_bill_amount,
+        Home_Type: toTitleCase(home_type),
+        Roof_Condition: toTitleCase(roof_condition),
+        Credit_Score: credit_score,
+        Source: "SmartEnergyGeeks",
         "IP Address": userIpAddress,
-        Source: "https://quiz.smartenergygeeks.com",
-        utility_bill_amount,
-        home_type: toTitleCase(home_type),
-        roof_condition: toTitleCase(roof_condition),
-        state: state,
-        full_address: toTitleCase(location),
-        credit_score,
-        utility_company: toTitleCase(provider || mannual_provider),
-        own_rent: toTitleCase(home_ownership),
       };
 
-      const response2 = await axios.post(
+      const responseFromSolarCopilot = await axios.post(
         `${process.env.REACT_APP_BACKEND_HOST}/api/solarcopilot`,
         { data: dataToSendSolarCopilot }
       );
 
-      if (response2.status === 200) {
-        const queueId = response2.data.results[0].queueId;
-        switch (queueId.charAt(0)) {
+      if (responseFromSolarCopilot.status === 200) {
+        console.log("Response from SolarCopilot is successful.");
+        const dataFromSolarCopilot =
+          responseFromSolarCopilot.data.data.status === "Success"
+            ? responseFromSolarCopilot.data.data.records[0]
+            : null;
+        console.log("Data from SolarCopilot:", dataFromSolarCopilot);
+        const isSuccessfulReply = dataFromSolarCopilot;
+        console.log("isSuccessfulReply:", isSuccessfulReply);
+
+        const isBuyer = dataFromSolarCopilot.buyers.length > 0;
+        console.log("isBuyer:", isBuyer);
+
+        const isSold = dataFromSolarCopilot.buyers[0].status === "Sold";
+        console.log("isSold:", isSold);
+        const refId =
+          isSuccessfulReply && isBuyer > 0 && isSold
+            ? dataFromSolarCopilot.buyers[0].externalref
+            : "-1";
+        console.log("Reference ID:", refId);
+
+        switch (refId) {
           case "1":
+            console.log("Redirecting to High Roller Marketing");
             window.location.href =
               "https://smartenergygeeks.com/booking-call/high-roller-marketing";
             break;
           case "2":
+            console.log("Redirecting to Zach Sweety");
             window.location.href =
               "https://smartenergygeeks.com/booking-call/zach-sweety";
             break;
           case "3":
+            console.log("Redirecting to Mark Medina");
             window.location.href =
               "https://smartenergygeeks.com/booking-call/mark-medina";
             break;
           case "4":
+            console.log("Redirecting to Alex Baird");
             window.location.href =
               "https://smartenergygeeks.com/booking-call/alex-baird";
             break;
+
+          case "-1":
+            console.log("Redirecting to Not Booked");
+            window.location.href = "https://smartenergygeeks.com/not-booked";
+            break;
           default:
-            window.location.href = "https://smartenergygeeks.com";
+            console.log("Redirecting to Not Booked Default", "refID:", refId);
+            window.location.href = "https://smartenergygeeks.com/not-booked";
         }
       }
     } catch (error) {
@@ -303,7 +332,9 @@ export const ContactsSubmission = ({
     };
   }, [showOTPInput]);
 
-  console.log("quizData", quizData);
+  // useEffect(() => {
+  //   sendQuizDataWebhook();
+  // }, []);
 
   return (
     <Container

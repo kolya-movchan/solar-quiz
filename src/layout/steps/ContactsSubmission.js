@@ -117,12 +117,12 @@ export const ContactsSubmission = ({
     console.log("data to send Webhook:", dataToSend);
 
     try {
-      // const response = await axios.post(
-      //   `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
-      //   { data: dataToSend }
-      // );
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/api/zapier-webhook`,
+        { data: dataToSend }
+      );
 
-      // console.log("response webhook:", response);
+      console.log("response webhook:", response);
 
       const ipResponse = await axios.get("https://api.ipify.org?format=json");
       const userIpAddress = ipResponse.data.ip;

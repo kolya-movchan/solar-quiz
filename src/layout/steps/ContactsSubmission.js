@@ -181,8 +181,16 @@ export const ContactsSubmission = ({
             ? responseFromSolarCopilot.data.data.records[0]
             : null;
         console.log("Data from SolarCopilot:", dataFromSolarCopilot);
+        const isSuccessfulReply = dataFromSolarCopilot;
+        console.log("isSuccessfulReply:", isSuccessfulReply);
+
+        const isBuyer = dataFromSolarCopilot.buyers.length > 0;
+        console.log("isBuyer:", isBuyer);
+
+        const isSold = dataFromSolarCopilot.buyers[0].status === "Sold";
+        console.log("isSold:", isSold);
         const refId =
-          dataFromSolarCopilot && dataFromSolarCopilot.buyers.length > 0
+          isSuccessfulReply && isBuyer > 0 && isSold
             ? dataFromSolarCopilot.buyers[0].externalref
             : "-1";
         console.log("Reference ID:", refId);

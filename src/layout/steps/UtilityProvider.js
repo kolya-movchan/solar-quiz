@@ -22,9 +22,9 @@ export const UtilityProvider = ({
     { name: "Pedernales Electric", img: "/pedernales-electric.svg" },
   ];
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

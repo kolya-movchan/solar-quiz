@@ -81,7 +81,6 @@ export const FindYourRoofOnMap = ({
         streetAddress: "",
         city: "",
         zipCode: "",
-        stateFullName: "",
       };
 
       for (let i = 0; i < locationData.length; i++) {

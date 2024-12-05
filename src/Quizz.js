@@ -171,6 +171,7 @@ const Quiz = () => {
   };
 
   console.log("Quiz Data:", quizData);
+  console.log("Location Data:", locationCollection);
   console.log("state: ", stateAbbreviation);
 
   return (

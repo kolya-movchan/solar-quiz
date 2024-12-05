@@ -336,6 +336,58 @@ export const ContactsSubmission = ({
   //   sendQuizDataWebhook();
   // }, []);
 
+  useEffect(() => {
+    const fetchAndLogData = async () => {
+      const {
+        location,
+        home_ownership,
+        home_type,
+        roof_condition,
+        provider,
+        mannual_provider,
+        utility_bill_amount,
+        credit_score,
+      } = quizData;
+
+      let { firstName, lastName, email, phoneNumber } = formData;
+      let { streetAddress, city, zipCode, state } = locationCollection;
+
+      const toTitleCase = (str) => {
+        return str.replace(/\b\w/g, (char) => char.toUpperCase());
+      };
+
+      const fetchUserIpAddress = async () => {
+        const ipResponse = await axios.get("https://api.ipify.org?format=json");
+        return ipResponse.data.ip;
+      };
+
+      const userIpAddress = await fetchUserIpAddress();
+
+      console.log("Data for LeadByLead:", {
+        campid: "SMARTENERGYGEEKS",
+        First_Name: toTitleCase(firstName),
+        Last_Name: toTitleCase(lastName),
+        Email: email,
+        Phone_1: phoneNumber,
+        full_address: toTitleCase(location),
+        Street_1: streetAddress,
+        "Town/City": city,
+        State: state,
+        Postcode: zipCode,
+        Own_Rent: toTitleCase(home_ownership),
+        Utility_Company: toTitleCase(provider || mannual_provider),
+        Utility_Bill_Amount: utility_bill_amount,
+        Home_Type: toTitleCase(home_type),
+        Roof_Condition: toTitleCase(roof_condition),
+        Credit_Score: credit_score,
+        Source: "SmartEnergyGeeks",
+        "IP Address": userIpAddress,
+      });
+    };
+
+    fetchAndLogData();
+  }, [quizData, formData, locationCollection]);
+
   return (
     <Container
       className="container submission-container"

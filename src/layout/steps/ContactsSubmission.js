@@ -95,6 +95,9 @@ export const ContactsSubmission = ({
       return str.replace(/\b\w/g, (char) => char.toUpperCase());
     };
 
+    const ipResponse = await axios.get("https://api.ipify.org?format=json");
+    const userIpAddress = ipResponse.data.ip;
+
     const dataToSend = {
       first_name: toTitleCase(firstName),
       last_name: toTitleCase(lastName),
@@ -112,6 +115,7 @@ export const ContactsSubmission = ({
       city,
       street_address: streetAddress,
       submission_date: new Date().toLocaleDateString("en-US"),
+      ipAddress: userIpAddress,
     };
 
     console.log("data to send Webhook:", dataToSend);
@@ -123,9 +127,6 @@ export const ContactsSubmission = ({
       );
 
       console.log("response webhook:", response);
-
-      const ipResponse = await axios.get("https://api.ipify.org?format=json");
-      const userIpAddress = ipResponse.data.ip;
 
       // const TEST_dataToSendSolarCopilot = {
       //   campid: "SMARTENERGYGEEKS",

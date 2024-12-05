@@ -8,6 +8,7 @@ export const ProgressBar = ({ step }) => {
         width: "100%",
         backgroundColor: "#FFF",
         height: 12,
+        zIndex: 1000,
       }}
     >
       <div

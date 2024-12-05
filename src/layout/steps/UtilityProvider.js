@@ -22,16 +22,16 @@ export const UtilityProvider = ({
     { name: "Pedernales Electric", img: "/pedernales-electric.svg" },
   ];
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
-
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    window.scrollTo(0, 0);
   }, []);
+
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, []);
 
   return (
     <Container className="container-with-cards ">

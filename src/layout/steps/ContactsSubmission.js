@@ -364,7 +364,7 @@ export const ContactsSubmission = ({
 
       const userIpAddress = await fetchUserIpAddress();
 
-      console.log("Data for LeadByLead:", {
+      console.log("Data for LeadBy:", {
         campid: "SMARTENERGYGEEKS",
         First_Name: toTitleCase(firstName),
         Last_Name: toTitleCase(lastName),

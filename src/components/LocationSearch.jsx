@@ -7,7 +7,7 @@ export const SearchLocation = ({
   streetsData,
   selectedStreet,
   handleSelectStreet,
-  handleUserAnswer,
+  getSuggestedAddress,
   dropdownRef,
   isStreetSelected,
   isLoading,
@@ -116,13 +116,7 @@ export const SearchLocation = ({
               }}
               onClick={() => {
                 handleSelectStreet(street).then((coordinates) => {
-                  setTimeout(() => {
-                    handleUserAnswer({
-                      location: street.description,
-                      place_id: street.place_id,
-                      coordinates,
-                    });
-                  }, 1500);
+                  getSuggestedAddress(coordinates, false);
                 });
               }}
             >

@@ -42,7 +42,7 @@ export const GoogleMapLayout = ({ mapCenter, mapRef, onDrag }) => {
           const center = mapRef.current.getCenter();
           
           const newCenter = { lat: center.lat(), lng: center.lng() };
-          onDrag(newCenter);
+          onDrag(newCenter, true);
         }}
       ></GoogleMap>
 

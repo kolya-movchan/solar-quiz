@@ -296,6 +296,7 @@ export const ContactsSubmission = ({
         onSubmit({ isQuizDataSubmitted: true });
         await sendQuizDataWebhook();
         toast.success("Success! We will contact you soon!");
+        setIsSending(false);
       } else {
         toast.error("Invalid confirmation code. Please try again.");
       }

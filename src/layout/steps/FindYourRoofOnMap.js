@@ -43,6 +43,7 @@ export const FindYourRoofOnMap = ({
           },
         }
       );
+
       setStreetsData(response.data.data.predictions);
       setSelectedStreet(response.data.data.predictions[0]);
     } catch (error) {
@@ -166,7 +167,7 @@ export const FindYourRoofOnMap = ({
     window.scrollTo(0, 0);
   }, []);
 
-  const getSuggestedAddress = async (coordinates) => {
+  const getSuggestedAddress = async (coordinates, isManualLocation = false) => {
     const response = await axios.get(
       `${process.env.REACT_APP_BACKEND_HOST}/api/reverse-geocode`,
       {
@@ -189,11 +190,14 @@ export const FindYourRoofOnMap = ({
 
       setInputValue(firstResult.formatted_address);
       setIsStreetSelected(true);
+
+      console.log(111, firstResult.formatted_address);
+
       handleUserAnswer({
         location: firstResult.formatted_address,
         coordinates: { lat: coordinates.lat, lng: coordinates.lng },
         placeId: placeId,
-        is_manual_location: true,
+        is_manual_location: isManualLocation,
       });
     } else {
       console.error("No results found or error:", response.data.status);
@@ -218,7 +222,7 @@ export const FindYourRoofOnMap = ({
         streetsData={streetsData}
         selectedStreet={selectedStreet}
         handleSelectStreet={handleSelectStreet}
-        handleUserAnswer={handleUserAnswer}
+        getSuggestedAddress={getSuggestedAddress}
         dropdownRef={dropdownRef}
         isStreetSelected={isStreetSelected}
         isLoading={isLoading}

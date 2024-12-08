@@ -191,10 +191,13 @@ export const FindYourRoofOnMap = ({
       setInputValue(firstResult.formatted_address);
       setIsStreetSelected(true);
 
-      console.log(111, firstResult.formatted_address);
+      console.log(
+        "suggested full address:",
+        firstResult.formatted_address.replace(/, USA$/, "")
+      );
 
       handleUserAnswer({
-        location: firstResult.formatted_address,
+        location: firstResult.formatted_address.replace(/, USA$/, ""),
         coordinates: { lat: coordinates.lat, lng: coordinates.lng },
         placeId: placeId,
         is_manual_location: isManualLocation,

@@ -207,6 +207,10 @@ export const FindYourRoofOnMap = ({
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Container className="container-with-map">
       <h1 style={{ margin: "0", maxWidth: "450px" }} className="title">

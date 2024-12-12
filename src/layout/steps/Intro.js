@@ -7,6 +7,9 @@ import { IntroDescriptionItem } from "../../components/IntroDescription";
 import { introDescriptionBullets } from "../../mop/introDescriptionBullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Container className="intro-container" style={{ padding: 0 }}>
       <QualificationBanner style={{ marginBottom: "32px" }} />

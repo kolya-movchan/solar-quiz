@@ -4,6 +4,10 @@ import { Container } from "../container";
 import { UnqualifiedBanner } from "../../components/UnqualifiedBanner";
 
 export const Unqualified = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Container
       className="container container-unqualified"

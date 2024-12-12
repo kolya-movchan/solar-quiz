@@ -8,10 +8,7 @@ import { introDescriptionBullets } from "../../mop/introDescriptionBullets";
 
 export const Intro = ({ handleNextQuizNavigation }) => {
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    window.scrollTo(0, 0);
   }, []);
 
   return (

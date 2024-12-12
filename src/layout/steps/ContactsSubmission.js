@@ -389,6 +389,10 @@ export const ContactsSubmission = ({
     fetchAndLogData();
   }, [quizData, formData, locationCollection]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Container
       className="container submission-container"

@@ -54,12 +54,11 @@ const Quiz = () => {
       setQuizData((prevQuizData) => ({ ...prevQuizData, ...data }));
     }
 
-    const { home_ownership, home_type, credit_score } = data;
+    const { home_ownership, home_type } = data;
     const conditionsToRefuse =
       home_ownership === "rent" ||
-      home_type === "mobile-manufactured" ||
       home_type === "apartment-condo" ||
-      credit_score === "below-550";
+      home_type === "townhouse";
 
     if (conditionsToRefuse) {
       setTimeout(() => {

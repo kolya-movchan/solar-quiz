@@ -1,4 +1,8 @@
 {
+    "emmet.excludeLanguages": [
+        "html",
+        "Item: twig; Value: html"
+    ],
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#ff6433",
         "activityBar.background": "#ff6433",
@@ -20,3 +24,4 @@
     },
     "peacock.color": "#ff3d00"
 }
+

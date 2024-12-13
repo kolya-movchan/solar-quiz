@@ -20,13 +20,18 @@
   }
 
   .container {
-    padding: 0 20px 12vh;
+    padding: 0 0 12vh 20px;
     width: 100%;
+  }
+
+  .input-other-provider-container {
+    box-sizing: border-box;
   }
 
   .container-with-map {
     min-height: 70vh;
     width: 100%;
+    padding-right: 20px;
     /* justify-content: space-between; */
     align-items: center;
   }
@@ -95,12 +100,12 @@
     overflow-x: hidden;
     /* Enable vertical scroll within this container */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    padding-right: 14px;
+    padding-right: 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     /* margin-bottom: 12vh; */
-    margin-bottom: 110px;
+    margin-bottom: 60px;
     width: 100%;
     /* word-break: break-all; */
     /* justify-content: center; */
@@ -264,6 +269,7 @@
 
   .card {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .input-other-provider {
@@ -351,14 +357,12 @@
 
   .card-container-emojie {
     width: 100%;
-    flex-grow: 1; /* Allows it to take remaining space */
-    width: 100%; /* Optional: Adjust as needed */
+    flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    /* Enable vertical scroll within this container */
-    -webkit-overflow-scrolling: touch; /* Smooth 
-      scrolling on iOS */
-    padding-right: 14px;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 20px;
+    box-sizing: border-box;
   }
 
   .qualified::after {

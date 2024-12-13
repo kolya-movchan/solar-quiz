@@ -24,6 +24,10 @@
     width: 100%;
   }
 
+  .input-other-provider-container {
+    box-sizing: border-box;
+  }
+
   .container-with-map {
     min-height: 70vh;
     width: 100%;

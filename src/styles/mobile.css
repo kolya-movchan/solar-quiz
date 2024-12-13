@@ -43,7 +43,7 @@
     overflow-y: scroll; /* Enable vertical scrolling */
     overflow-x: hidden; /* Disable horizontal scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    height: 90vh;
+    height: 93vh;
   }
 
   .map-paragraph {

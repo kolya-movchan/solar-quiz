@@ -200,22 +200,22 @@ export const ContactsSubmission = ({
           case "1":
             console.log("Redirecting to High Roller Marketing");
             window.location.href =
-              "https://smartenergygeeks.com/booking-call/high-roller-marketing";
+              "https://smartenergygeeks.com/booking-call/1";
             break;
           case "2":
             console.log("Redirecting to Zach Sweety");
             window.location.href =
-              "https://smartenergygeeks.com/booking-call/zach-sweety";
+              "https://smartenergygeeks.com/booking-call/2";
             break;
           case "3":
             console.log("Redirecting to Mark Medina");
             window.location.href =
-              "https://smartenergygeeks.com/booking-call/mark-medina";
+              "https://smartenergygeeks.com/booking-call/3";
             break;
           case "4":
             console.log("Redirecting to Alex Baird");
             window.location.href =
-              "https://smartenergygeeks.com/booking-call/alex-baird";
+              "https://smartenergygeeks.com/booking-call/4";
             break;
 
           case "-1":
@@ -296,6 +296,7 @@ export const ContactsSubmission = ({
         onSubmit({ isQuizDataSubmitted: true });
         await sendQuizDataWebhook();
         toast.success("Success! We will contact you soon!");
+        setIsSending(false);
       } else {
         toast.error("Invalid confirmation code. Please try again.");
       }

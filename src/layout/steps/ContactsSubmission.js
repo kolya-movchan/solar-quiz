@@ -188,8 +188,12 @@ export const ContactsSubmission = ({
         const isBuyer = dataFromSolarCopilot.buyers.length > 0;
         console.log("isBuyer:", isBuyer);
 
-        const isSold = dataFromSolarCopilot.buyers[0].status === "Sold";
+        const isSold = isBuyer
+          ? dataFromSolarCopilot.buyers[0].status === "Sold"
+          : false;
+
         console.log("isSold:", isSold);
+
         const refId =
           isSuccessfulReply && isBuyer > 0 && isSold
             ? dataFromSolarCopilot.buyers[0].externalref
